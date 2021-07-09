@@ -1,3 +1,47 @@
+.navbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nav_inner {
+  margin-right: 10px;
+  display: flex;
+  justify-content:space-between;
+}
+
+
+.nav_user_box {
+  display: flex;
+  align-items:center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.logbtn {
+  margin-left: 5px;
+  background-color: #85BCBE;
+  font-family: 'Montserrat';
+  text-decoration: none;
+  color: white;
+}
+
+
+
+.container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url(./img/background.svg);
+}
+
+
+
+
 .App {
   text-align: center;
 }
@@ -6,6 +50,12 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
