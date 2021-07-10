@@ -36,7 +36,7 @@ const StyleSpan = styled.span`
   position: absolute;
   font-family: NanumSquare_R;
   color: white;
-  bottom: 25%;
+  bottom: 5%;
   font-size: 12px;
   opacity: 1;
   -webkit-transform: translateX(-50%);

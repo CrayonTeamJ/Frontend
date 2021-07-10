@@ -23,12 +23,20 @@ const TemplateBlock = styled.div`
     margin: 0;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     font-family: 'BwSurco';
     color: #404040;
   }
 
+`;
+
+
+const LoginBlock = styled.div`
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
 `;
 
 const InsertForm = styled.form`
@@ -49,20 +57,8 @@ const Input = styled.input`
   background: white;
 `;
 
-const Button = styled.div`
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #85BCBE;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
-`;
 
-const CircleButton = styled.button`
+const Button = styled.button`
   background: #85BCBE;
   &:hover {
     background: #63e6be;
@@ -92,12 +88,13 @@ const CircleButton = styled.button`
   justify-content: center;
 
   transition: 0.125s all ease-in;
-
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
 function Template({ children }) {
   return (<TemplateBlock>
             <h1> SIGN UP </h1>
+            <LoginBlock>
                 <InsertForm>
                     <Input autoFocus placeholder="Nickname" />
                 </InsertForm>
@@ -110,8 +107,10 @@ function Template({ children }) {
                 <InsertForm>
                     <Input autoFocus placeholder="Verify password" />
                 </InsertForm> 
-                <CircleButton> Register </CircleButton>
-        </TemplateBlock>);
+            </LoginBlock>
+        <Button> Register </Button>
+        </TemplateBlock>
+        );
 }
 
 export default Template;
