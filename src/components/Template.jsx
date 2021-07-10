@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const TemplateBlock = styled.div`
   width: 512px;
@@ -21,8 +21,8 @@ const TemplateBlock = styled.div`
 
   h1 {
     margin: 0;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 5px;
     font-size: 30px;
     text-align: center;
     font-family: 'BwSurco';
@@ -32,18 +32,28 @@ const TemplateBlock = styled.div`
 `;
 
 
-const LoginBlock = styled.div`
+const ResBlock = styled.div`
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: -5px;
+`;
+
+
+const LogBlock = styled.div`
   padding-left: 5px;
   padding-top: 5px;
   padding-right: 5px;
   padding-bottom: 5px;
+  position: relative;
+  transform: translate(0,30%);
 `;
 
 const InsertForm = styled.form`
   padding-left: 50px;
-  padding-top: 10px;
+  padding-top: 2%;
   padding-right: 50px;
-  padding-bottom: 10px;
+  padding-bottom: 2%;
+  
 `;
 
 const Input = styled.input`
@@ -91,10 +101,13 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
+
+
 function Template({ children }) {
   return (<TemplateBlock>
-            <h1> SIGN UP </h1>
-            <LoginBlock>
+            <h1> SIGN IN </h1>
+        
+            {/* <ResBlock>
                 <InsertForm>
                     <Input autoFocus placeholder="Nickname" />
                 </InsertForm>
@@ -107,7 +120,17 @@ function Template({ children }) {
                 <InsertForm>
                     <Input autoFocus placeholder="Verify password" />
                 </InsertForm> 
-            </LoginBlock>
+            </ResBlock>  */}
+
+            <LogBlock>
+                <InsertForm style={{marginBottom: '15px'}}>
+                    <Input autoFocus placeholder="ID" />
+                </InsertForm>
+                <InsertForm>
+                    <Input autoFocus placeholder="Password" />
+                </InsertForm> 
+            </LogBlock>
+
         <Button> Register </Button>
         </TemplateBlock>
         );
