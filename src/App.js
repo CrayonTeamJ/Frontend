@@ -1,8 +1,6 @@
 import './App.css';
 import React from 'react';
-import Navigationbar from './components/Navigationbar';
-import Template from './components/Template';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import MainPage from './pages/MainPage';
@@ -10,11 +8,15 @@ import MainPage from './pages/MainPage';
 
 function App() {
   return (
+    <>
     <Router>
-      <MainPage></MainPage>
-      <SigninPage></SigninPage>
-      <SignupPage></SignupPage>
+      <Switch>
+        <MainPage path='/' component={MainPage}></MainPage>
+        <SigninPage path="/login" component={SigninPage}></SigninPage>
+        <SignupPage path='/register' component={SignupPage}></SignupPage>
+      </Switch>
     </Router>
+    </>
   );
 }
 
