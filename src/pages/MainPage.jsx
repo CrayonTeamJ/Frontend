@@ -1,6 +1,6 @@
-import './App.css';
+import '../App.css';
 import React from 'react';
-import Navigationbar from './components/Navigationbar';
+import Navigationbar from '../components/Navigationbar';
 
 
 function MainPage() {
