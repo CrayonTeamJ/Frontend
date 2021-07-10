@@ -46,7 +46,7 @@ const Navigationbar = () => {
   return (
     <div className="navbar">
       <div className="nav_inner">
-          <a href="/" style={{marginLeft:"20px"}}>
+          <a href="/main" style={{marginLeft:"20px"}}>
             <img src={logo} width="200" alt="logo"/>
           </a>
           <ul className="nav_user_box">
