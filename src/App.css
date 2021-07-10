@@ -9,6 +9,11 @@
   justify-content:space-between;
 }
 
+.nav_inner .a .img{
+  align-items: center;
+  align-self: center;
+  align-content: center;
+}
 
 .nav_user_box {
   display: flex;

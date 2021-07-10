@@ -15,6 +15,7 @@ const LoginButton = styled.div`
   background-color: rgba( 255, 255, 255, 0.0 );
   border: 1px solid #85BCBE;
   
+  
 `;
 
 const ResButton = styled.div`
@@ -27,6 +28,7 @@ const ResButton = styled.div`
   border-radius: 5px;
   cursor: pointer;
   background-color: #85BCBE;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4);
 `;
 
 
