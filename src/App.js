@@ -13,8 +13,7 @@ function App() {
       <Switch>
         <Route path="/login" component={SigninPage}></Route >
         <Route  path='/register' component={SignupPage}></Route >
-        <Route  path='/main' component={MainPage}></Route >
-        <Route render={() => <div>에러 페이지</div>}></Route>
+        <Route  path='/' component={MainPage}></Route >
       </Switch>
     </Router>
     </>

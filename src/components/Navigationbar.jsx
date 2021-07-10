@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../img/seaflag.svg';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 
 const LoginButton = styled.div`
@@ -46,16 +47,16 @@ const Navigationbar = () => {
   return (
     <div className="navbar">
       <div className="nav_inner">
-          <a href="/main" style={{marginLeft:"20px"}}>
+          <Link to="/" style={{marginLeft:"20px"}}>
             <img src={logo} width="200" alt="logo"/>
-          </a>
+          </Link>
           <ul className="nav_user_box">
-          <a href="/login" className="btn_log">
+          <Link to="/login" className="btn_log">
             <StyleSpan>Log in</StyleSpan>
-          </a>
-          <a href="/register" className="btn_res">
+          </Link>
+          <Link to="/register" className="btn_res">
             <StyleSpan>Register</StyleSpan>
-          </a>
+          </Link>
         </ul>
       </div>
     </div>
