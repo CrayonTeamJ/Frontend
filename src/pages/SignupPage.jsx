@@ -8,7 +8,7 @@ function SignupPage() {
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
-      <Template status="signup">
+      <Template status="register">
       </Template>
     </div>
   );

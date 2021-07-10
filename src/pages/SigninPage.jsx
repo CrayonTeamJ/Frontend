@@ -8,7 +8,7 @@ function SigninPage() {
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
-      <Template status="signin">
+      <Template status="login">
       </Template>
     </div>
   );
