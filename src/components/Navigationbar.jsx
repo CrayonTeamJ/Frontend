@@ -36,7 +36,7 @@ const StyleSpan = styled.span`
   position: absolute;
   font-family: NanumSquare_R;
   color: white;
-  bottom: 5%;
+  bottom: 25%;
   font-size: 12px;
   opacity: 1;
   -webkit-transform: translateX(-50%);
@@ -52,16 +52,12 @@ const Navigationbar = () => {
             <img src={logo} width="200" alt="logo"/>
           </a>
           <ul className="nav_user_box">
-          <LoginButton type="button">
+          <a href="/" className="btn_log">
             <StyleSpan>Log in</StyleSpan>
-          </LoginButton>
-          <ResButton type="button">
+          </a>
+          <a href="/" className="btn_res">
             <StyleSpan>Register</StyleSpan>
-          </ResButton>
-            {/* 
-          <li><a className="logbtn" href="/">login</a></li>
-          <li><a className="logbtn" href="/">register</a></li>
-          */}
+          </a>
         </ul>
       </div>
     </div>
