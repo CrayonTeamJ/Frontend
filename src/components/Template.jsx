@@ -25,6 +25,7 @@ const TemplateBlock = styled.div`
     margin-bottom: 20px;
     font-size: 20px;
     text-align: center;
+    font-family: 'BwSurco';
     color: #404040;
   }
 

@@ -28,16 +28,16 @@ const ResButton = styled.div`
   border-radius: 5px;
   cursor: pointer;
   background-color: #85BCBE;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
 
 const StyleSpan = styled.span`
   position: absolute;
-  font-family: Montserrat;
+  font-family: NanumSquare_R;
   color: white;
-  bottom: 5px;
-  font-size: 15px;
+  bottom: 25%;
+  font-size: 12px;
   opacity: 1;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
