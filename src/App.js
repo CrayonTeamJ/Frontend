@@ -11,9 +11,10 @@ function App() {
     <>
     <Router>
       <Switch>
-        <MainPage path='/' component={MainPage}></MainPage>
-        <SigninPage path="/login" component={SigninPage}></SigninPage>
-        <SignupPage path='/register' component={SignupPage}></SignupPage>
+        <Route path="/login" component={SigninPage}></Route >
+        <Route  path='/register' component={SignupPage}></Route >
+        <Route  path='/main' component={MainPage}></Route >
+        <Route render={() => <div>에러 페이지</div>}></Route>
       </Switch>
     </Router>
     </>
