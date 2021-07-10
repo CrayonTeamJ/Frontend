@@ -3,7 +3,7 @@ import React from 'react';
 import Navigationbar from '../components/Navigationbar';
 
 
-function MainPage() {
+function MainPage({ location, history }) {
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
