@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState }  from 'react';
 import styled from 'styled-components';
 
 const TemplateBlock = styled.div`
@@ -103,37 +103,53 @@ const Button = styled.button`
 
 
 
-function Template({ children }) {
-  return (<TemplateBlock>
-            <h1> SIGN IN </h1>
-        
-            {/* <ResBlock>
-                <InsertForm>
-                    <Input autoFocus placeholder="Nickname" />
-                </InsertForm>
-                <InsertForm>
-                    <Input autoFocus placeholder="ID" />
-                </InsertForm>
-                <InsertForm>
-                    <Input autoFocus placeholder="Create password" />
-                </InsertForm>
-                <InsertForm>
-                    <Input autoFocus placeholder="Verify password" />
-                </InsertForm> 
-            </ResBlock>  */}
+function Template(props) {
 
-            <LogBlock>
-                <InsertForm style={{marginBottom: '15px'}}>
-                    <Input autoFocus placeholder="ID" />
-                </InsertForm>
-                <InsertForm>
-                    <Input autoFocus placeholder="Password" />
-                </InsertForm> 
-            </LogBlock>
 
-        <Button> Register </Button>
-        </TemplateBlock>
-        );
+/* login 과 register과 template컴포를 공유해서 달라야 하는 부분은 이런식으로 설정 */
+const status = props.status === "register" ? "SIGN UP":"SIGN IN";
+const btn = props.status === "register"? "Register" : "LOGIN";
+
+if(status==="SIGN UP"){
+    return (<TemplateBlock>
+        <h1> {status} </h1>
+    
+        <ResBlock>
+            <InsertForm>
+                <Input autoFocus placeholder="Nickname" />
+            </InsertForm>
+            <InsertForm>
+                <Input autoFocus placeholder="ID" />
+            </InsertForm>
+            <InsertForm>
+                <Input autoFocus placeholder="Create password" />
+            </InsertForm>
+            <InsertForm>
+                <Input autoFocus placeholder="Verify password" />
+            </InsertForm> 
+        </ResBlock>
+
+    <Button> {btn} </Button>
+    </TemplateBlock>
+    );
+}
+else{
+    return (<TemplateBlock>
+        <h1> {status} </h1>
+        <LogBlock>
+            <InsertForm style={{marginBottom: '15px'}}>
+                <Input autoFocus placeholder="ID" />
+            </InsertForm>
+            <InsertForm>
+                <Input autoFocus placeholder="Password" />
+            </InsertForm> 
+        </LogBlock>
+
+    <Button> {btn} </Button>
+    </TemplateBlock>
+    ); 
+}
+
 }
 
 export default Template;
