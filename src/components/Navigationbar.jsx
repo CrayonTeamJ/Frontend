@@ -50,10 +50,10 @@ const Navigationbar = () => {
             <img src={logo} width="200" alt="logo"/>
           </a>
           <ul className="nav_user_box">
-          <a href="/" className="btn_log">
+          <a href="/login" className="btn_log">
             <StyleSpan>Log in</StyleSpan>
           </a>
-          <a href="/" className="btn_res">
+          <a href="/register" className="btn_res">
             <StyleSpan>Register</StyleSpan>
           </a>
         </ul>
