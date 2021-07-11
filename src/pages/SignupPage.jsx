@@ -101,12 +101,23 @@ const Button = styled.button`
 function SignupPage() {
 
 
-  const [Nickname, setNickname] = React.useState(" ")
-  const [UserID, setUserID] = React.useState(" ")
-  const [Password, setPassword] = React.useState(" ")
-  const [Password_veri, setPassword_veri] = React.useState(" ")
+  const [Nickname, setNickname] = React.useState("")
+  const [UserID, setUserID] = React.useState("")
+  const [Password, setPassword] = React.useState("")
+  const [Password_veri, setPassword_veri] = React.useState("")
 
-
+  const onChangeNick = e => {
+    setNickname(e.target.value);
+  };
+  const onChangeID = e => {
+    setUserID(e.target.value);
+  };
+  const onChangePW = e => {
+    setPassword(e.target.value);
+  };
+  const onChangePW_V = e => {
+    setPassword_veri(e.target.value);
+  };
 
 
   return (
@@ -116,16 +127,16 @@ function SignupPage() {
         <h1> SIGN UP </h1>
         <ResBlock>
             <InsertForm>
-                <Input value={Nickname} autoFocus placeholder="Nickname" />  
+                <Input placeholder="Nickname" value={Nickname} onChange={onChangeNick}/>  
             </InsertForm>
             <InsertForm>
-                <Input value={UserID} autoFocus placeholder="ID" />
+                <Input placeholder="ID" value={UserID} onChange={onChangeID}/>
             </InsertForm>
             <InsertForm>
-                <Input value={Password} autoFocus placeholder="Create password" />
+                <Input placeholder="Create password" value={Password} onChange={onChangePW}/>
             </InsertForm>
             <InsertForm>
-                <Input value={Password_veri} autoFocus placeholder="Verify password" />
+                <Input placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
             </InsertForm> 
         </ResBlock>
         <Button> Register </Button>
