@@ -1,18 +1,39 @@
 import './App.css';
-import React from 'react';
+import React,{useEffect} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SigninPage from './pages/SigninPage';
 import SignupPage from './pages/SignupPage';
 import MainPage from './pages/MainPage';
+import axios from 'axios';
 
 
 function App() {
+
+  // const api = axios.create({
+  //   baseURL: 'http://localhost:5000'
+  // })
+
+  // const api = axios.create({
+  //   httpsAgent: new https.Agent({   //지금 밑에 콘솔창에 뜬 에러는 이거임 https없어서
+  //     rejectUnauthorized: false
+  //   }),
+  //   baseURL: 'https://localhost:5000'
+  // })
+  // api.get('https://localhost:5000/signup');
+
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:5000/signup')      //endpoint. getRequest를 server 즉 index.js로 보내질 것
+  //   .then(response => console.log())   //server 에서 돌아온 response를 콘솔창에 출력해봄
+  // }, [])
+
+
   return (
     <>
     <Router>
       <Switch>
         <Route path="/login" component={SigninPage}></Route >
-        <Route  path='/register' component={SignupPage}></Route >
+        <Route  path='/signup' component={SignupPage}></Route >
         <Route  path='/' component={MainPage}></Route >
       </Switch>
     </Router>
