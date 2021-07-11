@@ -98,7 +98,7 @@ const Button = styled.button`
 
 
 
-function SignupPage() {
+function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보려고..
 
 
   const [Nickname, setNickname] = React.useState("")
@@ -119,6 +119,27 @@ function SignupPage() {
     setPassword_veri(e.target.value);
   };
 
+  const onSubmitHandler = e =>{
+    e.preventDefault(); //refresh 방지 
+
+    let formbody={
+      nickname: Nickname,
+      userID: UserID,
+      password: Password,
+      password2: Password_veri
+    }
+
+    axios.post('http://localhost:5000/api/signup',
+      formbody, 
+      {
+        headers: {
+        'content-type': 'application/json'
+        },
+      }
+    
+    )
+
+  }
 
   return (
     <div className="container">
@@ -126,16 +147,13 @@ function SignupPage() {
       <TemplateBlock>
         <h1> SIGN UP </h1>
         <ResBlock>
-            <InsertForm>
+            <InsertForm onSubmit={onSubmitHandler}>
                 <Input placeholder="Nickname" value={Nickname} onChange={onChangeNick}/>  
-            </InsertForm>
-            <InsertForm>
+
                 <Input placeholder="ID" value={UserID} onChange={onChangeID}/>
-            </InsertForm>
-            <InsertForm>
+
                 <Input placeholder="Create password" value={Password} onChange={onChangePW}/>
-            </InsertForm>
-            <InsertForm>
+ 
                 <Input placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
             </InsertForm> 
         </ResBlock>
