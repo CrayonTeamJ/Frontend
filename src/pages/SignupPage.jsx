@@ -1,9 +1,9 @@
 import '../App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Navigationbar from '../components/Navigationbar';
 import Template from '../components/Template';
 import styled from 'styled-components';
-
+import axios from 'axios';
 
 const TemplateBlock = styled.div`
   width: 512px;
@@ -99,6 +99,7 @@ const Button = styled.button`
 
 
 function SignupPage() {
+
   return (
     <div className="container">
       <Navigationbar></Navigationbar>

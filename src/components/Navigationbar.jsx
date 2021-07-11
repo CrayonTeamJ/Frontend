@@ -29,7 +29,7 @@ const Navigationbar = () => {
           <Link to="/login" className="btn_log">
             <StyleSpan>Log in</StyleSpan>
           </Link>
-          <Link to="/register" className="btn_res">
+          <Link to="/signup" className="btn_res">
             <StyleSpan>Register</StyleSpan>
           </Link>
         </ul>
