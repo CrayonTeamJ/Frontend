@@ -45,9 +45,9 @@ const ResBlock = styled.div`
 
 const InsertForm = styled.form`
   padding-left: 50px;
-  padding-top: 2%;
+  padding-top: 1%;
   padding-right: 50px;
-  padding-bottom: 2%;
+  padding-bottom: 1%;
   
 `;
 
