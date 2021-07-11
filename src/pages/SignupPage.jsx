@@ -1,5 +1,5 @@
 import '../App.css';
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import Navigationbar from '../components/Navigationbar';
 import Template from '../components/Template';
 import styled from 'styled-components';
@@ -100,6 +100,15 @@ const Button = styled.button`
 
 function SignupPage() {
 
+
+  const [Nickname, setNickname] = React.useState(" ")
+  const [UserID, setUserID] = React.useState(" ")
+  const [Password, setPassword] = React.useState(" ")
+  const [Password_veri, setPassword_veri] = React.useState(" ")
+
+
+
+
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
@@ -107,16 +116,16 @@ function SignupPage() {
         <h1> SIGN UP </h1>
         <ResBlock>
             <InsertForm>
-                <Input autoFocus placeholder="Nickname" />
+                <Input value={Nickname} autoFocus placeholder="Nickname" />  
             </InsertForm>
             <InsertForm>
-                <Input autoFocus placeholder="ID" />
+                <Input value={UserID} autoFocus placeholder="ID" />
             </InsertForm>
             <InsertForm>
-                <Input autoFocus placeholder="Create password" />
+                <Input value={Password} autoFocus placeholder="Create password" />
             </InsertForm>
             <InsertForm>
-                <Input autoFocus placeholder="Verify password" />
+                <Input value={Password_veri} autoFocus placeholder="Verify password" />
             </InsertForm> 
         </ResBlock>
         <Button> Register </Button>
