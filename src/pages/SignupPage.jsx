@@ -129,6 +129,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
       password2: Password_veri
     }
 
+    
     axios.post('http://localhost:5000/api/signup',
       formbody, 
       {
@@ -136,9 +137,9 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
         'content-type': 'application/json'
         },
       }
-    
-    )
-
+    ).then((res)=>{
+      console.log(res);
+    })
   }
 
   return (
@@ -153,11 +154,13 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
                 <Input placeholder="ID" value={UserID} onChange={onChangeID}/>
 
                 <Input placeholder="Create password" value={Password} onChange={onChangePW}/>
- 
+
                 <Input placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
+            
+              <Button onClick={onSubmitHandler}> Register </Button>
             </InsertForm> 
         </ResBlock>
-        <Button> Register </Button>
+
     </TemplateBlock>
     </div>
   );
