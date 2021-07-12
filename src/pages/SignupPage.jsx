@@ -41,7 +41,7 @@ const TemplateBlock = styled.div`
   }
 
   label{
-    font-size: 18px;
+    font-size: 14px;
     font-family: "NanumSquare_R";
     align-items: center;
     justify-content: center;
@@ -282,7 +282,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
           <TemplateBlock>
             <h1> WELCOME TO SEAFLAG </h1>
             <img src={regsuccess} width="150" alt="succ_img"/>
-            <label>Thank you for choosing SEAFLAG</label>
+            <label style={{fontFamily: "NanumSquare_B"}}>WE are glad you are with us!</label>
             <Button>
               <Link to="/login" style={{textDecoration: 'none'}}>
                 <Stylespan>LOGIN</Stylespan>
