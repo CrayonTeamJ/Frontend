@@ -195,7 +195,8 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
 
 
   const onSubmitHandler = e =>{
-    e.preventDefault(); //refresh 방지 
+    e.preventDefault(); //refresh 방지
+    setErrtxt(""); 
 
     //입력 안했을 때 
     if(!Nickname){
