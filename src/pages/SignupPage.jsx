@@ -120,6 +120,9 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
   const [Password, setPassword] = React.useState("")
   const [Password_veri, setPassword_veri] = React.useState("")
   const [Errtxt, setErrtxt] = React.useState("")
+  const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
+
+
 
   const onChangeNick = e => {
     setNickname(e.target.value);
@@ -157,6 +160,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
     }
 
 
+    //비밀번호 제한사항 
     if( Password.length < 8 || Password.length > 12){
       setErrtxt("비밀번호는 8자이상 12자이하여야 합니다");
       return;
@@ -194,18 +198,24 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
         //닉네임 중복
         if(res['data']['Result']==='nick_duplicate'){
           console.log("닉네임중복");
+          setErrtxt("이미 존재하는 닉네임입니다");
         }
 
 
 
         //아이디 중복
         if(res['data']['Result']==='id_duplicate'){
-          console.log("아이디 중복")
+          console.log("아이디 중복");
+          setErrtxt("이미 존재하는 아이디입니다");
         }
 
 
       }
     })
+    .catch((err) => {
+      //Hide Loader
+      console.error(err);
+    });
   }
 
   return (
@@ -218,9 +228,9 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
 
                 <Input placeholder="ID" value={UserID} onChange={onChangeID}/>
 
-                <Input placeholder="Create password" value={Password} onChange={onChangePW}/>
+                <Input type="password" placeholder="Create password" value={Password} onChange={onChangePW}/>
 
-                <Input placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
+                <Input type="password" placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
                 <Label>{Errtxt}</Label>
               <Button onClick={onSubmitHandler}> Register </Button>
             </InsertForm> 
