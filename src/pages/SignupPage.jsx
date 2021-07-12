@@ -4,6 +4,8 @@ import Navigationbar from '../components/Navigationbar';
 import Template from '../components/Template';
 import styled from 'styled-components';
 import axios from 'axios';
+import regsuccess from '../img/goal.png';
+import { Link } from 'react-router-dom';
 
 const TemplateBlock = styled.div`
   width: 512px;
@@ -31,6 +33,20 @@ const TemplateBlock = styled.div`
     text-align: center;
     font-family: 'BwSurco';
     color: #404040;
+  }
+
+  img{
+    padding-top: 30px;
+    margin: 0 auto; /* 중앙정렬  */
+  }
+
+  label{
+    font-size: 18px;
+    font-family: "NanumSquare_R";
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: translate(0%, 100%); /* 버튼위치 */
   }
 
 `;
@@ -91,8 +107,6 @@ const Button = styled.button`
   width: 200px;
   height: 35px;
   display: block;
-  align-items: center;
-  justify-content: center;
   font-size: 20px;
   position: absolute;
   left: 50%;
@@ -108,6 +122,47 @@ const Button = styled.button`
 
   transition: 0.125s all ease-in;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+`;
+
+const Linkbtn = styled.link`
+
+  background: #85BCBE;
+  &:hover {
+    background: #63e6be;
+  }
+  &:active {
+    background: #20c997;
+  }
+
+  z-index: 5;
+  cursor: pointer;
+  width: 200px;
+  height: 35px;
+  display: block;
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -100%); /* 버튼위치 */
+  color: white;
+  border-radius: 5%;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.125s all ease-in;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+
+
+`;
+
+const Stylespan = styled.span`
+    color: white;
+    font-size: 20px;
+    font-family: NanumSquare_R;
+    white-space: nowrap;
 `;
 
 
@@ -136,6 +191,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
   const onChangePW_V = e => {
     setPassword_veri(e.target.value);
   };
+
 
 
   const onSubmitHandler = e =>{
@@ -188,23 +244,23 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
         },
       }
     ).then((res)=>{
-      if(res['data']['Success']==="success"){ //signup 오류
+      if(res['data']['Result']==="Success"){ //signup 오류
         console.log("성공")
+        setIsRegistraionSuccess(true);
       }
       else{//signup 오류 
         console.log("실패")
 
 
         //닉네임 중복
-        if(res['data']['Result']==='nick_duplicate'){
+        if(res['data']['Result']==='NK_duplicated'){
           console.log("닉네임중복");
           setErrtxt("이미 존재하는 닉네임입니다");
         }
 
 
-
         //아이디 중복
-        if(res['data']['Result']==='id_duplicate'){
+        if(res['data']['Result']==='ID_duplicated'){
           console.log("아이디 중복");
           setErrtxt("이미 존재하는 아이디입니다");
         }
@@ -218,6 +274,25 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
     });
   }
 
+
+  if(isRegistraionSuccess){
+    return(
+      <div className="container">
+        <Navigationbar></Navigationbar>
+          <TemplateBlock>
+            <h1> WELCOME TO SEAFLAG </h1>
+            <img src={regsuccess} width="150" alt="succ_img"/>
+            <label>Thank you for choosing SEAFLAG</label>
+            <Button>
+              <Link to="/login" style={{textDecoration: 'none'}}>
+                <Stylespan>LOGIN</Stylespan>
+              </Link>
+            </Button>
+          </TemplateBlock>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
@@ -225,17 +300,13 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
         <h1> SIGN UP </h1>
             <InsertForm onSubmit={onSubmitHandler}>
                 <Input placeholder="Nickname" value={Nickname} onChange={onChangeNick}/>  
-
                 <Input placeholder="ID" value={UserID} onChange={onChangeID}/>
-
                 <Input type="password" placeholder="Create password" value={Password} onChange={onChangePW}/>
-
                 <Input type="password" placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
                 <Label>{Errtxt}</Label>
               <Button onClick={onSubmitHandler}> Register </Button>
             </InsertForm> 
-
-    </TemplateBlock>
+      </TemplateBlock>
     </div>
   );
 }
