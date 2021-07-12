@@ -3,6 +3,7 @@ import React from 'react';
 import Navigationbar from '../components/Navigationbar';
 import Template from '../components/Template';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const TemplateBlock = styled.div`
   width: 512px;
@@ -97,23 +98,95 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
+const Label = styled.label`
+
+  padding: 5px;
+  font-size: 12px;
+  font-family: "NanumSquare_R";
+  color: #FA605A;
+
+`;
 
 
-function SigninPage() {
+function SigninPage(props) {
+
+
+  const [UserID, setUserID] = React.useState("")
+  const [Password, setPassword] = React.useState("")
+  const [Errtxt, setErrtxt] = React.useState("")
+
+
+  const onChangeID = e => {
+    setUserID(e.target.value);
+  };
+
+  const onChangePW = e => {
+    setPassword(e.target.value);
+  };
+
+  const onSubmitHandler = e =>{
+    e.preventDefault(); //refresh 방지
+    setErrtxt(""); 
+
+    if(!UserID){
+      setErrtxt("ID를 입력해주세요");
+      return;
+    }
+    else if(!Password){
+      setErrtxt("비밀번호를 입력해주세요");
+      return;
+    }
+
+
+    let formbody={
+      userID: UserID,
+      password: Password,
+    }
+
+    axios.post('http://localhost:5000/api/login',
+    formbody, 
+    {
+      headers: {
+      'content-type': 'application/json'
+      },
+    }
+  ).then((res)=>{
+    if(res['data']['Result']==="Login_Success"){ //login sucess
+      console.log("로그인 성공")
+    }
+    else{//login error( )
+      console.log("로그인 실패")
+
+
+      //닉네임 중복
+      if(res['data']['Result']==='Login_Fail'){
+
+        console.log("비번이나 아이디 틀림");
+        setErrtxt("아이디와 비밀번호를 확인해주세요");
+      }
+
+    }
+  })
+  .catch((err) => {
+    //Hide Loader
+    console.error(err);
+  });
+
+
+  }
+
+
   return (
     <div className="container">
       <Navigationbar></Navigationbar>
         <TemplateBlock>
             <h1> SIGN IN </h1>
-            <LogBlock>
                 <InsertForm style={{marginBottom: '15px'}}>
-                    <Input autoFocus placeholder="ID" />
-                </InsertForm>
-                <InsertForm>
-                    <Input autoFocus placeholder="Password" />
-                </InsertForm> 
-            </LogBlock>
-        <Button> LOGIN </Button>
+                    <Input value={UserID} autoFocus placeholder="ID" onChange={onChangeID} />
+                    <Input value={Password} autoFocus placeholder="Password" onChange={onChangePW}/>
+                <Label>{Errtxt}</Label>
+              <Button onClick={onSubmitHandler}> LOGIN </Button>
+        </InsertForm> 
     </TemplateBlock>
     </div>
   );
