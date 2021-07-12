@@ -49,6 +49,11 @@ const InsertForm = styled.form`
   padding-right: 50px;
   padding-bottom: 1%;
   
+
+  Input {
+    margin-bottom : 7px;
+    margin-top: 7px;
+  }
 `;
 
 const Input = styled.input`
@@ -60,6 +65,15 @@ const Input = styled.input`
   font-size: 15px;
   box-sizing: border-box;
   background: white;
+`;
+
+const Label = styled.label`
+
+  padding: 5px;
+  font-size: 12px;
+  font-family: "NanumSquare_R";
+  color: #FA605A;
+
 `;
 
 
@@ -105,6 +119,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
   const [UserID, setUserID] = React.useState("")
   const [Password, setPassword] = React.useState("")
   const [Password_veri, setPassword_veri] = React.useState("")
+  const [Errtxt, setErrtxt] = React.useState("")
 
   const onChangeNick = e => {
     setNickname(e.target.value);
@@ -119,8 +134,39 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
     setPassword_veri(e.target.value);
   };
 
+
   const onSubmitHandler = e =>{
     e.preventDefault(); //refresh 방지 
+
+    //입력 안했을 때 
+    if(!Nickname){
+      setErrtxt("닉네임을 입력해주세요");
+      return; //오류나면 더 진행하지(서버로안감) 않고 끊어야해서 리턴임
+    }
+    else if(!UserID){
+      setErrtxt("ID를 입력해주세요");
+      return;
+    }
+    else if(!Password){
+      setErrtxt("비밀번호를 입력해주세요");
+      return;
+    }
+    else if(!Password_veri){
+      setErrtxt("비밀번호 확인이 필요합니다!");
+      return;
+    }
+
+
+    if( Password.length < 8 || Password.length > 12){
+      setErrtxt("비밀번호는 8자이상 12자이하여야 합니다");
+      return;
+    }
+    //비밀번호!= 확인용비밀번호
+    if(Password!=Password_veri){
+      setErrtxt("비밀번호가 일치하지 않습니다");
+      return;
+    }
+
 
     let formbody={
       nickname: Nickname,
@@ -138,7 +184,27 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
         },
       }
     ).then((res)=>{
-      console.log(res);
+      if(res['data']['Success']==="success"){ //signup 오류
+        console.log("성공")
+      }
+      else{//signup 오류 
+        console.log("실패")
+
+
+        //닉네임 중복
+        if(res['data']['Result']==='nick_duplicate'){
+          console.log("닉네임중복");
+        }
+
+
+
+        //아이디 중복
+        if(res['data']['Result']==='id_duplicate'){
+          console.log("아이디 중복")
+        }
+
+
+      }
     })
   }
 
@@ -147,7 +213,6 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
       <Navigationbar></Navigationbar>
       <TemplateBlock>
         <h1> SIGN UP </h1>
-        <ResBlock>
             <InsertForm onSubmit={onSubmitHandler}>
                 <Input placeholder="Nickname" value={Nickname} onChange={onChangeNick}/>  
 
@@ -156,10 +221,9 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
                 <Input placeholder="Create password" value={Password} onChange={onChangePW}/>
 
                 <Input placeholder="Verify password" value={Password_veri} autoFocus onChange={onChangePW_V}/>
-            
+                <Label>{Errtxt}</Label>
               <Button onClick={onSubmitHandler}> Register </Button>
             </InsertForm> 
-        </ResBlock>
 
     </TemplateBlock>
     </div>
