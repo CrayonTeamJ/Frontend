@@ -214,13 +214,15 @@ function SigninPage(props) {
   const onLoginSuccess = res =>{ //access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
 
     const accessToken = res.data.access_token; // 이거 
-    //const accessExpire = res.data.access_expire;
+    const accessExpire = res.data.access_expire;
+    
 
+    console.log(accessExpire)
     //accessToken default로 설정 
     axios.defaults.headers.common['Authorization']= `Bearer ${accessToken}`;
 
     //accessToken만료시 timeout되는데... 그거 refresh하는 함수만들어야하는데 아직 이따가.. 
-    //setTimeout(onSilentRefresh, ${accessExpire}-60000); 
+    setTimeout(onSilentRefresh, `${accessExpire}`-60000); 
     //만료일분 전에 로그인 연장
   }
 
