@@ -140,13 +140,7 @@ function SigninPage(props) {
       password: Password,
     }
 
-    axios.post('/api/input',
-    formbody, 
-    {
-      headers: {
-      'content-type': 'application/json'
-      },
-    }
+    axios.get('/api/input'
   ).then((res)=>{console.log(res)});
 
   
@@ -216,12 +210,12 @@ function SigninPage(props) {
   // }
 
   const onLoginSuccess = res =>{ //access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
-    const {accessToken} = res['data']['access_token'];
-    console.log(res['data']['access_token'])
-    //accessToken설정
-    axios.defaults.headers.common['Authorization']= `Bearer ${res['data']['access_token']}`;
-    console.log("default session OKAY")
-    console.log(axios.defaults.headers.common['Authorization'])
+
+    const accessToken = res.data.access_token; // 이거 
+
+    //accessToken default로 설정 
+    axios.defaults.headers.common['Authorization']= `Bearer ${accessToken}`;
+
     //accessToken만료시 timeout되는데... 그거 refresh하는 함수만들어야하는데 아직 이따가.. 
   }
 
