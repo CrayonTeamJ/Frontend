@@ -237,7 +237,7 @@ function SignupPage(props) { //회원가입 후 로그인창으로 가게 해보
     }
 
     
-    axios.post('http://localhost:5000/api/signup',
+    axios.post('/api/signup',
       formbody, 
       {
         headers: {
