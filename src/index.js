@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from "axios";
 
-//refresh Token을 주고받기 위한 설정 
+//refresh Token cookie 을 주고받기 위한 설정 
 axios.defaults.withCredentials = true;
 
 
