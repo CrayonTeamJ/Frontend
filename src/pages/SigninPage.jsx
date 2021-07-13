@@ -203,9 +203,13 @@ function SigninPage(props) {
 
   const onSilentRefresh = () => {
 
-    axios.get('api/refresh')
-        .then(onLoginSuccess)
-        .catch(err => {
+    axios.get('/api/refresh')
+        .then((res)=>{
+          console.log(res)
+          console.log("정상적으로 refresh 완료")
+          onLoginSuccess(res)
+        })
+        .catch((err) => {
           //Hide Loader
           console.error(err);
         });
