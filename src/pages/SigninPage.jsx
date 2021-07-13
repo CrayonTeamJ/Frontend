@@ -26,7 +26,7 @@ const TemplateBlock = styled.div`
   h1 {
     margin: 0;
     margin-top: 40px;
-    margin-bottom: 5px;
+    margin-bottom: 35px;
     font-size: 30px;
     text-align: center;
     font-family: 'BwSurco';
@@ -50,6 +50,13 @@ const InsertForm = styled.form`
   padding-top: 2%;
   padding-right: 50px;
   padding-bottom: 2%;
+
+
+  Input {
+
+    margin-bottom : 20px;
+    margin-top: 20px;
+  }
   
 `;
 
@@ -124,7 +131,30 @@ function SigninPage(props) {
     setPassword(e.target.value);
   };
 
-  const onSubmitHandler = e =>{
+  const onTestFunc = e =>{
+    e.preventDefault(); //refresh 방지
+
+
+    let formbody={
+      userID: UserID,
+      password: Password,
+    }
+
+    axios.post('/api/input',
+    formbody, 
+    {
+      headers: {
+      'content-type': 'application/json'
+      },
+    }
+  ).then((res)=>{console.log(res)});
+
+  
+}
+
+
+
+  const onLogin = e =>{
     e.preventDefault(); //refresh 방지
     setErrtxt(""); 
 
@@ -151,15 +181,17 @@ function SigninPage(props) {
       },
     }
   ).then((res)=>{
-    if(res['data']['Result']==="Login_Success"){ //login sucess
+    if(res['data']['Result']==="success"){ //login sucess
+      console.log(res)
       console.log("로그인 성공")
+      onLoginSuccess(res)
     }
     else{//login error( )
       console.log("로그인 실패")
-
+      console.log(res)
 
       //닉네임 중복
-      if(res['data']['Result']==='Login_Fail'){
+      if(res['data']['Result']==='fail'){
 
         console.log("비번이나 아이디 틀림");
         setErrtxt("아이디와 비밀번호를 확인해주세요");
@@ -175,6 +207,24 @@ function SigninPage(props) {
 
   }
 
+  // const onSilentRefresh = () => {
+  //   axios.post('/silent-refresh', formbody)
+  //       .then(onLoginSuccess)
+  //       .catch(error => {
+  //           // ... 로그인 실패 처리
+  //       });
+  // }
+
+  const onLoginSuccess = res =>{ //access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
+    const {accessToken} = res['data']['access_token'];
+    console.log(res['data']['access_token'])
+    //accessToken설정
+    axios.defaults.headers.common['Authorization']= `Bearer ${res['data']['access_token']}`;
+    console.log("default session OKAY")
+    console.log(axios.defaults.headers.common['Authorization'])
+    //accessToken만료시 timeout되는데... 그거 refresh하는 함수만들어야하는데 아직 이따가.. 
+  }
+
 
   return (
     <div className="container">
@@ -185,9 +235,10 @@ function SigninPage(props) {
                     <Input value={UserID} autoFocus placeholder="ID" onChange={onChangeID} />
                     <Input value={Password} autoFocus placeholder="Password" onChange={onChangePW}/>
                 <Label>{Errtxt}</Label>
-              <Button onClick={onSubmitHandler}> LOGIN </Button>
+              <Button style={{marginTop: "50px"}} onClick={onLogin}> LOGIN </Button>
         </InsertForm> 
     </TemplateBlock>
+    <Button onClick={onTestFunc}> TEST </Button>
     </div>
   );
 }
