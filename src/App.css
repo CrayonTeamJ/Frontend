@@ -130,6 +130,14 @@
 }
 
 .footer {
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  font-family: NanumSquare_L;
+  font-size: 1.5vh;
   background-color: hotpink;
 }
 

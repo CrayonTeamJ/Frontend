@@ -34,34 +34,22 @@ function MainPage() {
               />
             </div>
           </div>
-          {/* <div className="back-wrapper">
-          <div className="landing-info">
-            <div className="landing-slide-slogan">
-              <span>원하는영상</span>
-            </div>
-            <div className="landing-slide-button">
-              <Navbtn
-                btntype="LOGIN"
-                btnlink="/login"
-                className="front_btn"
-                color="#fa605a"
-              />
-            </div>
-            <div className="landing-slide-img">
-              <img src={imgback} alt="test" />
-            </div>
-          </div>
-        </div> */}
         </div>
         <div style={{ backgroundColor: 'blue', height: '38vh' }}>
-          <span>below continer</span>
+          <span>bottom continer</span>
           <div className="landing-button">
-            <span>hi</span>
+            <span>
+              button 3개가 들어가야 하는데 얘는 아마 라디오버튼이므로 일단은
+              보류
+            </span>
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor: 'green', height: '5vh' }}>
-        <span>footer</span>
+      <div
+        className="footer"
+        style={{ backgroundColor: 'green', height: '5vh' }}
+      >
+        <span>© SeaFLAG, Inc. 2021. 2021-SiliconValley-TeamJ</span>
       </div>
     </div>
   );
