@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/order */
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../img/seaflag.svg';
+import Navbtn from './Navbtn';
+import styled from 'styled-components';
 
 const StyleSpan = styled.span`
   position: absolute;
@@ -35,25 +38,25 @@ const Navigationbar = () => {
     });
   });
 
-  if (IsLogin === true) {
-    return (
-      <div className="navbar">
-        <div className="nav_inner">
-          <Link to="/" style={{ marginLeft: '20px' }}>
-            <img src={logo} width="200" alt="logo" />
-          </Link>
-          <ul className="nav_user_box">
-            <Link to="/login" className="btn_log">
-              <StyleSpan>LOGIN STATUS</StyleSpan>
-            </Link>
-            <Link to="/signup" className="btn_res">
-              <StyleSpan>LOGOUT</StyleSpan>
-            </Link>
-          </ul>
-        </div>
-      </div>
-    );
-  }
+  // if (IsLogin === true) {
+  //   return (
+  //     <div className="navbar">
+  //       <div className="nav_inner">
+  //         <Link to="/" style={{ marginLeft: '20px' }}>
+  //           <img src={logo} width="200" alt="logo" />
+  //         </Link>
+  //         <ul className="nav_user_box">
+  //           <Link to="/login" className="btn_log">
+  //             <StyleSpan>LOGIN STATUS</StyleSpan>
+  //           </Link>
+  //           <Link to="/signup" className="btn_res">
+  //             <StyleSpan>LOGOUT</StyleSpan>
+  //           </Link>
+  //         </ul>
+  //       </div>
+  //     </div>
+  //   );
+  // }
   return (
     <div className="navbar">
       <div className="nav_inner">
@@ -61,12 +64,24 @@ const Navigationbar = () => {
           <img src={logo} width="200" alt="logo" />
         </Link>
         <ul className="nav_user_box">
-          <Link to="/login" className="btn_log">
+          {/* <Link to="/login" className="btn_log">
             <StyleSpan>Log in</StyleSpan>
           </Link>
           <Link to="/signup" className="btn_res">
             <StyleSpan>Register</StyleSpan>
-          </Link>
+          </Link> */}
+          <Navbtn
+            btntype="LOGIN"
+            btnlink="/login"
+            className="front_btn"
+            color="#fa605a"
+          />
+          <Navbtn
+            btntype="Register"
+            btnlink="/signup"
+            className="back_btn"
+            color="white"
+          />
         </ul>
       </div>
     </div>
