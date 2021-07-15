@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-console */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import '../App.css';
