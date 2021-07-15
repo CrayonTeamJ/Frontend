@@ -1,4 +1,6 @@
-import React,{ useState }  from 'react';
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+import React from 'react';
 import styled from 'styled-components';
 
 const TemplateBlock = styled.div`
@@ -28,9 +30,7 @@ const TemplateBlock = styled.div`
     font-family: 'BwSurco';
     color: #404040;
   }
-
 `;
-
 
 const ResBlock = styled.div`
   padding-left: 5px;
@@ -38,14 +38,13 @@ const ResBlock = styled.div`
   padding-top: -5px;
 `;
 
-
 const LogBlock = styled.div`
   padding-left: 5px;
   padding-top: 5px;
   padding-right: 5px;
   padding-bottom: 5px;
   position: relative;
-  transform: translate(0,30%);
+  transform: translate(0, 30%);
 `;
 
 const InsertForm = styled.form`
@@ -53,7 +52,6 @@ const InsertForm = styled.form`
   padding-top: 2%;
   padding-right: 50px;
   padding-bottom: 2%;
-  
 `;
 
 const Input = styled.input`
@@ -67,9 +65,8 @@ const Input = styled.input`
   background: white;
 `;
 
-
 const Button = styled.button`
-  background: #85BCBE;
+  background: #85bcbe;
   &:hover {
     background: #63e6be;
   }
@@ -101,55 +98,50 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
-
-
 function Template(props) {
+  /* login 과 register과 template컴포를 공유해서 달라야 하는 부분은 이런식으로 설정 */
+  const status = props.status === 'register' ? 'SIGN UP' : 'SIGN IN';
+  const btn = props.status === 'register' ? 'Register' : 'LOGIN';
 
-
-/* login 과 register과 template컴포를 공유해서 달라야 하는 부분은 이런식으로 설정 */
-const status = props.status === "register" ? "SIGN UP":"SIGN IN";
-const btn = props.status === "register"? "Register" : "LOGIN";
-
-if(status==="SIGN UP"){
-    return (<TemplateBlock>
+  if (status === 'SIGN UP') {
+    return (
+      <TemplateBlock>
         <h1> {status} </h1>
-    
+
         <ResBlock>
-            <InsertForm>
-                <Input autoFocus placeholder="Nickname" />
-            </InsertForm>
-            <InsertForm>
-                <Input autoFocus placeholder="ID" />
-            </InsertForm>
-            <InsertForm>
-                <Input autoFocus placeholder="Create password" />
-            </InsertForm>
-            <InsertForm>
-                <Input autoFocus placeholder="Verify password" />
-            </InsertForm> 
+          <InsertForm>
+            <Input autoFocus placeholder="Nickname" />
+          </InsertForm>
+          <InsertForm>
+            <Input autoFocus placeholder="ID" />
+          </InsertForm>
+          <InsertForm>
+            <Input autoFocus placeholder="Create password" />
+          </InsertForm>
+          <InsertForm>
+            <Input autoFocus placeholder="Verify password" />
+          </InsertForm>
         </ResBlock>
 
-    <Button> {btn} </Button>
-    </TemplateBlock>
+        <Button> {btn} </Button>
+      </TemplateBlock>
     );
-}
-else{
-    return (<TemplateBlock>
-        <h1> {status} </h1>
-        <LogBlock>
-            <InsertForm style={{marginBottom: '15px'}}>
-                <Input autoFocus placeholder="ID" />
-            </InsertForm>
-            <InsertForm>
-                <Input autoFocus placeholder="Password" />
-            </InsertForm> 
-        </LogBlock>
+  }
+  return (
+    <TemplateBlock>
+      <h1> {status} </h1>
+      <LogBlock>
+        <InsertForm style={{ marginBottom: '15px' }}>
+          <Input autoFocus placeholder="ID" />
+        </InsertForm>
+        <InsertForm>
+          <Input autoFocus placeholder="Password" />
+        </InsertForm>
+      </LogBlock>
 
-    <Button> {btn} </Button>
+      <Button> {btn} </Button>
     </TemplateBlock>
-    ); 
-}
-
+  );
 }
 
 export default Template;
