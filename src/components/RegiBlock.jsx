@@ -75,7 +75,6 @@ const Input = styled.input`
 `;
 
 const Label = styled.label`
-  padding: 5px;
   font-size: 12px;
   font-family: 'NanumSquare_R';
   color: #fa605a;
@@ -92,14 +91,14 @@ const Button = styled.button`
 
   z-index: 5;
   cursor: pointer;
-  width: 200px;
+  width: 250px;
   height: 35px;
   display: block;
   font-size: 20px;
   position: absolute;
   left: 50%;
   bottom: 0px;
-  transform: translate(-50%, -100%); /* 버튼위치 */
+  transform: translate(-50%, -80%); /* 버튼위치 */
   color: white;
   border-radius: 5%;
   border: none;
@@ -222,12 +221,14 @@ function RegiBlock(props) {
         <TemplateBlock>
           <h1> WELCOME TO SEAFLAG </h1>
           <img src={regsuccess} width="150" alt="succ_img" />
-          <label style={{ fontFamily: 'NanumSquare_B' }}>
-            WE are glad you are with us!
+          <label style={{ fontFamily: 'NanumSquare_L', lineHeight: '16px' }}>
+            환영합니다! 저희 서비스에 가입해주셔서 감사합니다
+            <br />
+            원하는 영상을 원하는 부분만 검색해보세요!
           </label>
           <Button>
             <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Stylespan>LOGIN</Stylespan>
+              <Stylespan>로그인 페이지로 이동</Stylespan>
             </Link>
           </Button>
         </TemplateBlock>

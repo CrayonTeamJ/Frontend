@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+/* eslint-disable import/named */
+/* eslint-disable no-lonely-if */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
 import '../App.css';
@@ -5,6 +8,135 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { user_login, user_refresh } from '../redux/users';
+
+function LoginBlock(props) {
+  const [UserID, setUserID] = React.useState('');
+  const [Password, setPassword] = React.useState('');
+  const [Errtxt, setErrtxt] = React.useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  // id입력
+  const onChangeID = (e) => {
+    setUserID(e.target.value);
+  };
+
+  // pw입력
+  const onChangePW = (e) => {
+    setPassword(e.target.value);
+  };
+
+  //   const onTestFunc = (e) => {
+  //     e.preventDefault(); // refresh 방지
+
+  //     const formbody = {
+  //       userID: UserID,
+  //       password: Password,
+  //     };
+
+  //     axios.get('/api/input').then((res) => {
+  //       console.log(res);
+  //     });
+  //   };
+
+  const onLogin = (e) => {
+    e.preventDefault(); // refresh 방지
+    setErrtxt('');
+
+    if (!UserID) {
+      setErrtxt('ID를 입력해주세요');
+      return;
+    }
+    if (!Password) {
+      setErrtxt('비밀번호를 입력해주세요');
+      return;
+    }
+
+    const formbody = {
+      userID: UserID,
+      password: Password,
+    };
+
+    dispatch(user_login(formbody))
+      .then((res) => {
+        console.log('dispact login User res');
+        console.log(res);
+        if (res.payload.Result === 'success') {
+          console.log('로그인성공');
+          onLoginSuccess(res);
+          history.push('/'); // 성공하면 메인화면으로 돌아감
+        } else {
+          // 비번이나 아이디 틀렸음
+          if (res.payload.Result === 'fail') {
+            console.log('비번이나 아이디 틀림');
+            setErrtxt('아이디와 비밀번호를 확인해주세요');
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //   const onSilentRefresh = () => {
+  //     axios
+  //       .get('/api/refresh')
+  //       .then((res) => {
+  //         console.log(res);
+  //         console.log('정상적으로 refresh 완료');
+  //         onLoginSuccess(res);
+  //       })
+  //       .catch((err) => {
+  //         // Hide Loader
+  //         console.error(err);
+  //       });
+  //   };
+
+  const onLoginSuccess = (res) => {
+    // access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
+
+    const accessToken = res.payload.access_token; // 이거
+    const accessExpire = res.payload.access_expire;
+
+    console.log(accessExpire);
+    // accessToken default로 설정
+    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+    // accessToken만료시 timeout되는데... 그거 refresh하는 함수만들어야하는데 아직 이따가..
+    setTimeout(dispatch(user_refresh()), `${accessExpire}` - 60000);
+    // 만료일분 전에 로그인 연장
+  };
+
+  return (
+    <div className="template-container">
+      <TemplateBlock>
+        <h1> SIGN IN </h1>
+        <InsertForm style={{ marginBottom: '15px' }}>
+          <Input
+            value={UserID}
+            autoFocus
+            placeholder="ID"
+            onChange={onChangeID}
+          />
+          <Input
+            value={Password}
+            autoFocus
+            placeholder="Password"
+            onChange={onChangePW}
+          />
+          <Label>{Errtxt}</Label>
+          <Button style={{ marginTop: '50px' }} onClick={onLogin}>
+            LOGIN
+          </Button>
+        </InsertForm>
+      </TemplateBlock>
+      {/* <Button onClick={onTestFunc}> TEST </Button> */}
+    </div>
+  );
+}
 
 const TemplateBlock = styled.div`
   width: 512px;
@@ -97,136 +229,5 @@ const Label = styled.label`
   font-family: 'NanumSquare_R';
   color: #fa605a;
 `;
-
-function LoginBlock(props) {
-  const [UserID, setUserID] = React.useState('');
-  const [Password, setPassword] = React.useState('');
-  const [Errtxt, setErrtxt] = React.useState('');
-
-  const onChangeID = (e) => {
-    setUserID(e.target.value);
-  };
-
-  const onChangePW = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onTestFunc = (e) => {
-    e.preventDefault(); // refresh 방지
-
-    const formbody = {
-      userID: UserID,
-      password: Password,
-    };
-
-    axios.get('/api/input').then((res) => {
-      console.log(res);
-    });
-  };
-
-  const onLogin = (e) => {
-    e.preventDefault(); // refresh 방지
-    setErrtxt('');
-
-    if (!UserID) {
-      setErrtxt('ID를 입력해주세요');
-      return;
-    }
-    if (!Password) {
-      setErrtxt('비밀번호를 입력해주세요');
-      return;
-    }
-
-    const formbody = {
-      userID: UserID,
-      password: Password,
-    };
-
-    axios
-      .post('/api/login', formbody, {
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
-      .then((res) => {
-        if (res.data.Result === 'success') {
-          // login sucess
-          console.log(res);
-          console.log('로그인 성공');
-          onLoginSuccess(res);
-        } else {
-          // login error( )
-          console.log('로그인 실패');
-          console.log(res);
-
-          // 닉네임 중복
-          if (res.data.Result === 'fail') {
-            console.log('비번이나 아이디 틀림');
-            setErrtxt('아이디와 비밀번호를 확인해주세요');
-          }
-        }
-      })
-      .catch((err) => {
-        // Hide Loader
-        console.error(err);
-      });
-  };
-
-  const onSilentRefresh = () => {
-    axios
-      .get('/api/refresh')
-      .then((res) => {
-        console.log(res);
-        console.log('정상적으로 refresh 완료');
-        onLoginSuccess(res);
-      })
-      .catch((err) => {
-        // Hide Loader
-        console.error(err);
-      });
-  };
-
-  const onLoginSuccess = (res) => {
-    // access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
-
-    const accessToken = res.data.access_token; // 이거
-    const accessExpire = res.data.access_expire;
-
-    console.log(accessExpire);
-    // accessToken default로 설정
-    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
-    // accessToken만료시 timeout되는데... 그거 refresh하는 함수만들어야하는데 아직 이따가..
-    // setTimeout(onSilentRefresh, `${accessExpire}`-60000);
-    // 만료일분 전에 로그인 연장
-  };
-
-  return (
-    <div className="template-container">
-      <TemplateBlock>
-        <h1> SIGN IN </h1>
-        <InsertForm style={{ marginBottom: '15px' }}>
-          <Input
-            value={UserID}
-            autoFocus
-            placeholder="ID"
-            onChange={onChangeID}
-          />
-          <Input
-            value={Password}
-            autoFocus
-            placeholder="Password"
-            onChange={onChangePW}
-          />
-          <Label>{Errtxt}</Label>
-          <Button style={{ marginTop: '50px' }} onClick={onLogin}>
-            LOGIN
-          </Button>
-        </InsertForm>
-      </TemplateBlock>
-      {/* <Button onClick={onTestFunc}> TEST </Button> */}
-    </div>
-  );
-}
 
 export default LoginBlock;

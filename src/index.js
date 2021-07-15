@@ -5,21 +5,33 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import rootReducer from './redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
+import promiseMiddlerware from 'redux-promise';
+import reduxThunk from 'redux-thunk';
+
 // import * as serviceWorker from './serviceWorker';
 
 // refresh Token cookie 을 주고받기 위한 설정
 axios.defaults.withCredentials = true;
 
-const store = createStore(rootReducer, composeWithDevTools()); // 스토어 생성 : 최상위 컴포넌트(app.js)가 랜더링 되는 곳(index.js) -> why? 하위 컴포넌트들이 모두 여기에 접근가능해야함
+const createStoreWidthMiddleware = applyMiddleware(
+  promiseMiddlerware,
+  reduxThunk,
+)(createStore);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <Provider
+      store={createStoreWidthMiddleware(
+        rootReducer,
+        // 개발자 도구를 사용하기 위한 설정
+      )}
+    >
+      <App />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root'),
 );
 

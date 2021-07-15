@@ -64,12 +64,6 @@ const Navigationbar = () => {
           <img src={logo} width="200" alt="logo" />
         </Link>
         <ul className="nav_user_box">
-          {/* <Link to="/login" className="btn_log">
-            <StyleSpan>Log in</StyleSpan>
-          </Link>
-          <Link to="/signup" className="btn_res">
-            <StyleSpan>Register</StyleSpan>
-          </Link> */}
           <Navbtn
             btntype="LOGIN"
             btnlink="/login"
