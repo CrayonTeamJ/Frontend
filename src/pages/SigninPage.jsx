@@ -220,22 +220,22 @@ function SigninPage(props) {
             value={UserID}
             autoFocus
             placeholder="ID"
-            onChange={onChangeID}
+            onChange={() => onChangeID}
           />
           <Input
             value={Password}
             autoFocus
             placeholder="Password"
-            onChange={onChangePW}
+            onChange={() => onChangePW}
           />
           <Label>{Errtxt}</Label>
-          <Button style={{ marginTop: '50px' }} onClick={onLogin}>
+          <Button style={{ marginTop: '50px' }} onClick={() => onLogin}>
             {' '}
             LOGIN{' '}
           </Button>
         </InsertForm>
       </TemplateBlock>
-      <Button onClick={onTestFunc}> TEST </Button>
+      <Button onClick={() => onTestFunc}> TEST </Button>
     </div>
   );
 }

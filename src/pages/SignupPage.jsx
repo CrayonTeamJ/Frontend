@@ -280,28 +280,28 @@ function SignupPage(props) {
       <Navigationbar />
       <TemplateBlock>
         <h1> SIGN UP </h1>
-        <InsertForm onSubmit={onSubmitHandler}>
+        <InsertForm onSubmit={() => onSubmitHandler}>
           <Input
             placeholder="Nickname"
             value={Nickname}
-            onChange={onChangeNick}
+            onChange={() => onChangeNick}
           />
-          <Input placeholder="ID" value={UserID} onChange={onChangeID} />
+          <Input placeholder="ID" value={UserID} onChange={() => onChangeID} />
           <Input
             type="password"
             placeholder="Create password"
             value={Password}
-            onChange={onChangePW}
+            onChange={() => onChangePW}
           />
           <Input
             type="password"
             placeholder="Verify password"
             value={Password_veri}
             autoFocus
-            onChange={onChangePW_V}
+            onChange={() => onChangePW_V}
           />
           <Label>{Errtxt}</Label>
-          <Button onClick={onSubmitHandler}> Register </Button>
+          <Button onClick={() => onSubmitHandler}> Register </Button>
         </InsertForm>
       </TemplateBlock>
     </div>

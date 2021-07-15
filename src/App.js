@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SigninPage from './pages/SigninPage';
-import SignupPage from './pages/SignupPage';
 import MainPage from './pages/MainPage';
+import MainPageTwo from './pages/MainPageTwo';
+import MainPageThree from './pages/MainPageThree';
 
 function App() {
   // const api = axios.create({
@@ -27,9 +27,10 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route path="/login" component={SigninPage} />
-          <Route path="/signup" component={SignupPage} />
+          <Route path="/login" component={MainPageTwo} />
+          <Route path="/signup" component={MainPageThree} />
           <Route path="/" component={MainPage} />
+          {/** 이거 홈페이지가 위쪽에 있으면 안먹음 ...; */}
         </Switch>
       </Router>
     </>
