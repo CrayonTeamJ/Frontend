@@ -4,8 +4,6 @@ import React from 'react';
 import Navigationbar from '../components/Navigationbar';
 import imgback from '../img/backimg.png';
 import Navbtn from '../components/Navbtn';
-import Container from '../components/Container';
-import Footer from '../components/Footer';
 
 function MainPage() {
   return (
@@ -14,10 +12,21 @@ function MainPage() {
         <Navigationbar />
       </div>
       <div style={{ height: '89vh' }}>
-        <Container />
+        <div
+          className="top-container"
+          style={{ backgroundColor: 'red', height: '51vh' }}
+        >
+          <span>top container</span>
+        </div>
+        <div style={{ backgroundColor: 'blue', height: '38vh' }}>
+          <span>bottom continer</span>
+        </div>
       </div>
-      <div style={{ height: '5vh' }}>
-        <Footer />
+      <div
+        className="footer"
+        style={{ backgroundColor: 'green', height: '5vh' }}
+      >
+        <span>© SeaFLAG, Inc. 2021. 2021-SiliconValley-TeamJ</span>
       </div>
     </div>
   );
