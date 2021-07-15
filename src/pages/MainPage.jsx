@@ -2,8 +2,8 @@
 import '../App.css';
 import React from 'react';
 import Navigationbar from '../components/Navigationbar';
-import imgback from '../img/backimg.png';
-import Navbtn from '../components/Navbtn';
+import Footer from '../components/Footer';
+import LandingInfo from '../components/LandingInfo';
 
 function MainPage() {
   return (
@@ -12,21 +12,26 @@ function MainPage() {
         <Navigationbar />
       </div>
       <div style={{ height: '89vh' }}>
+        {/* top container + bottom container */}
         <div
           className="top-container"
           style={{ backgroundColor: 'red', height: '51vh' }}
         >
           <span>top container</span>
+          <LandingInfo />
         </div>
         <div style={{ backgroundColor: 'blue', height: '38vh' }}>
           <span>bottom continer</span>
+          <div className="bottom-wrapper">
+            <span>
+              button 3개가 들어가야 하는데 얘는 아마 라디오버튼이므로 일단은
+              보류
+            </span>
+          </div>
         </div>
       </div>
-      <div
-        className="footer"
-        style={{ backgroundColor: 'green', height: '5vh' }}
-      >
-        <span>© SeaFLAG, Inc. 2021. 2021-SiliconValley-TeamJ</span>
+      <div style={{ height: '5vh' }}>
+        <Footer />
       </div>
     </div>
   );

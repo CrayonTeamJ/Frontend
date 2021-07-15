@@ -174,7 +174,7 @@
   background-color: gold;
 }
 
-.landing-slide-slogan {
+.landing-info .landing-slide-slogan {
   margin: 0.5vw;
 
   /* 정렬 */
@@ -189,7 +189,7 @@
   background-color: lightgreen;
 }
 
-.landing-slide-button {
+.landing-info .landing-slide-button {
   margin: 0.5vw;
   height: 6vh;
   display: flex;
@@ -200,7 +200,7 @@
   background-color: darkslategray;
 }
 
-.landing-button {
+.bottom-wrapper {
   position: absolute;
   z-index: 1;
   /* 총 100vw이고  */
@@ -222,6 +222,22 @@
 .landing-slide-img {
   height: 100%;
   background-color: deeppink;
+}
+
+.template-container {
+  position: absolute;
+  z-index: 1;
+  /* 총 100vw이고  */
+  left: 23vw;
+  width: 55vw;
+  /* top: calc(4vw + 30px);
+  top: 4.5vw; */
+
+  /* 높이 */
+  top: 18vh;
+  height: 55vh;
+  bottom: 16vh;
+  background-color: lime;
 }
 
 .App {
