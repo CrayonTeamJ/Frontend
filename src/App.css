@@ -1,31 +1,35 @@
 .navbar {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 2.5px;
+  background-color: white;
 }
 
 .nav_inner {
-  margin-right: 10px;
+  flex: 1;
+  background-color: aqua;
   display: flex;
-  justify-content:space-between;
-}
-
-.nav_inner .a .img{
-  align-items: center;
-  align-self: center;
-  align-content: center;
+  justify-content: space-between;
 }
 
 .nav_user_box {
+  flex: 0.5;
+  background-color: blue;
+  /* 내부 아이템 옆으로 늘어트려서 정렬  */
   display: flex;
-  align-items:center;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: flex-end;
+  /* <ul>tag 앞에 동그라미 제거 */
   list-style: none;
   padding: 0;
-  margin: 0;
-
+  margin: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.nav_user_box .btn_log{
-  width: 80px;
+/* button 디자인 (앞쪽-투명버튼)*/
+.nav_user_box .front_btn {
+  width: 95px;
   height: 30px;
   position: relative;
   margin-left: 10px;
@@ -33,13 +37,12 @@
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  background-color: rgba( 255, 255, 255, 0.0 );
-  border: 1px solid #85BCBE;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #fa605a;
 }
-
-
-.nav_user_box .btn_res{
-  width: 80px;
+/* button 디자인 (뒷쪽-빨간버튼) */
+.nav_user_box .back_btn {
+  width: 95px;
   height: 30px;
   position: relative;
   margin-left: 10px;
@@ -47,12 +50,23 @@
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #85BCBE;
+  background-color: #fa605a;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 }
 
+.start_btn {
+  width: 13vw;
+  height: 5vh;
+  position: relative;
+  display: block;
+  text-align: center;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #fa605a;
+}
 
-.btn_log{
+/* 삭제될듯? */
+.btn_log {
   width: 80px;
   height: 30px;
   position: relative;
@@ -61,33 +75,146 @@
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  background-color: rgba( 255, 255, 255, 0.0 );
-  border: 1px solid #85BCBE;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #85bcbe;
 }
 
 .logbtn {
   margin-left: 5px;
-  background-color: #85BCBE;
+  background-color: #85bcbe;
   font-family: 'NanumSquare_L';
   text-decoration: none;
   color: white;
 }
 
-
-
-.container{
+.container {
+  flex: 1;
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
+
   background-color: #282c34;
   /* background-image: url(./img/background.svg); */
 }
 
+.back-container {
+  display: block;
+  padding-top: 8.3333vw;
+  width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* overflow: hidden; */
+  /* list-style: none; */
+  padding: 0;
+  z-index: 1;
+  background-color: darkgreen;
+}
 
+.top-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-y: -36vh;
+  background-image: url(./img/backimg.png);
+}
 
+.back-container2 {
+  background-color: darkgreen;
+}
+
+.below-container {
+  background-color: gold;
+}
+
+.footer {
+  background-color: hotpink;
+}
+
+.back-wrapper {
+  /* position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box; */
+  text-align: center;
+  width: 100vw;
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  /* height: 809px; */
+  background-color: darkgrey;
+}
+
+.landing-info {
+  position: absolute;
+  z-index: 1;
+  /* 총 100vw이고  */
+  left: 10vw;
+  width: 80vw;
+  /* top: calc(4vw + 30px);
+  top: 4.5vw; */
+
+  /* 높이 */
+  top: 16vh;
+  height: 32vh;
+  bottom: 16vh;
+
+  background-color: gold;
+}
+
+.landing-slide-slogan {
+  margin: 0.5vw;
+
+  /* 정렬 */
+  text-align: left;
+
+  font-size: 3vw;
+  font-family: NanumSquare_EB;
+  /* 자간 */
+  letter-spacing: 0vw;
+  /* 행간 */
+  line-height: 8vh;
+  background-color: lightgreen;
+}
+
+.landing-slide-button {
+  margin: 0.5vw;
+  height: 6vh;
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: flex-start;
+  background-color: darkslategray;
+}
+
+.landing-button {
+  position: absolute;
+  z-index: 1;
+  /* 총 100vw이고  */
+  left: 10vw;
+  width: 80vw;
+  /* top: calc(4vw + 30px);
+  top: 4.5vw; */
+
+  /* 높이 */
+  top: 53vh;
+  height: 32vh;
+  bottom: 16vh;
+
+  display: flex;
+
+  background-color: lightpink;
+}
+
+.landing-slide-img {
+  height: 100%;
+  background-color: deeppink;
+}
 
 .App {
   text-align: center;
@@ -97,12 +224,6 @@
   height: 40vmin;
   pointer-events: none;
 }
-
-
-
-
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -134,27 +255,25 @@
   }
 }
 
-
 /*FONT*/
 
-
 @font-face {
-  font-family: "BwSurco";         
-  src: url("./font/BwSurco-BlackItalic.otf"); 
+  font-family: 'BwSurco';
+  src: url('./font/BwSurco-BlackItalic.otf');
 }
 @font-face {
-  font-family: "NanumSquare_L";
-  src: url("./font/NanumSquare_acL.ttf"); 
+  font-family: 'NanumSquare_L';
+  src: url('./font/NanumSquare_acL.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_R";
-  src: url("./font/NanumSquare_acR.ttf"); 
+  font-family: 'NanumSquare_R';
+  src: url('./font/NanumSquare_acR.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_B";
-  src: url("./font/NanumSquare_acB.ttf"); 
+  font-family: 'NanumSquare_B';
+  src: url('./font/NanumSquare_acB.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_EB";
-  src: url("./font/NanumSquare_acEB.ttf"); 
+  font-family: 'NanumSquare_EB';
+  src: url('./font/NanumSquare_acEB.ttf');
 }
