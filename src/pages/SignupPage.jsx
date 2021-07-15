@@ -23,7 +23,9 @@ function SignupPage() {
           <span>bottom continer</span>
         </div>
       </div>
-      <Footer />
+      <div style={{ height: '5vh' }}>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -16,14 +16,15 @@ function SigninPage() {
           className="top-container"
           style={{ backgroundColor: 'red', height: '51vh' }}
         >
-          <span>top container</span>
           <LoginBlock />
         </div>
         <div style={{ backgroundColor: 'blue', height: '38vh' }}>
           <span>bottom continer</span>
         </div>
       </div>
-      <Footer />
+      <div style={{ height: '5vh' }}>
+        <Footer />
+      </div>
     </div>
   );
 }
