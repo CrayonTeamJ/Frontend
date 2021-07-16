@@ -10,7 +10,7 @@ import Navbtn from './Navbtn';
 import styled from 'styled-components';
 import Timer from './Timer';
 import { useSelector, useDispatch } from 'react-redux';
-import { user_logout } from '../redux/users';
+import { user_logout, user_refresh } from '../redux/users';
 import { useHistory } from 'react-router';
 
 const StyleSpan = styled.span`
@@ -73,6 +73,7 @@ const Button = styled.button`
 const Navigationbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const Key = useSelector((state) => state.users.access_token, []);
   // const [IsLogin, setIsLogin] = useState(false);
   // const [Nickname, setNickname] = useState('Fekar13');
   // const [Profile, setProfile] = useState('');
@@ -107,35 +108,54 @@ const Navigationbar = (props) => {
   };
 
   useEffect(() => {
-    console.log('컴포넌트가 화면에 나타남');
-
-    axios
-      .get('/api/input')
+    console.log('모든 페이지 리로드시 재발급 발생');
+    console.log('new key');
+    console.log(Key);
+    dispatch(user_refresh())
       .then((res) => {
-        console.log('api/input의 결과');
-        console.log(res);
-        if (res.data.Result === 'Success') {
-          console.log('회원이다.');
-          // 맞으면 user_refresh해서 토큰도 새로갈고 시간도 초기화해줘야함
-          // setIsLogin(true);
+        if (res.payload.Result === 'success') {
+          console.log('refresh성공');
+          // accesskey재 등록
+          axios.defaults.headers.common.Authorization = `Bearer ${Key}`;
         } else {
-          console.log('회원아니다.');
-          // 아니면 .. 아닌거지뭐
-          // setIsLogin(false);
+          console.log('refresh에 실패함');
         }
-        // console.log('isLogin변수');
-        // console.log(IsLogin);
       })
       .catch((err) => {
-        console.log(err); // 로그인 안됐을 땐 401error 라서 아예 then이 실행이 안됨... 백엔드 단에서 인증회원아니어도 api접근은 되도록 바꿔야함
+        console.log(err);
       });
-  });
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('컴포넌트가 화면에 나타남');
+
+  //   axios
+  //     .get('/api/input')
+  //     .then((res) => {
+  //       console.log('api/input의 결과');
+  //       console.log(res);
+  //       if (res.data.Result === 'Success') {
+  //         console.log('회원이다.');
+  //         // 맞으면 user_refresh해서 토큰도 새로갈고 시간도 초기화해줘야함
+  //         // setIsLogin(true);
+  //       } else {
+  //         console.log('회원아니다.');
+  //         // 아니면 .. 아닌거지뭐
+  //         // setIsLogin(false);
+  //       }
+  //       // console.log('isLogin변수');
+  //       // console.log(IsLogin);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err); // 로그인 안됐을 땐 401error 라서 아예 then이 실행이 안됨... 백엔드 단에서 인증회원아니어도 api접근은 되도록 바꿔야함
+  //     });
+  // });
 
   if (isLogin === true) {
     return (
       <div className="navbar">
         <div className="nav_inner">
-          <Link to="/" style={{ marginLeft: '20px' }}>
+          <Link to="/home" style={{ marginLeft: '20px' }}>
             <img src={logo} width="200" alt="logo" />
           </Link>
           <ul className="nav_user_box">
@@ -157,7 +177,7 @@ const Navigationbar = (props) => {
   return (
     <div className="navbar">
       <div className="nav_inner">
-        <Link to="/" style={{ marginLeft: '20px' }}>
+        <Link to="/home" style={{ marginLeft: '20px' }}>
           <img src={logo} width="200" alt="logo" />
         </Link>
         <ul className="nav_user_box">

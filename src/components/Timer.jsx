@@ -4,7 +4,7 @@
 /* eslint-disable radix */
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import { user_logout } from '../redux/users';
@@ -12,10 +12,12 @@ import { user_logout } from '../redux/users';
 function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const Expire = useSelector((state) => state.users.access_expire, []);
+  // const Expire = useSelector(stae)
   //   const [hour, setHour] = useState(1);
   //   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
-  const time = useRef(props.Expire / 1000); // expire time을 초로 주어야함 -> backend expire time이 milli second라서..나눠야함
+  const time = useRef(Expire / 1000); // expire time을 초로 주어야함 -> backend expire time이 milli second라서..나눠야함
   const timerId = useRef(null);
 
   // 타임 스탬프 예쁘게 보여주기 위한 함수

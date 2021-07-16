@@ -10,7 +10,7 @@ import { request } from '../axios';
 const USER_LOGIN = 'users/USER_LOGIN';
 const USER_REFRESH = 'user/USER_REFRESH';
 const USER_LOGOUT = 'users/USER_LOGOUT';
-const USER_AUTH = 'users/USER_AUTH';
+
 // action creator
 
 // 1. USER_LOGIN
