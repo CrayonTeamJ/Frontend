@@ -7,6 +7,7 @@ import logo from '../img/seaflag.svg';
 import profile from '../img/profile.png';
 import Navbtn from './Navbtn';
 import styled from 'styled-components';
+import Timer from './Timer';
 
 const StyleSpan = styled.span`
   position: absolute;
@@ -49,7 +50,7 @@ const Navigationbar = () => {
   const [IsLogin, setIsLogin] = useState(false);
   const [Nickname, setNickname] = useState('Fekar13');
   const [Profile, setProfile] = useState('');
-  const [Expire, setExpire] = useState('3:00:00');
+  const [Expire, setExpire] = useState(3);
 
   // 근데안되는듯...  페이지 리로드하면 최초 제외 undefine으로 출력됨
   // amount시 마다 실행됨(타자 하나하나 칠때마다 amount) -> 근데 맨뒤에 ,[]이거 붙이면 update시 마다 실행됨(reload시만)
@@ -75,7 +76,7 @@ const Navigationbar = () => {
           <img src={logo} width="200" alt="logo" />
         </Link>
         <ul className="nav_user_box">
-          <TimerLabel>{Expire}</TimerLabel>
+          <Timer duration={Expire} />
           <StyleLabel>{Nickname}</StyleLabel>
           <Link to="/profile" style={{ marginLeft: '10px' }}>
             <ProfileImg src={profile} width="200" alt="profile" />
