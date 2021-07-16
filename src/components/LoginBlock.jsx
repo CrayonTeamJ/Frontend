@@ -69,7 +69,7 @@ function LoginBlock(props) {
           // onLoginSuccess(res);
           const accessToken = res.payload.access_token; // 이거
           axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-          history.push('/'); // 성공하면 메인화면으로 돌아감
+          history.push('/home'); // 성공하면 메인화면으로 돌아감
         } else {
           // 비번이나 아이디 틀렸음
           if (res.payload.Result === 'fail') {
