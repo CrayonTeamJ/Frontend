@@ -66,7 +66,9 @@ function LoginBlock(props) {
         console.log(res);
         if (res.payload.Result === 'success') {
           console.log('로그인성공');
-          onLoginSuccess(res);
+          // onLoginSuccess(res);
+          const accessToken = res.payload.access_token; // 이거
+          axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
           history.push('/'); // 성공하면 메인화면으로 돌아감
         } else {
           // 비번이나 아이디 틀렸음
@@ -95,13 +97,14 @@ function LoginBlock(props) {
   //       });
   //   };
 
+  // 이것도 정상적으로 작동하긴함 -> access token header에 default로 담기(인증유저가됨)
   const onLoginSuccess = (res) => {
     // access Token을 localStorage나 cookie에 저장하지 않음(보안상 문제 노션링크참조)
 
     const accessToken = res.payload.access_token; // 이거
-    const accessExpire = res.payload.access_expire;
+    // const accessExpire = res.payload.access_expire;
 
-    console.log(accessExpire);
+    // console.log(accessExpire);
     // accessToken default로 설정
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 

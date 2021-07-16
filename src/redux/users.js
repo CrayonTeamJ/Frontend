@@ -10,7 +10,7 @@ import { request } from '../axios';
 const USER_LOGIN = 'users/USER_LOGIN';
 const USER_REFRESH = 'user/USER_REFRESH';
 const USER_LOGOUT = 'users/USER_LOGOUT';
-
+const USER_AUTH = 'users/USER_AUTH';
 // action creator
 
 // 1. USER_LOGIN
@@ -30,10 +30,25 @@ export const user_refresh = () => {
   console.log('refresh from flask');
   console.log(data);
   return {
-    type: USER_LOGIN,
+    type: USER_REFRESH,
     payload: data,
   };
 };
+
+// 3. USER_LOGOUT
+export const user_logout = () => {
+  const data = request('get', '/api/logout');
+  console.log('logout from flask');
+  console.log(data);
+  console.log('======================');
+  return {
+    type: USER_LOGOUT,
+    payload: data,
+  };
+};
+
+// 4. USER_AUTH
+export const user_auth = () => {};
 
 // reducer
 const initialState = {
@@ -41,6 +56,8 @@ const initialState = {
   access_expire: '',
   access_token: '',
   isLogin: '',
+  Nickname: '',
+  Profile: '',
 };
 
 // user 상태관리
@@ -53,13 +70,24 @@ const users = (state = { initialState }, action) => {
         access_expire: action.payload.access_expire,
         isLogin: action.payload.isLogin,
         access_token: action.payload.access_token,
+        Nickname: action.payload.Nickname,
+        Profile: action.payload.Profile,
       };
     case USER_REFRESH:
       return {
         ...state,
         access_expire: action.payload.access_expire,
+        access_token: action.payload.access_token,
+      };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        Result: action.payload.Result,
+        access_expire: action.payload.access_expire,
         isLogin: action.payload.isLogin,
         access_token: action.payload.access_token,
+        Nickname: '',
+        Profile: '',
       };
     default:
       return state;
