@@ -96,11 +96,11 @@ const Navigationbar = (props) => {
         if (res.payload.Result === 'success') {
           // accesskey를 제거해버림
           axios.defaults.headers.common.Authorization = ``;
-          props.history.push('/login');
+          history.push('/login');
         } else {
           alert('로그아웃에 실패하였습니다');
+          history.push('/home');
         }
-        props.history.push('/login');
       })
       .catch((err) => {
         console.log(err);
