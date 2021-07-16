@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
+import MyPage from './pages/MyPage';
 
 function App() {
   // const api = axios.create({
@@ -29,6 +30,7 @@ function App() {
         <Switch>
           <Route path="/login" component={SigninPage} />
           <Route path="/signup" component={SignupPage} />
+          <Route path="/profile" component={MyPage} />
           <Route path="/" component={MainPage} />
           {/** 이거 홈페이지가 위쪽에 있으면 안먹음 ...; */}
         </Switch>
