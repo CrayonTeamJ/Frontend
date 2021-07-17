@@ -68,7 +68,7 @@ function Timer(props) {
           // accesskey재 등록
           console.log(res.payload.access_token);
           axios.defaults.headers.common.Authorization = `Bearer ${res.payload.access_token}`;
-          history.replace('/');
+          window.location.reload(); // 새로고침
         } else {
           console.log('refresh에 실패함');
         }

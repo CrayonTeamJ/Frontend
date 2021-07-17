@@ -21,7 +21,7 @@ function LandingInfo() {
         <div className="landing-slide-button">
           <Navbtn
             btntype="시작하기"
-            btnlink="/"
+            btnlink="/profile"
             className="start_btn"
             color="#ffffff"
           />
