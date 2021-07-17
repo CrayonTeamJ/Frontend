@@ -17,8 +17,8 @@ const USER_TIMER = 'users/USER_TIMER';
 // 1. USER_LOGIN
 export const user_login = (submitData) => {
   const data = request('post', '/api/login', submitData);
-  console.log('login data from flask');
-  console.log(data);
+  // console.log('login data from flask');
+  // console.log(data);
   return {
     type: USER_LOGIN,
     payload: data,
@@ -28,8 +28,8 @@ export const user_login = (submitData) => {
 // 2. USER_REFRESH
 export const user_refresh = () => {
   const data = request('get', '/api/refresh');
-  console.log('refresh from flask');
-  console.log(data);
+  // console.log('refresh from flask');
+  // console.log(data);
   return {
     type: USER_REFRESH,
     payload: data,
@@ -39,9 +39,9 @@ export const user_refresh = () => {
 // 3. USER_LOGOUT
 export const user_logout = () => {
   const data = request('get', '/api/logout');
-  console.log('logout from flask');
-  console.log(data);
-  console.log('======================');
+  // console.log('logout from flask');
+  // console.log(data);
+  // console.log('======================');
   return {
     type: USER_LOGOUT,
     payload: data,
@@ -49,13 +49,9 @@ export const user_logout = () => {
 };
 
 // 4. user timer
-export const user_timer = () => {
-  console.log('timer_work');
-
-  return {
-    type: USER_TIMER,
-  };
-};
+export const user_timer = () => ({
+  type: USER_TIMER,
+});
 
 // 4. USER_AUTH
 

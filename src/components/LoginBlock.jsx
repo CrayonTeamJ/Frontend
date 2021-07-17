@@ -62,10 +62,10 @@ function LoginBlock(props) {
 
     dispatch(user_login(formbody))
       .then((res) => {
-        console.log('dispact login User res');
-        console.log(res);
+        // console.log('dispact login User res');
+        // console.log(res);
         if (res.payload.Result === 'success') {
-          console.log('로그인성공');
+          // console.log('로그인성공');
           // onLoginSuccess(res);
           const accessToken = res.payload.access_token; // 이거
           axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -73,7 +73,7 @@ function LoginBlock(props) {
         } else {
           // 비번이나 아이디 틀렸음
           if (res.payload.Result === 'fail') {
-            console.log('비번이나 아이디 틀림');
+            // console.log('비번이나 아이디 틀림');
             setErrtxt('아이디와 비밀번호를 확인해주세요');
           }
         }

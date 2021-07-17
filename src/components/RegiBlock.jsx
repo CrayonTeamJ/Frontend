@@ -190,15 +190,15 @@ function RegiBlock(props) {
       .then((res) => {
         if (res.data.Result === 'Success') {
           // signup 오류
-          console.log('성공');
+          // console.log('성공');
           setIsRegistraionSuccess(true);
         } else {
           // signup 오류
-          console.log('실패');
+          // console.log('실패');
 
           // 닉네임 중복
           if (res.data.Result === 'NK_duplicated') {
-            console.log('닉네임중복');
+            // console.log('닉네임중복');
             setErrtxt('이미 존재하는 닉네임입니다');
           }
 

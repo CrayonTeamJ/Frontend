@@ -15,8 +15,8 @@ function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const Expire = useSelector((state) => state.access_expire, []);
-  console.log('뭔데 내 타이머 말좀해봐');
-  console.log(Expire);
+  // console.log('뭔데 내 타이머 말좀해봐');
+  // console.log(Expire);
   // const Expire = useSelector(stae)
   //   const [hour, setHour] = useState(1);
   //   const [min, setMin] = useState(0);
@@ -84,19 +84,19 @@ function Timer(props) {
   useEffect(() => {
     // 만약 타임 아웃이 발생했을 경우
     if (time.current <= 30) {
-      console.log('만료 시간 30초 남음 ');
+      // console.log('만료 시간 30초 남음 ');
       setOpen(true);
       // dispatch(user_refresh)
       // 모달창 띄우기 -> 확인버튼 누르면 dispatch(user_refresh)...
     }
     if (time.current <= -1) {
       // 00초로 보여주기 위해 -1로 설정
-      console.log('타임 아웃');
+      // console.log('타임 아웃');
       clearInterval(timerId.current);
       // 강제 로그아웃
       dispatch(user_logout())
         .then((res) => {
-          console.log('logout?된건가?');
+          // console.log('logout?된건가?');
           if (res.payload.Result === 'success') {
             // accesskey를 제거해버림
             axios.defaults.headers.common.Authorization = ``;

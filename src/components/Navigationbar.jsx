@@ -25,17 +25,11 @@ const Navigationbar = (props) => {
   const Expire = useSelector((state) => state.access_expire, []);
   const isLogin = useSelector((state) => state.isLogin, []);
 
-  console.log('스토에어 접근해서 변수를 가져왔을 떄 ');
-  console.log('닉넴');
-  console.log(Nickname);
-  console.log('로그인여부 ');
-  console.log(isLogin);
-
   // 로그아웃 버튼 함수
   const onLogoutHandler = () => {
     dispatch(user_logout())
       .then((res) => {
-        console.log('logout?된건가?');
+        // console.log('logout?된건가?');
         if (res.payload.Result === 'success') {
           // accesskey를 제거해버림
           axios.defaults.headers.common.Authorization = ``;
