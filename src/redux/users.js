@@ -48,7 +48,6 @@ export const user_logout = () => {
 };
 
 // 4. USER_AUTH
-export const user_auth = () => {};
 
 // reducer
 const initialState = {

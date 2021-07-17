@@ -18,8 +18,8 @@ import PrivateRoute from './components/PrivateRoute';
 import MemberOnlyPage from './pages/MemberOnlyPage';
 
 function App() {
-  const isLogin = useSelector((state) => state.users.isLogin, []);
-  const dispatch = useDispatch();
+  // const isLogin = useSelector((state) => state.isLogin, []);
+  // const dispatch = useDispatch();
 
   return (
     <>

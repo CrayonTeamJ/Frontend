@@ -14,7 +14,7 @@ import 'react-responsive-modal/styles.css';
 function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const Expire = useSelector((state) => state.users.access_expire, []);
+  const Expire = useSelector((state) => state.access_expire, []);
   // const Expire = useSelector(stae)
   //   const [hour, setHour] = useState(1);
   //   const [min, setMin] = useState(0);
