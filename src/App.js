@@ -26,7 +26,7 @@ function App() {
     <>
       <div style={{ height: '100vh', width: '100vw' }}>
         <Router>
-          <div style={{ height: '6vh', width: '93vw' }}>
+          <div style={{ height: '6vh', width: '100vw' }}>
             <Navigationbar />
           </div>
           <Switch>
