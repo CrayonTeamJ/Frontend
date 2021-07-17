@@ -8,10 +8,7 @@ import Footer from '../components/Footer';
 
 function SigninPage() {
   return (
-    <div style={{ height: '100vh', width: '100vw' }}>
-      <div style={{ height: '6vh' }}>
-        <Navigationbar />
-      </div>
+    <>
       <div style={{ height: '89vh' }}>
         <div
           className="top-container"
@@ -26,7 +23,7 @@ function SigninPage() {
       <div style={{ height: '5vh' }}>
         <Footer />
       </div>
-    </div>
+    </>
   );
 }
 
