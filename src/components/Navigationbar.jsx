@@ -53,24 +53,25 @@ const Navigationbar = (props) => {
   // navbar가 모든 페이지에 있어서 사실 상관없긴 한데, 얘가 amount될 때마다 실행됨(근데 웨남ㄴ하면 app.js에 넣어야..)
   // amount시 마다 실행됨(타자 하나하나 칠때마다 amount) -> 근데 맨뒤에 ,[]이거 붙이면 update시 마다 실행됨(reload시만)
   // 인증키가 있는지 확인하는 (==로그인 되었는지, 인증회원인지)
-  useEffect(() => {
-    console.log('모든 페이지 리로드시 재발급 발생');
-    console.log('new key');
-    console.log(Key);
-    dispatch(user_refresh())
-      .then((res) => {
-        if (res.payload.Result === 'success') {
-          console.log('refresh성공');
-          // accesskey재 등록
-          axios.defaults.headers.common.Authorization = `Bearer ${Key}`;
-        } else {
-          console.log('refresh에 실패함');
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+
+  // useEffect(() => {
+  //   console.log('모든 페이지 리로드시 재발급 발생');
+  //   console.log('new key');
+  //   console.log(Key);
+  //   dispatch(user_refresh())
+  //     .then((res) => {
+  //       if (res.payload.Result === 'success') {
+  //         console.log('refresh성공');
+  //         // accesskey재 등록
+  //         axios.defaults.headers.common.Authorization = `Bearer ${Key}`;
+  //       } else {
+  //         console.log('refresh에 실패함');
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   // useEffect(() => {
   //   console.log('컴포넌트가 화면에 나타남');

@@ -10,6 +10,7 @@ import { request } from '../axios';
 const USER_LOGIN = 'users/USER_LOGIN';
 const USER_REFRESH = 'user/USER_REFRESH';
 const USER_LOGOUT = 'users/USER_LOGOUT';
+const USER_TIMER = 'users/USER_TIMER';
 
 // action creator
 
@@ -47,12 +48,21 @@ export const user_logout = () => {
   };
 };
 
+// 4. user timer
+export const user_timer = () => {
+  console.log('timer_work');
+
+  return {
+    type: USER_TIMER,
+  };
+};
+
 // 4. USER_AUTH
 
 // reducer
 const initialState = {
   Result: '',
-  access_expire: '',
+  access_expire: 0,
   access_token: '',
   isLogin: '',
   Nickname: '',
@@ -87,6 +97,11 @@ const users = (state = { initialState }, action) => {
         access_token: action.payload.access_token,
         Nickname: '',
         Profile: '',
+      };
+    case USER_TIMER:
+      return {
+        ...state,
+        access_expire: state.access_expire - 1000,
       };
     default:
       return state;

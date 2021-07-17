@@ -8,13 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import { Modal } from 'react-responsive-modal';
-import { user_logout, user_refresh } from '../redux/users';
+import { user_logout, user_refresh, user_timer } from '../redux/users';
 import 'react-responsive-modal/styles.css';
 
 function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const Expire = useSelector((state) => state.access_expire, []);
+  console.log('뭔데 내 타이머 말좀해봐');
+  console.log(Expire);
   // const Expire = useSelector(stae)
   //   const [hour, setHour] = useState(1);
   //   const [min, setMin] = useState(0);
@@ -49,6 +51,7 @@ function Timer(props) {
   // setInterval (1000=1초) 마다 실행
   useEffect(() => {
     timerId.current = setInterval(() => {
+      dispatch(user_timer());
       //   setHour(parseInt(time.current / 3600)); // 몫만 보여주기 위해 parseInt사용
       //   setMin(parseInt(time.current / 60));
       setSec(time.current % 60);
@@ -68,7 +71,7 @@ function Timer(props) {
           // accesskey재 등록
           console.log(res.payload.access_token);
           axios.defaults.headers.common.Authorization = `Bearer ${res.payload.access_token}`;
-          window.location.reload(); // 새로고침
+          window.location.reload('/'); // 새로고침
         } else {
           console.log('refresh에 실패함');
         }
