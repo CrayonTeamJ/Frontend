@@ -180,12 +180,12 @@
   /* 정렬 */
   text-align: left;
 
-  font-size: 3vw;
+  font-size: 45px;
   font-family: NanumSquare_EB;
   /* 자간 */
-  letter-spacing: 0vw;
+  letter-spacing: 2.5px;
   /* 행간 */
-  line-height: 8vh;
+  line-height: 65px;
   background-color: lightgreen;
 }
 

@@ -17,11 +17,11 @@ function LandingInfo() {
           <br />
           <span>원하는 대사를,</span>
           <br />
-          <span style={{ fontSize: '3.5vw' }}>원하는 부분만.</span>
+          <span style={{ fontSize: '55px' }}>원하는 부분만.</span>
         </div>
         <div className="landing-slide-button">
           <Button>
-            <Link to="/detect">
+            <Link to="/detect" style={{ textDecoration: 'none' }}>
               <Stylespan>시작하기</Stylespan>
             </Link>
           </Button>
@@ -33,7 +33,6 @@ function LandingInfo() {
 
 const Button = styled.button`
   background: #fa605a;
-
   z-index: 5;
   cursor: pointer;
 
@@ -45,8 +44,6 @@ const Button = styled.button`
   border: none;
   outline: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   width: 12vw;
   height: 6vh;
@@ -61,14 +58,12 @@ const Button = styled.button`
 `;
 
 const Stylespan = styled.span`
-  position: absolute;
+  position: relative;
   font-family: NanumSquare_B;
   color: white;
-
-  font-size: 1.6vw;
+  font-size: 25px;
+  // font-size: 1.6vw;
   opacity: 1;
-  bottom: 20%;
-  transform: translateX(-50%);
   white-space: nowrap;
 `;
 
