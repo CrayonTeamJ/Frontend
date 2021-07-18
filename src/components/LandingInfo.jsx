@@ -21,7 +21,7 @@ function LandingInfo() {
         </div>
         <div className="landing-slide-button">
           <Button>
-            <Link to="/detect" style={{ textDecoration: 'none' }}>
+            <Link to="/upload" style={{ textDecoration: 'none' }}>
               <Stylespan>시작하기</Stylespan>
             </Link>
           </Button>

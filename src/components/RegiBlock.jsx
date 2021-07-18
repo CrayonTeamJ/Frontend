@@ -182,7 +182,7 @@ function RegiBlock(props) {
     };
 
     axios
-      .post('/api/signup', formbody, {
+      .post('http://localhost:5000/api/signup', formbody, {
         headers: {
           'content-type': 'application/json',
         },

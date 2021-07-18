@@ -16,6 +16,7 @@ import SigninPage from './pages/SigninPage';
 import MyPage from './pages/MyPage';
 import PrivateRoute from './components/PrivateRoute';
 import MemberOnlyPage from './pages/MemberOnlyPage';
+import UploadPage from './pages/UploadPage';
 import Navigationbar from './components/Navigationbar';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="/login" component={SigninPage} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/memberonly" component={MemberOnlyPage} />
+            <Route path="/upload" component={UploadPage} />
             <PrivateRoute path="/profile" component={MyPage} />
             <Route path="/" component={MainPage} />
 
