@@ -162,6 +162,9 @@
   z-index: 1;
   /* 총 100vw이고  */
   left: 10vw;
+  /* width: 1000px; */
+  padding-left: 20px;
+  padding-right: 20px;
   width: 80vw;
   /* top: calc(4vw + 30px);
   top: 4.5vw; */
@@ -201,22 +204,27 @@
 }
 
 .bottom-wrapper {
+  padding: 20px;
+
   position: absolute;
   z-index: 1;
   /* 총 100vw이고  */
   left: 10vw;
+  /* width: 1000px; */
   width: 80vw;
   /* top: calc(4vw + 30px);
   top: 4.5vw; */
-
   /* 높이 */
   top: 53vh;
-  height: 32vh;
+  height: 35vh;
   bottom: 16vh;
 
-  display: flex;
-
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
   background-color: lightpink;
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
 }
 
 .landing-slide-img {
@@ -239,6 +247,40 @@
   bottom: 16vh;
   background-color: lime;
 }
+
+.radio-btn {
+  /* position: relative; */
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+  position: flex;
+
+  margin-top: 20px;
+}
+
+/* radio button */
+/* input[type='radio'],
+input[type='radio']:checked {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 100%;
+
+  margin-right: 0.5rem;
+}
+
+input[type='radio'] {
+  background-color: white;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid #404040;
+}
+input[type='radio']:checked {
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: no-repeat s#404040;
+} */
 
 .App {
   text-align: center;

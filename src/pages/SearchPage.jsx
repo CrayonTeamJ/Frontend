@@ -9,7 +9,7 @@ import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
 import Radiobtn from '../components/Radiobtn';
 
-function UploadPage() {
+function SearchPage() {
   return (
     <>
       <div style={{ height: '89vh', width: '100vw' }}>
@@ -26,15 +26,14 @@ function UploadPage() {
         >
           <span>bottom continer</span>
           <div className="bottom-wrapper">
-            <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
-            <Radiobtn type="Video type : " A="FILE" B="URL" />
-            {/* <InputURL plasceholder="youtube link를 입력해 주세요." /> */}
-            <InputFILE type="file" />
-            <Button>
-              <Link to="/upload" style={{ textDecoration: 'none' }}>
-                <Stylespan>시작하기</Stylespan>
-              </Link>
-            </Button>
+            <div>
+              <InputURL plasceholder="검색어를 입력해 주세요." />
+              <Button>
+                <Link to="/upload" style={{ textDecoration: 'none' }}>
+                  <Stylespan>시작하기</Stylespan>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -100,4 +99,4 @@ const InputFILE = styled.input`
   transform: translate(40%);
 `;
 
-export default UploadPage;
+export default SearchPage;

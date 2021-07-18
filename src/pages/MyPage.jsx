@@ -8,15 +8,17 @@ import LandingInfo from '../components/LandingInfo';
 function MyPage() {
   return (
     <>
-      <div style={{ height: '89vh' }}>
+      <div style={{ height: '89vh', width: '100vw' }}>
         {/* top container + bottom container */}
         <div
           className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh' }}
+          style={{ backgroundColor: 'red', height: '51vh', width: '100vw' }}
         >
           <span>MYPAGE</span>
         </div>
-        <div style={{ backgroundColor: 'blue', height: '38vh' }}>
+        <div
+          style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
+        >
           <span>bottom continer</span>
           <div className="bottom-wrapper">
             <span>
@@ -26,7 +28,7 @@ function MyPage() {
           </div>
         </div>
       </div>
-      <div style={{ height: '5vh' }}>
+      <div style={{ height: '5vh', width: '100vw' }}>
         <Footer />
       </div>
     </>

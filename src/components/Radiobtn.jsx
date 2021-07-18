@@ -1,38 +1,28 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 import React from 'react';
 import '../App.css';
+import styled from 'styled-components';
 
 function Radiobtn(props) {
-  //   const changeRadioQ1 = (e) => {
-  //     setQ1(e.target.value);
-  //   };
-
-  //   const changeRadioQ2 = (e) => {
-  //     setQ2(e.target.value);
-  //   };
-
   return (
-    <>
-      <div>
-        <label htmlFor="asdf">
-          {props.type}
-          <input
-            type="radio"
-            id="asdf"
-            name={props.A}
-            value={props.A}
-            checked
-          />
-          {props.A}
-        </label>
-        <label htmlFor="asdf">
-          <input type="radio" id="asdf2" name={props.B} value={props.B} />
-          {props.B}
-        </label>
-      </div>
-    </>
+    <div style={{ padding: '10px' }}>
+      <form>
+        <Label>{props.type}</Label>
+        <input type="radio" id="huey" name="drone" value="huey" checked />
+        <Label htmlFor="huey">{props.A}</Label>
+        <input type="radio" id="dewey" name="drone" value="dewey" />
+        <Label htmlFor="dewey">{props.B}</Label>
+      </form>
+    </div>
   );
 }
+
+// 버튼모양
+const Label = styled.label`
+  font-family: NanumSquare_EB;
+  color: #404040;
+`;
 
 export default Radiobtn;

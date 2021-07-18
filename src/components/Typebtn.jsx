@@ -61,8 +61,8 @@ const ColorSelectorContainer = styled.div`
   display: flex; // 내부 애들 옆으로 배치 가능하게하기
   justify-content: space-between; // 내부 애들 간격 일정하게 떨어지게하기
   width: 80vw;
-  margin-top: 8px;
-  padding: 10px;
+  margin-top: 0px;
+  padding: 0px;
   border: 1px solid black;
 `;
 
@@ -105,7 +105,7 @@ const StyletextSpan = styled.span`
   font-size: 10px;
   color: #5b5b5b;
   position: relative;
-  top: 65px;
+  top: 35px;
   /* padding-left: 30px; */
 `;
 export default Typebtn;

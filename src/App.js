@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute';
 import MemberOnlyPage from './pages/MemberOnlyPage';
 import UploadPage from './pages/UploadPage';
 import Navigationbar from './components/Navigationbar';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   // const isLogin = useSelector((state) => state.isLogin, []);
@@ -36,6 +37,7 @@ function App() {
             <Route path="/signup" component={SignupPage} />
             <Route path="/memberonly" component={MemberOnlyPage} />
             <Route path="/upload" component={UploadPage} />
+            <Route path="/search" component={SearchPage} />
             <PrivateRoute path="/profile" component={MyPage} />
             <Route path="/" component={MainPage} />
 

@@ -11,16 +11,19 @@ import Footer from '../components/Footer';
 function MemberOnlyPage() {
   return (
     <>
-      <div style={{ height: '89vh' }}>
+      <div style={{ height: '89vh', width: '100vw' }}>
         <div
           className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh' }}
+          style={{ backgroundColor: 'red', height: '51vh', width: '100vw' }}
         >
           <div className="template-container">
             <TemplateBlock>
               <h1> Sorry, Member ONLY </h1>
               <Button>
-                <Link to="/login" style={{ textDecoration: 'none' }}>
+                <Link
+                  to="/login"
+                  style={{ textDecoration: 'none', width: '100vw' }}
+                >
                   <Stylespan>로그인 페이지로 이동</Stylespan>
                 </Link>
               </Button>
@@ -28,11 +31,13 @@ function MemberOnlyPage() {
             {/* <Button onClick={onTestFunc}> TEST </Button> */}
           </div>
         </div>
-        <div style={{ backgroundColor: 'blue', height: '38vh' }}>
+        <div
+          style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
+        >
           <span>bottom continer</span>
         </div>
       </div>
-      <div style={{ height: '5vh' }}>
+      <div style={{ height: '5vh', width: '100vw' }}>
         <Footer />
       </div>
     </>
