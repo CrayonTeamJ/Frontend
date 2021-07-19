@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navigationbar from '../components/Navigationbar';
 import LoginBlock from '../components/LoginBlock';
 import Footer from '../components/Footer';
+import Template from '../components/Template';
 
 function MemberOnlyPage() {
   return (
@@ -14,7 +15,8 @@ function MemberOnlyPage() {
       <div className="top-container">
         {/* <span>main</span> */}
         <div className="template-container">
-          <TemplateBlock>
+          <Template>
+            아니 왜안댐
             <h1> Sorry, Member ONLY </h1>
             <Button>
               <Link
@@ -24,7 +26,7 @@ function MemberOnlyPage() {
                 <Stylespan>로그인 페이지로 이동</Stylespan>
               </Link>
             </Button>
-          </TemplateBlock>
+          </Template>
           {/* <Button onClick={onTestFunc}> TEST </Button> */}
         </div>
       </div>
