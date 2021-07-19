@@ -99,7 +99,7 @@ const Navigationbar = (props) => {
             <img src={logo} width="200px" alt="logo" />
           </Link>
           <ul className="nav_user_box">
-            <Timer />
+            <Timer style={{ width: '0.5vh' }} />
             <StyleLabel>{Nickname}</StyleLabel>
             <Link to="/profile" style={{ marginLeft: '10px' }}>
               <ProfileImg src={Profile} alt="profile" />
@@ -159,7 +159,7 @@ const StyleLabel = styled.label`
   font-family: NanumSquare_R;
   color: #000000;
   bottom: 25%;
-  font-size: 15px;
+  font-size: 2vh;
   opacity: 1;
   white-space: nowrap;
   margin-left: 13px;

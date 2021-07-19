@@ -9,21 +9,11 @@ import Footer from '../components/Footer';
 function SigninPage() {
   return (
     <>
-      <div style={{ height: '89vh', width: '100vw' }}>
-        <div
-          className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh', width: '100vw' }}
-        >
-          <LoginBlock />
-        </div>
-        <div
-          style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
-        >
-          <span>bottom continer</span>
-        </div>
+      <div className="top-container">
+        <LoginBlock />
       </div>
-      <div style={{ height: '5vh', width: '100vw' }}>
-        <Footer />
+      <div className="bottom-container">
+        <span>bottom continer</span>
       </div>
     </>
   );

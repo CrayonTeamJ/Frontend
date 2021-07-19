@@ -10,24 +10,20 @@ import Typebtn from '../components/Typebtn';
 function MainPage() {
   return (
     <>
-      <div style={{ height: '89vh', width: '100vw' }}>
-        {/* top container + bottom container */}
-        <div className="top-container">
-          <span>top container</span>
-          {/* <LandingInfo /> */}
-        </div>
-        <div
-          style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
-        >
-          <span>bottom continer</span>
-          <div className="bottom-wrapper">
-            <Typebtn />
-            <Button>
-              <Link to="/upload" style={{ textDecoration: 'none' }}>
-                <Stylespan>시작하기</Stylespan>
-              </Link>
-            </Button>
-          </div>
+      {/* top container + bottom container */}
+      <div className="top-container">
+        <span>top container</span>
+        {/* <LandingInfo /> */}
+      </div>
+      <div className="bottom-container">
+        <span>bottom continer</span>
+        <div className="bottom-wrapper">
+          <Typebtn />
+          <Button>
+            <Link to="/upload" style={{ textDecoration: 'none' }}>
+              <Stylespan>시작하기</Stylespan>
+            </Link>
+          </Button>
         </div>
       </div>
     </>

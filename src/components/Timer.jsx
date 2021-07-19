@@ -130,8 +130,8 @@ function Timer(props) {
 const Timerspan = styled.span`
   font-family: NanumSquare_R;
   color: #696969;
-  bottom: 25%;
-  font-size: 13px;
+  /* bottom: 25%; */
+
   opacity: 1;
   white-space: nowrap;
 `;

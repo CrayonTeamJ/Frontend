@@ -12,33 +12,22 @@ import Radiobtn from '../components/Radiobtn';
 function SearchPage() {
   return (
     <>
-      <div style={{ height: '89vh', width: '100vw' }}>
-        {/* top container + bottom container */}
-        <div
-          className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh', width: '100vw' }}
-        >
-          <span>top container</span>
-          <LandingInfo />
-        </div>
-        <div
-          style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
-        >
-          <span>bottom continer</span>
-          <div className="bottom-wrapper">
-            <div>
-              <InputURL plasceholder="검색어를 입력해 주세요." />
-              <Button>
-                <Link to="/upload" style={{ textDecoration: 'none' }}>
-                  <Stylespan>시작하기</Stylespan>
-                </Link>
-              </Button>
-            </div>
+      <div className="top-container">
+        <span>top container</span>
+        <LandingInfo />
+      </div>
+      <div className="bottom-container">
+        <span>bottom continer</span>
+        <div className="bottom-wrapper">
+          <div>
+            <InputURL plasceholder="검색어를 입력해 주세요." />
+            <Button>
+              <Link to="/upload" style={{ textDecoration: 'none' }}>
+                <Stylespan>시작하기</Stylespan>
+              </Link>
+            </Button>
           </div>
         </div>
-      </div>
-      <div style={{ height: '5vh', width: '100vw' }}>
-        <Footer />
       </div>
     </>
   );
