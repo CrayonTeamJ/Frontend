@@ -1,30 +1,3 @@
-/* button 디자인 (앞쪽-투명버튼)*/
-.nav_user_box .front_btn {
-  width: 95px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #fa605a;
-}
-/* button 디자인 (뒷쪽-빨간버튼) */
-.nav_user_box .back_btn {
-  width: 95px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #fa605a;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
-}
-
 .start_btn {
   width: 13vw;
   height: 5vh;
@@ -206,22 +179,6 @@
   background-color: deeppink;
 }
 
-.template-container {
-  position: absolute;
-  z-index: 1;
-  /* 총 100vw이고  */
-  left: 23vw;
-  width: 55vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
-
-  /* 높이 */
-  top: 18vh;
-  height: 55vh;
-  bottom: 16vh;
-  background-color: lime;
-}
-
 .radio-btn {
   /* position: relative; */
   /* y축기준 중앙 */
@@ -265,28 +222,40 @@ input[type='radio']:checked {
 }
 
 .nav-container {
+  position: fixed;
   width: 100%;
   height: 100%;
   width: 100vw;
   height: 6vh;
 }
 
+/* 부모가 .new-container (static) */
 .main-container {
   width: 100%;
   height: 100%;
   width: 100vw;
   height: 89vh;
+
+  position: relative;
+  top: 6vh;
 }
 
+/* 부모가 main-container(relative) */
 .top-container {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position-y: -36vh;
+  /* background-position-y: -36vh; */
   background-image: url(./img/backimg.png);
 
   height: 51vh;
   width: 100vw;
+
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
 }
 
 .bottom-container {
@@ -298,6 +267,8 @@ input[type='radio']:checked {
 }
 
 .footer-container {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: 100%;
   width: 100vw;
@@ -375,6 +346,32 @@ input[type='radio']:checked {
 } */
 
 /* nav-bar 관련 end */
+
+/* top-container 내부 start */
+
+/* template(login, register, register완료(환영창), member only */
+/* 부모가 .top-container(static) */
+.template-container {
+  /* 컨테이너 크기 */
+  width: 50vw;
+  height: 60vh;
+
+  /* 위치설정 -> 부모가 static -> relative*/
+  position: relative;
+  top: 18vh; /* 위에서 부터 18vh떨어진 시점 */
+
+  /* 맨뒤로 설정과 유사 */
+  z-index: 1;
+
+  /* padding */
+  padding: 1vh;
+
+  background-color: lime;
+}
+
+/* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */
+
+/* top-container 내부 end */
 
 .App {
   text-align: center;

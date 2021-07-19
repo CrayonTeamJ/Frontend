@@ -10,7 +10,9 @@ function SigninPage() {
   return (
     <>
       <div className="top-container">
-        <LoginBlock />
+        <div className="template-container">
+          <LoginBlock />
+        </div>
       </div>
       <div className="bottom-container">
         <span>bottom continer</span>

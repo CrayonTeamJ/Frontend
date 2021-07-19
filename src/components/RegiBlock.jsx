@@ -217,7 +217,7 @@ function RegiBlock(props) {
 
   if (isRegistraionSuccess) {
     return (
-      <div className="template-container">
+      <>
         <TemplateBlock>
           <h1> WELCOME TO SEAFLAG </h1>
           <img src={regsuccess} width="150" alt="succ_img" />
@@ -232,12 +232,12 @@ function RegiBlock(props) {
             </Link>
           </Button>
         </TemplateBlock>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="template-container">
+    <>
       <TemplateBlock>
         <h1> SIGN UP </h1>
         <InsertForm onSubmit={onSubmitHandler}>
@@ -264,7 +264,7 @@ function RegiBlock(props) {
           <Button onClick={onSubmitHandler}> Register </Button>
         </InsertForm>
       </TemplateBlock>
-    </div>
+    </>
   );
 }
 

@@ -114,7 +114,7 @@ function LoginBlock(props) {
   };
 
   return (
-    <div className="template-container">
+    <>
       <TemplateBlock>
         <h1> SIGN IN </h1>
         <InsertForm style={{ marginBottom: '15px' }}>
@@ -137,7 +137,7 @@ function LoginBlock(props) {
         </InsertForm>
       </TemplateBlock>
       {/* <Button onClick={onTestFunc}> TEST </Button> */}
-    </div>
+    </>
   );
 }
 

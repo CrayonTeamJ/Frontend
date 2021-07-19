@@ -9,8 +9,9 @@ function SignupPage() {
   return (
     <>
       <div className="top-container">
-        <span>top container</span>
-        <RegiBlock />
+        <div className="template-container">
+          <RegiBlock />
+        </div>
       </div>
       <div className="bottom-container">
         <span>bottom continer</span>
