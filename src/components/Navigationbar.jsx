@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../img/seaflag.svg';
 import profile from '../img/profile.png';
-import Navbtn from './Navbtn';
 import styled from 'styled-components';
 import Timer from './Timer';
 import { useSelector, useDispatch } from 'react-redux';
@@ -96,17 +95,17 @@ const Navigationbar = (props) => {
     return (
       <div className="navbar">
         <div className="nav_inner">
-          <Link to="/home" style={{ marginLeft: '20px' }}>
-            <img src={logo} width="200" alt="logo" />
+          <Link to="/home" style={{ marginLeft: '10px', width: '50vw' }}>
+            <img src={logo} width="200px" alt="logo" />
           </Link>
           <ul className="nav_user_box">
             <Timer />
             <StyleLabel>{Nickname}</StyleLabel>
             <Link to="/profile" style={{ marginLeft: '10px' }}>
-              <ProfileImg src={Profile} width="200" alt="profile" />
+              <ProfileImg src={Profile} alt="profile" />
             </Link>
-            <Button onClick={onLogoutHandler}>
-              <StyleSpan>LOGOUT</StyleSpan>
+            <Button color="#fa605a" onClick={onLogoutHandler}>
+              <StyleSpan color="white">LOGOUT</StyleSpan>
             </Button>
           </ul>
         </div>
@@ -118,22 +117,20 @@ const Navigationbar = (props) => {
   return (
     <div className="navbar">
       <div className="nav_inner">
-        <Link to="/home" style={{ marginLeft: '20px' }}>
-          <img src={logo} width="200" alt="logo" />
+        <Link to="/home" style={{ marginLeft: '10px' }}>
+          <img src={logo} width="200px" alt="logo" />
         </Link>
         <ul className="nav_user_box">
-          <Navbtn
-            btntype="LOGIN"
-            btnlink="/login"
-            className="front_btn"
-            color="#fa605a"
-          />
-          <Navbtn
-            btntype="Register"
-            btnlink="/signup"
-            className="back_btn"
-            color="white"
-          />
+          <Button>
+            <Link to="/login" color="white">
+              <StyleSpan color="#fa605a">LOGIN</StyleSpan>
+            </Link>
+          </Button>
+          <Button color="#fa605a">
+            <Link to="/signup">
+              <StyleSpan color="white">Register</StyleSpan>
+            </Link>
+          </Button>
         </ul>
       </div>
     </div>
@@ -143,7 +140,7 @@ const Navigationbar = (props) => {
 const StyleSpan = styled.span`
   position: absolute;
   font-family: NanumSquare_R;
-  color: white;
+  color: ${(props) => props.color};
   bottom: 25%;
   font-size: 12px;
   opacity: 1;
@@ -154,13 +151,13 @@ const StyleSpan = styled.span`
 
 const ProfileImg = styled.img`
   border-radius: 100px;
-  height: 45px;
-  width: 45px;
+  height: 4.5vh;
+  /* width: 4.5vw; */
 `;
 
 const StyleLabel = styled.label`
   font-family: NanumSquare_R;
-  color: black;
+  color: #000000;
   bottom: 25%;
   font-size: 15px;
   opacity: 1;
@@ -169,7 +166,7 @@ const StyleLabel = styled.label`
 `;
 
 const Button = styled.button`
-  background: #fa605a;
+  background: ${(props) => props.color};
 
   z-index: 5;
   cursor: pointer;
@@ -185,7 +182,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 95px;
+  width: 10vw;
   height: 30px;
   position: relative;
   margin-left: 10px;
@@ -194,6 +191,7 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
 
+  border: 1px solid #fa605a;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 

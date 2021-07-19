@@ -12,12 +12,9 @@ function MainPage() {
     <>
       <div style={{ height: '89vh', width: '100vw' }}>
         {/* top container + bottom container */}
-        <div
-          className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh', width: '100vw' }}
-        >
+        <div className="top-container">
           <span>top container</span>
-          <LandingInfo />
+          {/* <LandingInfo /> */}
         </div>
         <div
           style={{ backgroundColor: 'blue', height: '38vh', width: '100vw' }}
@@ -32,9 +29,6 @@ function MainPage() {
             </Button>
           </div>
         </div>
-      </div>
-      <div style={{ height: '5vh', width: '100vw' }}>
-        <Footer />
       </div>
     </>
   );

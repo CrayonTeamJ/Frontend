@@ -2,7 +2,6 @@
 /* eslint-disable import/order */
 import React from 'react';
 import '../App.css';
-import Navbtn from './Navbtn';
 import styled from 'styled-components';
 import LandingInfo from './LandingInfo';
 

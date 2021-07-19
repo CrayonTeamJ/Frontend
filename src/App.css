@@ -1,32 +1,3 @@
-.navbar {
-  padding: 2.5px;
-  background-color: white;
-}
-
-.nav_inner {
-  flex: 1;
-  background-color: aqua;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav_user_box {
-  flex: 0.5;
-  background-color: blue;
-  /* 내부 아이템 옆으로 늘어트려서 정렬  */
-  display: flex;
-  /* y축기준 중앙 */
-  align-items: center;
-  /* y축 기준 내부에 요소들 끝으로 붙이기 */
-  justify-content: flex-end;
-  /* <ul>tag 앞에 동그라미 제거 */
-  list-style: none;
-  padding: 0;
-  margin: 0px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
 /* button 디자인 (앞쪽-투명버튼)*/
 .nav_user_box .front_btn {
   width: 95px;
@@ -119,6 +90,9 @@
   background-size: cover;
   background-position-y: -36vh;
   background-image: url(./img/backimg.png);
+
+  height: 51vh;
+  width: 100vw;
 }
 
 .back-container2 {
@@ -281,6 +255,126 @@ input[type='radio']:checked {
   height: 0.9rem;
   background-color: no-repeat s#404040;
 } */
+
+/* 전체 구조 (container) start */
+.new-container {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.nav-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 6vh;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 89vh;
+}
+
+.top-container {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position-y: -36vh;
+  background-image: url(./img/backimg.png);
+
+  height: 51vh;
+  width: 100vw;
+}
+
+.bottom-container {
+  width: 100%;
+  height: 100%;
+  height: 38vh;
+  width: 100vw;
+  background-color: yellow;
+}
+
+.footer-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  font-family: NanumSquare_L;
+  font-size: 1.5vh;
+  background-color: hotpink;
+}
+
+/* 전체구조 end */
+
+/* nav-bar 관련 start */
+.navbar {
+  padding: 2.5px;
+  background-color: white;
+}
+
+.nav_inner {
+  background-color: aqua;
+  display: flex;
+  /* 내부요소-로고이미지 y축 중앙정렬 */
+  align-items: center;
+  justify-content: space-between;
+  height: 5vh;
+}
+
+.nav_user_box {
+  background-color: coral;
+  /* 내부 아이템 옆으로 늘어트려서 정렬  */
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: flex-end;
+  /* <ul>tag 앞에 동그라미 제거 */
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 30vw;
+}
+
+/* button 디자인 (앞쪽-투명버튼)*/
+/* .nav_user_box .front_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #fa605a;
+} */
+/* button 디자인 (뒷쪽-빨간버튼) */
+/* .nav_user_box .back_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fa605a;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); 
+} */
+
+/* nav-bar 관련 end */
 
 .App {
   text-align: center;

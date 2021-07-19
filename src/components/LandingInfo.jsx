@@ -3,7 +3,7 @@
 /* eslint-disable import/order */
 import React from 'react';
 import '../App.css';
-import Navbtn from './Navbtn';
+
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import audio from '../img/conversation.png';
@@ -47,13 +47,6 @@ function LandingInfo() {
             <br />
             <span style={{ fontSize: '55px' }}>원하는 부분만.</span>
           </div>
-        </div>
-        <div className="landing-slide-button">
-          {/* <Button>
-            <Link to="/upload" style={{ textDecoration: 'none' }}>
-              <Stylespan>시작하기</Stylespan>
-            </Link>
-          </Button> */}
         </div>
       </div>
     </>
