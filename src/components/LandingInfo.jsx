@@ -23,7 +23,7 @@ const Types = [
 function LandingInfo() {
   return (
     <>
-      <div className="landing-info">
+      <div className="top-wrapper">
         <div className="landing-slide-slogan" style={{ display: 'flex' }}>
           {Types.map((type) => (
             <Label htmlFor={type.name} img={type.img}>
@@ -35,7 +35,7 @@ function LandingInfo() {
                   transform: 'translate(50%, 50%)',
                 }}
               />
-              <StyleSpanE>{type.title}</StyleSpanE>
+              <StyleSpan>{type.title}</StyleSpan>
               <br />
               <StyletextSpan>{type.text}</StyletextSpan>
             </Label>
@@ -53,32 +53,6 @@ function LandingInfo() {
   );
 }
 
-const Button = styled.button`
-  background: #fa605a;
-  z-index: 5;
-  cursor: pointer;
-
-  display: block;
-  font-size: 20px;
-
-  color: white;
-  border-radius: 5%;
-  border: none;
-  outline: none;
-  display: flex;
-
-  width: 12vw;
-  height: 6vh;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 50px;
-  cursor: pointer;
-
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
-`;
-
 const Stylespan = styled.span`
   position: relative;
   font-family: NanumSquare_B;
@@ -89,15 +63,6 @@ const Stylespan = styled.span`
   white-space: nowrap;
 `;
 
-const ColorSelectorContainer = styled.div`
-  display: flex; // 내부 애들 옆으로 배치 가능하게하기
-  justify-content: space-between; // 내부 애들 간격 일정하게 떨어지게하기
-  width: 80vw;
-  margin-top: 0px;
-  padding: 0px;
-  border: 1px solid black;
-`;
-
 // 버튼모양
 const Label = styled.label`
   display: inline-block;
@@ -105,8 +70,8 @@ const Label = styled.label`
   padding-bottom: 3vh;
   padding-left: 3vh;
   padding-right: 3vh;
-  width: 200px;
-  height: 200px;
+  width: 15vw;
+  height: 27vh;
   border-radius: 25px;
   background-color: white;
   /* background: no-repeat center url(${(props) => props.img}) white;
@@ -124,11 +89,14 @@ const RadioButton = styled.input`
   }
 `;
 
-const StyleSpanE = styled.span`
+const StyleSpan = styled.span`
   font-family: NanumSquare_EB;
-  position: relative;
-  font-size: 15px;
-  top: 30px;
+  position: absolute;
+  font-size: 16px;
+  /* display: inline; */
+  bottom: 1vh;
+  padding-bottom: 5px;
+  letter-spacing: 0px;
   /* margin-left: 30px;
   margin-top: 100px; */
 `;
@@ -137,7 +105,10 @@ const StyletextSpan = styled.span`
   font-family: NanumSquare_L;
   font-size: 10px;
   color: #5b5b5b;
-  top: 0px;
+  position: absolute;
+  bottom: -1.5vh;
+  letter-spacing: 0px;
+  /* line-height: 1.5vh; */
   /* padding-left: 30px; */
 `;
 

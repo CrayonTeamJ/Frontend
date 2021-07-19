@@ -1,81 +1,3 @@
-.start_btn {
-  width: 13vw;
-  height: 5vh;
-  position: relative;
-  display: block;
-  text-align: center;
-  border-radius: 50px;
-  cursor: pointer;
-  background-color: #fa605a;
-}
-
-/* 삭제될듯? */
-.btn_log {
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #85bcbe;
-}
-
-.logbtn {
-  margin-left: 5px;
-  background-color: #85bcbe;
-  font-family: 'NanumSquare_L';
-  text-decoration: none;
-  color: white;
-}
-
-.container {
-  flex: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  background-color: #282c34;
-  /* background-image: url(./img/background.svg); */
-}
-
-.back-container {
-  display: block;
-  padding-top: 8.3333vw;
-  width: 100vw;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  /* overflow: hidden; */
-  /* list-style: none; */
-  padding: 0;
-  z-index: 1;
-  background-color: darkgreen;
-}
-
-.top-container {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position-y: -36vh;
-  background-image: url(./img/backimg.png);
-
-  height: 51vh;
-  width: 100vw;
-}
-
-.back-container2 {
-  background-color: darkgreen;
-}
-
-.below-container {
-  background-color: gold;
-}
-
 .footer {
   display: flex;
   /* y축기준 중앙 */
@@ -102,76 +24,6 @@
   background-repeat: no-repeat;
   /* height: 809px; */
   background-color: darkgrey;
-}
-
-.landing-info {
-  position: absolute;
-  z-index: 1;
-  /* 총 100vw이고  */
-  left: 10vw;
-  /* width: 1000px; */
-  padding-left: 20px;
-  padding-right: 20px;
-  width: 80vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
-
-  /* 높이 */
-  top: 16vh;
-  height: 32vh;
-  bottom: 16vh;
-
-  background-color: gold;
-}
-
-.landing-info .landing-slide-slogan {
-  margin: 0.5vw;
-
-  /* 정렬 */
-  text-align: left;
-
-  font-size: 45px;
-  font-family: NanumSquare_EB;
-  /* 자간 */
-  letter-spacing: 2.5px;
-  /* 행간 */
-  line-height: 65px;
-  background-color: lightgreen;
-}
-
-.landing-info .landing-slide-button {
-  margin: 0.5vw;
-  height: 6vh;
-  display: flex;
-  /* y축기준 중앙 */
-  align-items: center;
-  /* y축 기준 내부에 요소들 끝으로 붙이기 */
-  justify-content: flex-start;
-  background-color: darkslategray;
-}
-
-.bottom-wrapper {
-  padding: 20px;
-
-  position: absolute;
-  z-index: 1;
-  /* 총 100vw이고  */
-  left: 10vw;
-  /* width: 1000px; */
-  width: 80vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
-  /* 높이 */
-  top: 53vh;
-  height: 35vh;
-  bottom: 16vh;
-
-  /* bottom wrapper끼리 줄간격(?) */
-  line-height: 30px;
-  background-color: lightpink;
-
-  /* 라디오 버튼 중앙정렬 */
-  text-align: center;
 }
 
 .landing-slide-img {
@@ -246,10 +98,10 @@ input[type='radio']:checked {
   width: 100%;
   height: 100%;
   background-size: cover;
-  /* background-position-y: -36vh; */
+  background-position-y: -36vh;
   background-image: url(./img/backimg.png);
 
-  height: 51vh;
+  height: 48vh;
   width: 100vw;
 
   display: flex;
@@ -262,9 +114,15 @@ input[type='radio']:checked {
 .bottom-container {
   width: 100%;
   height: 100%;
-  height: 38vh;
+  height: 41vh;
   width: 100vw;
   background-color: yellow;
+
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
 }
 
 .footer-container {
@@ -372,7 +230,63 @@ input[type='radio']:checked {
 
 /* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */
 
+.top-wrapper {
+  /* 크기 */
+  height: 32vh;
+  width: 80vw;
+
+  /* 위치 설정 */
+  position: relative;
+  top: 0vh;
+  z-index: 1;
+
+  background-color: gold;
+}
+
+.top-wrapper .landing-slide-slogan {
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+
+  height: 31vh;
+  width: 79vw;
+  /* 정렬 */
+  text-align: left;
+
+  font-size: 45px;
+  font-family: NanumSquare_EB;
+  /* 자간 */
+  letter-spacing: 2.5px;
+  /* 행간 */
+  line-height: 65px;
+  background-color: lightgreen;
+}
+
 /* top-container 내부 end */
+
+/* bottom-container 내부 start */
+
+.bottom-wrapper {
+  /* 크기 */
+  width: 80vw;
+  height: 35vh;
+
+  /* 위치 */
+  position: relative;
+  z-index: 1;
+  bottom: 7vh;
+  /* left: 10vw; */
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  background-color: lightpink;
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+}
+
+/* bottom-container 내부 end */
 
 .App {
   text-align: center;

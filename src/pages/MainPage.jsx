@@ -12,11 +12,11 @@ function MainPage() {
     <>
       {/* top container + bottom container */}
       <div className="top-container">
-        <span>top container</span>
-        {/* <LandingInfo /> */}
+        {/* <span>top container</span> */}
+        <LandingInfo />
       </div>
       <div className="bottom-container">
-        <span>bottom continer</span>
+        {/* <span>bottom continer</span> */}
         <div className="bottom-wrapper">
           <Typebtn />
           <Button>
@@ -40,7 +40,7 @@ const Button = styled.button`
   color: white;
 
   border: none;
-  margin-top: 50px;
+  margin-top: 3vh;
   width: 12vw;
   height: 6vh;
 
@@ -56,7 +56,7 @@ const Stylespan = styled.span`
   position: relative;
   font-family: NanumSquare_B;
   color: white;
-  font-size: 25px;
+  font-size: 2vw;
   // font-size: 1.6vw;
   opacity: 1;
   white-space: nowrap;

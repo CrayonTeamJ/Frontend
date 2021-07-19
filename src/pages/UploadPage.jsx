@@ -13,11 +13,9 @@ function UploadPage() {
   return (
     <>
       <div className="top-container">
-        <span>top container</span>
         <LandingInfo />
       </div>
       <div className="bottom-container">
-        <span>bottom continer</span>
         <div className="bottom-wrapper">
           <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
           <Radiobtn type="Video type : " A="FILE" B="URL" />

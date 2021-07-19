@@ -22,7 +22,7 @@ const Types = [
     name: 'both',
     img: both,
     title: '대사 & 인물 검색',
-    text: '영상에 등장하는 인물이 특정 대사를 하는 장면을 검색해 보세요',
+    text: '영상에 등장하는 인물이 대사를 하는 장면을 검색해 보세요',
   },
 ];
 function Typebtn() {
@@ -63,7 +63,7 @@ const ColorSelectorContainer = styled.div`
   width: 80vw;
   margin-top: 0px;
   padding: 0px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 // 버튼모양
@@ -93,9 +93,11 @@ const RadioButton = styled.input`
 `;
 
 const StyleSpan = styled.span`
-  font-family: NanumSquare_B;
-  position: relative;
-  top: 60px;
+  font-family: NanumSquare_EB;
+  position: absolute;
+  /* display: inline; */
+  bottom: 7vh;
+  padding-bottom: 5px;
   /* margin-left: 30px;
   margin-top: 100px; */
 `;
@@ -104,8 +106,9 @@ const StyletextSpan = styled.span`
   font-family: NanumSquare_L;
   font-size: 10px;
   color: #5b5b5b;
-  position: relative;
-  top: 35px;
+  position: absolute;
+  bottom: 4vh;
+  /* line-height: 1.5vh; */
   /* padding-left: 30px; */
 `;
 export default Typebtn;
