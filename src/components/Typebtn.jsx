@@ -74,11 +74,13 @@ const Label = styled.label`
   padding-left: 3vh;
   padding-right: 3vh;
   width: 15vw;
-  height: 15vw;
+  height: 27vh;
   border-radius: 25px;
   background-color: white;
-  /* background: no-repeat center url(${(props) => props.img}) white;
-  background-image: ${(props) => props.img}; */
+  
+  position:relative;
+
+
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
   text-align: start;
 `;

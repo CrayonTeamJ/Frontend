@@ -51,6 +51,7 @@ const Button = styled.button`
   /* text-align: center; */
   border-radius: 50px;
 
+
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
@@ -59,6 +60,11 @@ const Stylespan = styled.span`
   font-family: NanumSquare_B;
   color: white;
   font-size: 2vw;
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* 축중앙 */
+  justify-content: center;
   // font-size: 1.6vw;
   opacity: 1;
   white-space: nowrap;
