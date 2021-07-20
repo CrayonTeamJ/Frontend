@@ -87,9 +87,9 @@ function UploadPage() {
     //   video_url: url,
     // });
 
-    submitData.append('language', 'ssibal');
+    submitData.append('language', lang);
     submitData.append('video_type', category);
-    submitData.append('video_url', url);
+    submitData.append('video_url', link);
     console.log('submitData for url');
     console.log(submitData.language);
 
