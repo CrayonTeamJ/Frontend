@@ -50,15 +50,15 @@ function UploadPage() {
     }
   };
 
-  const onSubmitFile = (file) => {
+  const onSubmitFile = (videofile) => {
     const submitData = new FormData();
     // const video_file = document.getElementById('local_file');
 
-    submitData.append({
-      language: lang,
-      video_type: category,
-      files: file.files[0],
-    });
+    submitData.append('language', lang);
+    submitData.append('video_type', category);
+    submitData.append('file', videofile.files[0]);
+    console.log('submitData for url');
+    console.log(submitData.language);
 
     console.log('submitData for file');
     console.log(submitData);
