@@ -34,13 +34,9 @@ function UploadPage() {
         ? 'null'
         : document.getElementById('local_file');
 
-    const video_url = link === '' ? 'null' : { link };
-
-    console.log('video_url');
-    console.log(video_url);
 
     if (category === '0') {
-      onSubmitUrl(video_url);
+      onSubmitUrl();
     } else if (category === '1') {
       onSubmitFile(video_file);
     }
@@ -53,11 +49,7 @@ function UploadPage() {
     submitData.append('language', lang);
     submitData.append('video_type', category);
     submitData.append('file', videofile.files[0]);
-    console.log('submitData for url');
-    console.log(submitData.language);
 
-    console.log('submitData for file');
-    console.log(submitData);
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
         headers: {
@@ -66,7 +58,9 @@ function UploadPage() {
       })
       .then((res) => {
         // 응답 처리
-        console.log(res);
+        if(res.data.Result==="Success"){
+          console.log("s3업로드 완료")
+        }
       })
       .catch((err) => {
         // 예외 처리
@@ -74,14 +68,12 @@ function UploadPage() {
       });
   };
 
-  const onSubmitUrl = (url) => {
+  const onSubmitUrl = () => {
     const submitData = new FormData();
 
     submitData.append('language', lang);
     submitData.append('video_type', category);
     submitData.append('video_url', link);
-    console.log('submitData for url');
-    console.log(submitData.language);
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -91,7 +83,9 @@ function UploadPage() {
       })
       .then((res) => {
         // 응답 처리
-        console.log(res);
+        if(res.data.Result==="Success"){
+          console.log("s3업로드 완료")
+        }
       })
       .catch((err) => {
         // 예외 처리
