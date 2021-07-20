@@ -270,12 +270,12 @@ input[type='radio']:checked {
 .bottom-wrapper {
   /* 크기 */
   width: 80vw;
-  height: 35vh;
+  height: 42vh;
 
   /* 위치 */
   position: relative;
   z-index: 1;
-  bottom: 7vh;
+  bottom: 4.5vh;
   /* left: 10vw; */
 
   /* bottom wrapper끼리 줄간격(?) */
@@ -284,6 +284,18 @@ input[type='radio']:checked {
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
+}
+
+.bottom-wrapper .button-pos {
+  /* 크기 */
+  width: 80vw;
+  margin-top: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: blueviolet;
 }
 
 /* bottom-container 내부 end */

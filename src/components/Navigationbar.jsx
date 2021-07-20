@@ -183,7 +183,7 @@ const Button = styled.button`
   justify-content: center;
 
   width: 10vw;
-  height: 30px;
+  height: 3.5vh;
   position: relative;
   margin-left: 10px;
   display: block;

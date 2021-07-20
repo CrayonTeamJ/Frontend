@@ -19,11 +19,13 @@ function MainPage() {
         {/* <span>bottom continer</span> */}
         <div className="bottom-wrapper">
           <Typebtn />
-          <Button>
-            <Link to="/upload" style={{ textDecoration: 'none' }}>
-              <Stylespan>시작하기</Stylespan>
-            </Link>
-          </Button>
+          <div className="button-pos">
+            <Button>
+              <Link to="/upload" style={{ textDecoration: 'none' }}>
+                <Stylespan>시작하기</Stylespan>
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </>

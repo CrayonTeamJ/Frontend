@@ -25,7 +25,7 @@ function LandingInfo() {
     <>
       <div className="top-wrapper">
         <div className="landing-slide-slogan" style={{ display: 'flex' }}>
-          {Types.map((type) => (
+          {/* {Types.map((type) => (
             <Label htmlFor={type.name} img={type.img}>
               <img
                 src={type.img}
@@ -39,7 +39,7 @@ function LandingInfo() {
               <br />
               <StyletextSpan>{type.text}</StyletextSpan>
             </Label>
-          ))}
+          ))} */}
           <div style={{ marginLeft: '15px' }}>
             <span>원하는 인물을,</span>
             <br />

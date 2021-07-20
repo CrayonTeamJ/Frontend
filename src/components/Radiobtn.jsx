@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 function Radiobtn(props) {
   return (
-    <div style={{ padding: '10px' }}>
+    <div style={{ padding: '5px' }}>
       <form>
         <Label>{props.type}</Label>
         <input type="radio" id="huey" name="drone" value="huey" checked />

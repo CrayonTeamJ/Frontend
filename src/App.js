@@ -41,7 +41,7 @@ function App() {
               <Route path="/upload" component={UploadPage} />
               <Route path="/search" component={SearchPage} />
               <Route path="/profile" component={MyPage} />
-              <Route path="/" component={MainPage} />
+              <Route path="/" component={UploadPage} />
             </Switch>
           </div>
           <div className="footer-container">

@@ -22,7 +22,7 @@ const Types = [
     name: 'both',
     img: both,
     title: '대사 & 인물 검색',
-    text: '영상에 등장하는 인물이 대사를 하는 장면을 검색해 보세요',
+    text: '영상에 등장하는 인물&대사 장면을 검색해 보세요',
   },
 ];
 function Typebtn() {
@@ -74,7 +74,7 @@ const Label = styled.label`
   padding-left: 3vh;
   padding-right: 3vh;
   width: 15vw;
-  height: 27vh;
+  height: 15vw;
   border-radius: 25px;
   background-color: white;
   /* background: no-repeat center url(${(props) => props.img}) white;
@@ -94,10 +94,13 @@ const RadioButton = styled.input`
 
 const StyleSpan = styled.span`
   font-family: NanumSquare_EB;
-  position: absolute;
+  position: relative;
+  top: 7vh;
+  font-size: 15px;
   /* display: inline; */
-  bottom: 7vh;
+  /* bottom: 14vw; */
   padding-bottom: 5px;
+  line-height: 0vh;
   /* margin-left: 30px;
   margin-top: 100px; */
 `;
@@ -106,9 +109,10 @@ const StyletextSpan = styled.span`
   font-family: NanumSquare_L;
   font-size: 10px;
   color: #5b5b5b;
-  position: absolute;
-  bottom: 4vh;
-  /* line-height: 1.5vh; */
+  position: relative;
+  top: 6vh;
+  /* bottom: 12vh; */
+  line-height: 0vh;
   /* padding-left: 30px; */
 `;
 export default Typebtn;
