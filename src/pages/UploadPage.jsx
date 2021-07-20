@@ -1,8 +1,11 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import '../App.css';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Navigationbar from '../components/Navigationbar';
 import Footer from '../components/Footer';
 import LandingInfo from '../components/LandingInfo';
@@ -10,9 +13,101 @@ import Typebtn from '../components/Typebtn';
 import Radiobtn from '../components/Radiobtn';
 
 function UploadPage() {
-  const [lang, setLang] = React.useState('');
-  const [category, setCategory] = React.useState('1');
+  const [lang, setLang] = React.useState('ko-KR');
+  const [category, setCategory] = React.useState('0');
   const [link, setLink] = React.useState('');
+
+  const onSelectLang = (e) => {
+    setLang(e.target.value);
+    console.log(lang);
+  };
+
+  const onSelectCategory = (e) => {
+    setCategory(e.target.value);
+    console.log(category);
+  };
+
+  const onChangeURL = (e) => {
+    setLink(e.target.value);
+    console.log(link);
+  };
+
+  const onSubmitHandler = (e) => {
+    const video_file =
+      document.getElementById('local_file') === null
+        ? 'null'
+        : document.getElementById('local_file');
+
+    const video_url = link === '' ? 'null' : { link };
+
+    console.log('video_url');
+    console.log(video_url);
+
+    if (category === '0') {
+      onSubmitUrl(video_url);
+    } else if (category === '1') {
+      onSubmitFile(video_file);
+    }
+  };
+
+  const onSubmitFile = (file) => {
+    const submitData = new FormData();
+    // const video_file = document.getElementById('local_file');
+
+    submitData.append({
+      language: lang,
+      video_type: category,
+      files: file.files[0],
+    });
+
+    console.log('submitData for file');
+    console.log(submitData);
+    axios
+      .post('http://localhost:5000/api/videoUpload', submitData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => {
+        // 응답 처리
+        console.log(res);
+      })
+      .catch((err) => {
+        // 예외 처리
+        console.log(err);
+      });
+  };
+
+  const onSubmitUrl = (url) => {
+    const submitData = new FormData();
+
+    // submitData.append({
+    //   language: lang,
+    //   video_type: category,
+    //   video_url: url,
+    // });
+
+    submitData.append('language', 'ssibal');
+    submitData.append('video_type', category);
+    submitData.append('video_url', url);
+    console.log('submitData for url');
+    console.log(submitData.language);
+
+    axios
+      .post('http://localhost:5000/api/videoUpload', submitData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => {
+        // 응답 처리
+        console.log(res);
+      })
+      .catch((err) => {
+        // 예외 처리
+        console.log(err);
+      });
+  };
 
   return (
     <>
@@ -22,18 +117,67 @@ function UploadPage() {
       <div className="bottom-container">
         <div className="bottom-wrapper">
           <div style={{ padding: '50px' }}>
-            <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
-            <Radiobtn type="Video type : " A="FILE" B="URL" />
-            {category === '0' ? (
-              <InputURL placeholder="youtube link를 입력해 주세요." />
-            ) : (
-              <InputFILE type="file" />
-            )}
+            <div style={{ padding: '5px' }}>
+              <Label>Language : </Label>
+              <input
+                type="radio"
+                id="kor"
+                name="kor"
+                value="ko-KR"
+                checked={lang === 'ko-KR'}
+                onChange={onSelectLang}
+              />
+              <Label htmlFor="ko-KR">KOREAN</Label>
+              <input
+                type="radio"
+                id="eng"
+                name="eng"
+                value="eu-US"
+                checked={lang === 'eu-US'}
+                onChange={onSelectLang}
+              />
+              <Label htmlFor="eu-US">ENGLISH</Label>
+            </div>
+            <div style={{ padding: '5px' }}>
+              <Label>Video type : </Label>
+              <input
+                type="radio"
+                id="youtube"
+                name="youtube"
+                value="0"
+                checked={category === '0'}
+                onChange={onSelectCategory}
+              />
+              <Label htmlFor="youtube">URL</Label>
+              <input
+                type="radio"
+                id="local"
+                name="local"
+                value="1"
+                checked={category === '1'}
+                onChange={onSelectCategory}
+              />
+              <Label htmlFor="local">FILE</Label>
+            </div>
+
+            {/* <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
+            <Radiobtn type="Video type : " A="FILE" B="URL" /> */}
+            <form encType="multipart/form-data">
+              {category === '0' ? (
+                <InputURL
+                  placeholder="youtube link를 입력해 주세요."
+                  value={link}
+                  onChange={onChangeURL}
+                />
+              ) : (
+                <InputFILE type="file" name="local_file" id="local_file" />
+              )}
+            </form>
           </div>
 
           <div className="button-pos">
-            <Button>
-              <Link to="/upload" style={{ textDecoration: 'none' }}>
+            <Button onClick={onSubmitHandler}>
+              <Link to="/home" style={{ textDecoration: 'none' }}>
                 <Stylespan>시작하기</Stylespan>
               </Link>
             </Button>
@@ -99,6 +243,12 @@ const InputFILE = styled.input`
   display: absolute;
 
   transform: translate(20%);
+`;
+
+// 버튼모양
+const Label = styled.label`
+  font-family: NanumSquare_EB;
+  color: #404040;
 `;
 
 export default UploadPage;
