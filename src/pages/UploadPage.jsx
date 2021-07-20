@@ -6,11 +6,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Navigationbar from '../components/Navigationbar';
-import Footer from '../components/Footer';
 import LandingInfo from '../components/LandingInfo';
-import Typebtn from '../components/Typebtn';
-import Radiobtn from '../components/Radiobtn';
 
 function UploadPage() {
   const [lang, setLang] = React.useState('ko-KR');
@@ -80,12 +76,6 @@ function UploadPage() {
 
   const onSubmitUrl = (url) => {
     const submitData = new FormData();
-
-    // submitData.append({
-    //   language: lang,
-    //   video_type: category,
-    //   video_url: url,
-    // });
 
     submitData.append('language', lang);
     submitData.append('video_type', category);
