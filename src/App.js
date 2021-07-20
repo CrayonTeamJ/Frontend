@@ -34,14 +34,13 @@ function App() {
           </div>
           <div className="main-container">
             <Switch>
-              <Route path="/home" component={MainPage} />
               <Route path="/login" component={SigninPage} />
               <Route path="/signup" component={SignupPage} />
               <Route path="/memberonly" component={MemberOnlyPage} />
-              <Route path="/upload" component={UploadPage} />
-              <Route path="/search" component={SearchPage} />
-              <Route path="/profile" component={MyPage} />
+              <Route path="/search" component={MainPage} />
               <Route path="/" component={UploadPage} />
+              {/* <Route path="/search" component={SearchPage} />
+              <Route path="/profile" component={MyPage} /> */}
             </Switch>
           </div>
           <div className="footer-container">
