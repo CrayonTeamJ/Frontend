@@ -145,6 +145,7 @@ function MainPage() {
                 <Input placeholder={placehold} />
                 <Input placeholder={placehold} />
                 <Input placeholder={placehold} />
+                <Input placeholder={placehold} />
               </div>
               {Errtxt}
               <div className="button-pos">
