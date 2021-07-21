@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-use-before-define */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
@@ -7,7 +8,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
+import { video_initID } from '../redux/videos';
 
 function UploadPage() {
   const [lang, setLang] = React.useState('ko-KR');
@@ -15,6 +18,7 @@ function UploadPage() {
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onSelectLang = (e) => {
     setLang(e.target.value);
@@ -74,6 +78,7 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
+          dispatch(video_initID(res.data.video_pk));
           history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
@@ -104,6 +109,7 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
+          dispatch(video_initID(res.data.video_pk));
           history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
@@ -141,11 +147,11 @@ function UploadPage() {
                 id="eng"
                 name="eng"
                 value="en-US"
-                checked={lang === 'eu-US'}
+                checked={lang === 'en-US'}
                 onChange={onSelectLang}
                 å
               />
-              <Label htmlFor="eu-US">ENGLISH</Label>
+              <Label htmlFor="en-US">ENGLISH</Label>
             </div>
             <div style={{ padding: '5px' }}>
               <Label>Video type : </Label>

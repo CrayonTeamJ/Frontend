@@ -4,6 +4,8 @@ import '../App.css';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Footer from '../components/Footer';
 import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
@@ -25,44 +27,54 @@ function MainPage() {
   const [searchAud, setSearchAud] = React.useState('');
   const [searchVid, setSearchVid] = React.useState('');
 
+  // redux state(video_pk)
+  const id = useSelector((state) => state.id, []);
+
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
     console.log(category);
-
-    // if (category === 'image') {
-    //   console.log(category);
-    //   setTxt('인물');
-    //   setImg({ image });
-    //   setPlacehold('인물을 검색해 보세요');
-    // } else if (category === 'audio') {
-    //   console.log(category);
-    //   setTxt('대사');
-    //   setImg({ audio });
-    //   setPlacehold('대사를 검색해 보세요');
-    // } else if (category === 'both') {
-    //   console.log(category);
-    //   setTxt('장면');
-    //   setImg({ both });
-    // }
   };
 
-  // useEffect(() => {
-  //   if (category === 'image') {
-  //     console.log(category);
-  //     setTxt('인물');
-  //     setImg(image);
-  //     setPlacehold('인물을 검색해 보세요');
-  //   } else if (category === 'audio') {
-  //     console.log(category);
-  //     setTxt('대사');
-  //     setImg(audio);
-  //     setPlacehold('대사를 검색해 보세요');
-  //   } else if (category === 'both') {
-  //     console.log(category);
-  //     setTxt('장면');
-  //     setImg(both);
-  //   }
-  // }, []);
+  const onChangeSearchAud = (e) => {
+    setSearchAud(e.target.value);
+    console.log('audio');
+    // console.log(searchAud);
+  };
+
+  const onChangeSearchVid = (e) => {
+    setSearchVid(e.target.value);
+    console.log('video');
+    // console.log(searchVid);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault(); // refresh 방지
+    setErrtxt('');
+    console.log('onsubmit button id');
+    console.log(id);
+
+    if (!searchVid && category !== 'audio') {
+      console.log('비디오 검색어 입력안함');
+      setErrtxt('검색어를 입력해 주세요');
+      return;
+    }
+    if (!searchAud && category !== 'image') {
+      console.log('오디오 검색어 입력안함');
+      setErrtxt('검색어를 입력해 주세요');
+      return;
+    }
+
+    // const params = new URLSearchParams([
+    //   ['search_type', category],
+    //   ['search_img', searchVid],
+    //   ['search_aud', searchAud],
+    //  ['id', video_pk],
+    // ]);
+
+    // axios.get('http://localhost:5000/search');
+
+    console.log('뭔데');
+  };
 
   const onChangePage = (e) => {
     if (!category) {
@@ -98,9 +110,9 @@ function MainPage() {
       setPlacehold('대사를 검색해 보세요');
     } else if (category === 'both') {
       console.log(category);
-      setTxt('장면');
+      setTxt('대사 & 인물');
       setImg(both);
-      setPlacehold('둘다 검색 창 ');
+      setPlacehold('인물 및 대사를 검색해보세요');
     }
 
     setPage(1);
@@ -136,23 +148,53 @@ function MainPage() {
             <div>
               <div
                 style={{
-                  display: 'flex',
+                  // display: 'flex',
                   justifyContent: 'center',
                   position: 'relative',
-                  paddingTop: '10%',
+                  paddingTop: '5%',
+                  // paddingBottom: '2%',
                 }}
               >
-                <Input placeholder={placehold} />
-                <Input placeholder={placehold} />
-                <Input placeholder={placehold} />
-                <Input placeholder={placehold} />
+                {category === 'both' ? (
+                  <>
+                    <Input
+                      placeholder="인물을 입력하세요"
+                      value={searchVid}
+                      onChange={onChangeSearchVid}
+                    />
+                    <Input
+                      placeholder="대사를 입력해세요"
+                      value={searchAud}
+                      onChange={onChangeSearchAud}
+                    />
+                  </>
+                ) : (
+                  <div style={{ paddingTop: '5%' }}>
+                    <Input
+                      placeholder={placehold}
+                      value={category === 'audio' ? searchAud : searchVid}
+                      onChange={
+                        category === 'audio'
+                          ? onChangeSearchAud
+                          : onChangeSearchVid
+                      }
+                    />
+                  </div>
+                )}
               </div>
-              {Errtxt}
+              <span
+                style={{
+                  color: 'red',
+                  fontFamily: 'NanumSquare_L',
+                }}
+              >
+                {Errtxt}
+              </span>
               <div className="button-pos">
-                <Button>
-                  <Link to="/result" style={{ textDecoration: 'none' }}>
-                    <Stylespan>검색하기</Stylespan>
-                  </Link>
+                <Button onClick={onSubmitHandler}>
+                  {/* <Link to="/result" style={{ textDecoration: 'none' }}> */}
+                  <Stylespan>검색하기</Stylespan>
+                  {/* </Link> */}
                 </Button>
               </div>
             </div>
