@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import '../App.css';
 import React, { useEffect } from 'react';
@@ -19,6 +20,10 @@ function MainPage() {
   const [img, setImg] = React.useState(image);
   const [placehold, setPlacehold] = React.useState('인물을 검색해 보세요');
   const [Errtxt, setErrtxt] = React.useState('');
+
+  // 검색창에서의 변수들
+  const [searchAud, setSearchAud] = React.useState('');
+  const [searchVid, setSearchVid] = React.useState('');
 
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
@@ -105,28 +110,6 @@ function MainPage() {
     console.log({ txt });
   };
 
-  // if (page === 1) {
-  //   return (
-  //     <>
-  //       {/* top container + bottom container */}
-  //       <div className="top-container">
-  //         {/* <span>top container</span> */}
-  //         <LandingInfo />
-  //       </div>
-  //       <div className="bottom-container">
-  //         {/* <span>bottom continer</span> */}
-  //         <div className="bottom-wrapper">
-  //           <Typebtn onSelectCategory={onSelectCategory} checked={category} />
-  //           <div className="button-pos">
-  //             <Button onClick={onChangePage}>
-  //               <Stylespan>다음으로</Stylespan>
-  //             </Button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </>
-  //   );
-  // }
   if (page === 1) {
     return (
       <>
@@ -159,6 +142,7 @@ function MainPage() {
                   paddingTop: '10%',
                 }}
               >
+                <Input placeholder={placehold} />
                 <Input placeholder={placehold} />
               </div>
               {Errtxt}
