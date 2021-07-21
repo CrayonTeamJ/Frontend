@@ -39,6 +39,7 @@ function Typebtn(props) {
               name="type-selector"
               value={type.name}
               onChange={props.onSelectCategory}
+              checked={props.checked === type.name}
             />
             <Label htmlFor={type.name} img={type.img}>
               <img

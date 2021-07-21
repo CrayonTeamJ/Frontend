@@ -140,9 +140,10 @@ function UploadPage() {
                 type="radio"
                 id="eng"
                 name="eng"
-                value="eu-US"
+                value="en-US"
                 checked={lang === 'eu-US'}
                 onChange={onSelectLang}
+                å
               />
               <Label htmlFor="eu-US">ENGLISH</Label>
             </div>

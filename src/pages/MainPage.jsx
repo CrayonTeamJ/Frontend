@@ -41,23 +41,23 @@ function MainPage() {
     // }
   };
 
-  useEffect(() => {
-    if (category === 'image') {
-      console.log(category);
-      setTxt('인물');
-      setImg(image);
-      setPlacehold('인물을 검색해 보세요');
-    } else if (category === 'audio') {
-      console.log(category);
-      setTxt('대사');
-      setImg(audio);
-      setPlacehold('대사를 검색해 보세요');
-    } else if (category === 'both') {
-      console.log(category);
-      setTxt('장면');
-      setImg(both);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (category === 'image') {
+  //     console.log(category);
+  //     setTxt('인물');
+  //     setImg(image);
+  //     setPlacehold('인물을 검색해 보세요');
+  //   } else if (category === 'audio') {
+  //     console.log(category);
+  //     setTxt('대사');
+  //     setImg(audio);
+  //     setPlacehold('대사를 검색해 보세요');
+  //   } else if (category === 'both') {
+  //     console.log(category);
+  //     setTxt('장면');
+  //     setImg(both);
+  //   }
+  // }, []);
 
   const onChangePage = (e) => {
     if (!category) {
@@ -81,6 +81,23 @@ function MainPage() {
       return;
     }
 
+    if (category === 'image') {
+      console.log(category);
+      setTxt('인물');
+      setImg(image);
+      setPlacehold('인물을 검색해 보세요');
+    } else if (category === 'audio') {
+      console.log(category);
+      setTxt('대사');
+      setImg(audio);
+      setPlacehold('대사를 검색해 보세요');
+    } else if (category === 'both') {
+      console.log(category);
+      setTxt('장면');
+      setImg(both);
+      setPlacehold('둘다 검색 창 ');
+    }
+
     setPage(1);
     console.log('next page');
     console.log({ category });
@@ -88,22 +105,70 @@ function MainPage() {
     console.log({ txt });
   };
 
-  if (page === 0) {
+  // if (page === 1) {
+  //   return (
+  //     <>
+  //       {/* top container + bottom container */}
+  //       <div className="top-container">
+  //         {/* <span>top container</span> */}
+  //         <LandingInfo />
+  //       </div>
+  //       <div className="bottom-container">
+  //         {/* <span>bottom continer</span> */}
+  //         <div className="bottom-wrapper">
+  //           <Typebtn onSelectCategory={onSelectCategory} checked={category} />
+  //           <div className="button-pos">
+  //             <Button onClick={onChangePage}>
+  //               <Stylespan>다음으로</Stylespan>
+  //             </Button>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </>
+  //   );
+  // }
+  if (page === 1) {
     return (
       <>
-        {/* top container + bottom container */}
         <div className="top-container">
-          {/* <span>top container</span> */}
-          <LandingInfo />
+          <LandingInfo>
+            <Label htmlFor={category} img={img}>
+              <img
+                src={img}
+                style={{
+                  width: '50%',
+                  display: 'flex',
+                  transform: 'translate(50%, 50%)',
+                }}
+                alt="icon"
+              />
+              <StyleSpan>{txt} 검색</StyleSpan>
+              <br />
+              <StyletextSpan>{placehold}</StyletextSpan>
+            </Label>
+          </LandingInfo>
         </div>
         <div className="bottom-container">
-          {/* <span>bottom continer</span> */}
           <div className="bottom-wrapper">
-            <Typebtn onSelectCategory={onSelectCategory} checked={category} />
-            <div className="button-pos">
-              <Button onClick={onChangePage}>
-                <Stylespan>다음으로</Stylespan>
-              </Button>
+            <div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  paddingTop: '10%',
+                }}
+              >
+                <Input placeholder={placehold} />
+              </div>
+              {Errtxt}
+              <div className="button-pos">
+                <Button>
+                  <Link to="/result" style={{ textDecoration: 'none' }}>
+                    <Stylespan>검색하기</Stylespan>
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -112,44 +177,19 @@ function MainPage() {
   }
   return (
     <>
+      {/* top container + bottom container */}
       <div className="top-container">
-        <LandingInfo>
-          <Label htmlFor={category} img={img}>
-            <img
-              src={img}
-              style={{
-                width: '50%',
-                display: 'flex',
-                transform: 'translate(50%, 50%)',
-              }}
-              alt="icon"
-            />
-            <StyleSpan>{txt} 검색</StyleSpan>
-            <br />
-            <StyletextSpan>{placehold}</StyletextSpan>
-          </Label>
-        </LandingInfo>
+        {/* <span>top container</span> */}
+        <LandingInfo />
       </div>
       <div className="bottom-container">
+        {/* <span>bottom continer</span> */}
         <div className="bottom-wrapper">
-          <div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                position: 'relative',
-                paddingTop: '10%',
-              }}
-            >
-              <Input placeholder={placehold} />
-            </div>
-            <div className="button-pos">
-              <Button>
-                <Link to="/result" style={{ textDecoration: 'none' }}>
-                  <Stylespan>검색하기</Stylespan>
-                </Link>
-              </Button>
-            </div>
+          <Typebtn onSelectCategory={onSelectCategory} checked={category} />
+          <div className="button-pos">
+            <Button onClick={onChangePage}>
+              <Stylespan>다음으로</Stylespan>
+            </Button>
           </div>
         </div>
       </div>
