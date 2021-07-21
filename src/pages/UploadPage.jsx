@@ -6,12 +6,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import LandingInfo from '../components/LandingInfo';
 
 function UploadPage() {
   const [lang, setLang] = React.useState('ko-KR');
   const [category, setCategory] = React.useState('0');
   const [link, setLink] = React.useState('');
+  const [Errtxt, setErrtxt] = React.useState('');
+  const history = useHistory();
 
   const onSelectLang = (e) => {
     setLang(e.target.value);
@@ -29,15 +32,26 @@ function UploadPage() {
   };
 
   const onSubmitHandler = (e) => {
+    e.preventDefault(); // refresh 방지
+    setErrtxt('');
+
     const video_file =
       document.getElementById('local_file') === null
         ? 'null'
         : document.getElementById('local_file');
 
-
     if (category === '0') {
+      // 입력 안했을 때
+      if (!link) {
+        setErrtxt('URL을 입력해주세요');
+        return; // 오류나면 더 진행하지(서버로안감) 않고 끊어야해서 리턴임
+      }
       onSubmitUrl();
     } else if (category === '1') {
+      if (video_file === null) {
+        setErrtxt('파일을 입력해 주세요.');
+        return;
+      }
       onSubmitFile(video_file);
     }
   };
@@ -58,13 +72,18 @@ function UploadPage() {
       })
       .then((res) => {
         // 응답 처리
-        if(res.data.Result==="Success"){
-          console.log("s3업로드 완료")
+        if (res.data.Result === 'Success') {
+          console.log('s3업로드 완료');
+          history.push('/search');
+        } else if (res.data.Result === 'false') {
+          console.log('s3업로드 에러발생');
+          setErrtxt('유효하지 않은 파일입니다.');
         }
       })
       .catch((err) => {
         // 예외 처리
         console.log(err);
+        setErrtxt('유효하지 않은 파일입니다.');
       });
   };
 
@@ -83,13 +102,18 @@ function UploadPage() {
       })
       .then((res) => {
         // 응답 처리
-        if(res.data.Result==="Success"){
-          console.log("s3업로드 완료")
+        if (res.data.Result === 'Success') {
+          console.log('s3업로드 완료');
+          history.push('/search');
+        } else if (res.data.Result === 'false') {
+          console.log('s3업로드 에러발생');
+          setErrtxt('유효하지 않은 url입니다.');
         }
       })
       .catch((err) => {
         // 예외 처리
         console.log(err);
+        setErrtxt('유효하지 않은 url입니다.');
       });
   };
 
@@ -116,9 +140,10 @@ function UploadPage() {
                 type="radio"
                 id="eng"
                 name="eng"
-                value="eu-US"
+                value="en-US"
                 checked={lang === 'eu-US'}
                 onChange={onSelectLang}
+                å
               />
               <Label htmlFor="eu-US">ENGLISH</Label>
             </div>
@@ -157,8 +182,8 @@ function UploadPage() {
                 <InputFILE type="file" name="local_file" id="local_file" />
               )}
             </form>
+            <ErrLabel>{Errtxt}</ErrLabel>
           </div>
-
           <div className="button-pos">
             <Button onClick={onSubmitHandler}>
               <Link to="/home" style={{ textDecoration: 'none' }}>
@@ -193,6 +218,12 @@ const Button = styled.button`
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* position: absolute; */
+`;
+
+const ErrLabel = styled.label`
+  font-size: 1vw;
+  font-family: 'NanumSquare_R';
+  color: #fa605a;
 `;
 
 const Stylespan = styled.span`

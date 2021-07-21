@@ -35,7 +35,7 @@ const Navigationbar = (props) => {
           history.push('/login');
         } else {
           alert('로그아웃에 실패하였습니다');
-          history.push('/home');
+          history.push('/');
         }
       })
       .catch((err) => {
@@ -95,7 +95,7 @@ const Navigationbar = (props) => {
     return (
       <div className="navbar">
         <div className="nav_inner">
-          <Link to="/home" style={{ marginLeft: '10px', width: '50vw' }}>
+          <Link to="/" style={{ marginLeft: '10px', width: '50vw' }}>
             <img src={logo} width="200px" alt="logo" />
           </Link>
           <ul className="nav_user_box">
@@ -117,7 +117,7 @@ const Navigationbar = (props) => {
   return (
     <div className="navbar">
       <div className="nav_inner">
-        <Link to="/home" style={{ marginLeft: '10px' }}>
+        <Link to="/" style={{ marginLeft: '10px' }}>
           <img src={logo} width="200px" alt="logo" />
         </Link>
         <ul className="nav_user_box">
