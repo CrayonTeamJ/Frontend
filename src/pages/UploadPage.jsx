@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/extensions */
 /* eslint-disable no-use-before-define */
 /* eslint-disable camelcase */
@@ -39,10 +40,18 @@ function UploadPage() {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
 
+  console.log(lang)
+  console.log(category)
+  console.log(link)
+
     const video_file =
       document.getElementById('local_file') === null
         ? 'null'
         : document.getElementById('local_file');
+
+ 
+
+
 
     if (category === '0') {
       // 입력 안했을 때
@@ -69,8 +78,8 @@ function UploadPage() {
     submitData.append('file', videofile.files[0]);
 
     console.log('submit data')
-    console.log(submitData.language);
-    console.log(submitData.video_type);
+    console.log(submitData);
+
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -103,10 +112,22 @@ function UploadPage() {
     submitData.append('video_type', category);
     submitData.append('video_url', link);
 
-    console.log(submitData);
-    console.log(submitData.language);
-    console.log(submitData.video_type);
+    // FormData의 value 확인
+    console.log("form data value")
+    for (const value of submitData.values()) {
+      console.log(value);
+    }
+    console.log("form data key")
+    for (const key of submitData.keys()) {
+      console.log(key);
+    }
 
+    console.log(submitData);
+    console.log(lang)
+    console.log(category)
+    console.log(link)
+
+    // console.log(axios.headers.Authorization)
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
