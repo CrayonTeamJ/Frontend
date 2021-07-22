@@ -73,7 +73,7 @@ function MainPage() {
 
     axios.get(encodeURI('http://localhost:5000/api/search'), {params});
 
-    console.log('뭔데');
+    console.log('뭐임');
   };
 
   const onChangePage = (e) => {
