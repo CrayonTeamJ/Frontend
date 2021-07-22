@@ -28,7 +28,7 @@ function MainPage() {
   const [searchVid, setSearchVid] = React.useState('');
 
   // redux state(video_pk)
-  const id = useSelector((state) => state.id, []);
+  const video_id = useSelector((state) => state.videos.video_id, []);
 
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
@@ -51,7 +51,7 @@ function MainPage() {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
     console.log('onsubmit button id');
-    console.log(id);
+    console.log(video_id);
 
     if (!searchVid && category !== 'audio') {
       console.log('비디오 검색어 입력안함');
@@ -64,14 +64,14 @@ function MainPage() {
       return;
     }
 
-    // const params = new URLSearchParams([
-    //   ['search_type', category],
-    //   ['search_img', searchVid],
-    //   ['search_aud', searchAud],
-    //  ['id', video_pk],
-    // ]);
+    const params = new URLSearchParams([
+      ['searchtype', category],
+      ['searchimg', searchVid],
+      ['searchaud', searchAud],
+      ['id', video_id],
+    ]);
 
-    // axios.get('http://localhost:5000/search');
+    axios.get(encodeURI('http://localhost:5000/api/search'), {params});
 
     console.log('뭔데');
   };

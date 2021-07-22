@@ -51,7 +51,7 @@ function SigninPage() {
         if (res.payload.Result === 'success') {
           const accessToken = res.payload.access_token;
           axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-          history.push('/home');
+          history.push('/');
         } else {
           // 비번이나 아이디 틀렸음
           if (res.payload.Result === 'fail') {

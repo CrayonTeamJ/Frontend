@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { combineReducers } from 'redux';
 // 만들어낼 state의 action & reducer import
 import users from './users';

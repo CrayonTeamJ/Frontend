@@ -68,6 +68,8 @@ function UploadPage() {
     submitData.append('video_type', category);
     submitData.append('file', videofile.files[0]);
 
+    console.log(submitData);
+
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
         headers: {
@@ -98,6 +100,8 @@ function UploadPage() {
     submitData.append('language', lang);
     submitData.append('video_type', category);
     submitData.append('video_url', link);
+
+    console.log(submitData);
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -149,7 +153,6 @@ function UploadPage() {
                 value="en-US"
                 checked={lang === 'en-US'}
                 onChange={onSelectLang}
-                å
               />
               <Label htmlFor="en-US">ENGLISH</Label>
             </div>

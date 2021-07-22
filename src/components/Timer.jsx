@@ -14,7 +14,7 @@ import 'react-responsive-modal/styles.css';
 function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const Expire = useSelector((state) => state.access_expire, []);
+  const Expire = useSelector((state) => state.users.access_expire, []);
   // console.log('뭔데 내 타이머 말좀해봐');
   // console.log(Expire);
   // const Expire = useSelector(stae)

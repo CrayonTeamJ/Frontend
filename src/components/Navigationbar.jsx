@@ -16,13 +16,13 @@ import { useHistory } from 'react-router';
 const Navigationbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const Key = useSelector((state) => state.access_token, []);
+  const Key = useSelector((state) => state.users.access_token, []);
 
   // store에 접근해서 변수가져오기
-  const Nickname = useSelector((state) => state.Nickname, []);
-  const Profile = useSelector((state) => state.Profile, []);
-  const Expire = useSelector((state) => state.access_expire, []);
-  const isLogin = useSelector((state) => state.isLogin, []);
+  const Nickname = useSelector((state) => state.users.Nickname, []);
+  const Profile = useSelector((state) => state.users.Profile, []);
+  const Expire = useSelector((state) => state.users.access_expire, []);
+  const isLogin = useSelector((state) => state.users.isLogin, []);
 
   // 로그아웃 버튼 함수
   const onLogoutHandler = () => {
