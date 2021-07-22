@@ -68,7 +68,9 @@ function UploadPage() {
     submitData.append('video_type', category);
     submitData.append('file', videofile.files[0]);
 
-    console.log(submitData);
+    console.log('submit data')
+    console.log(submitData.language);
+    console.log(submitData.video_type);
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -102,6 +104,9 @@ function UploadPage() {
     submitData.append('video_url', link);
 
     console.log(submitData);
+    console.log(submitData.language);
+    console.log(submitData.video_type);
+
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
