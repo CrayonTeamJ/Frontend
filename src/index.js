@@ -17,6 +17,8 @@ import App from './App';
 import persistStore from 'redux-persist/es/persistStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import store from './store';
+// import Loader from 'react-loader-spinner';
+// import { usePromiseTracker } from 'react-promise-tracker';
 // import * as serviceWorker from './serviceWorker';
 
 // refresh Token cookie 을 주고받기 위한 설정
@@ -42,11 +44,38 @@ axios.defaults.withCredentials = true;
 
 const persistor = persistStore(store);
 
+// const LoadingIndicator = (props) => {
+//   const { promiseInProgress } = usePromiseTracker({ area: props.area });
+
+//   return (
+//     promiseInProgress && (
+//       <div
+//         className="new-container"
+//         style={{
+//           width: '100%',
+//           height: '100',
+//           display: 'flex',
+//           justifyContent: 'center',
+//           alignItems: 'center',
+//           position: 'fixed',
+//           top: '50%',
+//           left: '50%',
+//           transform: 'translate(-50%, -50%)',
+//           zIndex: '10',
+//         }}
+//       >
+//         <Loader type="ThreeDots" color="#fa506a" height="100" width="100" />
+//       </div>
+//     )
+//   );
+// };
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={null}>
         <App />
+        {/* <LoadingIndicator /> */}
       </PersistGate>
     </Provider>
   </React.StrictMode>,
