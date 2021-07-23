@@ -105,6 +105,12 @@ function MainPage({ location }) {
         // history.push(`/result?${params}`);
         // location.href=`/result?${params}`
         // location.href=`/search?id=${res.data.video_pk}`
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+        // history.push({ pathname: `/result?${params}`, state: { res } });
+        history.push('/');
       });
   };
 
