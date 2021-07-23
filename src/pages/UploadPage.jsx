@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 // import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { trackPromise } from 'react-promise-tracker';
@@ -25,7 +25,7 @@ function UploadPage() {
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
-  // const history = useHistory();
+  const history = useHistory();
   // const dispatch = useDispatch();
 
   const onSelectLang = (e) => {
@@ -106,14 +106,16 @@ function UploadPage() {
           console.log('s3업로드 에러발생');
           setIsLoading(false);
           setErrtxt('유효하지 않은 파일입니다.');
-          location.href('/');
+          // location.href('/');
+          history.push('/');
         }
       })
       .catch((err) => {
         // 예외 처리
         console.log(err);
         setIsLoading(false);
-        location.href('/');
+        // location.href('/');
+        history.push('/');
         setErrtxt('유효하지 않은 파일입니다.');
       });
   };
@@ -162,7 +164,8 @@ function UploadPage() {
           console.log('s3업로드 에러발생');
           setErrtxt('유효하지 않은 url입니다.');
           setIsLoading(false);
-          location.href('/');
+          // location.href('/');
+          history.push('/');
         }
       })
       .catch((err) => {
@@ -170,7 +173,8 @@ function UploadPage() {
         console.log(err);
         setErrtxt('유효하지 않은 url입니다.');
         setIsLoading(false);
-        location.href('/');
+        // location.href('/');
+        history.push('/');
       });
   };
 
