@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
 import { video_initID } from '../redux/videos';
 
@@ -20,7 +20,7 @@ function UploadPage() {
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const onSelectLang = (e) => {
     setLang(e.target.value);
@@ -92,7 +92,7 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
-          dispatch(video_initID(res.data.video_pk));
+          // dispatch(video_initID(res.data.video_pk));
           location.href=`/search?id=${res.data.video_pk}`
           history.push('/search');
         } else if (res.data.Result === 'false') {
@@ -141,7 +141,7 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
-          dispatch(video_initID(res.data.video_pk));
+          // dispatch(video_initID(res.data.video_pk));
           location.href=`/search?id=${res.data.video_pk}`
           // history.push('/search?id='`{res.data.video_pk}`);
         } else if (res.data.Result === 'false') {

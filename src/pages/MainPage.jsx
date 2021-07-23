@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import queryString from 'query-string';
 import Footer from '../components/Footer';
 import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
@@ -13,7 +14,8 @@ import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 
-function MainPage() {
+
+function MainPage({location}) {
   const [page, setPage] = React.useState(0);
 
   // 타입관련 변수들
@@ -27,8 +29,10 @@ function MainPage() {
   const [searchAud, setSearchAud] = React.useState('');
   const [searchVid, setSearchVid] = React.useState('');
 
-  // redux state(video_pk)
-  const video_id = useSelector((state) => state.videos.video_id, []);
+  // 쿼리스트링을 이용해 전달받음
+  // const video_id = useSelector((state) => state.videos.video_id, []);
+  const query = queryString.parse(location.search);
+  const video_id = query.id;
 
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
@@ -73,7 +77,7 @@ function MainPage() {
 
     axios.get(encodeURI('http://localhost:5000/api/search'), {params});
 
-    console.log('뭐임');
+    
   };
 
   const onChangePage = (e) => {
@@ -98,6 +102,8 @@ function MainPage() {
       return;
     }
 
+
+    // 여기부분을 함수로만들어서 await해봐야하나
     if (category === 'image') {
       console.log(category);
       setTxt('인물');
@@ -114,6 +120,7 @@ function MainPage() {
       setImg(both);
       setPlacehold('인물 및 대사를 검색해보세요');
     }
+    // 여기까지 
 
     setPage(1);
     console.log('next page');
