@@ -10,6 +10,7 @@ import regsuccess from '../img/goal.png';
 import Template from '../components/Template';
 
 function SignupPage() {
+  // 사용자 입력을 받아올 변수 
   const [Nickname, setNickname] = React.useState('');
   const [UserID, setUserID] = React.useState('');
   const [Password, setPassword] = React.useState('');
@@ -17,6 +18,7 @@ function SignupPage() {
   const [Errtxt, setErrtxt] = React.useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
 
+  // state변수를 변경시키는 함수들 
   const onChangeNick = (e) => {
     setNickname(e.target.value);
   };
@@ -30,6 +32,7 @@ function SignupPage() {
     setPassword_veri(e.target.value);
   };
 
+  // 회원가입 버튼을 누를 경우 실행되는 일 
   const onSubmitHandler = (e) => {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
@@ -83,15 +86,14 @@ function SignupPage() {
           setIsRegistraionSuccess(true);
         } else {
           // signup 오류
-          // console.log('실패');
 
-          // 닉네임 중복
+          // 1. 닉네임 중복
           if (res.data.Result === 'NK_duplicated') {
             // console.log('닉네임중복');
             setErrtxt('이미 존재하는 닉네임입니다');
           }
 
-          // 아이디 중복
+          // 2. 아이디 중복
           if (res.data.Result === 'ID_duplicated') {
             console.log('아이디 중복');
             setErrtxt('이미 존재하는 아이디입니다');
