@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/extensions */
 /* eslint-disable no-use-before-define */
@@ -92,6 +93,7 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           dispatch(video_initID(res.data.video_pk));
+          location.href=`/search?id=${res.data.video_pk}`
           history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
@@ -140,7 +142,8 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           dispatch(video_initID(res.data.video_pk));
-          history.push('/search');
+          location.href=`/search?id=${res.data.video_pk}`
+          // history.push('/search?id='`{res.data.video_pk}`);
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
           setErrtxt('유효하지 않은 url입니다.');
@@ -221,9 +224,9 @@ function UploadPage() {
           </div>
           <div className="button-pos">
             <Button onClick={onSubmitHandler}>
-              <Link to="/home" style={{ textDecoration: 'none' }}>
+              {/* <Link to="/search?id=" style={{ textDecoration: 'none' }}> */}
                 <Stylespan>시작하기</Stylespan>
-              </Link>
+              {/* </Link> */}
             </Button>
           </div>
         </div>
