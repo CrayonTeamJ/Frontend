@@ -12,7 +12,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 // import { useDispatch } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
-import { video_initID } from '../redux/videos';
+// import { video_initID } from '../redux/videos';
 
 function UploadPage() {
   const [lang, setLang] = React.useState('ko-KR');
