@@ -24,11 +24,11 @@ function MemberOnlyPage() {
             }}
             alt="img"
           />
-          <Button>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+          <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Button>
               <Stylespan>로그인 페이지로 이동</Stylespan>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </Template>
         {/* <Button onClick={onTestFunc}> TEST </Button> */}
       </div>

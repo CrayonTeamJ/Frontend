@@ -10,7 +10,7 @@ import regsuccess from '../img/goal.png';
 import Template from '../components/Template';
 
 function SignupPage() {
-  // 사용자 입력을 받아올 변수 
+  // 사용자 입력을 받아올 변수
   const [Nickname, setNickname] = React.useState('');
   const [UserID, setUserID] = React.useState('');
   const [Password, setPassword] = React.useState('');
@@ -18,7 +18,7 @@ function SignupPage() {
   const [Errtxt, setErrtxt] = React.useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
 
-  // state변수를 변경시키는 함수들 
+  // state변수를 변경시키는 함수들
   const onChangeNick = (e) => {
     setNickname(e.target.value);
   };
@@ -32,7 +32,7 @@ function SignupPage() {
     setPassword_veri(e.target.value);
   };
 
-  // 회원가입 버튼을 누를 경우 실행되는 일 
+  // 회원가입 버튼을 누를 경우 실행되는 일
   const onSubmitHandler = (e) => {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
@@ -136,11 +136,11 @@ function SignupPage() {
               <br />
               원하는 영상을 원하는 부분만 검색해보세요!
             </span>
-            <Button>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Button>
                 <Stylespan>로그인 페이지로 이동</Stylespan>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </Template>
         ) : (
           <Template>

@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import '../App.css';
@@ -5,8 +7,9 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import queryString from 'query-string';
+import { useHistory } from 'react-router';
 import Footer from '../components/Footer';
 import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
@@ -14,8 +17,9 @@ import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 
+function MainPage({ location }) {
+  const history = useHistory();
 
-function MainPage({location}) {
   const [page, setPage] = React.useState(0);
 
   // 타입관련 변수들
@@ -24,6 +28,7 @@ function MainPage({location}) {
   const [img, setImg] = React.useState(image);
   const [placehold, setPlacehold] = React.useState('인물을 검색해 보세요');
   const [Errtxt, setErrtxt] = React.useState('');
+  // const [res, setRes] = React.useState('');
 
   // 검색창에서의 변수들
   const [searchAud, setSearchAud] = React.useState('');
@@ -75,9 +80,16 @@ function MainPage({location}) {
       ['id', video_id],
     ]);
 
-    axios.get(encodeURI('http://localhost:5000/api/search'), {params});
-
-    
+    axios
+      .get(encodeURI('http://localhost:5000/api/search'), { params })
+      .then((response) => {
+        console.log('검색결과');
+        console.log(response);
+        // setRes(response);
+        history.push(`/result?${params}`);
+        // location.href=`/result?${params}`
+        // location.href=`/search?id=${res.data.video_pk}`
+      });
   };
 
   const onChangePage = (e) => {
@@ -102,7 +114,6 @@ function MainPage({location}) {
       return;
     }
 
-
     // 여기부분을 함수로만들어서 await해봐야하나
     if (category === 'image') {
       console.log(category);
@@ -120,7 +131,7 @@ function MainPage({location}) {
       setImg(both);
       setPlacehold('인물 및 대사를 검색해보세요');
     }
-    // 여기까지 
+    // 여기까지
 
     setPage(1);
     console.log('next page');

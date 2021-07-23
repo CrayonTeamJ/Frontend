@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import Template from '../components/Template';
-import { user_login, user_refresh } from '../redux/users';
+import { user_login } from '../redux/users';
 
 function SigninPage() {
   const [UserID, setUserID] = React.useState('');

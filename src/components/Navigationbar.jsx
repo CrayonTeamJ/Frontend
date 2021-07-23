@@ -121,16 +121,16 @@ const Navigationbar = (props) => {
           <img src={logo} width="200px" alt="logo" />
         </Link>
         <ul className="nav_user_box">
-          <Button>
-            <Link to="/login" color="white">
+          <Link to="/login" color="white">
+            <Button>
               <StyleSpan color="#fa605a">LOGIN</StyleSpan>
-            </Link>
-          </Button>
-          <Button color="#fa605a">
-            <Link to="/signup">
+            </Button>
+          </Link>
+          <Link to="/signup">
+            <Button color="#fa605a">
               <StyleSpan color="white">Register</StyleSpan>
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </ul>
       </div>
     </div>

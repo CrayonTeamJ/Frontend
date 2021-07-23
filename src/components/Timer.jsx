@@ -83,7 +83,7 @@ function Timer(props) {
 
   useEffect(() => {
     // 만약 타임 아웃이 발생했을 경우
-    if (time.current <= 30) {
+    if (time.current <= 300) {
       // console.log('만료 시간 30초 남음 ');
       setOpen(true);
       // dispatch(user_refresh)
@@ -119,8 +119,8 @@ function Timer(props) {
       <Modal open={open} onClose={onCloseModal}>
         <h2>세션 만료 안내 </h2>
         <p>
-          5분 뒤 세션이 자동으로 만료됩니다. 
-          닫기를 누르면 세션이 자동으로 재시작됩니다.
+          5분 뒤 세션이 자동으로 만료됩니다. <br/>
+          닫기를 누르면 세션이 자동으로 재시작됩니다.<br/>
           그렇지 않으면 자동 로그아웃됩니다.
         </p>
       </Modal>

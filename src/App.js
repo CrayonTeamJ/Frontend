@@ -20,6 +20,7 @@ import UploadPage from './pages/UploadPage';
 import Navigationbar from './components/Navigationbar';
 import SearchPage from './pages/SearchPage';
 import Footer from './components/Footer';
+import ResultPage from './pages/ResultPage';
 
 function App() {
   // const isLogin = useSelector((state) => state.isLogin, []);
@@ -37,7 +38,8 @@ function App() {
               <Route path="/login" component={SigninPage} />
               <Route path="/signup" component={SignupPage} />
               <Route path="/memberonly" component={MemberOnlyPage} />
-              <Route path="/search" component={MainPage} />
+              <PrivateRoute path="/search" component={MainPage} />
+              <PrivateRoute path="/result" component={ResultPage} />
               <Route path="/" component={UploadPage} />
               {/* <Route path="/search" component={SearchPage} />
               <Route path="/profile" component={MyPage} /> */}

@@ -21,11 +21,11 @@ function SearchPage() {
         <div className="bottom-wrapper">
           <div>
             <InputURL plasceholder="검색어를 입력해 주세요." />
-            <Button>
-              <Link to="/upload" style={{ textDecoration: 'none' }}>
+            <Link to="/upload" style={{ textDecoration: 'none' }}>
+              <Button>
                 <Stylespan>시작하기</Stylespan>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

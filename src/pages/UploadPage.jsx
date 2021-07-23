@@ -9,17 +9,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 // import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
 // import { video_initID } from '../redux/videos';
 
 function UploadPage() {
+  const isLogin = useSelector((state) => state.users.isLogin, []);
   const [lang, setLang] = React.useState('ko-KR');
   const [category, setCategory] = React.useState('0');
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
-  const history = useHistory();
+  // const history = useHistory();
   // const dispatch = useDispatch();
 
   const onSelectLang = (e) => {
@@ -37,22 +39,22 @@ function UploadPage() {
     console.log(link);
   };
 
+  const onLoginRequest = (e) => {
+    location.href = '/memberonly';
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
 
-  console.log(lang)
-  console.log(category)
-  console.log(link)
+    console.log(lang);
+    console.log(category);
+    console.log(link);
 
     const video_file =
       document.getElementById('local_file') === null
         ? 'null'
         : document.getElementById('local_file');
-
- 
-
-
 
     if (category === '0') {
       // 입력 안했을 때
@@ -78,9 +80,8 @@ function UploadPage() {
     submitData.append('video_type', category);
     submitData.append('file', videofile.files[0]);
 
-    console.log('submit data')
+    console.log('submit data');
     console.log(submitData);
-
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -93,8 +94,8 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           // dispatch(video_initID(res.data.video_pk));
-          location.href=`/search?id=${res.data.video_pk}`
-          history.push('/search');
+          location.href = `/search?id=${res.data.video_pk}`;
+          // history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
           setErrtxt('유효하지 않은 파일입니다.');
@@ -115,19 +116,19 @@ function UploadPage() {
     submitData.append('video_url', link);
 
     // FormData의 value 확인
-    console.log("form data value")
+    console.log('form data value');
     for (const value of submitData.values()) {
       console.log(value);
     }
-    console.log("form data key")
+    console.log('form data key');
     for (const key of submitData.keys()) {
       console.log(key);
     }
 
     console.log(submitData);
-    console.log(lang)
-    console.log(category)
-    console.log(link)
+    console.log(lang);
+    console.log(category);
+    console.log(link);
 
     // console.log(axios.headers.Authorization)
 
@@ -142,7 +143,7 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           // dispatch(video_initID(res.data.video_pk));
-          location.href=`/search?id=${res.data.video_pk}`
+          location.href = `/search?id=${res.data.video_pk}`;
           // history.push('/search?id='`{res.data.video_pk}`);
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
@@ -223,9 +224,11 @@ function UploadPage() {
             <ErrLabel>{Errtxt}</ErrLabel>
           </div>
           <div className="button-pos">
-            <Button onClick={onSubmitHandler}>
+            <Button
+              onClick={isLogin === true ? onSubmitHandler : onLoginRequest}
+            >
               {/* <Link to="/search?id=" style={{ textDecoration: 'none' }}> */}
-                <Stylespan>시작하기</Stylespan>
+              <Stylespan>시작하기</Stylespan>
               {/* </Link> */}
             </Button>
           </div>
