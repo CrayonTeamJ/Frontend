@@ -85,6 +85,7 @@ function SigninPage() {
             />
             <Input
               value={Password}
+              type="password"
               autoFocus
               placeholder="Password"
               onChange={onChangePW}
