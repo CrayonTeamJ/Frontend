@@ -397,13 +397,35 @@ input[type='radio']:checked {
 }
 
 .grid-item {
-  padding: 10px;
+  padding: 5px;
 }
 
 .header {
   grid-area: header;
-  color: white;
+  color: black;
   background-color: green;
+  display: grid;
+  align-items: center;
+  /* justify-content: center; */
+
+  /* grid-template-rows: 2fr 1fr; */
+  grid-template-columns: 2fr 1fr;
+}
+
+.header-item {
+  /* padding: 10px; */
+  color: cornflowerblue;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  grid-area: header;
+  color: black;
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 .aside {
@@ -430,6 +452,9 @@ input[type='radio']:checked {
   grid-area: footer;
   color: white;
   background-color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .content-item {
