@@ -18,6 +18,7 @@ import both from '../img/video-player.png';
 
 function ResultPage() {
   const location = useLocation();
+  const [time, setTime] = React.useState('');
 
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
@@ -64,17 +65,6 @@ function ResultPage() {
 
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
-
-  const onChangeTime = () => {
-    player.current.seekTo(10); // 일단 10초로 이동기능
-    // console.log(e.target.value);
-    // player.seekTo(10);
-    // player.seekTo(10);
-    // console.log(e.target.value);
-  };
-
-  //   console.log('result page');
-  //   console.log(res);
 
   return (
     <>
@@ -124,8 +114,9 @@ function ResultPage() {
             <div className="content-item">
               <button
                 className="content-item-inner"
-                value={result.start}
-                onClick={onChangeTime}
+                onClick={() => {
+                  player.current.seekTo(result.start);
+                }}
               >
                 <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
               </button>
