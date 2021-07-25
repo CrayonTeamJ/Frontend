@@ -1,10 +1,13 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/no-this-in-sfc */
+/* eslint-disable react/button-has-type */
 /* eslint-disable radix */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import '../App.css';
-import React from 'react';
+import React, { useRef } from 'react';
 import queryString from 'query-string';
 import { useLocation } from 'react-router';
 import ReactPlayer from 'react-player';
@@ -25,20 +28,61 @@ function ResultPage() {
   const results = res.result;
   const video_infos = res.video_info;
   const search_infos = res.search_info;
+  const res_infos = res.res_info;
+
+  //   ref = (player) => {
+  //     this.player = player;
+  //   };
 
   // 총길이
   const hour = parseInt(video_infos.length / 3600);
   const min = parseInt(video_infos.length / 60);
   const sec = parseInt(video_infos.length % 60);
 
+  // 타임 스탬프 예쁘게 보여주기 위한 함수
+  const seconds2time = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    let minutes = Math.floor((seconds - hours * 3600) / 60);
+    const second = seconds - hours * 3600 - minutes * 60;
+    let timestamp = '';
+
+    if (hours !== 0) {
+      timestamp = `${hours}:`;
+    }
+    if (minutes !== 0 || seconds !== '') {
+      minutes =
+        minutes < 10 && timestamp !== '' ? `0${minutes}` : String(minutes);
+      timestamp += `${minutes}:`;
+    }
+    if (timestamp === '') {
+      timestamp = `${second}s`;
+    } else {
+      timestamp += second < 10 ? `0${second}` : String(second);
+    }
+    return timestamp;
+  };
+
+  // ref로 특정DOM선택(플레이어)
+  const player = useRef(null);
+
+  const onChangeTime = () => {
+    player.current.seekTo(10); // 일단 10초로 이동기능
+    // console.log(e.target.value);
+    // player.seekTo(10);
+    // player.seekTo(10);
+    // console.log(e.target.value);
+  };
+
   //   console.log('result page');
   //   console.log(res);
+
   return (
     <>
       <div className="video-container">
         <div className="video-grid-item" style={{ paddingTop: '30px' }}>
           <ReactPlayer
-            url="https://teamj-data.s3.ap-northeast-2.amazonaws.com/video/bts_colbert.mp4"
+            ref={player}
+            url={video_infos.url}
             controls="true"
             pip="true"
             width="960px"
@@ -76,12 +120,35 @@ function ResultPage() {
         </div>
         <div className="grid-item aside">aside</div>
         <div className="grid-item content">
-          <div className="content-item">100</div>
-          <div className="content-item">100</div>
-          <div className="content-item">100</div>
-          <div className="content-item">100</div>
-          <div className="content-item">100</div>
-          <div className="content-item">100</div>
+          {res_infos.map((result) => (
+            <div className="content-item">
+              <button
+                className="content-item-inner"
+                value={result.start}
+                onClick={onChangeTime}
+              >
+                <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
+              </button>
+              <div className="content-item-inner">
+                <span
+                  style={{
+                    fontFamily: 'NanumSquare_L',
+                    fontSize: '20px',
+                    // textAlign: 'left',
+                    marginLeft: '20px',
+                    transform: 'translate(-100%, 0%)',
+                  }}
+                >
+                  {seconds2time(result.start)} - {seconds2time(result.end)}
+                </span>
+              </div>
+            </div>
+            //   <div className="content-item">100</div>
+            //   <div className="content-item">100</div>
+            //   <div className="content-item">100</div>
+            //   <div className="content-item">100</div>
+            //   <div className="content-item">100</div>
+          ))}
         </div>
         <div className="grid-item aside2">aside</div>
         <div className="grid-item footer">
@@ -99,4 +166,13 @@ const LogoLabel = styled.img`
   height: 50px;
   /* width: 4.5vw; */
 `;
+
+const ThumImg = styled.img`
+  /* border-radius: 100px; */
+  /* display: inline-block; */
+  background-color: darkcyan;
+  /* height: 50px; */
+  /* width: 4.5vw; */
+`;
+
 export default ResultPage;
