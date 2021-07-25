@@ -22,7 +22,7 @@ function ResultPage() {
   const location = useLocation();
 
   // 슬라이더바 값2개
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([5, 30]);
 
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
@@ -35,6 +35,11 @@ function ResultPage() {
   const search_infos = res.search_info;
   const res_infos = res.res_info;
 
+  // 범위를 기준으로 거르기
+  const after_range_result = res_infos
+    .filter((element) => element.length <= value[1])
+    .filter((element) => element.length >= value[0]);
+  //   console.log(new_result);
   //   ref = (player) => {
   //     this.player = player;
   //   };
@@ -123,17 +128,18 @@ function ResultPage() {
               value={value}
               onChange={handleChange}
               valueLabelDisplay="auto"
-              valueLabelFormat={(x) => x / 60}
+              valueLabelFormat={(x) => seconds2time(x)}
               aria-labelledby="range-slider"
               min={5}
               max={video_infos.video_length}
+              color="secondary"
               //   getAriaValueText={valuetext}
             />
           </div>
         </div>
         <div className="grid-item aside">aside</div>
         <div className="grid-item content">
-          {res_infos.map((result) => (
+          {after_range_result.map((result) => (
             <div className="content-item">
               <button
                 className="content-item-inner"
