@@ -87,7 +87,7 @@ function MainPage({ location }) {
     setIsLoading(true);
 
     axios
-      .get(encodeURI('http://localhost:5000/api/search'), { params })
+      .get('http://localhost:5000/api/search', { params })
       .then((response) => {
         console.log('검색결과');
         console.log(response.data);
