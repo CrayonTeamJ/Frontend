@@ -120,10 +120,29 @@ function ResultPage() {
         <div className="grid-item header">
           <div className="header-item">
             <LogoLabel src={image} alt="logoimg" />
-            <span> {search_infos.search_vid} 등장 </span>
+            <span
+              style={{
+                fontFamily: 'NanumSquare_B',
+                fontSize: '18px',
+                marginLeft: '20px',
+              }}
+            >
+              {search_infos.search_vid} 등장
+            </span>
           </div>
-          <div className="header-item">
-            <span>범위 :</span>
+          <div
+            className="header-item"
+            style={{
+              display: 'flex',
+              /* y축기준 중앙 */
+              alignItems: 'center',
+              /* y축 기준 내부에 요소들 끝으로 붙이기 */
+              justifyContent: 'flex-end',
+            }}
+          >
+            <span style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}>
+              범위 :
+            </span>
             <Slider
               value={value}
               onChange={handleChange}
@@ -133,12 +152,13 @@ function ResultPage() {
               min={5}
               max={video_infos.video_length}
               color="secondary"
+              style={{ marginLeft: '20px', width: '200px' }}
               //   getAriaValueText={valuetext}
             />
           </div>
         </div>
         <div className="grid-item aside">aside</div>
-        <div className="grid-item content">
+        <div className="grid-item content" style={{ overflow: 'scroll' }}>
           {after_range_result.map((result) => (
             <div className="content-item">
               <button
@@ -173,7 +193,15 @@ function ResultPage() {
         </div>
         <div className="grid-item aside2">aside</div>
         <div className="grid-item footer">
-          총 {hour}시간 {min}분 {sec}초
+          <span
+            style={{
+              fontFamily: 'NanumSquare_B',
+              fontSize: '18px',
+              color: 'black',
+            }}
+          >
+            총 {hour}시간 {min}분 {sec}초
+          </span>
         </div>
       </div>
     </>
@@ -194,6 +222,10 @@ const ThumImg = styled.img`
   background-color: darkcyan;
   /* height: 50px; */
   /* width: 4.5vw; */
+`;
+
+const ScrollView = styled.div`
+  overflow: scroll;
 `;
 
 export default ResultPage;
