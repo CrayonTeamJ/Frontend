@@ -414,7 +414,7 @@ input[type='radio']:checked {
 
 .header-item {
   /* padding: 10px; */
-  color: cornflowerblue;
+  color: black;
   display: flex;
   align-items: center;
 }

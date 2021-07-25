@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable react/button-has-type */
@@ -12,13 +13,16 @@ import queryString from 'query-string';
 import { useLocation } from 'react-router';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
+import Slider from '@material-ui/core/Slider';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 
 function ResultPage() {
   const location = useLocation();
-  const [time, setTime] = React.useState('');
+
+  // 슬라이더바 값2개
+  const [value, setValue] = React.useState([20, 37]);
 
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
@@ -63,6 +67,15 @@ function ResultPage() {
     return timestamp;
   };
 
+  // 슬라이더 조절
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
+  };
+
+  function valuetext(valuetxt) {
+    return `${valuetxt}°C`;
+  }
+
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
 
@@ -105,7 +118,17 @@ function ResultPage() {
             <span> {search_infos.search_vid} 등장 </span>
           </div>
           <div className="header-item">
-            <span> slider </span>
+            <span>범위 :</span>
+            <Slider
+              value={value}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              valueLabelFormat={(x) => x / 60}
+              aria-labelledby="range-slider"
+              min={5}
+              max={video_infos.video_length}
+              //   getAriaValueText={valuetext}
+            />
           </div>
         </div>
         <div className="grid-item aside">aside</div>
