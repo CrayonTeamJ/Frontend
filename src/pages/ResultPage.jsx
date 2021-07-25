@@ -14,9 +14,8 @@ import { useLocation } from 'react-router';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Slider from '@material-ui/core/Slider';
-import audio from '../img/conversation.png';
-import image from '../img/speech.png';
-import both from '../img/video-player.png';
+import { Link } from 'react-router-dom';
+import img from '../img/loupe.png';
 
 function ResultPage() {
   const location = useLocation();
@@ -48,6 +47,20 @@ function ResultPage() {
   const hour = parseInt(video_infos.length / 3600);
   const min = parseInt(video_infos.length / 60);
   const sec = parseInt(video_infos.length % 60);
+  //   // 여기부분을 함수로만들어서 await해봐야하나
+  //   if (search_infos.type === 'image') {
+  //     // `${search_infos.serach_vid} 등장 검색 결과`
+  //     setTxt(`${search_infos.serach_vid} 등장 검색 결과`);
+  //     setImg(image);
+  //   } else if (search_infos.type === 'audio') {
+  //     setTxt(`${search_infos.serach_aud} 대사 검색 결과`);
+  //     setImg(audio);
+  //   } else if (search_infos.type === 'both') {
+  //     setImg(both);
+  //     setTxt(
+  //       `${search_infos.serach_vid} 등장 과 ${search_infos.serach_aud} 대사 검색 결과`,
+  //     );
+  //   }
 
   // 타임 스탬프 예쁘게 보여주기 위한 함수
   const seconds2time = (seconds) => {
@@ -77,135 +90,171 @@ function ResultPage() {
     setValue(newValue);
   };
 
-  function valuetext(valuetxt) {
-    return `${valuetxt}°C`;
-  }
-
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
 
-  return (
-    <>
-      <div className="video-container">
-        <div className="video-grid-item" style={{ paddingTop: '30px' }}>
-          <ReactPlayer
-            ref={player}
-            url={video_infos.url}
-            controls="true"
-            pip="true"
-            width="960px"
-            height="540px"
-          />
+  if (results === 'success') {
+    return (
+      <>
+        <div className="video-container">
+          <div className="video-grid-item" style={{ paddingTop: '30px' }}>
+            <ReactPlayer
+              ref={player}
+              url={video_infos.url}
+              controls="true"
+              pip="true"
+              width="960px"
+              height="540px"
+            />
+          </div>
+          <div className="video-grid-item">
+            <label
+              style={{
+                width: '960px',
+                fontFamily: 'NanumSquare_R',
+                fontSize: '25px',
+              }}
+            >
+              {video_infos.title}
+            </label>
+          </div>
         </div>
-        <div className="video-grid-item">
-          <label
-            style={{
-              width: '960px',
-              fontFamily: 'NanumSquare_R',
-              fontSize: '25px',
-            }}
-          >
-            {video_infos.title}
-          </label>
-        </div>
-      </div>
-      {/* <div className="result-container">
+        {/* <div className="result-container">
         <div className="header">head</div>
         <div className="button">but</div>
         <div className="results">res</div>
         <div className="button">but</div>
         <div className="footer">foot</div>
       </div> */}
-      <div className="grid-container">
-        <div className="grid-item header">
-          <div className="header-item">
-            <LogoLabel src={image} alt="logoimg" />
-            <span
+        <div className="grid-container">
+          <div className="grid-item header">
+            <div className="header-item">
+              <LogoLabel src={img} alt="logoimg" />
+              <span
+                style={{
+                  fontFamily: 'NanumSquare_B',
+                  fontSize: '18px',
+                  marginLeft: '20px',
+                }}
+              >
+                {search_infos.search_vid} {search_infos.search_aud} 검색 결과
+              </span>
+            </div>
+            <div
+              className="header-item"
               style={{
-                fontFamily: 'NanumSquare_B',
-                fontSize: '18px',
-                marginLeft: '20px',
+                display: 'flex',
+                /* y축기준 중앙 */
+                alignItems: 'center',
+                /* y축 기준 내부에 요소들 끝으로 붙이기 */
+                justifyContent: 'flex-end',
               }}
             >
-              {search_infos.search_vid} 등장
-            </span>
+              {search_infos.type === 'video' ? (
+                <>
+                  <span
+                    style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}
+                  >
+                    범위 :
+                  </span>
+                  <Slider
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    valueLabelFormat={(x) => seconds2time(x)}
+                    aria-labelledby="range-slider"
+                    min={5}
+                    max={video_infos.video_length}
+                    color="secondary"
+                    style={{ marginLeft: '20px', width: '200px' }}
+                    //   getAriaValueText={valuetext}
+                  />
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
-          <div
-            className="header-item"
-            style={{
-              display: 'flex',
-              /* y축기준 중앙 */
-              alignItems: 'center',
-              /* y축 기준 내부에 요소들 끝으로 붙이기 */
-              justifyContent: 'flex-end',
-            }}
-          >
-            <span style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}>
-              범위 :
-            </span>
-            <Slider
-              value={value}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              valueLabelFormat={(x) => seconds2time(x)}
-              aria-labelledby="range-slider"
-              min={5}
-              max={video_infos.video_length}
-              color="secondary"
-              style={{ marginLeft: '20px', width: '200px' }}
-              //   getAriaValueText={valuetext}
-            />
+          <div className="grid-item aside">aside</div>
+          <div className="grid-item content" style={{ overflow: 'scroll' }}>
+            {after_range_result.map((result) => (
+              <div className="content-item">
+                <button
+                  className="content-item-inner"
+                  onClick={() => {
+                    player.current.seekTo(result.start);
+                  }}
+                  style={{ border: 'none' }}
+                >
+                  <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
+                </button>
+                <div className="content-item-inner">
+                  {search_infos.type === 'video' ? (
+                    <span
+                      style={{
+                        fontFamily: 'NanumSquare_L',
+                        fontSize: '20px',
+                        // textAlign: 'left',
+                        marginLeft: '10px',
+                        transform: 'translate(-100%, 0%)',
+                      }}
+                    >
+                      {seconds2time(result.start)} - {seconds2time(result.end)}
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        fontFamily: 'NanumSquare_L',
+                        fontSize: '20px',
+                        display: 'flex',
+                        textAlign: 'left',
+                        marginLeft: '10px',
+                        //   transform: 'translate(-100%, 0%)',
+                      }}
+                    >
+                      {seconds2time(result.start)}
+                    </span>
+                  )}
+                </div>
+              </div>
+              //   <div className="content-item">100</div>
+              //   <div className="content-item">100</div>
+              //   <div className="content-item">100</div>
+              //   <div className="content-item">100</div>
+              //   <div className="content-item">100</div>
+            ))}
           </div>
-        </div>
-        <div className="grid-item aside">aside</div>
-        <div className="grid-item content" style={{ overflow: 'scroll' }}>
-          {after_range_result.map((result) => (
-            <div className="content-item">
-              <button
-                className="content-item-inner"
-                onClick={() => {
-                  player.current.seekTo(result.start);
-                }}
-                style={{ border: 'none' }}
-              >
-                <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
-              </button>
-              <div className="content-item-inner">
+          <div className="grid-item aside2">aside</div>
+          <div className="grid-item footer">
+            {search_infos.type === 'video' ? (
+              <>
                 <span
                   style={{
-                    fontFamily: 'NanumSquare_L',
-                    fontSize: '20px',
-                    // textAlign: 'left',
-                    marginLeft: '10px',
-                    transform: 'translate(-100%, 0%)',
+                    fontFamily: 'NanumSquare_B',
+                    fontSize: '18px',
+                    color: 'black',
                   }}
                 >
-                  {seconds2time(result.start)} - {seconds2time(result.end)}
+                  총 {hour}시간 {min}분 {sec}초
                 </span>
-              </div>
-            </div>
-            //   <div className="content-item">100</div>
-            //   <div className="content-item">100</div>
-            //   <div className="content-item">100</div>
-            //   <div className="content-item">100</div>
-            //   <div className="content-item">100</div>
-          ))}
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
-        <div className="grid-item aside2">aside</div>
-        <div className="grid-item footer">
-          <span
-            style={{
-              fontFamily: 'NanumSquare_B',
-              fontSize: '18px',
-              color: 'black',
-            }}
-          >
-            총 {hour}시간 {min}분 {sec}초
-          </span>
+        <div className="comment-container">
+          <div className="comment-grid-item">
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button>
+                <Stylespan>시작 페이지로</Stylespan>
+              </Button>
+            </Link>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 const LogoLabel = styled.img`
@@ -224,8 +273,41 @@ const ThumImg = styled.img`
   /* width: 4.5vw; */
 `;
 
-const ScrollView = styled.div`
-  overflow: scroll;
+const Button = styled.button`
+  /* 디자인 */
+  background: #fa605a;
+  &:hover {
+    background: #b52038;
+  }
+  &:active {
+    background: #b52038;
+  }
+  color: white;
+  border-radius: 5%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+
+  /* 크기 */
+  width: 25vw;
+  height: 5vh;
+
+  /* z-index: 5; */
+  cursor: pointer;
+
+  /* display: inline; */
+
+  /* align-items: center; */
+  /* justify-content: center; */
+
+  /* transition: 0.125s all ease-in; */
+`;
+
+const Stylespan = styled.span`
+  color: white;
+  font-size: 1.7vw;
+  font-family: NanumSquare_R;
+  white-space: nowrap;
 `;
 
 export default ResultPage;

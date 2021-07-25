@@ -45,9 +45,9 @@ function App() {
               <Route path="/profile" component={MyPage} /> */}
             </Switch>
           </div>
-          {/* <div className="footer-container">
+          <div className="footer-container">
             <Footer />
-          </div> */}
+          </div>
           {/** 이거 홈페이지가 위쪽에 있으면 안먹음 ...; */}
         </Router>
       </div>
