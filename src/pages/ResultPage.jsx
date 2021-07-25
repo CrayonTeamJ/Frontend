@@ -117,6 +117,7 @@ function ResultPage() {
                 onClick={() => {
                   player.current.seekTo(result.start);
                 }}
+                style={{ border: 'none' }}
               >
                 <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
               </button>
@@ -126,7 +127,7 @@ function ResultPage() {
                     fontFamily: 'NanumSquare_L',
                     fontSize: '20px',
                     // textAlign: 'left',
-                    marginLeft: '20px',
+                    marginLeft: '10px',
                     transform: 'translate(-100%, 0%)',
                   }}
                 >
