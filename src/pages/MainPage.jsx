@@ -42,6 +42,7 @@ function MainPage({ location }) {
   // const video_id = useSelector((state) => state.videos.video_id, []);
   const query = queryString.parse(location.search);
   const video_id = query.id;
+  // const language = query.language;
 
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
