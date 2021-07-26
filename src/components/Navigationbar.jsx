@@ -101,9 +101,9 @@ const Navigationbar = (props) => {
           <ul className="nav_user_box">
             <Timer style={{ width: '0.5vh' }} />
             <StyleLabel>{Nickname}</StyleLabel>
-            <Link to="/profile" style={{ marginLeft: '10px' }}>
-              <ProfileImg src={Profile} alt="profile" />
-            </Link>
+            {/* <Link to="/profile" style={{ marginLeft: '10px' }}> */}
+            <ProfileImg src={Profile} alt="profile" />
+            {/* </Link> */}
             <Button color="#fa605a" onClick={onLogoutHandler}>
               <StyleSpan color="white">LOGOUT</StyleSpan>
             </Button>

@@ -9,8 +9,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import MainPage from './pages/MainPage';
+// import { useSelector, useDispatch } from 'react-redux';
+// import MainPage from './pages/MainPage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
 import MyPage from './pages/MyPage';
@@ -38,7 +38,7 @@ function App() {
               <Route path="/login" component={SigninPage} />
               <Route path="/signup" component={SignupPage} />
               <Route path="/memberonly" component={MemberOnlyPage} />
-              <PrivateRoute path="/search" component={MainPage} />
+              <PrivateRoute path="/search" component={SearchPage} />
               <PrivateRoute path="/result" component={ResultPage} />
               <Route path="/" component={UploadPage} />
               {/* <Route path="/search" component={SearchPage} />
