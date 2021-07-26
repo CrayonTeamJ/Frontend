@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/extensions */
@@ -9,11 +10,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 // import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { trackPromise } from 'react-promise-tracker';
 import LandingInfo from '../components/LandingInfo';
 // import { video_initID } from '../redux/videos';
+import LoadingPage from './LoadingPage';
 
 function UploadPage() {
   const isLogin = useSelector((state) => state.users.isLogin, []);
@@ -21,7 +24,8 @@ function UploadPage() {
   const [category, setCategory] = React.useState('0');
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
-  // const history = useHistory();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const history = useHistory();
   // const dispatch = useDispatch();
 
   const onSelectLang = (e) => {
@@ -83,6 +87,7 @@ function UploadPage() {
     console.log('submit data');
     console.log(submitData);
 
+    setIsLoading(true);
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
         headers: {
@@ -94,16 +99,23 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           // dispatch(video_initID(res.data.video_pk));
+          setIsLoading(false);
           location.href = `/search?id=${res.data.video_pk}`;
           // history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
+          setIsLoading(false);
           setErrtxt('유효하지 않은 파일입니다.');
+          // location.href('/');
+          history.push('/');
         }
       })
       .catch((err) => {
         // 예외 처리
         console.log(err);
+        setIsLoading(false);
+        // location.href('/');
+        history.push('/');
         setErrtxt('유효하지 않은 파일입니다.');
       });
   };
@@ -131,6 +143,8 @@ function UploadPage() {
     console.log(link);
 
     // console.log(axios.headers.Authorization)
+    // trackPromise(
+    setIsLoading(true);
 
     axios
       .post('http://localhost:5000/api/videoUpload', submitData, {
@@ -143,19 +157,30 @@ function UploadPage() {
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
           // dispatch(video_initID(res.data.video_pk));
+          setIsLoading(false);
           location.href = `/search?id=${res.data.video_pk}`;
           // history.push('/search?id='`{res.data.video_pk}`);
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
           setErrtxt('유효하지 않은 url입니다.');
+          setIsLoading(false);
+          // location.href('/');
+          history.push('/');
         }
       })
       .catch((err) => {
         // 예외 처리
         console.log(err);
         setErrtxt('유효하지 않은 url입니다.');
+        setIsLoading(false);
+        // location.href('/');
+        history.push('/');
       });
   };
+
+  if (isLoading) {
+    return <LoadingPage message="영상을 업로드 중입니다." />;
+  }
 
   return (
     <>

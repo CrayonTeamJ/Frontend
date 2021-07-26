@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,

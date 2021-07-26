@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
@@ -16,8 +17,11 @@ import Typebtn from '../components/Typebtn';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
+import LoadingPage from './LoadingPage';
 
 function MainPage({ location }) {
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const history = useHistory();
 
   const [page, setPage] = React.useState(0);
@@ -28,7 +32,7 @@ function MainPage({ location }) {
   const [img, setImg] = React.useState(image);
   const [placehold, setPlacehold] = React.useState('인물을 검색해 보세요');
   const [Errtxt, setErrtxt] = React.useState('');
-  // const [res, setRes] = React.useState('');
+  const [res, setRes] = React.useState('');
 
   // 검색창에서의 변수들
   const [searchAud, setSearchAud] = React.useState('');
@@ -80,15 +84,33 @@ function MainPage({ location }) {
       ['id', video_id],
     ]);
 
+    setIsLoading(true);
+
     axios
-      .get(encodeURI('http://localhost:5000/api/search'), { params })
+      .get('http://localhost:5000/api/search', { params })
       .then((response) => {
         console.log('검색결과');
-        console.log(response);
-        // setRes(response);
-        history.push(`/result?${params}`);
+        console.log(response.data);
+        const temp = response.data;
+        setRes(temp);
+        console.log('set res print');
+        console.log(temp);
+        setTimeout(() => {
+          setIsLoading(false);
+          // history.push({ pathname: `/result?${params}`, state: { res } });
+          history.push({ pathname: '/result', state: { res: temp } });
+        }, 3000);
+        // setIsLoading(false);
+        // setRes(response.data);
+        // history.push(`/result?${params}`);
         // location.href=`/result?${params}`
         // location.href=`/search?id=${res.data.video_pk}`
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+        // history.push({ pathname: `/result?${params}`, state: { res } });
+        history.push('/');
       });
   };
 
@@ -140,6 +162,9 @@ function MainPage({ location }) {
     console.log({ txt });
   };
 
+  if (isLoading) {
+    return <LoadingPage message="영상 내 인물 및 대사를 검색 중 입니다." />;
+  }
   if (page === 1) {
     return (
       <>
