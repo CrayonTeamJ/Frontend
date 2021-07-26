@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-param-reassign */
@@ -27,12 +28,13 @@ function MainPage({ location }) {
   const [page, setPage] = React.useState(0);
 
   // 타입관련 변수들
-  const [category, setCategory] = React.useState('image');
-  const [txt, setTxt] = React.useState('인물');
+  const [category, setCategory] = React.useState('');
+  const [txt, setTxt] = React.useState('');
   const [img, setImg] = React.useState(image);
-  const [placehold, setPlacehold] = React.useState('인물을 검색해 보세요');
+  const [placehold, setPlacehold] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const [res, setRes] = React.useState('');
+  const [url, setURL] = React.useState('');
 
   // 검색창에서의 변수들
   const [searchAud, setSearchAud] = React.useState('');
@@ -44,9 +46,39 @@ function MainPage({ location }) {
   const video_id = query.id;
   // const language = query.language;
 
+  const onChangeState = (category) => {
+    // 여기부분을 함수로만들어서 await해봐야하나
+    if (category === 'image') {
+      console.log(category);
+      setTxt('인물');
+      setImg(image);
+      setPlacehold('인물을 검색해 보세요');
+      setURL('http://localhost:5000/api/videosearch');
+    } else if (category === 'audio') {
+      console.log(category);
+      setTxt('대사');
+      setImg(audio);
+      setPlacehold('대사를 검색해 보세요');
+      setURL('http://localhost:5000/api/audiosearch');
+    } else if (category === 'both') {
+      console.log(category);
+      setTxt('대사 & 인물');
+      setImg(both);
+      setPlacehold('인물 및 대사를 검색해보세요');
+      setURL('http://localhost:5000/api/bothsearch');
+    }
+
+    console.log('함수내부');
+    console.log(txt);
+    console.log(url);
+  };
+
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
     console.log(category);
+
+    // category변수를 이용하면 한박자 느리게되어서 다이렉트로 넣어줘야함..
+    onChangeState(e.target.value);
   };
 
   const onChangeSearchAud = (e) => {
@@ -79,16 +111,16 @@ function MainPage({ location }) {
     }
 
     const params = new URLSearchParams([
-      ['searchtype', category],
-      ['searchimg', searchVid],
-      ['searchaud', searchAud],
+      ['search_type', category],
+      ['search_img', searchVid],
+      ['search_aud', searchAud],
       ['id', video_id],
     ]);
 
     setIsLoading(true);
 
     axios
-      .get('http://localhost:5000/api/search', { params })
+      .get(url, { params })
       .then((response) => {
         console.log('검색결과');
         console.log(response.data);
@@ -138,29 +170,35 @@ function MainPage({ location }) {
     }
 
     // 여기부분을 함수로만들어서 await해봐야하나
-    if (category === 'image') {
-      console.log(category);
-      setTxt('인물');
-      setImg(image);
-      setPlacehold('인물을 검색해 보세요');
-    } else if (category === 'audio') {
-      console.log(category);
-      setTxt('대사');
-      setImg(audio);
-      setPlacehold('대사를 검색해 보세요');
-    } else if (category === 'both') {
-      console.log(category);
-      setTxt('대사 & 인물');
-      setImg(both);
-      setPlacehold('인물 및 대사를 검색해보세요');
-    }
+    // if (category === 'image') {
+    //   console.log(category);
+    //   setTxt('인물');
+    //   setImg(image);
+    //   setPlacehold('인물을 검색해 보세요');
+    //   setURL('http://localhost:5000/api/videosearch');
+    // } else if (category === 'audio') {
+    //   console.log(category);
+    //   setTxt('대사');
+    //   setImg(audio);
+    //   setPlacehold('대사를 검색해 보세요');
+    //   setURL('http://localhost:5000/api/audiosearch');
+    // } else if (category === 'both') {
+    //   console.log(category);
+    //   setTxt('대사 & 인물');
+    //   setImg(both);
+    //   setPlacehold('인물 및 대사를 검색해보세요');
+    //   setURL('http://localhost:5000/api/bothsearch');
+    // }
     // 여기까지
+
+    // onChangeState(category);
 
     setPage(1);
     console.log('next page');
     console.log({ category });
     console.log({ placehold });
     console.log({ txt });
+    console.log({ url });
   };
 
   if (isLoading) {

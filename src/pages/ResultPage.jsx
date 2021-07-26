@@ -21,7 +21,7 @@ function ResultPage() {
   const location = useLocation();
 
   // 슬라이더바 값2개
-  const [value, setValue] = React.useState([5, 30]);
+  const [value, setValue] = React.useState([2, 30]);
 
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
@@ -100,7 +100,7 @@ function ResultPage() {
           <div className="video-grid-item" style={{ paddingTop: '30px' }}>
             <ReactPlayer
               ref={player}
-              url={video_infos.url}
+              url={video_infos.s3_url}
               controls="true"
               pip="true"
               width="960px"
@@ -163,7 +163,7 @@ function ResultPage() {
                     valueLabelDisplay="auto"
                     valueLabelFormat={(x) => seconds2time(x)}
                     aria-labelledby="range-slider"
-                    min={5}
+                    min={2}
                     max={video_infos.video_length}
                     color="secondary"
                     style={{ marginLeft: '20px', width: '200px' }}
@@ -186,7 +186,11 @@ function ResultPage() {
                   }}
                   style={{ border: 'none' }}
                 >
-                  <ThumImg src={result.thumnail} alt="thumnail" width="280px" />
+                  <ThumImg
+                    src={result.thumbnail}
+                    alt="thumbnail"
+                    width="280px"
+                  />
                 </button>
                 <div className="content-item-inner">
                   {search_infos.type === 'video' ? (

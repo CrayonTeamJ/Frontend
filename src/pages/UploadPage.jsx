@@ -102,20 +102,20 @@ function UploadPage() {
 
           // console.log(res.data.video_pk);
 
-          const params = new URLSearchParams([
-            ['id', res.data.video_pk],
-            ['language', lang],
-          ]);
+          // const params = new URLSearchParams([
+          //   ['id', res.data.video_pk],
+          //   ['language', lang],
+          // ]);
 
-          axios
-            .get('http://localhost:5000/api/detect', { params })
+          // axios
+          //   .get('http://localhost:5000/api/detect', { params })
 
-            .catch((err) => {
-              console.log(err);
-              // setIsLoading(false);
-              // history.push({ pathname: `/result?${params}`, state: { res } });
-              // history.push('/');
-            });
+          //   .catch((err) => {
+          //     console.log(err);
+          //     // setIsLoading(false);
+          //     // history.push({ pathname: `/result?${params}`, state: { res } });
+          //     // history.push('/');
+          //   });
 
           // dispatch(video_initID(res.data.video_pk));
           setIsLoading(false);
@@ -183,7 +183,10 @@ function UploadPage() {
 
           axios
             .get('http://localhost:5000/api/detect', { params })
-
+            .then((response) => {
+              console.log(response);
+              alert('욜로가 완료되었다');
+            })
             .catch((err) => {
               console.log(err);
               // setIsLoading(false);
