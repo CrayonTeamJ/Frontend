@@ -462,7 +462,7 @@ input[type='radio']:checked {
   /* y축 기준 내부에 요소들 끝으로 붙이기 */
 
   justify-content: center;
-  text-align: start;
+  /* text-align: start; */
 }
 
 /* 

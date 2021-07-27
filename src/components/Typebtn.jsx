@@ -117,12 +117,14 @@ const StyleSpan = styled.span`
   /* bottom: 14vw; */
   padding-bottom: 5px;
   line-height: 0vh;
+
   /* margin-left: 30px;
   margin-top: 100px; */
 `;
 
 const StyletextSpan = styled.span`
   font-family: NanumSquare_L;
+  text-align: start;
   font-size: 10px;
   color: #5b5b5b;
   position: relative;

@@ -22,17 +22,18 @@ const Types = [
 
 function LandingInfo({ children }) {
   return (
-    <div
-      style={{
-        margin: '15px',
-        fontFamily: 'NanumSquare_EB',
-        lineHeight: '75px',
-      }}
-    >
+    <div>
       {/* <div className="top-wrapper">
         <div className="landing-slide-slogan" style={{ display: 'flex' }}> */}
       {children}
-      <div style={{ fontSize: '60px' }}>
+      <div
+        style={{
+          margin: '15px',
+          fontFamily: 'NanumSquare_EB',
+          lineHeight: '75px',
+          fontSize: '60px',
+        }}
+      >
         <span>원하는 인물을,</span>
         <br />
         <span>원하는 대사를,</span>

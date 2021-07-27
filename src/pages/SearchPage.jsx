@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-shadow */
 /* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
@@ -207,63 +208,86 @@ function MainPage({ location }) {
   if (page === 1) {
     return (
       <>
-        <div className="top-container">
-          <LandingInfo>
-            <Label htmlFor={category} img={img}>
-              <img
-                src={img}
-                style={{
-                  width: '50%',
-                  display: 'flex',
-                  transform: 'translate(50%, 50%)',
-                }}
-                alt="icon"
-              />
-              <StyleSpan>{txt} 검색</StyleSpan>
-              <br />
-              <StyletextSpan>{placehold}</StyletextSpan>
-            </Label>
-          </LandingInfo>
-        </div>
-        <div className="bottom-container">
-          <div className="bottom-wrapper">
-            <div>
-              <div
-                style={{
-                  // display: 'flex',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  paddingTop: '5%',
-                  // paddingBottom: '2%',
-                }}
-              >
-                {category === 'both' ? (
-                  <>
-                    <Input
-                      placeholder="인물을 입력하세요"
-                      value={searchVid}
-                      onChange={onChangeSearchVid}
-                    />
-                    <Input
-                      placeholder="대사를 입력해세요"
-                      value={searchAud}
-                      onChange={onChangeSearchAud}
-                    />
-                  </>
-                ) : (
-                  <div style={{ paddingTop: '5%' }}>
-                    <Input
-                      placeholder={placehold}
-                      value={category === 'audio' ? searchAud : searchVid}
-                      onChange={
-                        category === 'audio'
-                          ? onChangeSearchAud
-                          : onChangeSearchVid
-                      }
+        <div className="main-grid-container">
+          <div className="main-grid-item top">
+            <LandingInfo>
+              {/* <Label htmlFor={category} img={img}>
+                <img
+                  src={img}
+                  style={{
+                    width: '50%',
+                    display: 'flex',
+                    transform: 'translate(50%, 50%)',
+                  }}
+                  alt="icon"
+                />
+                <StyleSpan>{txt} 검색</StyleSpan>
+                <br />
+                <StyletextSpan>{placehold}</StyletextSpan>
+              </Label> */}
+              <Label htmlFor={category} img={img}>
+                <div className="button-grid">
+                  <div className="button-grid-item">
+                    <img
+                      src={img}
+                      style={{
+                        width: '50%',
+                        // transform: 'translate(50%, 50%)',
+                      }}
                     />
                   </div>
-                )}
-              </div>
+                  <div className="button-grid-item">
+                    <StyleSpan>{txt} 검색</StyleSpan>
+                  </div>
+                  <div className="button-grid-item">
+                    <StyletextSpan>{placehold}</StyletextSpan>
+                  </div>
+                </div>
+              </Label>
+            </LandingInfo>
+          </div>
+          <div className="main-grid-item mid">
+            <span>MID</span>
+          </div>
+          <div className="main-grid-item bot">
+            <div
+              className="bot-grid-item"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                // position: 'relative',
+                // paddingTop: '5%',
+                // paddingBottom: '2%',
+              }}
+            >
+              {category === 'both' ? (
+                <>
+                  <Input
+                    placeholder="인물을 입력하세요"
+                    value={searchVid}
+                    onChange={onChangeSearchVid}
+                  />
+                  <Input
+                    placeholder="대사를 입력해세요"
+                    value={searchAud}
+                    onChange={onChangeSearchAud}
+                  />
+                </>
+              ) : (
+                <div style={{ paddingTop: '5%' }}>
+                  <Input
+                    placeholder={placehold}
+                    value={category === 'audio' ? searchAud : searchVid}
+                    onChange={
+                      category === 'audio'
+                        ? onChangeSearchAud
+                        : onChangeSearchVid
+                    }
+                  />
+                </div>
+              )}
+
               <span
                 style={{
                   color: 'red',
@@ -272,13 +296,13 @@ function MainPage({ location }) {
               >
                 {Errtxt}
               </span>
-              <div className="button-pos">
-                <Button onClick={onSubmitHandler}>
-                  {/* <Link to="/result" style={{ textDecoration: 'none' }}> */}
-                  <Stylespan>검색하기</Stylespan>
-                  {/* </Link> */}
-                </Button>
-              </div>
+            </div>
+            <div className="bot-grid-item">
+              <Button onClick={onSubmitHandler}>
+                {/* <Link to="/result" style={{ textDecoration: 'none' }}> */}
+                <Stylespan>검색하기</Stylespan>
+                {/* </Link> */}
+              </Button>
             </div>
           </div>
         </div>
@@ -353,7 +377,7 @@ const Input = styled.input`
   margin-top: 40px;
   border-radius: 10px;
   border: 1px solid #404040;
-  width: 80%;
+  width: 60vw;
   outline: none;
   font-size: 15px;
   box-sizing: border-box;
@@ -374,7 +398,7 @@ const Label = styled.label`
   /* background: no-repeat center url(${(props) => props.img}) white;
   background-image: ${(props) => props.img}; */
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
-  text-align: start;
+  /* text-align: start; */
 `;
 
 const StyleSpan = styled.span`
