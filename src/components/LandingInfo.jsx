@@ -22,7 +22,7 @@ const Types = [
 
 function LandingInfo({ children }) {
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       {/* <div className="top-wrapper">
         <div className="landing-slide-slogan" style={{ display: 'flex' }}> */}
       {children}

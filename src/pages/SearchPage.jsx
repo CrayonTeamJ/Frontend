@@ -151,22 +151,22 @@ function MainPage({ location }) {
   const onChangePage = (e) => {
     if (!category) {
       alert('카테고리 선택이 필요합니다.');
-      setErrtxt('카테고리 선택이 필요합니다.');
+      // setErrtxt('카테고리 선택이 필요합니다.');
       return;
     }
     if (!txt) {
       alert('카테고리 선택이 필요합니다.');
-      setErrtxt('카테고리 선택이 필요합니다.');
+      // setErrtxt('카테고리 선택이 필요합니다.');
       return;
     }
     if (!placehold) {
       alert('카테고리 선택이 필요합니다.');
-      setErrtxt('카테고리 선택이 필요합니다.');
+      // setErrtxt('카테고리 선택이 필요합니다.');
       return;
     }
     if (!img) {
       alert('카테고리 선택이 필요합니다.');
-      setErrtxt('카테고리 선택이 필요합니다.');
+      // setErrtxt('카테고리 선택이 필요합니다.');
       return;
     }
 
@@ -236,11 +236,27 @@ function MainPage({ location }) {
                       }}
                     />
                   </div>
-                  <div className="button-grid-item">
-                    <StyleSpan>{txt} 검색</StyleSpan>
+                  <div
+                    className="button-grid-item"
+                    style={{
+                      fontFamily: 'NanumSquare_EB',
+                      // position: 'absolute',
+                      fontSize: '16px',
+                    }}
+                  >
+                    {txt}
+                    {/* <StyleSpan>{txt} 검색</StyleSpan> */}
                   </div>
-                  <div className="button-grid-item">
-                    <StyletextSpan>{placehold}</StyletextSpan>
+                  <div
+                    className="button-grid-item"
+                    style={{
+                      fontFamily: 'NanumSquare_L',
+                      // position: 'absolute',
+                      fontSize: '12px',
+                    }}
+                  >
+                    {placehold}
+                    {/* <StyletextSpan>{placehold}</StyletextSpan> */}
                   </div>
                 </div>
               </Label>
@@ -253,7 +269,7 @@ function MainPage({ location }) {
             <div
               className="bot-grid-item"
               style={{
-                display: 'flex',
+                // display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 // position: 'relative',
@@ -277,6 +293,7 @@ function MainPage({ location }) {
               ) : (
                 <div style={{ paddingTop: '5%' }}>
                   <Input
+                    className="bot-grid-item"
                     placeholder={placehold}
                     value={category === 'audio' ? searchAud : searchVid}
                     onChange={
