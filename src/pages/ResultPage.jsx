@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
@@ -18,6 +19,7 @@ import Slider from '@material-ui/core/Slider';
 import { Link } from 'react-router-dom';
 import img from '../img/loupe.png';
 import both from '../img/video-player.png';
+import noResult from '../img/not-found.png';
 
 function ResultPage() {
   const location = useLocation();
@@ -175,7 +177,7 @@ function ResultPage() {
                 justifyContent: 'flex-end',
               }}
             >
-              {search_infos.type === 'video' ? (
+              {search_infos.type === 'video' && isFinite(max) ? (
                 <>
                   <span
                     style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}
@@ -201,58 +203,88 @@ function ResultPage() {
             </div>
           </div>
           <div className="grid-item aside">aside</div>
-          <div className="grid-item content" style={{ overflow: 'scroll' }}>
-            {after_range_result.map((result) => (
-              <div className="content-item">
-                <button
-                  className="content-item-inner"
-                  onClick={() => {
-                    player.current.seekTo(result.start);
+          {length === 0 ? (
+            <div
+              className="grid-item content-no-result"
+              style={{ overflow: 'scroll' }}
+            >
+              <div className="content-no-item">
+                <img
+                  src={noResult}
+                  style={{
+                    width: '180px',
+                    height: '180px',
+                    marginTop: '80px',
+                    // position: 'absolute',
+                    // left: '35%',
+                    // top: '30%',
                   }}
-                  style={{ border: 'none' }}
-                >
-                  <ThumImg
-                    src={result.thumbnail}
-                    alt="thumbnail"
-                    width="280px"
-                  />
-                </button>
-                <div className="content-item-inner">
-                  {search_infos.type === 'video' ? (
-                    <span
-                      style={{
-                        fontFamily: 'NanumSquare_L',
-                        fontSize: '20px',
-                        // textAlign: 'left',
-                        marginLeft: '10px',
-                        transform: 'translate(-100%, 0%)',
-                      }}
-                    >
-                      {seconds2time(result.start)} - {seconds2time(result.end)}
-                    </span>
-                  ) : (
-                    <span
-                      style={{
-                        fontFamily: 'NanumSquare_L',
-                        fontSize: '20px',
-                        display: 'flex',
-                        textAlign: 'left',
-                        marginLeft: '10px',
-                        //   transform: 'translate(-100%, 0%)',
-                      }}
-                    >
-                      {seconds2time(result.start)}
-                    </span>
-                  )}
-                </div>
+                  alt="img"
+                />
               </div>
-              //   <div className="content-item">100</div>
-              //   <div className="content-item">100</div>
-              //   <div className="content-item">100</div>
-              //   <div className="content-item">100</div>
-              //   <div className="content-item">100</div>
-            ))}
-          </div>
+              <div className="content-no-item">
+                <span style={{ fontFamily: 'NanumSquare_R', fontSize: '20px' }}>
+                  "{search_infos.search_vid}
+                  {search_infos.search_aud}" 에 대한 검색결과가 존재하지
+                  않습니다.
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="grid-item content" style={{ overflow: 'scroll' }}>
+              {after_range_result.map((result) => (
+                <div className="content-item">
+                  <button
+                    className="content-item-inner"
+                    onClick={() => {
+                      player.current.seekTo(result.start);
+                    }}
+                    style={{ border: 'none' }}
+                  >
+                    <ThumImg
+                      src={result.thumbnail}
+                      alt="thumbnail"
+                      width="280px"
+                    />
+                  </button>
+                  <div className="content-item-inner">
+                    {search_infos.type === 'video' ? (
+                      <span
+                        style={{
+                          fontFamily: 'NanumSquare_L',
+                          fontSize: '20px',
+                          // textAlign: 'left',
+                          marginLeft: '10px',
+                          transform: 'translate(-100%, 0%)',
+                        }}
+                      >
+                        {seconds2time(result.start)} -{' '}
+                        {seconds2time(result.end)}
+                      </span>
+                    ) : (
+                      <span
+                        style={{
+                          fontFamily: 'NanumSquare_L',
+                          fontSize: '20px',
+                          display: 'flex',
+                          textAlign: 'left',
+                          marginLeft: '10px',
+                          //   transform: 'translate(-100%, 0%)',
+                        }}
+                      >
+                        {seconds2time(result.start)}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                //   <div className="content-item">100</div>
+                //   <div className="content-item">100</div>
+                //   <div className="content-item">100</div>
+                //   <div className="content-item">100</div>
+                //   <div className="content-item">100</div>
+              ))}
+            </div>
+          )}
           <div className="grid-item aside2">aside</div>
           <div className="grid-item footer">
             {search_infos.type === 'video' ? (
