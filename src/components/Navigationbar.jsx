@@ -24,6 +24,9 @@ const Navigationbar = (props) => {
   const Expire = useSelector((state) => state.users.access_expire, []);
   const isLogin = useSelector((state) => state.users.isLogin, []);
 
+  // console.log('로그인상태');
+  // console.log(isLogin);
+
   // 로그아웃 버튼 함수
   const onLogoutHandler = () => {
     dispatch(user_logout())
@@ -99,10 +102,10 @@ const Navigationbar = (props) => {
             <img src={logo} width="200px" alt="logo" />
           </Link>
           <ul className="nav_user_box">
-            <Timer style={{ width: '0.5vh' }} />
-            <StyleLabel>{Nickname}</StyleLabel>
             {/* <Link to="/profile" style={{ marginLeft: '10px' }}> */}
             <ProfileImg src={Profile} alt="profile" />
+            <StyleLabel>{Nickname}</StyleLabel>
+            <Timer style={{ width: '15px' }} />
             {/* </Link> */}
             <Button color="#fa605a" onClick={onLogoutHandler}>
               <StyleSpan color="white">LOGOUT</StyleSpan>
@@ -141,28 +144,30 @@ const StyleSpan = styled.span`
   position: absolute;
   font-family: NanumSquare_R;
   color: ${(props) => props.color};
-  bottom: 25%;
-  font-size: 12px;
+  /* bottom: 25%; */
+  font-size: 15px;
   opacity: 1;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  /* -webkit-transform: translateX(-50%); */
+  /* transform: translateX(-50%); */
   white-space: nowrap;
 `;
 
 const ProfileImg = styled.img`
   border-radius: 100px;
-  height: 4.5vh;
+  height: 45px;
+  margin-left: 10px;
   /* width: 4.5vw; */
 `;
 
 const StyleLabel = styled.label`
-  font-family: NanumSquare_R;
+  font-family: NanumSquare_B;
   color: #000000;
   bottom: 25%;
-  font-size: 2vh;
+  font-size: 18px;
   opacity: 1;
   white-space: nowrap;
   margin-left: 13px;
+  margin-right: 13px;
 `;
 
 const Button = styled.button`
@@ -182,11 +187,12 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 10vw;
-  height: 3.5vh;
+  width: 170px;
+  height: 35px;
   position: relative;
   margin-left: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
