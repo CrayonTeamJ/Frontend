@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import regsuccess from '../img/goal.png';
 import Template from '../components/Template';
 
@@ -17,6 +18,7 @@ function SignupPage() {
   const [Password_veri, setPassword_veri] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
+  const history = useHistory();
 
   // state변수를 변경시키는 함수들
   const onChangeNick = (e) => {
@@ -103,6 +105,7 @@ function SignupPage() {
       .catch((err) => {
         // Hide Loader
         console.error(err);
+        history.push('/error?errtype=register');
       });
   };
 

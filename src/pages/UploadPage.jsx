@@ -134,8 +134,9 @@ function UploadPage() {
         console.log(err);
         setIsLoading(false);
         // location.href('/');
-        history.push('/');
-        setErrtxt('유효하지 않은 파일입니다.');
+        // history.push('/');
+        history.push('/error?errtype=upload video');
+        setErrtxt('서버에러');
       });
   };
 
@@ -209,10 +210,12 @@ function UploadPage() {
       .catch((err) => {
         // 예외 처리
         console.log(err);
-        setErrtxt('유효하지 않은 url입니다.');
+        // setErrtxt('유효하지 않은 url입니다.');
         setIsLoading(false);
         // location.href('/');
-        history.push('/');
+        // history.push('/');
+        history.push('/error?errtype=upload video');
+        setErrtxt('서버에러');
       });
   };
 

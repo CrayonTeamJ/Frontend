@@ -144,7 +144,8 @@ function MainPage({ location }) {
         console.log(err);
         setIsLoading(false);
         // history.push({ pathname: `/result?${params}`, state: { res } });
-        history.push('/');
+        // history.push('/');
+        history.push(`/error?errtype=search?${params}`);
       });
   };
 

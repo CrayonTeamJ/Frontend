@@ -21,6 +21,7 @@ import Navigationbar from './components/Navigationbar';
 import SearchPage from './pages/SearchPage';
 import Footer from './components/Footer';
 import ResultPage from './pages/ResultPage';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   // const isLogin = useSelector((state) => state.isLogin, []);
@@ -40,7 +41,7 @@ function App() {
             <Route path="/memberonly" component={MemberOnlyPage} />
             <PrivateRoute path="/search" component={SearchPage} />
             <PrivateRoute path="/result" component={ResultPage} />
-            <Route path="/profile" component={MyPage} />
+            <Route path="/error" component={ErrorPage} />
             <Route path="/" component={UploadPage} />
             {/* {/* <Route path="/search" component={SearchPage} /> */}
             {/* <Route path="/profile" component={MyPage} /> */}

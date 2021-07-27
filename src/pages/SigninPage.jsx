@@ -61,6 +61,7 @@ function SigninPage() {
       })
       .catch((err) => {
         console.log(err);
+        history.push('/error?errtype=login');
       });
   };
 
