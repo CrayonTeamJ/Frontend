@@ -230,7 +230,7 @@ function UploadPage() {
           <span>MID</span>
         </div>
         <div className="main-grid-item bot">
-          <div style={{ padding: '50px' }}>
+          <div className="bot-grid-item" style={{ padding: '50px' }}>
             <div style={{ padding: '5px' }}>
               <Label>Language : </Label>
               <input
@@ -289,7 +289,7 @@ function UploadPage() {
             </form>
             <ErrLabel>{Errtxt}</ErrLabel>
           </div>
-          <div className="button-pos">
+          <div className="bot-grid-item">
             <Button
               onClick={isLogin === true ? onSubmitHandler : onLoginRequest}
             >
@@ -348,7 +348,7 @@ const InputURL = styled.input`
   margin-top: 40px;
   border-radius: 10px;
   border: 1px solid #404040;
-  width: 900px;
+  width: 60vw;
   outline: none;
   font-size: 15px;
   box-sizing: border-box;

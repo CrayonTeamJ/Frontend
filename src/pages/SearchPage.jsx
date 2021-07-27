@@ -288,20 +288,28 @@ function MainPage({ location }) {
   return (
     <>
       {/* top container + bottom container */}
-      <div className="top-container">
+      <div className="main-grid-container">
         {/* <span>top container</span> */}
-        <LandingInfo />
-      </div>
-      <div className="bottom-container">
-        {/* <span>bottom continer</span> */}
-        <div className="bottom-wrapper">
-          <Typebtn onSelectCategory={onSelectCategory} checked={category} />
-          <div className="button-pos">
+        <div className="main-grid-item top">
+          <LandingInfo />
+        </div>
+        <div className="main-grid-item mid">
+          <span>MID</span>
+        </div>
+        <div className="main-grid-item bot">
+          {/* <span>bottom continer</span> */}
+          {/* <div className="bottom-wrapper"> */}
+          <div className="bot-grid-item">
+            {/* <span>랄ㄹ</span> */}
+            <Typebtn onSelectCategory={onSelectCategory} checked={category} />
+          </div>
+          <div className="bot-grid-item">
             <Button onClick={onChangePage}>
               <Stylespan>다음으로</Stylespan>
             </Button>
           </div>
         </div>
+        {/* </div> */}
       </div>
     </>
   );
@@ -316,32 +324,30 @@ const Button = styled.button`
   color: white;
 
   border: none;
-  margin-top: 3vh;
-  width: 12vw;
-  height: 6vh;
+  /* margin-top: 50px; */
+  width: 180px;
+  height: 50px;
 
-  margin-left: 10px;
+  /* margin-left: 10px; */
 
   /* text-align: center; */
   border-radius: 50px;
 
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+
+  /* position: absolute; */
 `;
 
 const Stylespan = styled.span`
   position: relative;
   font-family: NanumSquare_B;
   color: white;
-  font-size: 2vw;
-  display: flex;
-  /* y축기준 중앙 */
-  align-items: center;
-  /* 축중앙 */
-  justify-content: center;
+  font-size: 25px;
   // font-size: 1.6vw;
   opacity: 1;
   white-space: nowrap;
 `;
+
 const Input = styled.input`
   padding: 10px;
   margin-top: 40px;
