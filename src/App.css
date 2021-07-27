@@ -65,21 +65,33 @@ input[type='radio']:checked {
   background-color: no-repeat s#404040;
 } */
 
+.html .body {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 /* 전체 구조 (container) start */
 .new-container {
   width: 100%;
   height: 100%;
-  height: 100vh;
-  width: 100vw;
+  position: static;
+  /* height: 100vh; */
+  /* width: 100vw; */
 }
 
 .nav-container {
   position: fixed;
   width: 100%;
   height: 100%;
-  width: 100vw;
-  height: 6vh;
+  /* height: 100%; */
+  /* height: 60px; */
+  /* width: 100vw; */
+  /* height: 6vh; */
   color: white;
+  height: 60px;
 }
 
 /* 부모가 .new-container (static) */
@@ -87,23 +99,41 @@ input[type='radio']:checked {
   width: 100%;
   height: 100%;
   width: 100vw;
-  height: 89vh;
+  height: 100vh;
+  /* height: px; */
+  /* position: relative; */
+  /* top: 6vh; */
 
-  position: relative;
-  top: 6vh;
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+  background-image: url(./img/backimg.png);
 }
 
 /* 부모가 main-container(relative) */
 .top-container {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position-y: -36vh;
+  width: 100vw;
+  background-size: 50%;
+  /* background-position-y: -36vh; */
   background-image: url(./img/backimg.png);
 
-  height: 48vh;
-  width: 100vw;
-
+  /* height: 60vh; */
+  /* height: 36em; */
+  height: 500px;
+  top: 100px;
+  /* height: 30vmax; */
+  /* width: 100vw; */
+  /* height: 55vh; */
   display: flex;
   /* y축기준 중앙 */
   align-items: center;
@@ -113,10 +143,13 @@ input[type='radio']:checked {
 
 .bottom-container {
   width: 100%;
-  height: 100%;
-  height: 41vh;
+  /* height: 100%; */
+  /* height: 400px; */
+  /* height: 40vh; */
   width: 100vw;
   background-color: yellow;
+  /* height: 30em; */
+  /* bottom: 0px; */
 
   display: flex;
   /* y축기준 중앙 */
@@ -131,8 +164,9 @@ input[type='radio']:checked {
   bottom: 0;
   width: 100%;
   height: 100%;
-  width: 100vw;
-  height: 5vh;
+  height: 30px;
+  /* width: 100vw; */
+  /* height: 5vh; */
   display: flex;
   /* y축기준 중앙 */
   align-items: center;
@@ -158,7 +192,7 @@ input[type='radio']:checked {
   /* 내부요소-로고이미지 y축 중앙정렬 */
   align-items: center;
   justify-content: space-between;
-  height: 5vh;
+  height: 50px;
 }
 
 .nav_user_box {
@@ -233,24 +267,27 @@ input[type='radio']:checked {
 
 .top-wrapper {
   /* 크기 */
-  height: 32vh;
+  /* height: 350px; */
+  /* height: 300px; */
   width: 80vw;
-
+  height: 18vmax;
+  /* top: px; */
   /* 위치 설정 */
   position: relative;
-  top: 0vh;
+  /* top: 4vmax; */
   z-index: 1;
 
   background-color: gold;
 }
 
 .top-wrapper .landing-slide-slogan {
-  margin-right: 0.5vw;
+  /* margin-right: 0.5vw;
   margin-left: 0.5vw;
   margin-top: 0.5vw;
-  margin-bottom: 0.5vw;
+  margin-bottom: 0.5vw; */
+  margin: 5px;
 
-  height: 31vh;
+  height: 330px;
   width: 79vw;
   /* 정렬 */
   text-align: left;
@@ -271,12 +308,15 @@ input[type='radio']:checked {
 .bottom-wrapper {
   /* 크기 */
   width: 80vw;
-  height: 42vh;
+  /* height: 42vmax; */
+  /* height: 22vmax; */
+  height: 320px;
 
   /* 위치 */
   position: relative;
   z-index: 1;
-  bottom: 4.5vh;
+  top: -70px;
+  /* bottom: 00px; */
   /* left: 10vw; */
 
   /* bottom wrapper끼리 줄간격(?) */
@@ -348,6 +388,60 @@ input[type='radio']:checked {
   grid-template-rows: 2fr 12fr 1fr;
   grid-template-columns: 1fr, 160px, 1fr;
 }
+
+.main-grid-container {
+  display: grid;
+
+  grid-template-areas:
+    'top'
+    'mid'
+    'bot';
+
+  grid-template-rows: 280px 50px 340px;
+  grid-template-columns: 1400px;
+}
+
+.main-grid-item {
+  margin: 2px;
+  background-color: bisque;
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+}
+
+.top {
+  grid-area: top;
+  text-align: left;
+}
+
+.bot {
+  grid-area: bot;
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  background-color: lightpink;
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+
+  display: grid;
+  grid-template-rows: 280px 60px;
+  grid-template-columns: 1400px;
+}
+
+/* .bot-grid-item {
+  margin: 2px;
+  background-color: blueviolet;
+} */
 
 /* 
 .result-grid-item {

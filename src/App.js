@@ -40,9 +40,10 @@ function App() {
               <Route path="/memberonly" component={MemberOnlyPage} />
               <PrivateRoute path="/search" component={SearchPage} />
               <PrivateRoute path="/result" component={ResultPage} />
+              <Route path="/profile" component={MyPage} />
               <Route path="/" component={UploadPage} />
-              {/* <Route path="/search" component={SearchPage} />
-              <Route path="/profile" component={MyPage} /> */}
+              {/* {/* <Route path="/search" component={SearchPage} /> */}
+              {/* <Route path="/profile" component={MyPage} /> */}
             </Switch>
           </div>
           <div className="footer-container">

@@ -6,10 +6,7 @@ import '../App.css';
 function Footer() {
   return (
     <>
-      <div
-        className="footer"
-        style={{ backgroundColor: 'green', height: '5vh' }}
-      >
+      <div className="footer" style={{ backgroundColor: 'green' }}>
         <span>© SeaFLAG, Inc. 2021. 2021-SiliconValley-TeamJ</span>
       </div>
     </>
