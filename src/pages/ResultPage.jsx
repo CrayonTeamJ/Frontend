@@ -22,9 +22,6 @@ import both from '../img/video-player.png';
 function ResultPage() {
   const location = useLocation();
 
-  // 슬라이더바 값2개
-  const [value, setValue] = React.useState([2, 30]);
-
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
   //   const type = query.searchtype;
@@ -35,12 +32,22 @@ function ResultPage() {
   const video_infos = res.video_info;
   const search_infos = res.search_info;
   const res_infos = res.res_info;
-  // const length = res_infos.length();
+
+  // console.log(max);
+  const { length } = res_infos;
+
+  const map1 = res_infos.map((x) => x.leng);
+  // console.log(map1);
+  const max = Math.max(...map1);
+
+  // 슬라이더바 값2개
+  const [value, setValue] = React.useState([2, max]);
 
   // 범위를 기준으로 거르기
   const after_range_result = res_infos
-    .filter((element) => element.length <= value[1])
-    .filter((element) => element.length >= value[0]);
+    .filter((element) => element.leng <= value[1])
+    .filter((element) => element.leng >= value[0]);
+
   //   console.log(new_result);
   //   ref = (player) => {
   //     this.player = player;
@@ -153,7 +160,7 @@ function ResultPage() {
                     }}
                   >
                     "{search_infos.search_vid}
-                    {search_infos.search_aud}" 검색 결과
+                    {search_infos.search_aud}" 검색 결과 ({length})
                   </span>
                 </>
               )}
@@ -182,7 +189,7 @@ function ResultPage() {
                     valueLabelFormat={(x) => seconds2time(x)}
                     aria-labelledby="range-slider"
                     min={2}
-                    max={video_infos.video_length}
+                    max={max + 1}
                     color="secondary"
                     style={{ marginLeft: '20px', width: '200px' }}
                     //   getAriaValueText={valuetext}
