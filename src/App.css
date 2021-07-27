@@ -115,7 +115,10 @@ input[type='radio']:checked {
   align-items: center;
   /* y축 기준 내부에 요소들 끝으로 붙이기 */
   justify-content: center;
-  background-image: url(./img/backimg.png);
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./img/background1.jpg);
 }
 
 /* 부모가 main-container(relative) */
@@ -123,7 +126,7 @@ input[type='radio']:checked {
   width: 100%;
   height: 100%;
   width: 100vw;
-  background-size: 50%;
+
   /* background-position-y: -36vh; */
   background-image: url(./img/backimg.png);
 
@@ -403,7 +406,7 @@ input[type='radio']:checked {
 
 .main-grid-item {
   margin: 2px;
-  background-color: bisque;
+  /* background-color: bisque; */
   /* display: flex; */
   /* y축기준 중앙 */
   /* align-self: center; */
@@ -428,7 +431,7 @@ input[type='radio']:checked {
 
   /* bottom wrapper끼리 줄간격(?) */
   line-height: 30px;
-  background-color: lightpink;
+  /* background-color: lightpink; */
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
