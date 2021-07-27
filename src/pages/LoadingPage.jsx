@@ -8,44 +8,46 @@ import styled from 'styled-components';
 
 const LoadingPage = (props) => (
   //   const { promiseInProgress } = usePromiseTracker({ area: props.area });
-  <div className="main-grid-container">
-    <div className="main-grid-item top">
-      <Styleh1>NOW PROCESSING</Styleh1>
-    </div>
-    <div className="main-grid-item mid">
-      <Loader
-        style={{
-          width: '100%',
-          height: '100',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: '10',
-        }}
-        type="ThreeDots"
-        color="#fa506a"
-        height="100"
-        width="100"
-      />
-    </div>
-    <div className="main-grid-item bot">
-      <span
-        style={{
-          fontSize: '1.5vw',
-          fontFamily: 'NanumSquare_L',
-          // position: 'absolute',
-          // textAlign: 'center',
-          bottom: '40%',
-        }}
-      >
-        {props.message}
-        <br />
-        잠시만 기다려 주세요.
-      </span>
+  <div className="main-container">
+    <div className="main-grid-container">
+      <div className="main-grid-item top">
+        <Styleh1>NOW PROCESSING</Styleh1>
+      </div>
+      <div className="main-grid-item mid">
+        <Loader
+          style={{
+            width: '100%',
+            height: '100',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: '10',
+          }}
+          type="ThreeDots"
+          color="#fa506a"
+          height="100"
+          width="100"
+        />
+      </div>
+      <div className="main-grid-item bot">
+        <span
+          style={{
+            fontSize: '1.5vw',
+            fontFamily: 'NanumSquare_L',
+            // position: 'absolute',
+            // textAlign: 'center',
+            bottom: '40%',
+          }}
+        >
+          {props.message}
+          <br />
+          잠시만 기다려 주세요.
+        </span>
+      </div>
     </div>
   </div>
 );

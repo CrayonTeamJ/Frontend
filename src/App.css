@@ -346,16 +346,17 @@ input[type='radio']:checked {
 
 /* result창  */
 .video-container {
+  /* grid-area: video-container; */
   /* margin: 10px; */
-  padding-bottom: 40px;
-
+  /* padding-bottom: 40px; */
+  display: grid;
   width: 100%;
   height: 100%;
   background-color: antiquewhite;
 
-  height: 80vh;
+  height: 750px;
   width: 100vw;
-  grid-template-rows: 5fr 1fr;
+  grid-template-rows: 8fr 1fr;
   /* display: absolute; */
   /* y축기준 중앙 */
   /* align-items: center; */
@@ -367,8 +368,8 @@ input[type='radio']:checked {
 }
 
 .video-grid-item {
-  margin: 5px;
-  padding: 5px;
+  /* margin: 5px; */
+  /* padding: 5px; */
   background-color: yellow;
   display: flex;
   align-items: center;
@@ -381,15 +382,16 @@ input[type='radio']:checked {
   display: grid;
   /* margin-bottom: 5px; */
   /* padding: 5px; */
-  grid-template-areas:
-    'header header header'
-    'button results button'
-    'footer footer footer';
+  /* display: flex; */
+  /* grid-template-areas:
+    'video-container'
+    'grid-container'
+    'comment-container'; */
 
-  height: 500px;
+  /* height: 500px; */
   /* background-color: #ccc; */
-  grid-template-rows: 2fr 12fr 1fr;
-  grid-template-columns: 1fr, 160px, 1fr;
+  grid-template-rows: 800px 800px 300px;
+  /* grid-template-columns: 1fr, 160px, 1fr; */
 }
 
 .main-grid-container {
@@ -501,6 +503,7 @@ input[type='radio']:checked {
 } */
 
 .grid-container {
+  /* grid-area: grid-container; */
   display: grid;
   grid-template-areas:
     '. header .'
@@ -510,7 +513,7 @@ input[type='radio']:checked {
   grid-template-columns: 1fr 960px 1fr;
   /* height: 250px; */
   background-color: #ccc;
-  height: 70vh;
+  height: 700px;
   width: 100vw;
 }
 
@@ -614,6 +617,7 @@ input[type='radio']:checked {
 }
 
 .comment-container {
+  /* grid-area: comment-container; */
   /* margin: 10px; */
   padding-bottom: 40px;
 
@@ -621,7 +625,7 @@ input[type='radio']:checked {
   height: 100%;
   background-color: antiquewhite;
 
-  height: 80vh;
+  height: 150px;
   width: 100vw;
   grid-template-rows: 1fr;
   /* display: absolute; */

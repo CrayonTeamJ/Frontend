@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-undef */
 /* eslint-disable react/no-this-in-sfc */
@@ -16,6 +17,7 @@ import styled from 'styled-components';
 import Slider from '@material-ui/core/Slider';
 import { Link } from 'react-router-dom';
 import img from '../img/loupe.png';
+import both from '../img/video-player.png';
 
 function ResultPage() {
   const location = useLocation();
@@ -33,6 +35,7 @@ function ResultPage() {
   const video_infos = res.video_info;
   const search_infos = res.search_info;
   const res_infos = res.res_info;
+  // const length = res_infos.length();
 
   // 범위를 기준으로 거르기
   const after_range_result = res_infos
@@ -90,6 +93,7 @@ function ResultPage() {
     setValue(newValue);
   };
 
+  // console.log(video_infos.s3_url);
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
 
@@ -97,7 +101,7 @@ function ResultPage() {
     return (
       <>
         <div className="video-container">
-          <div className="video-grid-item" style={{ paddingTop: '30px' }}>
+          <div className="video-grid-item" style={{ paddingTop: '100px' }}>
             <ReactPlayer
               ref={player}
               url={video_infos.s3_url}
@@ -106,6 +110,7 @@ function ResultPage() {
               width="960px"
               height="540px"
             />
+            {/* <h1>{video_infos.title}</h1> */}
           </div>
           <div className="video-grid-item">
             <label
@@ -119,26 +124,39 @@ function ResultPage() {
             </label>
           </div>
         </div>
-        {/* <div className="result-container">
-        <div className="header">head</div>
-        <div className="button">but</div>
-        <div className="results">res</div>
-        <div className="button">but</div>
-        <div className="footer">foot</div>
-      </div> */}
+
         <div className="grid-container">
           <div className="grid-item header">
             <div className="header-item">
-              <LogoLabel src={img} alt="logoimg" />
-              <span
-                style={{
-                  fontFamily: 'NanumSquare_B',
-                  fontSize: '18px',
-                  marginLeft: '20px',
-                }}
-              >
-                {search_infos.search_vid} {search_infos.search_aud} 검색 결과
-              </span>
+              {search_infos.type === 'both' ? (
+                <>
+                  <LogoLabel src={both} alt="logoimg" />
+                  <span
+                    style={{
+                      fontFamily: 'NanumSquare_B',
+                      fontSize: '18px',
+                      marginLeft: '20px',
+                    }}
+                  >
+                    "{search_infos.search_vid}" 과 "{search_infos.search_aud}"
+                    검색 결과
+                  </span>
+                </>
+              ) : (
+                <>
+                  <LogoLabel src={img} alt="logoimg" />
+                  <span
+                    style={{
+                      fontFamily: 'NanumSquare_B',
+                      fontSize: '18px',
+                      marginLeft: '20px',
+                    }}
+                  >
+                    "{search_infos.search_vid}
+                    {search_infos.search_aud}" 검색 결과
+                  </span>
+                </>
+              )}
             </div>
             <div
               className="header-item"

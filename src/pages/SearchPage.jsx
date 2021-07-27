@@ -208,10 +208,11 @@ function MainPage({ location }) {
   if (page === 1) {
     return (
       <>
-        <div className="main-grid-container">
-          <div className="main-grid-item top">
-            <LandingInfo>
-              {/* <Label htmlFor={category} img={img}>
+        <div className="main-container">
+          <div className="main-grid-container">
+            <div className="main-grid-item top">
+              <LandingInfo>
+                {/* <Label htmlFor={category} img={img}>
                 <img
                   src={img}
                   style={{
@@ -225,101 +226,102 @@ function MainPage({ location }) {
                 <br />
                 <StyletextSpan>{placehold}</StyletextSpan>
               </Label> */}
-              <Label htmlFor={category} img={img}>
-                <div className="button-grid">
-                  <div className="button-grid-item">
-                    <img
-                      src={img}
+                <Label htmlFor={category} img={img}>
+                  <div className="button-grid">
+                    <div className="button-grid-item">
+                      <img
+                        src={img}
+                        style={{
+                          width: '50%',
+                          // transform: 'translate(50%, 50%)',
+                        }}
+                      />
+                    </div>
+                    <div
+                      className="button-grid-item"
                       style={{
-                        width: '50%',
-                        // transform: 'translate(50%, 50%)',
+                        fontFamily: 'NanumSquare_EB',
+                        // position: 'absolute',
+                        fontSize: '16px',
                       }}
-                    />
+                    >
+                      {txt}
+                      {/* <StyleSpan>{txt} 검색</StyleSpan> */}
+                    </div>
+                    <div
+                      className="button-grid-item"
+                      style={{
+                        fontFamily: 'NanumSquare_L',
+                        // position: 'absolute',
+                        fontSize: '12px',
+                      }}
+                    >
+                      {placehold}
+                      {/* <StyletextSpan>{placehold}</StyletextSpan> */}
+                    </div>
                   </div>
-                  <div
-                    className="button-grid-item"
-                    style={{
-                      fontFamily: 'NanumSquare_EB',
-                      // position: 'absolute',
-                      fontSize: '16px',
-                    }}
-                  >
-                    {txt}
-                    {/* <StyleSpan>{txt} 검색</StyleSpan> */}
-                  </div>
-                  <div
-                    className="button-grid-item"
-                    style={{
-                      fontFamily: 'NanumSquare_L',
-                      // position: 'absolute',
-                      fontSize: '12px',
-                    }}
-                  >
-                    {placehold}
-                    {/* <StyletextSpan>{placehold}</StyletextSpan> */}
-                  </div>
-                </div>
-              </Label>
-            </LandingInfo>
-          </div>
-          <div className="main-grid-item mid">
-            <span>MID</span>
-          </div>
-          <div className="main-grid-item bot">
-            <div
-              className="bot-grid-item"
-              style={{
-                // display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                // position: 'relative',
-                // paddingTop: '5%',
-                // paddingBottom: '2%',
-              }}
-            >
-              {category === 'both' ? (
-                <>
-                  <Input
-                    placeholder="인물을 입력하세요"
-                    value={searchVid}
-                    onChange={onChangeSearchVid}
-                  />
-                  <Input
-                    placeholder="대사를 입력해세요"
-                    value={searchAud}
-                    onChange={onChangeSearchAud}
-                  />
-                </>
-              ) : (
-                <div style={{ paddingTop: '5%' }}>
-                  <Input
-                    className="bot-grid-item"
-                    placeholder={placehold}
-                    value={category === 'audio' ? searchAud : searchVid}
-                    onChange={
-                      category === 'audio'
-                        ? onChangeSearchAud
-                        : onChangeSearchVid
-                    }
-                  />
-                </div>
-              )}
-
-              <span
+                </Label>
+              </LandingInfo>
+            </div>
+            <div className="main-grid-item mid">
+              <span>MID</span>
+            </div>
+            <div className="main-grid-item bot">
+              <div
+                className="bot-grid-item"
                 style={{
-                  color: 'red',
-                  fontFamily: 'NanumSquare_L',
+                  // display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  // position: 'relative',
+                  // paddingTop: '5%',
+                  // paddingBottom: '2%',
                 }}
               >
-                {Errtxt}
-              </span>
-            </div>
-            <div className="bot-grid-item">
-              <Button onClick={onSubmitHandler}>
-                {/* <Link to="/result" style={{ textDecoration: 'none' }}> */}
-                <Stylespan>검색하기</Stylespan>
-                {/* </Link> */}
-              </Button>
+                {category === 'both' ? (
+                  <>
+                    <Input
+                      placeholder="인물을 입력하세요"
+                      value={searchVid}
+                      onChange={onChangeSearchVid}
+                    />
+                    <Input
+                      placeholder="대사를 입력해세요"
+                      value={searchAud}
+                      onChange={onChangeSearchAud}
+                    />
+                  </>
+                ) : (
+                  <div style={{ paddingTop: '5%' }}>
+                    <Input
+                      className="bot-grid-item"
+                      placeholder={placehold}
+                      value={category === 'audio' ? searchAud : searchVid}
+                      onChange={
+                        category === 'audio'
+                          ? onChangeSearchAud
+                          : onChangeSearchVid
+                      }
+                    />
+                  </div>
+                )}
+
+                <span
+                  style={{
+                    color: 'red',
+                    fontFamily: 'NanumSquare_L',
+                  }}
+                >
+                  {Errtxt}
+                </span>
+              </div>
+              <div className="bot-grid-item">
+                <Button onClick={onSubmitHandler}>
+                  {/* <Link to="/result" style={{ textDecoration: 'none' }}> */}
+                  <Stylespan>검색하기</Stylespan>
+                  {/* </Link> */}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -328,29 +330,31 @@ function MainPage({ location }) {
   }
   return (
     <>
-      {/* top container + bottom container */}
-      <div className="main-grid-container">
-        {/* <span>top container</span> */}
-        <div className="main-grid-item top">
-          <LandingInfo />
-        </div>
-        <div className="main-grid-item mid">
-          <span>MID</span>
-        </div>
-        <div className="main-grid-item bot">
-          {/* <span>bottom continer</span> */}
-          {/* <div className="bottom-wrapper"> */}
-          <div className="bot-grid-item">
-            {/* <span>랄ㄹ</span> */}
-            <Typebtn onSelectCategory={onSelectCategory} checked={category} />
+      <div className="main-container">
+        {/* top container + bottom container */}
+        <div className="main-grid-container">
+          {/* <span>top container</span> */}
+          <div className="main-grid-item top">
+            <LandingInfo />
           </div>
-          <div className="bot-grid-item">
-            <Button onClick={onChangePage}>
-              <Stylespan>다음으로</Stylespan>
-            </Button>
+          <div className="main-grid-item mid">
+            <span>MID</span>
           </div>
+          <div className="main-grid-item bot">
+            {/* <span>bottom continer</span> */}
+            {/* <div className="bottom-wrapper"> */}
+            <div className="bot-grid-item">
+              {/* <span>랄ㄹ</span> */}
+              <Typebtn onSelectCategory={onSelectCategory} checked={category} />
+            </div>
+            <div className="bot-grid-item">
+              <Button onClick={onChangePage}>
+                <Stylespan>다음으로</Stylespan>
+              </Button>
+            </div>
+          </div>
+          {/* </div> */}
         </div>
-        {/* </div> */}
       </div>
     </>
   );

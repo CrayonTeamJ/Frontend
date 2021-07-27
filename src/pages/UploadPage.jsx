@@ -222,81 +222,83 @@ function UploadPage() {
 
   return (
     <>
-      <div className="main-grid-container">
-        <div className="main-grid-item top">
-          <LandingInfo />
-        </div>
-        <div className="main-grid-item mid">
-          <span>MID</span>
-        </div>
-        <div className="main-grid-item bot">
-          <div className="bot-grid-item" style={{ padding: '50px' }}>
-            <div style={{ padding: '5px' }}>
-              <Label>Language : </Label>
-              <input
-                type="radio"
-                id="kor"
-                name="kor"
-                value="ko-KR"
-                checked={lang === 'ko-KR'}
-                onChange={onSelectLang}
-              />
-              <Label htmlFor="ko-KR">KOREAN</Label>
-              <input
-                type="radio"
-                id="eng"
-                name="eng"
-                value="en-US"
-                checked={lang === 'en-US'}
-                onChange={onSelectLang}
-              />
-              <Label htmlFor="en-US">ENGLISH</Label>
-            </div>
-            <div style={{ padding: '5px' }}>
-              <Label>Video type : </Label>
-              <input
-                type="radio"
-                id="youtube"
-                name="youtube"
-                value="0"
-                checked={category === '0'}
-                onChange={onSelectCategory}
-              />
-              <Label htmlFor="youtube">URL</Label>
-              <input
-                type="radio"
-                id="local"
-                name="local"
-                value="1"
-                checked={category === '1'}
-                onChange={onSelectCategory}
-              />
-              <Label htmlFor="local">FILE</Label>
-            </div>
-
-            {/* <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
-            <Radiobtn type="Video type : " A="FILE" B="URL" /> */}
-            <form encType="multipart/form-data">
-              {category === '0' ? (
-                <InputURL
-                  placeholder="youtube link를 입력해 주세요."
-                  value={link}
-                  onChange={onChangeURL}
-                />
-              ) : (
-                <InputFILE type="file" name="local_file" id="local_file" />
-              )}
-            </form>
-            <ErrLabel>{Errtxt}</ErrLabel>
+      <div className="main-container">
+        <div className="main-grid-container">
+          <div className="main-grid-item top">
+            <LandingInfo />
           </div>
-          <div className="bot-grid-item">
-            <Button
-              onClick={isLogin === true ? onSubmitHandler : onLoginRequest}
-            >
-              {/* <Link to="/search?id=" style={{ textDecoration: 'none' }}> */}
-              <Stylespan>시작하기</Stylespan>
-              {/* </Link> */}
-            </Button>
+          <div className="main-grid-item mid">
+            <span>MID</span>
+          </div>
+          <div className="main-grid-item bot">
+            <div className="bot-grid-item" style={{ padding: '50px' }}>
+              <div style={{ padding: '5px' }}>
+                <Label>Language : </Label>
+                <input
+                  type="radio"
+                  id="kor"
+                  name="kor"
+                  value="ko-KR"
+                  checked={lang === 'ko-KR'}
+                  onChange={onSelectLang}
+                />
+                <Label htmlFor="ko-KR">KOREAN</Label>
+                <input
+                  type="radio"
+                  id="eng"
+                  name="eng"
+                  value="en-US"
+                  checked={lang === 'en-US'}
+                  onChange={onSelectLang}
+                />
+                <Label htmlFor="en-US">ENGLISH</Label>
+              </div>
+              <div style={{ padding: '5px' }}>
+                <Label>Video type : </Label>
+                <input
+                  type="radio"
+                  id="youtube"
+                  name="youtube"
+                  value="0"
+                  checked={category === '0'}
+                  onChange={onSelectCategory}
+                />
+                <Label htmlFor="youtube">URL</Label>
+                <input
+                  type="radio"
+                  id="local"
+                  name="local"
+                  value="1"
+                  checked={category === '1'}
+                  onChange={onSelectCategory}
+                />
+                <Label htmlFor="local">FILE</Label>
+              </div>
+
+              {/* <Radiobtn type="Language : " A="KOREAN" B="ENGLISH" />
+            <Radiobtn type="Video type : " A="FILE" B="URL" /> */}
+              <form encType="multipart/form-data">
+                {category === '0' ? (
+                  <InputURL
+                    placeholder="youtube link를 입력해 주세요."
+                    value={link}
+                    onChange={onChangeURL}
+                  />
+                ) : (
+                  <InputFILE type="file" name="local_file" id="local_file" />
+                )}
+              </form>
+              <ErrLabel>{Errtxt}</ErrLabel>
+            </div>
+            <div className="bot-grid-item">
+              <Button
+                onClick={isLogin === true ? onSubmitHandler : onLoginRequest}
+              >
+                {/* <Link to="/search?id=" style={{ textDecoration: 'none' }}> */}
+                <Stylespan>시작하기</Stylespan>
+                {/* </Link> */}
+              </Button>
+            </div>
           </div>
         </div>
       </div>
