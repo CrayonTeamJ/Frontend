@@ -196,7 +196,7 @@ const Styleh1 = styled.h1`
   /* margin: 0; */
   margin-top: 40px;
   margin-bottom: 40px;
-  font-size: 4.5vh;
+  font-size: 45px;
   text-align: center;
   font-family: 'BwSurco';
   color: #404040;
@@ -204,7 +204,7 @@ const Styleh1 = styled.h1`
 
 const Stylespan = styled.span`
   color: white;
-  font-size: 1.7vw;
+  font-size: 20px;
   font-family: NanumSquare_R;
   white-space: nowrap;
 `;

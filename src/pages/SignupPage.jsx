@@ -108,27 +108,27 @@ function SignupPage() {
 
   return (
     <>
-      <div className="top-container">
+      <div className="main-container">
         {isRegistraionSuccess === true ? (
           <Template>
             <Styleh1> WELCOME TO SEAFLAG </Styleh1>
             <img
               src={regsuccess}
               style={{
-                width: '12vw',
+                width: '200px',
                 position: 'absolute',
-                left: '40%',
-                top: '25%',
+                left: '200px',
+                top: '120px',
               }}
               alt="img"
             />
             <span
               style={{
-                fontSize: '1.0vw',
+                fontSize: '20px',
                 fontFamily: 'NanumSquare_L',
                 position: 'absolute',
-                bottom: '25%',
-                left: '30%',
+                bottom: '120px',
+                left: '100px',
                 textAlign: 'center',
               }}
             >
@@ -174,9 +174,6 @@ function SignupPage() {
         )}
 
         {/* <RegiBlock /> */}
-      </div>
-      <div className="bottom-container">
-        <span>bottom continer</span>
       </div>
     </>
   );
@@ -249,8 +246,8 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* 크기 */
-  width: 25vw;
-  height: 5vh;
+  width: 300px;
+  height: 40px;
 
   /* 위치 */
   position: absolute;
@@ -271,7 +268,7 @@ const Button = styled.button`
 
 const Stylespan = styled.span`
   color: white;
-  font-size: 1.7vw;
+  font-size: 20px;
   font-family: NanumSquare_R;
   white-space: nowrap;
 `;
@@ -280,7 +277,7 @@ const Styleh1 = styled.h1`
   /* margin: 0; */
   margin-top: 40px;
   margin-bottom: 40px;
-  font-size: 4.5vh;
+  font-size: 45px;
   text-align: center;
   font-family: 'BwSurco';
   color: #404040;
