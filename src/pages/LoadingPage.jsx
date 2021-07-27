@@ -8,9 +8,11 @@ import styled from 'styled-components';
 
 const LoadingPage = (props) => (
   //   const { promiseInProgress } = usePromiseTracker({ area: props.area });
-  <div>
-    <div className="top-container">
+  <div className="main-grid-container">
+    <div className="main-grid-item top">
       <Styleh1>NOW PROCESSING</Styleh1>
+    </div>
+    <div className="main-grid-item mid">
       <Loader
         style={{
           width: '100%',
@@ -29,13 +31,15 @@ const LoadingPage = (props) => (
         height="100"
         width="100"
       />
+    </div>
+    <div className="main-grid-item bot">
       <span
         style={{
           fontSize: '1.5vw',
           fontFamily: 'NanumSquare_L',
-          position: 'absolute',
-          textAlign: 'center',
-          bottom: '35%',
+          // position: 'absolute',
+          // textAlign: 'center',
+          bottom: '40%',
         }}
       >
         {props.message}
@@ -43,14 +47,11 @@ const LoadingPage = (props) => (
         잠시만 기다려 주세요.
       </span>
     </div>
-    <div className="bottom-container">
-      <></>
-    </div>
   </div>
 );
 const Styleh1 = styled.h1`
   /* margin: 0; */
-  margin-top: 40px;
+  margin-top: 200px;
   margin-bottom: 40px;
   font-size: 4.5vh;
   text-align: center;

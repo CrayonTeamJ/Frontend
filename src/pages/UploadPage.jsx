@@ -102,20 +102,20 @@ function UploadPage() {
 
           // console.log(res.data.video_pk);
 
-          // const params = new URLSearchParams([
-          //   ['id', res.data.video_pk],
-          //   ['language', lang],
-          // ]);
+          const params = new URLSearchParams([
+            ['id', res.data.video_pk],
+            ['language', lang],
+          ]);
 
-          // axios
-          //   .get('http://localhost:5000/api/detect', { params })
+          axios
+            .get('http://localhost:5000/api/detect', { params })
 
-          //   .catch((err) => {
-          //     console.log(err);
-          //     // setIsLoading(false);
-          //     // history.push({ pathname: `/result?${params}`, state: { res } });
-          //     // history.push('/');
-          //   });
+            .catch((err) => {
+              console.log(err);
+              // setIsLoading(false);
+              // history.push({ pathname: `/result?${params}`, state: { res } });
+              // history.push('/');
+            });
 
           // dispatch(video_initID(res.data.video_pk));
           setIsLoading(false);
@@ -222,11 +222,14 @@ function UploadPage() {
 
   return (
     <>
-      <div className="top-container">
-        <LandingInfo />
-      </div>
-      <div className="bottom-container">
-        <div className="bottom-wrapper">
+      <div className="main-grid-container">
+        <div className="main-grid-item top">
+          <LandingInfo />
+        </div>
+        <div className="main-grid-item mid">
+          <span>MID</span>
+        </div>
+        <div className="main-grid-item bot">
           <div style={{ padding: '50px' }}>
             <div style={{ padding: '5px' }}>
               <Label>Language : </Label>
@@ -311,8 +314,8 @@ const Button = styled.button`
 
   border: none;
   /* margin-top: 50px; */
-  width: 12vw;
-  height: 6vh;
+  width: 180px;
+  height: 50px;
 
   /* margin-left: 10px; */
 
@@ -325,7 +328,7 @@ const Button = styled.button`
 `;
 
 const ErrLabel = styled.label`
-  font-size: 1vw;
+  font-size: 15px;
   font-family: 'NanumSquare_R';
   color: #fa605a;
 `;
@@ -345,7 +348,7 @@ const InputURL = styled.input`
   margin-top: 40px;
   border-radius: 10px;
   border: 1px solid #404040;
-  width: 80%;
+  width: 900px;
   outline: none;
   font-size: 15px;
   box-sizing: border-box;
@@ -356,7 +359,7 @@ const InputFILE = styled.input`
   padding: 10px;
   margin-top: 30px;
   font-family: NanumSquare_L;
-  /* width: 100%; */
+  /* width: 900px; */
   /* outline: none; */
   font-size: 15px;
   display: absolute;

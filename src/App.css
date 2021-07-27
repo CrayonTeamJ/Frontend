@@ -406,7 +406,7 @@ input[type='radio']:checked {
 
 .main-grid-item {
   margin: 2px;
-  /* background-color: bisque; */
+  background-color: bisque;
   /* display: flex; */
   /* y축기준 중앙 */
   /* align-self: center; */
@@ -431,7 +431,7 @@ input[type='radio']:checked {
 
   /* bottom wrapper끼리 줄간격(?) */
   line-height: 30px;
-  /* background-color: lightpink; */
+  background-color: lightpink;
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
