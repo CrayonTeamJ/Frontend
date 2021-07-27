@@ -255,15 +255,19 @@ input[type='radio']:checked {
 
   /* 위치설정 -> 부모가 static -> relative*/
   position: relative;
-  top: 18vh; /* 위에서 부터 18vh떨어진 시점 */
+  /* top: 00px; 위에서 부터 18vh떨어진 시점 */
 
   /* 맨뒤로 설정과 유사 */
   z-index: 1;
 
   /* padding */
-  padding: 1vh;
+  padding: 10px;
 
   background-color: lime;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */

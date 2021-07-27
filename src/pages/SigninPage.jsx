@@ -73,7 +73,8 @@ function SigninPage() {
 
   return (
     <>
-      <div className="top-container">
+      {/* <div className="top-container"> */}
+      <div className="main-container">
         <Template>
           <Styleh1> SIGN IN </Styleh1>
           <InsertForm style={{ marginBottom: '15px' }}>
@@ -98,9 +99,9 @@ function SigninPage() {
         </Template>
         {/* <LoginBlock /> */}
       </div>
-      <div className="bottom-container">
+      {/* <div className="bottom-container">
         <span>bottom continer</span>
-      </div>
+      </div> */}
     </>
   );
 }
@@ -164,8 +165,8 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* 크기 */
-  width: 25vw;
-  height: 5vh;
+  width: 300px;
+  height: 40px;
 
   /* 위치 */
   position: absolute;
