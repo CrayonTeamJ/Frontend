@@ -45,7 +45,7 @@ function UploadPage() {
   };
 
   const onLoginRequest = (e) => {
-    location.href = '/memberonly';
+    history.push('/memberonly');
   };
 
   const onSubmitHandler = (e) => {
