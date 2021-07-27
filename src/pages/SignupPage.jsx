@@ -165,6 +165,7 @@ function SignupPage() {
                 autoFocus
                 onChange={onChangePW_V}
               />
+              <br />
               <Label>{Errtxt}</Label>
               <Button onClick={onSubmitHandler}>
                 <Stylespan>Register</Stylespan>
@@ -225,7 +226,7 @@ const Input = styled.input`
 
 const Label = styled.label`
   padding: 5px;
-  font-size: 1.2vw;
+  font-size: 15px;
   font-family: 'NanumSquare_R';
   color: #fa605a;
 `;

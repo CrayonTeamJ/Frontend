@@ -91,6 +91,7 @@ function SigninPage() {
               placeholder="Password"
               onChange={onChangePW}
             />
+            <br />
             <Label>{Errtxt}</Label>
             <Button style={{ marginTop: '50px' }} onClick={onLogin}>
               <Stylespan>LOGIN</Stylespan>
@@ -187,7 +188,7 @@ const Button = styled.button`
 
 const Label = styled.label`
   padding: 5px;
-  font-size: 1.2vw;
+  font-size: 15px;
   font-family: 'NanumSquare_R';
   color: #fa605a;
 `;
