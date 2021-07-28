@@ -4,10 +4,10 @@ import '../App.css';
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import styled from 'styled-components';
-// import { usePromiseTracker } from 'react-promise-tracker';
+
+// loading 창 (서버에서 돌아오는 시간동안 보여줄 화면)
 
 const LoadingPage = (props) => (
-  //   const { promiseInProgress } = usePromiseTracker({ area: props.area });
   <div className="main-container">
     <div className="main-grid-container">
       <div className="main-grid-item top">
@@ -38,8 +38,7 @@ const LoadingPage = (props) => (
           style={{
             fontSize: '1.5vw',
             fontFamily: 'NanumSquare_L',
-            // position: 'absolute',
-            // textAlign: 'center',
+
             bottom: '40%',
           }}
         >
