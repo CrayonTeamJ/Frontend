@@ -13,7 +13,6 @@ import {
 // import MainPage from './pages/MainPage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
-import MyPage from './pages/MyPage';
 import PrivateRoute from './components/PrivateRoute';
 import MemberOnlyPage from './pages/MemberOnlyPage';
 import UploadPage from './pages/UploadPage';
