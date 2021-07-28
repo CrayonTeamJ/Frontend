@@ -653,7 +653,7 @@ input[type='radio']:checked {
   height: 100%;
   background-color: antiquewhite;
 
-  height: 150px;
+  height: 350px;
   width: 100vw;
   grid-template-rows: 1fr;
   /* display: absolute; */
@@ -668,11 +668,14 @@ input[type='radio']:checked {
 
 .comment-grid-item {
   margin: 5px;
-  padding-top: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: yellow;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
+  /* grid-template-rows: 100px 200px 50px; */
+  /* grid-auto-columns: 800px; */
 }
 
 .App {

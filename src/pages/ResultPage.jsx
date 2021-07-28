@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-const-assign */
 /* eslint-disable no-restricted-globals */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-unresolved */
@@ -17,12 +19,17 @@ import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Slider from '@material-ui/core/Slider';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import img from '../img/loupe.png';
 import both from '../img/video-player.png';
 import noResult from '../img/not-found.png';
 
 function ResultPage() {
   const location = useLocation();
+
+  // 댓글
+  const Nickname = useSelector((state) => state.users.Nickname, []);
+  const Profile = useSelector((state) => state.users.Profile, []);
 
   //   const query = queryString.parse(location.search);
   //   const video_id = query.id;
@@ -50,6 +57,7 @@ function ResultPage() {
     .filter((element) => element.leng <= value[1])
     .filter((element) => element.leng >= value[0]);
 
+  // const comment = after_range_result.map((x) => x.start);
   //   console.log(new_result);
   //   ref = (player) => {
   //     this.player = player;
@@ -101,6 +109,24 @@ function ResultPage() {
   const handleChange = (e, newValue) => {
     setValue(newValue);
   };
+
+  const time_list = after_range_result.map((element) =>
+    seconds2time(element.start),
+  );
+
+  // 댓글
+  // let comment = '댓글목록';
+  // after_range_result.forEach(
+  //   (element) => (comment += `${element.start} 등장 부분 \n`),
+  // );
+
+  let comment = '';
+  time_list.forEach(
+    (element) =>
+      (comment += `${element}  ${search_infos.search_vid} ${search_infos.search_aud} 등장, 언급 부분 \n`),
+  );
+
+  // console.log(comment);
 
   // console.log(video_infos.s3_url);
   // ref로 특정DOM선택(플레이어)
@@ -306,6 +332,58 @@ function ResultPage() {
         </div>
         <div className="comment-container">
           <div className="comment-grid-item">
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <ProfileImg src={Profile} alt="profile" />
+              <span
+                style={{
+                  fontFamily: 'NanumSquare_B',
+                  fontSize: '22px',
+                  marginLeft: '15px',
+                }}
+              >
+                {Nickname}
+              </span>
+            </div>
+            <div
+              style={{
+                marginBottom: '5px',
+                paddingLeft: '40px',
+                paddingRight: '40px',
+                paddingTop: '15px',
+                paddingBottom: '15px',
+              }}
+            >
+              <textarea
+                rows="8"
+                cols="120"
+                style={{
+                  resize: 'none',
+                  fontFamily: 'NanumSquare_L',
+                  lineHeight: '23px',
+                  fontSize: '15px',
+                }}
+              >
+                {comment}
+              </textarea>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                left: '45px',
+              }}
+            >
+              <Button style={{ width: '150px' }}>
+                <Stylespan>등록</Stylespan>
+              </Button>
+            </div>
+          </div>
+          <div className="comment-grid-item">
             <Link to="/" style={{ textDecoration: 'none' }}>
               <Button>
                 <Stylespan>시작 페이지로</Stylespan>
@@ -350,8 +428,8 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* 크기 */
-  width: 25vw;
-  height: 5vh;
+  width: 350px;
+  height: 40px;
 
   /* z-index: 5; */
   cursor: pointer;
@@ -366,9 +444,16 @@ const Button = styled.button`
 
 const Stylespan = styled.span`
   color: white;
-  font-size: 1.7vw;
+  font-size: 20px;
   font-family: NanumSquare_R;
   white-space: nowrap;
+`;
+
+const ProfileImg = styled.img`
+  border-radius: 100px;
+  height: 55px;
+  margin-left: 10px;
+  /* width: 4.5vw; */
 `;
 
 export default ResultPage;
