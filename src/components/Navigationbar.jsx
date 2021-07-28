@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../img/seaflag.svg';
@@ -10,7 +10,7 @@ import profile from '../img/profile.png';
 import styled from 'styled-components';
 import Timer from './Timer';
 import { useSelector, useDispatch } from 'react-redux';
-import { user_logout, user_refresh } from '../redux/users';
+import { user_logout } from '../redux/users';
 import { useHistory } from 'react-router';
 
 const Navigationbar = (props) => {
@@ -31,7 +31,6 @@ const Navigationbar = (props) => {
   const onLogoutHandler = () => {
     dispatch(user_logout())
       .then((res) => {
-        // console.log('logout?된건가?');
         if (res.payload.Result === 'success') {
           // accesskey를 제거해버림
           axios.defaults.headers.common.Authorization = ``;
@@ -42,58 +41,12 @@ const Navigationbar = (props) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        history.push('/error?errtype=logout');
       });
   };
 
-  // navbar가 모든 페이지에 있어서 사실 상관없긴 한데, 얘가 amount될 때마다 실행됨(근데 웨남ㄴ하면 app.js에 넣어야..)
-  // amount시 마다 실행됨(타자 하나하나 칠때마다 amount) -> 근데 맨뒤에 ,[]이거 붙이면 update시 마다 실행됨(reload시만)
-  // 인증키가 있는지 확인하는 (==로그인 되었는지, 인증회원인지)
-
-  // useEffect(() => {
-  //   console.log('모든 페이지 리로드시 재발급 발생');
-  //   console.log('new key');
-  //   console.log(Key);
-  //   dispatch(user_refresh())
-  //     .then((res) => {
-  //       if (res.payload.Result === 'success') {
-  //         console.log('refresh성공');
-  //         // accesskey재 등록
-  //         axios.defaults.headers.common.Authorization = `Bearer ${Key}`;
-  //       } else {
-  //         console.log('refresh에 실패함');
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log('컴포넌트가 화면에 나타남');
-
-  //   axios
-  //     .get('/api/input')
-  //     .then((res) => {
-  //       console.log('api/input의 결과');
-  //       console.log(res);
-  //       if (res.data.Result === 'Success') {
-  //         console.log('회원이다.');
-  //         // 맞으면 user_refresh해서 토큰도 새로갈고 시간도 초기화해줘야함
-  //         // setIsLogin(true);
-  //       } else {
-  //         console.log('회원아니다.');
-  //         // 아니면 .. 아닌거지뭐
-  //         // setIsLogin(false);
-  //       }
-  //       // console.log('isLogin변수');
-  //       // console.log(IsLogin);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err); // 로그인 안됐을 땐 401error 라서 아예 then이 실행이 안됨... 백엔드 단에서 인증회원아니어도 api접근은 되도록 바꿔야함
-  //     });
-  // });
-
+  // 로그인 된 경우에는 회원 정보
   if (isLogin === true) {
     return (
       <div className="navbar">
@@ -102,11 +55,9 @@ const Navigationbar = (props) => {
             <img src={logo} width="200px" alt="logo" />
           </Link>
           <ul className="nav_user_box">
-            {/* <Link to="/profile" style={{ marginLeft: '10px' }}> */}
             <ProfileImg src={Profile} alt="profile" />
             <StyleLabel>{Nickname}</StyleLabel>
             <Timer style={{ width: '15px' }} />
-            {/* </Link> */}
             <Button color="#fa605a" onClick={onLogoutHandler}>
               <StyleSpan color="white">LOGOUT</StyleSpan>
             </Button>

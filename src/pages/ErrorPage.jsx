@@ -3,11 +3,9 @@
 import '../App.css';
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { useHistory, useLocation } from 'react-router';
 import queryString from 'query-string';
 import Template from '../components/Template';
-import noResult from '../img/not-found.png';
 
 function ErrorPage() {
   const location = useLocation();
@@ -22,8 +20,6 @@ function ErrorPage() {
   return (
     <>
       <div className="main-container">
-        {/* <span>main</span> */}
-
         <Template>
           <Styleh1> 500 Server Error </Styleh1>
           <h1 style={{ textAlign: 'center', fontSize: '100px' }}> :( </h1>
@@ -46,7 +42,6 @@ function ErrorPage() {
             <Stylespan>이전 페이지로 이동</Stylespan>
           </Button>
         </Template>
-        {/* <Button onClick={onTestFunc}> TEST </Button> */}
       </div>
     </>
   );

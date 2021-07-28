@@ -15,11 +15,6 @@ function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const Expire = useSelector((state) => state.users.access_expire, []);
-  // console.log('뭔데 내 타이머 말좀해봐');
-  // console.log(Expire);
-  // const Expire = useSelector(stae)
-  //   const [hour, setHour] = useState(1);
-  //   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
   const time = useRef(Expire / 1000); // expire time을 초로 주어야함 -> backend expire time이 milli second라서..나눠야함
   const timerId = useRef(null);
@@ -67,17 +62,18 @@ function Timer(props) {
     dispatch(user_refresh())
       .then((res) => {
         if (res.payload.Result === 'success') {
-          console.log('refresh성공');
+          // console.log('refresh성공');
           // accesskey재 등록
-          console.log(res.payload.access_token);
+          // console.log(res.payload.access_token);
           axios.defaults.headers.common.Authorization = `Bearer ${res.payload.access_token}`;
           window.location.reload('/'); // 새로고침
         } else {
-          console.log('refresh에 실패함');
+          alert('refresh에 실패함');
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        history.push('/');
       });
   };
 
@@ -107,9 +103,9 @@ function Timer(props) {
           props.history.push('/login');
         })
         .catch((err) => {
-          console.log(err);
+          // console.error(err);
+          history.push('/error?errtype=logout');
         });
-      // 자동 로그아웃 해버리는 함수 dispatch(user_logout)
     }
   }, [sec]);
 
@@ -119,8 +115,9 @@ function Timer(props) {
       <Modal open={open} onClose={onCloseModal}>
         <h2>세션 만료 안내 </h2>
         <p>
-          5분 뒤 세션이 자동으로 만료됩니다. <br/>
-          닫기를 누르면 세션이 자동으로 재시작됩니다.<br/>
+          5분 뒤 세션이 자동으로 만료됩니다. <br />
+          닫기를 누르면 세션이 자동으로 재시작됩니다.
+          <br />
           그렇지 않으면 자동 로그아웃됩니다.
         </p>
       </Modal>

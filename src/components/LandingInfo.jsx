@@ -3,22 +3,12 @@
 /* eslint-disable import/order */
 import React from 'react';
 import '../App.css';
-
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 
 // top container내부의 설명파트
-const Types = [
-  {
-    name: 'image',
-    img: image,
-    title: '인물 검색',
-    text: '영상에 등장하는 인물을 검색해 보세요',
-  },
-];
 
 function LandingInfo({ children }) {
   return (

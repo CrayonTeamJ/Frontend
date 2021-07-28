@@ -390,10 +390,8 @@ const Button = styled.button`
   cursor: pointer;
 
   /* display: inline; */
-
   /* align-items: center; */
   /* justify-content: center; */
-
   /* transition: 0.125s all ease-in; */
 `;
 

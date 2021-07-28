@@ -10,8 +10,6 @@ function MemberOnlyPage() {
   return (
     <>
       <div className="main-container">
-        {/* <span>main</span> */}
-
         <Template>
           <Styleh1> Sorry, Member ONLY </Styleh1>
           <img
@@ -30,7 +28,6 @@ function MemberOnlyPage() {
             </Button>
           </Link>
         </Template>
-        {/* <Button onClick={onTestFunc}> TEST </Button> */}
       </div>
     </>
   );
