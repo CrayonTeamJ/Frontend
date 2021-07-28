@@ -116,6 +116,11 @@ function SearchPage({ location }) {
       return;
     }
 
+    const formbody = {
+      yolo_id,
+      clova_id,
+    };
+
     const params = new URLSearchParams([
       ['search_type', category],
       ['search_img', searchVid],
@@ -125,18 +130,68 @@ function SearchPage({ location }) {
 
     setIsLoading(true);
 
-    axios
-      .get(url, { params })
-      .then((response) => {
-        const temp = response.data;
-        setRes(temp);
-        setIsLoading(false);
-        history.push({ pathname: '/result', state: { res: temp } });
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        history.push(`/error?errtype=search?${params}`);
-      });
+    // yolo와 clova 상태 물어보기
+    if (yolo_id !== 'duplicate') {
+      axios
+        .post('http://localhost:5000/api/apiStatus', formbody, {
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+        .then((res) => {
+          console.log('post status response');
+          console.log('욜로와 클로바 상태');
+          console.log(res.data);
+          if (
+            res.data.yolo_res === 'Success' &&
+            res.data.clova_res === 'Success'
+          ) {
+            // 검색 쿼리 전송
+            axios
+              .get(url, { params })
+              .then((response) => {
+                const temp = response.data;
+                setRes(temp);
+                setIsLoading(false);
+                history.push({ pathname: '/result', state: { res: temp } });
+              })
+              .catch((err) => {
+                setIsLoading(false);
+                history.push(`/error?errtype=search?${params}`);
+              });
+          }
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          history.push('/error?errtype=yolo clova');
+        });
+    } else {
+      // 중복인 경우는 물어보지 않고 바로 실행
+      axios
+        .get(url, { params })
+        .then((response) => {
+          const temp = response.data;
+          setRes(temp);
+          setIsLoading(false);
+          history.push({ pathname: '/result', state: { res: temp } });
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          history.push(`/error?errtype=search?${params}`);
+        });
+    }
+    // axios
+    //   .get(url, { params })
+    //   .then((response) => {
+    //     const temp = response.data;
+    //     setRes(temp);
+    //     setIsLoading(false);
+    //     history.push({ pathname: '/result', state: { res: temp } });
+    //   })
+    //   .catch((err) => {
+    //     setIsLoading(false);
+    //     history.push(`/error?errtype=search?${params}`);
+    //   });
   };
 
   const onChangePage = (e) => {
