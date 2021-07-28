@@ -653,7 +653,7 @@ input[type='radio']:checked {
   height: 100%;
   background-color: antiquewhite;
 
-  height: 350px;
+  height: 500px;
   width: 100vw;
   grid-template-rows: 1fr;
   /* display: absolute; */
