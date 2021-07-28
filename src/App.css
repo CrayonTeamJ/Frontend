@@ -7,7 +7,7 @@
 
   font-family: NanumSquare_L;
   font-size: 1.5vh;
-  background-color: hotpink;
+  /* background-color: hotpink; */
 }
 
 .back-wrapper {
@@ -23,12 +23,12 @@
   background-size: 100vw;
   background-repeat: no-repeat;
   /* height: 809px; */
-  background-color: darkgrey;
+  /* background-color: darkgrey; */
 }
 
 .landing-slide-img {
   height: 100%;
-  background-color: deeppink;
+  /* background-color: deeppink; */
 }
 
 .radio-btn {
@@ -150,7 +150,7 @@ input[type='radio']:checked {
   /* height: 400px; */
   /* height: 40vh; */
   width: 100vw;
-  background-color: yellow;
+  /* background-color: yellow; */
   /* height: 30em; */
   /* bottom: 0px; */
 
@@ -178,7 +178,7 @@ input[type='radio']:checked {
 
   font-family: NanumSquare_L;
   font-size: 1.5vh;
-  background-color: hotpink;
+  /* background-color: hotpink; */
 }
 
 /* 전체구조 end */
@@ -190,7 +190,7 @@ input[type='radio']:checked {
 }
 
 .nav_inner {
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
   /* 내부요소-로고이미지 y축 중앙정렬 */
   align-items: center;
@@ -199,7 +199,7 @@ input[type='radio']:checked {
 }
 
 .nav_user_box {
-  background-color: coral;
+  /* background-color: coral; */
   /* 내부 아이템 옆으로 늘어트려서 정렬  */
   display: flex;
   /* y축기준 중앙 */
@@ -263,7 +263,7 @@ input[type='radio']:checked {
   /* padding */
   padding: 10px;
 
-  background-color: lime;
+  /* background-color: lime; */
 
   display: flex;
   justify-content: center;
@@ -284,7 +284,7 @@ input[type='radio']:checked {
   /* top: 4vmax; */
   z-index: 1;
 
-  background-color: gold;
+  /* background-color: gold; */
 }
 
 .top-wrapper .landing-slide-slogan {
@@ -305,7 +305,7 @@ input[type='radio']:checked {
   letter-spacing: 2.5px;
   /* 행간 */
   line-height: 65px;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
 }
 
 /* top-container 내부 end */
@@ -328,7 +328,7 @@ input[type='radio']:checked {
 
   /* bottom wrapper끼리 줄간격(?) */
   line-height: 30px;
-  background-color: lightpink;
+  /* background-color: lightpink; */
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
@@ -343,7 +343,7 @@ input[type='radio']:checked {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 /* bottom-container 내부 end */
@@ -356,7 +356,7 @@ input[type='radio']:checked {
   display: grid;
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 
   height: 750px;
   width: 100vw;
@@ -374,7 +374,7 @@ input[type='radio']:checked {
 .video-grid-item {
   /* margin: 5px; */
   /* padding: 5px; */
-  background-color: yellow;
+  /* background-color: yellow; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,7 +412,7 @@ input[type='radio']:checked {
 
 .main-grid-item {
   margin: 2px;
-  background-color: bisque;
+  /* background-color: bisque; */
   /* display: flex; */
   /* y축기준 중앙 */
   /* align-self: center; */
@@ -437,7 +437,7 @@ input[type='radio']:checked {
 
   /* bottom wrapper끼리 줄간격(?) */
   line-height: 30px;
-  background-color: lightpink;
+  /* background-color: lightpink; */
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
@@ -449,7 +449,7 @@ input[type='radio']:checked {
 
 .bot-grid-item {
   margin: 0px;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 /* 라디오버튼  */
@@ -516,7 +516,7 @@ input[type='radio']:checked {
   grid-template-rows: 60px 1fr 50px;
   grid-template-columns: 1fr 960px 1fr;
   /* height: 250px; */
-  background-color: #ccc;
+  /* background-color: #ccc; */
   height: 700px;
   width: 100vw;
 }
@@ -528,7 +528,7 @@ input[type='radio']:checked {
 .header {
   grid-area: header;
   color: black;
-  background-color: green;
+  background-color: #ffe6e6;
   display: grid;
   align-items: center;
   /* justify-content: center; */
@@ -547,7 +547,7 @@ input[type='radio']:checked {
 .slider {
   grid-area: header;
   color: black;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
   display: flex;
   align-items: center;
   /* justify-content: center; */
@@ -555,17 +555,17 @@ input[type='radio']:checked {
 
 .aside {
   grid-area: aside;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .aside2 {
   grid-area: aside2;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .content {
   grid-area: content;
-  background-color: pink;
+  /* background-color: pink; */
 
   display: grid;
 
@@ -575,7 +575,7 @@ input[type='radio']:checked {
 
 .content-no-result {
   grid-area: content;
-  background-color: pink;
+  /* background-color: pink; */
 
   display: grid;
 
@@ -586,7 +586,7 @@ input[type='radio']:checked {
 .content-no-item {
   margin: 1px;
   padding: 1px;
-  background-color: red;
+  /* background-color: red; */
   width: 100%;
   height: 100%;
   display: flex;
@@ -596,8 +596,8 @@ input[type='radio']:checked {
 
 .footer {
   grid-area: footer;
-  color: white;
-  background-color: #555;
+  color: #404040;
+  /* background-color: #555; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -606,7 +606,7 @@ input[type='radio']:checked {
 .content-item {
   margin: 1px;
   padding: 1px;
-  background-color: red;
+  /* background-color: red; */
   width: 100%;
   height: 100%;
   /* display: flex; */
@@ -633,7 +633,7 @@ input[type='radio']:checked {
 
 .content-item-inner {
   margin: 3px;
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
 
   /* margin: 5px; */
   /* padding: 5px; */
@@ -651,7 +651,7 @@ input[type='radio']:checked {
 
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 
   height: 500px;
   width: 100vw;
@@ -670,7 +670,7 @@ input[type='radio']:checked {
   margin: 5px;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: yellow;
+  /* background-color: yellow; */
   display: grid;
   align-items: center;
   justify-content: center;

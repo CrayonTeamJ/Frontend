@@ -6,7 +6,7 @@ import '../App.css';
 function Footer() {
   return (
     <>
-      <div className="footer" style={{ backgroundColor: 'green' }}>
+      <div className="footer">
         <span>© SeaFLAG, Inc. 2021. 2021-SiliconValley-TeamJ</span>
       </div>
     </>

@@ -203,7 +203,7 @@ function ResultPage() {
             )}
           </div>
         </div>
-        <div className="grid-item aside">aside</div>
+        <div className="grid-item aside" />
         {length === 0 ? (
           <div
             className="grid-item content-no-result"
@@ -292,7 +292,7 @@ function ResultPage() {
             ))}
           </div>
         )}
-        <div className="grid-item aside2">aside</div>
+        <div className="grid-item aside2" />
         <div className="grid-item footer">
           {search_infos.type === 'video' ? (
             <>
@@ -317,6 +317,7 @@ function ResultPage() {
             style={{
               display: 'flex',
               alignItems: 'center',
+              backgroundColor: '#ffe6e6',
             }}
           >
             <ProfileImg src={Profile} alt="profile" />
