@@ -34,6 +34,7 @@ function ResultPage() {
   const search_infos = res.search_info;
   const res_infos = res.res_info;
 
+  // console.log(res);
   // 댓글관련 변수
   const Nickname = useSelector((state) => state.users.Nickname, []);
   const Profile = useSelector((state) => state.users.Profile, []);
