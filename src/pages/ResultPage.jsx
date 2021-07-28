@@ -114,7 +114,6 @@ function ResultPage() {
               width="960px"
               height="540px"
             />
-            {/* <h1>{video_infos.title}</h1> */}
           </div>
           <div className="video-grid-item">
             <label
@@ -166,9 +165,7 @@ function ResultPage() {
               className="header-item"
               style={{
                 display: 'flex',
-                /* y축기준 중앙 */
                 alignItems: 'center',
-                /* y축 기준 내부에 요소들 끝으로 붙이기 */
                 justifyContent: 'flex-end',
               }}
             >
@@ -244,7 +241,6 @@ function ResultPage() {
                         style={{
                           fontFamily: 'NanumSquare_L',
                           fontSize: '20px',
-                          // textAlign: 'left',
                           marginLeft: '10px',
                           transform: 'translate(-100%, 0%)',
                         }}
@@ -260,7 +256,6 @@ function ResultPage() {
                           display: 'flex',
                           textAlign: 'left',
                           marginLeft: '10px',
-                          //   transform: 'translate(-100%, 0%)',
                         }}
                       >
                         {seconds2time(result.start)}
@@ -268,11 +263,6 @@ function ResultPage() {
                     )}
                   </div>
                 </div>
-                //   <div className="content-item">100</div>
-                //   <div className="content-item">100</div>
-                //   <div className="content-item">100</div>
-                //   <div className="content-item">100</div>
-                //   <div className="content-item">100</div>
               ))}
             </div>
           )}
