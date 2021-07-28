@@ -33,17 +33,17 @@ function UploadPage() {
   // event에 따른 video변수 변경
   const onSelectLang = (e) => {
     setLang(e.target.value);
-    console.log(lang);
+    // console.log(lang);
   };
 
   const onSelectCategory = (e) => {
     setCategory(e.target.value);
-    console.log(category);
+    // console.log(category);
   };
 
   const onChangeURL = (e) => {
     setLink(e.target.value);
-    console.log(link);
+    // console.log(link);
   };
 
   // 비 로그인 시 회원 전용알림
@@ -142,7 +142,7 @@ function UploadPage() {
       })
       .catch((err) => {
         // 예외 처리
-        console.log(err);
+        // console.log(err);
         setIsLoading(false);
         // 에러 페이지로 넘김
         history.push('/error?errtype=upload video');
@@ -193,7 +193,7 @@ function UploadPage() {
           setIsLoading(false);
           location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
         } else if (res.data.Result === 'false') {
-          console.log('s3업로드 에러발생');
+          // console.log('s3업로드 에러발생');
           setErrtxt('유효하지 않은 url입니다.');
           setIsLoading(false);
           history.push('/');

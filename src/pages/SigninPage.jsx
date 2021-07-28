@@ -28,6 +28,7 @@ function SigninPage() {
     setPassword(e.target.value);
   };
 
+  // login 함수
   const onLogin = (e) => {
     e.preventDefault(); // refresh 방지
     setErrtxt('');
@@ -41,17 +42,20 @@ function SigninPage() {
       return;
     }
 
+    // 서버로 전송
     const formbody = {
       userID: UserID,
       password: Password,
     };
 
+    // redux_userLogin
     dispatch(user_login(formbody))
       .then((res) => {
         if (res.payload.Result === 'success') {
+          // 성공 시 헤더에 access token header에 default로 담기(인증유저가됨)
           const accessToken = res.payload.access_token;
           axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-          history.push('/');
+          history.push('/'); // main화면으로
         } else {
           // 비번이나 아이디 틀렸음
           if (res.payload.Result === 'fail') {
@@ -60,21 +64,13 @@ function SigninPage() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         history.push('/error?errtype=login');
       });
   };
 
-  // 이것도 정상적으로 작동하긴함 -> access token header에 default로 담기(인증유저가됨)
-  const onLoginSuccess = (res) => {
-    const accessToken = res.payload.access_token;
-    // accessToken default로 설정
-    axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-  };
-
   return (
     <>
-      {/* <div className="top-container"> */}
       <div className="main-container">
         <Template>
           <Styleh1> SIGN IN </Styleh1>
@@ -99,33 +95,10 @@ function SigninPage() {
             </Button>
           </InsertForm>
         </Template>
-        {/* <LoginBlock /> */}
       </div>
-      {/* <div className="bottom-container">
-        <span>bottom continer</span>
-      </div> */}
     </>
   );
 }
-
-const TemplateBlock = styled.div`
-  width: 512px;
-  height: 400px;
-
-  position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-
-  margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
-  display: flex;
-  flex-direction: column;
-
-  opacity: 1;
-`;
 
 const InsertForm = styled.form`
   padding-left: 50px;
