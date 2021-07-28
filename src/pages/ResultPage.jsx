@@ -33,6 +33,8 @@ function ResultPage() {
   const search_infos = res.search_info;
   const res_infos = res.res_info;
 
+  console.log(res);
+
   // 댓글관련 변수
   const Nickname = useSelector((state) => state.users.Nickname, []);
   const Profile = useSelector((state) => state.users.Profile, []);
@@ -142,7 +144,7 @@ function ResultPage() {
                     }}
                   >
                     "{search_infos.search_vid}" 과 "{search_infos.search_aud}"
-                    검색 결과
+                    검색 결과 ({length})
                   </span>
                 </>
               ) : (
