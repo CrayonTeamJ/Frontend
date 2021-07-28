@@ -161,6 +161,9 @@ function SearchPage({ location }) {
                 setIsLoading(false);
                 history.push(`/error?errtype=search?${params}`);
               });
+          } else {
+            setIsLoading(false);
+            history.push('/error?errtype=yolo clova');
           }
         })
         .catch((err) => {

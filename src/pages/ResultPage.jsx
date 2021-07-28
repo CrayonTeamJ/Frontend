@@ -14,7 +14,7 @@
 /* eslint-disable no-unused-vars */
 import '../App.css';
 import React, { useRef } from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useHistory } from 'react-router';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
 import Slider from '@material-ui/core/Slider';
@@ -23,6 +23,7 @@ import { useSelector } from 'react-redux';
 import img from '../img/loupe.png';
 import both from '../img/video-player.png';
 import noResult from '../img/not-found.png';
+import ErrorPage from './ErrorPage';
 
 function ResultPage() {
   const location = useLocation();
@@ -33,6 +34,8 @@ function ResultPage() {
   const video_infos = res.video_info;
   const search_infos = res.search_info;
   const res_infos = res.res_info;
+
+  // console.log(res);
 
   // console.log(res);
   // 댓글관련 변수
@@ -108,270 +111,270 @@ function ResultPage() {
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
 
-  if (results === 'success') {
-    return (
-      <>
-        <div className="video-container">
-          <div className="video-grid-item" style={{ paddingTop: '100px' }}>
-            <ReactPlayer
-              ref={player}
-              url={video_infos.s3_url}
-              controls
-              width="960px"
-              height="540px"
-            />
-          </div>
-          <div className="video-grid-item">
-            <label
-              style={{
-                width: '960px',
-                fontFamily: 'NanumSquare_R',
-                fontSize: '25px',
-              }}
-            >
-              {video_infos.title}
-            </label>
-          </div>
-        </div>
+  if (results === 'fail') {
+    return <ErrorPage />;
+  }
 
-        <div className="grid-container">
-          <div className="grid-item header">
-            <div className="header-item">
-              {search_infos.type === 'both' ? (
-                <>
-                  <LogoLabel src={both} alt="logoimg" />
-                  <span
-                    style={{
-                      fontFamily: 'NanumSquare_B',
-                      fontSize: '18px',
-                      marginLeft: '20px',
-                    }}
-                  >
-                    "{search_infos.search_vid}" 과 "{search_infos.search_aud}"
-                    검색 결과 ({length})
-                  </span>
-                </>
-              ) : (
-                <>
-                  <LogoLabel src={img} alt="logoimg" />
-                  <span
-                    style={{
-                      fontFamily: 'NanumSquare_B',
-                      fontSize: '18px',
-                      marginLeft: '20px',
-                    }}
-                  >
-                    "{search_infos.search_vid}
-                    {search_infos.search_aud}" 검색 결과 ({length})
-                  </span>
-                </>
-              )}
-            </div>
-            <div
-              className="header-item"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-              }}
-            >
-              {search_infos.type === 'video' && isFinite(max) ? (
-                <>
-                  <span
-                    style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}
-                  >
-                    범위 :
-                  </span>
-                  <Slider
-                    value={value}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    valueLabelFormat={(x) => seconds2time(x)}
-                    aria-labelledby="range-slider"
-                    min={2}
-                    max={max + 1}
-                    color="secondary"
-                    style={{ marginLeft: '20px', width: '200px' }}
-                  />
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-          <div className="grid-item aside">aside</div>
-          {length === 0 ? (
-            <div
-              className="grid-item content-no-result"
-              style={{ overflow: 'scroll' }}
-            >
-              <div className="content-no-item">
-                <img
-                  src={noResult}
-                  style={{
-                    width: '180px',
-                    height: '180px',
-                    marginTop: '80px',
-                  }}
-                  alt="img"
-                />
-              </div>
-              <div className="content-no-item">
-                <span style={{ fontFamily: 'NanumSquare_R', fontSize: '20px' }}>
-                  "{search_infos.search_vid}
-                  {search_infos.search_aud}" 에 대한 검색결과가 존재하지
-                  않습니다.
-                </span>
-              </div>
-            </div>
-          ) : search_infos.type === 'video' ? (
-            <div className="grid-item content" style={{ overflow: 'scroll' }}>
-              {after_range_result.map((result) => (
-                <div className="content-item">
-                  <button
-                    className="content-item-inner"
-                    onClick={() => {
-                      player.current.seekTo(result.start);
-                    }}
-                    style={{ border: 'none' }}
-                  >
-                    <ThumImg
-                      src={result.thumbnail}
-                      alt="thumbnail"
-                      width="280px"
-                    />
-                  </button>
-                  <div className="content-item-inner">
-                    <span
-                      style={{
-                        fontFamily: 'NanumSquare_L',
-                        fontSize: '20px',
-                        marginLeft: '10px',
-                        transform: 'translate(-100%, 0%)',
-                      }}
-                    >
-                      {seconds2time(result.start)} - {seconds2time(result.end)}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid-item content" style={{ overflow: 'scroll' }}>
-              {res_infos.map((result) => (
-                <div className="content-item">
-                  <button
-                    className="content-item-inner"
-                    onClick={() => {
-                      player.current.seekTo(result.start);
-                    }}
-                    style={{ border: 'none' }}
-                  >
-                    <ThumImg
-                      src={result.thumbnail}
-                      alt="thumbnail"
-                      width="280px"
-                    />
-                  </button>
-                  <div className="content-item-inner">
-                    <span
-                      style={{
-                        fontFamily: 'NanumSquare_L',
-                        fontSize: '20px',
-                        marginLeft: '10px',
-                        transform: 'translate(-300%, 0%)',
-                      }}
-                    >
-                      {seconds2time(result.start)}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-          <div className="grid-item aside2">aside</div>
-          <div className="grid-item footer">
-            {search_infos.type === 'video' ? (
+  return (
+    <>
+      <div className="video-container">
+        <div className="video-grid-item" style={{ paddingTop: '100px' }}>
+          <ReactPlayer
+            ref={player}
+            url={video_infos.s3_url}
+            controls
+            width="960px"
+            height="540px"
+          />
+        </div>
+        <div className="video-grid-item">
+          <label
+            style={{
+              width: '960px',
+              fontFamily: 'NanumSquare_R',
+              fontSize: '25px',
+            }}
+          >
+            {video_infos.title}
+          </label>
+        </div>
+      </div>
+
+      <div className="grid-container">
+        <div className="grid-item header">
+          <div className="header-item">
+            {search_infos.type === 'both' ? (
               <>
+                <LogoLabel src={both} alt="logoimg" />
                 <span
                   style={{
                     fontFamily: 'NanumSquare_B',
                     fontSize: '18px',
-                    color: 'black',
+                    marginLeft: '20px',
                   }}
                 >
-                  총 {hour}시간 {min}분 {sec}초
+                  "{search_infos.search_vid}" 과 "{search_infos.search_aud}"
+                  검색 결과 ({length})
                 </span>
+              </>
+            ) : (
+              <>
+                <LogoLabel src={img} alt="logoimg" />
+                <span
+                  style={{
+                    fontFamily: 'NanumSquare_B',
+                    fontSize: '18px',
+                    marginLeft: '20px',
+                  }}
+                >
+                  "{search_infos.search_vid}
+                  {search_infos.search_aud}" 검색 결과 ({length})
+                </span>
+              </>
+            )}
+          </div>
+          <div
+            className="header-item"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+            }}
+          >
+            {search_infos.type === 'video' && isFinite(max) ? (
+              <>
+                <span style={{ fontFamily: 'NanumSquare_B', fontSize: '18px' }}>
+                  범위 :
+                </span>
+                <Slider
+                  value={value}
+                  onChange={handleChange}
+                  valueLabelDisplay="auto"
+                  valueLabelFormat={(x) => seconds2time(x)}
+                  aria-labelledby="range-slider"
+                  min={2}
+                  max={max + 1}
+                  color="secondary"
+                  style={{ marginLeft: '20px', width: '200px' }}
+                />
               </>
             ) : (
               <></>
             )}
           </div>
         </div>
-        <div className="comment-container">
-          <div className="comment-grid-item">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-              }}
-            >
-              <ProfileImg src={Profile} alt="profile" />
+        <div className="grid-item aside">aside</div>
+        {length === 0 ? (
+          <div
+            className="grid-item content-no-result"
+            style={{ overflow: 'scroll' }}
+          >
+            <div className="content-no-item">
+              <img
+                src={noResult}
+                style={{
+                  width: '180px',
+                  height: '180px',
+                  marginTop: '80px',
+                }}
+                alt="img"
+              />
+            </div>
+            <div className="content-no-item">
+              <span style={{ fontFamily: 'NanumSquare_R', fontSize: '20px' }}>
+                "{search_infos.search_vid}
+                {search_infos.search_aud}" 에 대한 검색결과가 존재하지 않습니다.
+              </span>
+            </div>
+          </div>
+        ) : search_infos.type === 'video' ? (
+          <div className="grid-item content" style={{ overflow: 'scroll' }}>
+            {after_range_result.map((result) => (
+              <div className="content-item">
+                <button
+                  className="content-item-inner"
+                  onClick={() => {
+                    player.current.seekTo(result.start);
+                  }}
+                  style={{ border: 'none' }}
+                >
+                  <ThumImg
+                    src={result.thumbnail}
+                    alt="thumbnail"
+                    width="280px"
+                  />
+                </button>
+                <div className="content-item-inner">
+                  <span
+                    style={{
+                      fontFamily: 'NanumSquare_L',
+                      fontSize: '20px',
+                      marginLeft: '10px',
+                      transform: 'translate(-100%, 0%)',
+                    }}
+                  >
+                    {seconds2time(result.start)} - {seconds2time(result.end)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid-item content" style={{ overflow: 'scroll' }}>
+            {res_infos.map((result) => (
+              <div className="content-item">
+                <button
+                  className="content-item-inner"
+                  onClick={() => {
+                    player.current.seekTo(result.start);
+                  }}
+                  style={{ border: 'none' }}
+                >
+                  <ThumImg
+                    src={result.thumbnail}
+                    alt="thumbnail"
+                    width="280px"
+                  />
+                </button>
+                <div className="content-item-inner">
+                  <span
+                    style={{
+                      fontFamily: 'NanumSquare_L',
+                      fontSize: '20px',
+                      marginLeft: '10px',
+                      transform: 'translate(-300%, 0%)',
+                    }}
+                  >
+                    {seconds2time(result.start)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="grid-item aside2">aside</div>
+        <div className="grid-item footer">
+          {search_infos.type === 'video' ? (
+            <>
               <span
                 style={{
                   fontFamily: 'NanumSquare_B',
-                  fontSize: '22px',
-                  marginLeft: '15px',
+                  fontSize: '18px',
+                  color: 'black',
                 }}
               >
-                {Nickname}
+                총 {hour}시간 {min}분 {sec}초
               </span>
-            </div>
-            <div
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+      <div className="comment-container">
+        <div className="comment-grid-item">
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <ProfileImg src={Profile} alt="profile" />
+            <span
               style={{
-                marginBottom: '5px',
-                paddingLeft: '40px',
-                paddingRight: '40px',
-                paddingTop: '15px',
-                paddingBottom: '15px',
+                fontFamily: 'NanumSquare_B',
+                fontSize: '22px',
+                marginLeft: '15px',
               }}
             >
-              <textarea
-                rows="8"
-                cols="120"
-                style={{
-                  resize: 'none',
-                  fontFamily: 'NanumSquare_L',
-                  lineHeight: '23px',
-                  fontSize: '15px',
-                }}
-              >
-                {comment}
-              </textarea>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                left: '45px',
-              }}
-            >
-              <Button style={{ width: '150px' }}>
-                <Stylespan>등록</Stylespan>
-              </Button>
-            </div>
+              {Nickname}
+            </span>
           </div>
-          <div className="comment-grid-item">
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button>
-                <Stylespan>시작 페이지로</Stylespan>
-              </Button>
-            </Link>
+          <div
+            style={{
+              marginBottom: '5px',
+              paddingLeft: '40px',
+              paddingRight: '40px',
+              paddingTop: '15px',
+              paddingBottom: '15px',
+            }}
+          >
+            <textarea
+              rows="8"
+              cols="120"
+              defaultValue={comment}
+              style={{
+                resize: 'none',
+                fontFamily: 'NanumSquare_L',
+                lineHeight: '23px',
+                fontSize: '15px',
+              }}
+            >
+              {/* {comment} */}
+            </textarea>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              left: '45px',
+            }}
+          >
+            <Button style={{ width: '150px' }}>
+              <Stylespan>등록</Stylespan>
+            </Button>
           </div>
         </div>
-      </>
-    );
-  }
+        <div className="comment-grid-item">
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Button>
+              <Stylespan>시작 페이지로</Stylespan>
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </>
+  );
 }
 
 const LogoLabel = styled.img`
