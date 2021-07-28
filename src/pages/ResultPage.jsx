@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-const-assign */
 /* eslint-disable no-restricted-globals */
@@ -33,8 +34,6 @@ function ResultPage() {
   const search_infos = res.search_info;
   const res_infos = res.res_info;
 
-  console.log(res);
-
   // 댓글관련 변수
   const Nickname = useSelector((state) => state.users.Nickname, []);
   const Profile = useSelector((state) => state.users.Profile, []);
@@ -50,6 +49,12 @@ function ResultPage() {
 
   // 슬라이더바 값2개
   const [value, setValue] = React.useState([2, max]);
+
+  // if (search_infos.type === 'video') {
+  //   setValue([2, max]);
+  // } else {
+  //   setValue([0, 999999]);
+  // }
 
   // 슬라이더의 범위를 기준으로 결과를 거르기
   const after_range_result = res_infos
@@ -220,7 +225,7 @@ function ResultPage() {
                 </span>
               </div>
             </div>
-          ) : (
+          ) : search_infos.type === 'video' ? (
             <div className="grid-item content" style={{ overflow: 'scroll' }}>
               {after_range_result.map((result) => (
                 <div className="content-item">
@@ -238,31 +243,48 @@ function ResultPage() {
                     />
                   </button>
                   <div className="content-item-inner">
-                    {search_infos.type === 'video' ? (
-                      <span
-                        style={{
-                          fontFamily: 'NanumSquare_L',
-                          fontSize: '20px',
-                          marginLeft: '10px',
-                          transform: 'translate(-100%, 0%)',
-                        }}
-                      >
-                        {seconds2time(result.start)} -{' '}
-                        {seconds2time(result.end)}
-                      </span>
-                    ) : (
-                      <span
-                        style={{
-                          fontFamily: 'NanumSquare_L',
-                          fontSize: '20px',
-                          display: 'flex',
-                          textAlign: 'left',
-                          marginLeft: '10px',
-                        }}
-                      >
-                        {seconds2time(result.start)}
-                      </span>
-                    )}
+                    <span
+                      style={{
+                        fontFamily: 'NanumSquare_L',
+                        fontSize: '20px',
+                        marginLeft: '10px',
+                        transform: 'translate(-100%, 0%)',
+                      }}
+                    >
+                      {seconds2time(result.start)} - {seconds2time(result.end)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid-item content" style={{ overflow: 'scroll' }}>
+              {res_infos.map((result) => (
+                <div className="content-item">
+                  <button
+                    className="content-item-inner"
+                    onClick={() => {
+                      player.current.seekTo(result.start);
+                    }}
+                    style={{ border: 'none' }}
+                  >
+                    <ThumImg
+                      src={result.thumbnail}
+                      alt="thumbnail"
+                      width="280px"
+                    />
+                  </button>
+                  <div className="content-item-inner">
+                    <span
+                      style={{
+                        fontFamily: 'NanumSquare_L',
+                        fontSize: '20px',
+                        marginLeft: '10px',
+                        transform: 'translate(-100%, 0%)',
+                      }}
+                    >
+                      {seconds2time(result.start)}
+                    </span>
                   </div>
                 </div>
               ))}
