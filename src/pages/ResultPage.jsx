@@ -13,7 +13,6 @@
 /* eslint-disable no-unused-vars */
 import '../App.css';
 import React, { useRef } from 'react';
-import queryString from 'query-string';
 import { useLocation } from 'react-router';
 import ReactPlayer from 'react-player';
 import styled from 'styled-components';
@@ -27,62 +26,40 @@ import noResult from '../img/not-found.png';
 function ResultPage() {
   const location = useLocation();
 
-  // 댓글
-  const Nickname = useSelector((state) => state.users.Nickname, []);
-  const Profile = useSelector((state) => state.users.Profile, []);
-
-  //   const query = queryString.parse(location.search);
-  //   const video_id = query.id;
-  //   const type = query.searchtype;
-  //   const search_aud = query.searchaud;
-  //   const search_img = query.searchimg;
+  // 서버에서 받아온 결과
   const { res } = location.state;
   const results = res.result;
   const video_infos = res.video_info;
   const search_infos = res.search_info;
   const res_infos = res.res_info;
 
-  // console.log(max);
+  // 댓글관련 변수
+  const Nickname = useSelector((state) => state.users.Nickname, []);
+  const Profile = useSelector((state) => state.users.Profile, []);
+
+  // 필요한 변수들
+
+  // 결과 수
   const { length } = res_infos;
 
+  // 최장 등장 길이 계산을 위한
   const map1 = res_infos.map((x) => x.leng);
-  // console.log(map1);
   const max = Math.max(...map1);
 
   // 슬라이더바 값2개
   const [value, setValue] = React.useState([2, max]);
 
-  // 범위를 기준으로 거르기
+  // 슬라이더의 범위를 기준으로 결과를 거르기
   const after_range_result = res_infos
     .filter((element) => element.leng <= value[1])
     .filter((element) => element.leng >= value[0]);
 
-  // const comment = after_range_result.map((x) => x.start);
-  //   console.log(new_result);
-  //   ref = (player) => {
-  //     this.player = player;
-  //   };
-
-  // 총길이
+  // 총 길이 출력을 위한
   const hour = parseInt(video_infos.length / 3600);
   const min = parseInt(video_infos.length / 60);
   const sec = parseInt(video_infos.length % 60);
-  //   // 여기부분을 함수로만들어서 await해봐야하나
-  //   if (search_infos.type === 'image') {
-  //     // `${search_infos.serach_vid} 등장 검색 결과`
-  //     setTxt(`${search_infos.serach_vid} 등장 검색 결과`);
-  //     setImg(image);
-  //   } else if (search_infos.type === 'audio') {
-  //     setTxt(`${search_infos.serach_aud} 대사 검색 결과`);
-  //     setImg(audio);
-  //   } else if (search_infos.type === 'both') {
-  //     setImg(both);
-  //     setTxt(
-  //       `${search_infos.serach_vid} 등장 과 ${search_infos.serach_aud} 대사 검색 결과`,
-  //     );
-  //   }
 
-  // 타임 스탬프 예쁘게 보여주기 위한 함수
+  // sec을 받아서 timestamp를 반환하는 함수
   const seconds2time = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     let minutes = Math.floor((seconds - hours * 3600) / 60);
@@ -105,30 +82,23 @@ function ResultPage() {
     return timestamp;
   };
 
-  // 슬라이더 조절
+  // 슬라이더 조절을 위한 함수
   const handleChange = (e, newValue) => {
     setValue(newValue);
   };
 
+  // 댓글생성을 위한 list
   const time_list = after_range_result.map((element) =>
     seconds2time(element.start),
   );
 
-  // 댓글
-  // let comment = '댓글목록';
-  // after_range_result.forEach(
-  //   (element) => (comment += `${element.start} 등장 부분 \n`),
-  // );
-
+  // 댓글 생성
   let comment = '';
   time_list.forEach(
     (element) =>
       (comment += `${element}  ${search_infos.search_vid} ${search_infos.search_aud} 등장, 언급 부분 \n`),
   );
 
-  // console.log(comment);
-
-  // console.log(video_infos.s3_url);
   // ref로 특정DOM선택(플레이어)
   const player = useRef(null);
 
@@ -140,8 +110,7 @@ function ResultPage() {
             <ReactPlayer
               ref={player}
               url={video_infos.s3_url}
-              controls="true"
-              pip="true"
+              controls
               width="960px"
               height="540px"
             />
@@ -220,7 +189,6 @@ function ResultPage() {
                     max={max + 1}
                     color="secondary"
                     style={{ marginLeft: '20px', width: '200px' }}
-                    //   getAriaValueText={valuetext}
                   />
                 </>
               ) : (
@@ -241,9 +209,6 @@ function ResultPage() {
                     width: '180px',
                     height: '180px',
                     marginTop: '80px',
-                    // position: 'absolute',
-                    // left: '35%',
-                    // top: '30%',
                   }}
                   alt="img"
                 />
