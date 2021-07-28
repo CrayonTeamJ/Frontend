@@ -95,9 +95,7 @@ function ResultPage() {
   };
 
   // 댓글생성을 위한 list
-  const time_list = after_range_result.map((element) =>
-    seconds2time(element.start),
-  );
+  const time_list = res_infos.map((element) => seconds2time(element.start));
 
   // 댓글 생성
   let comment = '';
@@ -280,7 +278,7 @@ function ResultPage() {
                         fontFamily: 'NanumSquare_L',
                         fontSize: '20px',
                         marginLeft: '10px',
-                        transform: 'translate(-100%, 0%)',
+                        transform: 'translate(-300%, 0%)',
                       }}
                     >
                       {seconds2time(result.start)}
