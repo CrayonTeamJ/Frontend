@@ -10,9 +10,10 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
 import LoadingPage from './LoadingPage';
+import { status_getID } from '../redux/status';
 
 // main page ( video upload page)
 
@@ -29,6 +30,7 @@ function UploadPage() {
 
   // 페이지 이전
   const history = useHistory();
+  const dispatch = useDispatch();
 
   // event에 따른 video변수 변경
   const onSelectLang = (e) => {
@@ -100,41 +102,13 @@ function UploadPage() {
     // 로딩 페이지
     setIsLoading(true);
 
-    // 전송
-    axios
-      .post('http://localhost:5000/api/videoUpload', submitData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+    dispatch(status_getID(submitData))
       .then((res) => {
-        // 응답 처리
-        if (res.data.Result === 'Success') {
-          // console.log('s3업로드 완료');
-
-          // // 이 부분 아마 사라질 것
-          // const params = new URLSearchParams([
-          //   ['id', res.data.video_pk],
-          //   ['language', lang],
-          // ]);
-
-          // axios
-          //   .get('http://localhost:5000/api/detect', { params })
-
-          //   .catch((err) => {
-          //     console.log(err);
-          // setIsLoading(false);
-          // history.push({ pathname: `/result?${params}`, state: { res } });
-          // history.push('/');
-          // });
-
-          // 로딩 페이지 사라짐
+        console.log(res.payload);
+        if (res.payload.Result === 'Success') {
           setIsLoading(false);
-          // 다음 페이지로 정보 전달
-          location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
-        } else if (res.data.Result === 'false') {
-          // 업로드 실패시
-          // console.log('s3업로드 에러발생');
+          location.href = `/search?id=${res.payload.video_pk}&language=${lang}`;
+        } else if (res.payload.Result === 'false') {
           setIsLoading(false);
           setErrtxt('유효하지 않은 파일입니다.');
           history.push('/');
@@ -142,12 +116,48 @@ function UploadPage() {
       })
       .catch((err) => {
         // 예외 처리
-        // console.log(err);
+        console.log(err);
         setIsLoading(false);
         // 에러 페이지로 넘김
         history.push('/error?errtype=upload video');
         // setErrtxt('서버에러');
       });
+
+    // 전송
+    // axios
+    //   .post('http://localhost:5000/api/videoUpload', submitData, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data',
+    //     },
+    //   })
+    //   .then((res) => {
+    //     // 응답 처리
+    //     if (res.data.Result === 'Success') {
+    //       // console.log('s3업로드 완료');
+    //       // 로딩 페이지 사라짐
+    //       setIsLoading(false);
+    //       console.log(res.data);
+    //       // yolo, clova task id 저장
+    //       // dispatch(status_getID(res.data));
+
+    //       // 다음 페이지로 정보 전달
+    //       location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
+    //     } else if (res.data.Result === 'false') {
+    //       // 업로드 실패시
+    //       // console.log('s3업로드 에러발생');
+    //       setIsLoading(false);
+    //       setErrtxt('유효하지 않은 파일입니다.');
+    //       history.push('/');
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     // 예외 처리
+    //     // console.log(err);
+    //     setIsLoading(false);
+    //     // 에러 페이지로 넘김
+    //     history.push('/error?errtype=upload video');
+    //     // setErrtxt('서버에러');
+    //   });
   };
 
   // url video 전송
@@ -160,52 +170,56 @@ function UploadPage() {
 
     setIsLoading(true);
 
-    axios
-      .post('http://localhost:5000/api/videoUpload', submitData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+    dispatch(status_getID(submitData))
       .then((res) => {
-        // 응답 처리
-        if (res.data.Result === 'Success') {
-          // console.log('s3업로드 완료');
-
-          // 사라질 듯
-          // const params = new URLSearchParams([
-          //   ['id', res.data.video_pk],
-          //   ['language', lang],
-          // ]);
-
-          // axios
-          //   .get('http://localhost:5000/api/detect', { params })
-          //   .then((response) => {
-          //     console.log(response);
-          //     alert('욜로가 완료되었다');
-          //   })
-          //   .catch((err) => {
-          //     console.log(err);
-          // setIsLoading(false);
-          // history.push({ pathname: `/result?${params}`, state: { res } });
-          // history.push('/');
-          // });
-
+        console.log(res);
+        if (res.payload.Result === 'Success') {
           setIsLoading(false);
-          location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
-        } else if (res.data.Result === 'false') {
-          // console.log('s3업로드 에러발생');
-          setErrtxt('유효하지 않은 url입니다.');
+          location.href = `/search?id=${res.payload.video_pk}&language=${lang}`;
+        } else if (res.payload.Result === 'false') {
           setIsLoading(false);
+          setErrtxt('유효하지 않은 파일입니다.');
           history.push('/');
         }
       })
       .catch((err) => {
         // 예외 처리
-        // console.log(err);
+        console.log(err);
         setIsLoading(false);
+        // 에러 페이지로 넘김
         history.push('/error?errtype=upload video');
-        setErrtxt('서버에러');
+        // setErrtxt('서버에러');
       });
+    // axios
+    //   .post('http://localhost:5000/api/videoUpload', submitData, {
+    //     headers: {
+    //       'Content-Type': 'multipart/form-data',
+    //     },
+    //   })
+    //   .then((res) => {
+    //     // 응답 처리
+    //     if (res.data.Result === 'Success') {
+    //       // console.log('s3업로드 완료');
+    //       setIsLoading(false);
+    //       console.log(res.data.yolo_id);
+    //       // yolo, clova task id 저장
+    //       dispatch(status_getID(res.data));
+
+    //       location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
+    //     } else if (res.data.Result === 'false') {
+    //       // console.log('s3업로드 에러발생');
+    //       setErrtxt('유효하지 않은 url입니다.');
+    //       setIsLoading(false);
+    //       history.push('/');
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     // 예외 처리
+    //     // console.log(err);
+    //     setIsLoading(false);
+    //     history.push('/error?errtype=upload video');
+    //     setErrtxt('서버에러');
+    //   });
   };
 
   // 로딩 페이지 띄우기

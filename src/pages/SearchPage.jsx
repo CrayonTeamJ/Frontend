@@ -11,16 +11,24 @@ import styled from 'styled-components';
 import axios from 'axios';
 import queryString from 'query-string';
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 import LoadingPage from './LoadingPage';
-
 // 검색 페이지
 
 function SearchPage({ location }) {
+  // 임시
+  const yolo_id = useSelector((state) => state.status.yolo_id, []);
+  const clova_id = useSelector((state) => state.status.clova_id, []);
+
+  console.log('정확하게 저장이 되었나?');
+  // console.log(yolo_id);
+  // console.log(clova_id);
+
   // 기타 변수
   const [isLoading, setIsLoading] = React.useState(false);
 

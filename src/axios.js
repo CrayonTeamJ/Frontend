@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
@@ -10,6 +11,18 @@ export const request = (method, url, data) =>
     data,
     headers: {
       'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
+
+export const request_form = (method, url, data) =>
+  axios({
+    method,
+    url: DOMAIN + url,
+    data,
+    headers: {
+      'Content-Type': 'multipart/form-data',
     },
   })
     .then((res) => res.data)
