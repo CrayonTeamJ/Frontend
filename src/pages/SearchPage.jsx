@@ -59,19 +59,19 @@ function SearchPage({ location }) {
   // 변수를 변경하는 함수
   const onChangeState = (category) => {
     if (category === 'image') {
-      console.log(category);
+      // console.log(category);
       setTxt('인물');
       setImg(image);
       setPlacehold('인물을 검색해 보세요');
       setURL('http://localhost:5000/api/videosearch');
     } else if (category === 'audio') {
-      console.log(category);
+      // console.log(category);
       setTxt('대사');
       setImg(audio);
       setPlacehold('대사를 검색해 보세요');
       setURL('http://localhost:5000/api/audiosearch');
     } else if (category === 'both') {
-      console.log(category);
+      // console.log(category);
       setTxt('대사 & 인물');
       setImg(both);
       setPlacehold('인물 및 대사를 검색해보세요');
@@ -93,13 +93,13 @@ function SearchPage({ location }) {
 
   const onChangeSearchAud = (e) => {
     setSearchAud(e.target.value);
-    console.log('audio');
+    // console.log('audio');
     // console.log(searchAud);
   };
 
   const onChangeSearchVid = (e) => {
     setSearchVid(e.target.value);
-    console.log('video');
+    // console.log('video');
     // console.log(searchVid);
   };
 
@@ -132,8 +132,8 @@ function SearchPage({ location }) {
     ]);
 
     setIsLoading(true);
-    console.log('url제대로 바뀌는가');
-    console.log(url);
+    // console.log('url제대로 바뀌는가');
+    // console.log(url);
 
     // yolo와 clova 상태 물어보기
     if (yolo_id !== 'duplicate') {
@@ -144,11 +144,10 @@ function SearchPage({ location }) {
           },
         })
         .then((res) => {
-          console.log('post status response');
-          console.log('욜로와 클로바 상태');
-          console.log(res.data);
-          // yolo, clova id해제
-          dispatch(status_unsetID());
+          // console.log('post status response');
+          // console.log('욜로와 클로바 상태');
+          // console.log(res.data);
+
           if (
             res.data.yolo_res === 'Success' &&
             res.data.clova_res === 'Success'
@@ -166,6 +165,8 @@ function SearchPage({ location }) {
                 setIsLoading(false);
                 history.push(`/error?errtype=search?${params}`);
               });
+            // yolo, clova 삭제
+            dispatch(status_unsetID());
           } else {
             setIsLoading(false);
             history.push('/error?errtype=yolo clova');

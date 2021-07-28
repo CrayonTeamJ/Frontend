@@ -104,7 +104,7 @@ function UploadPage() {
 
     dispatch(status_getID(submitData))
       .then((res) => {
-        console.log(res.payload);
+        // console.log(res.payload);
         if (res.payload.Result === 'Success') {
           setIsLoading(false);
           location.href = `/search?id=${res.payload.video_pk}&language=${lang}`;
@@ -116,7 +116,7 @@ function UploadPage() {
       })
       .catch((err) => {
         // 예외 처리
-        console.log(err);
+        // console.log(err);
         setIsLoading(false);
         // 에러 페이지로 넘김
         history.push('/error?errtype=upload video');
@@ -172,7 +172,7 @@ function UploadPage() {
 
     dispatch(status_getID(submitData))
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.payload.Result === 'Success') {
           setIsLoading(false);
           location.href = `/search?id=${res.payload.video_pk}&language=${lang}`;
@@ -184,7 +184,7 @@ function UploadPage() {
       })
       .catch((err) => {
         // 예외 처리
-        console.log(err);
+        // console.log(err);
         setIsLoading(false);
         // 에러 페이지로 넘김
         history.push('/error?errtype=upload video');
