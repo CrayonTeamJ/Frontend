@@ -11,16 +11,19 @@ import styled from 'styled-components';
 import axios from 'axios';
 import queryString from 'query-string';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import LandingInfo from '../components/LandingInfo';
 import Typebtn from '../components/Typebtn';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 import LoadingPage from './LoadingPage';
+import { status_getID, status_unsetID } from '../redux/status';
 // 검색 페이지
 
 function SearchPage({ location }) {
+  const dispatch = useDispatch();
+
   // 임시
   const yolo_id = useSelector((state) => state.status.yolo_id, []);
   const clova_id = useSelector((state) => state.status.clova_id, []);
@@ -144,6 +147,8 @@ function SearchPage({ location }) {
           console.log('post status response');
           console.log('욜로와 클로바 상태');
           console.log(res.data);
+          // yolo, clova id해제
+          dispatch(status_unsetID());
           if (
             res.data.yolo_res === 'Success' &&
             res.data.clova_res === 'Success'
@@ -266,9 +271,8 @@ function SearchPage({ location }) {
                 </Label>
               </LandingInfo>
             </div>
-            <div className="main-grid-item mid">
-              <span>MID</span>
-            </div>
+            <div className="main-grid-item mid" />
+
             <div className="main-grid-item bot">
               <div
                 className="bot-grid-item"
@@ -332,9 +336,8 @@ function SearchPage({ location }) {
           <div className="main-grid-item top">
             <LandingInfo />
           </div>
-          <div className="main-grid-item mid">
-            <span>MID</span>
-          </div>
+          <div className="main-grid-item mid" />
+
           <div className="main-grid-item bot">
             <div className="bot-grid-item">
               <Typebtn onSelectCategory={onSelectCategory} checked={category} />

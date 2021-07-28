@@ -8,7 +8,7 @@ import { request_form } from '../axios';
 
 // action type
 const STATUS_SETID = 'status/STATUS_SETID';
-
+const STATUS_UNSETID = 'status/STATUS_UNSETID';
 // action creator
 
 // 1. yolo id / clova id
@@ -21,6 +21,10 @@ export const status_getID = (submitData) => {
     payload: data,
   };
 };
+
+export const status_unsetID = () => ({
+  type: STATUS_UNSETID,
+});
 
 // reducer
 const initialState = {
@@ -37,12 +41,12 @@ const status = (state = { initialState }, action) => {
         yolo_id: action.payload.yolo_id,
         clova_id: action.payload.clova_id,
       };
-    // case STATUS_UNSETID:
-    //   return {
-    //     ...state,
-    //     yolo_id: '',
-    //     clova_id: '',
-    //   };
+    case STATUS_UNSETID:
+      return {
+        ...state,
+        yolo_id: '',
+        clova_id: '',
+      };
     default:
       return state;
   }
