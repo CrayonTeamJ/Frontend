@@ -25,7 +25,7 @@ function SearchPage({ location }) {
   const yolo_id = useSelector((state) => state.status.yolo_id, []);
   const clova_id = useSelector((state) => state.status.clova_id, []);
 
-  console.log('정확하게 저장이 되었나?');
+  // console.log('정확하게 저장이 되었나?');
   // console.log(yolo_id);
   // console.log(clova_id);
 
@@ -72,7 +72,7 @@ function SearchPage({ location }) {
       setTxt('대사 & 인물');
       setImg(both);
       setPlacehold('인물 및 대사를 검색해보세요');
-      setURL('http://localhost:5000/api/bothsearch');
+      setURL('http://localhost:5000/api/multiplesearch');
     }
 
     // console.log('함수내부');
@@ -129,6 +129,8 @@ function SearchPage({ location }) {
     ]);
 
     setIsLoading(true);
+    console.log('url제대로 바뀌는가');
+    console.log(url);
 
     // yolo와 clova 상태 물어보기
     if (yolo_id !== 'duplicate') {
