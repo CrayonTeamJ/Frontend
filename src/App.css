@@ -118,7 +118,7 @@ input[type='radio']:checked {
 
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url(./img/background1.jpg);
+  background-image: url(./img/background_final.png);
 }
 
 /* 부모가 main-container(relative) */

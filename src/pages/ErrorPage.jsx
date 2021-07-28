@@ -13,7 +13,6 @@ function ErrorPage() {
   const location = useLocation();
   const query = queryString.parse(location.search);
   const { errtype } = query;
-  const { msg } = query;
 
   const history = useHistory();
   const onSumbitHandler = (e) => {
@@ -34,13 +33,13 @@ function ErrorPage() {
               fontFamily: 'NanumSquare_L',
               position: 'absolute',
               bottom: '120px',
-              left: '100px',
+              left: '160px',
               textAlign: 'center',
             }}
           >
-            "{errtype}" 작업을 수행 중 에러가 발생했습니다.
+            "{errtype}"
             <br />
-            error message : {msg}
+            작업을 수행 중 에러가 발생했습니다.
           </span>
 
           <Button onClick={onSumbitHandler}>
