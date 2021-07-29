@@ -1,134 +1,3 @@
-.navbar {
-  padding: 2.5px;
-  background-color: white;
-}
-
-.nav_inner {
-  flex: 1;
-  background-color: aqua;
-  display: flex;
-  justify-content: space-between;
-}
-
-.nav_user_box {
-  flex: 0.5;
-  background-color: blue;
-  /* 내부 아이템 옆으로 늘어트려서 정렬  */
-  display: flex;
-  /* y축기준 중앙 */
-  align-items: center;
-  /* y축 기준 내부에 요소들 끝으로 붙이기 */
-  justify-content: flex-end;
-  /* <ul>tag 앞에 동그라미 제거 */
-  list-style: none;
-  padding: 0;
-  margin: 0px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-/* button 디자인 (앞쪽-투명버튼)*/
-.nav_user_box .front_btn {
-  width: 95px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #fa605a;
-}
-/* button 디자인 (뒷쪽-빨간버튼) */
-.nav_user_box .back_btn {
-  width: 95px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #fa605a;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
-}
-
-.start_btn {
-  width: 13vw;
-  height: 5vh;
-  position: relative;
-  display: block;
-  text-align: center;
-  border-radius: 50px;
-  cursor: pointer;
-  background-color: #fa605a;
-}
-
-/* 삭제될듯? */
-.btn_log {
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #85bcbe;
-}
-
-.logbtn {
-  margin-left: 5px;
-  background-color: #85bcbe;
-  font-family: 'NanumSquare_L';
-  text-decoration: none;
-  color: white;
-}
-
-.container {
-  flex: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-  background-color: #282c34;
-  /* background-image: url(./img/background.svg); */
-}
-
-.back-container {
-  display: block;
-  padding-top: 8.3333vw;
-  width: 100vw;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  /* overflow: hidden; */
-  /* list-style: none; */
-  padding: 0;
-  z-index: 1;
-  background-color: darkgreen;
-}
-
-.top-container {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position-y: -36vh;
-  background-image: url(./img/backimg.png);
-}
-
-.back-container2 {
-  background-color: darkgreen;
-}
-
-.below-container {
-  background-color: gold;
-}
-
 .footer {
   display: flex;
   /* y축기준 중앙 */
@@ -138,7 +7,7 @@
 
   font-family: NanumSquare_L;
   font-size: 1.5vh;
-  background-color: hotpink;
+  /* background-color: hotpink; */
 }
 
 .back-wrapper {
@@ -154,29 +23,279 @@
   background-size: 100vw;
   background-repeat: no-repeat;
   /* height: 809px; */
-  background-color: darkgrey;
+  /* background-color: darkgrey; */
 }
 
-.landing-info {
-  position: absolute;
+.landing-slide-img {
+  height: 100%;
+  /* background-color: deeppink; */
+}
+
+.radio-btn {
+  /* position: relative; */
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+  position: flex;
+
+  margin-top: 20px;
+}
+
+/* radio button */
+/* input[type='radio'],
+input[type='radio']:checked {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 100%;
+
+  margin-right: 0.5rem;
+}
+
+input[type='radio'] {
+  background-color: white;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid #404040;
+}
+input[type='radio']:checked {
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: no-repeat s#404040;
+} */
+
+.html .body {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 전체 구조 (container) start */
+.new-container {
+  width: 100%;
+  height: 100%;
+  position: static;
+  /* height: 100vh; */
+  /* width: 100vw; */
+}
+
+.nav-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* height: 100%; */
+  /* height: 60px; */
+  /* width: 100vw; */
+  /* height: 6vh; */
+  color: white;
+  height: 60px;
+}
+
+/* 부모가 .new-container (static) */
+.main-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  /* height: px; */
+  /* position: relative; */
+  /* top: 6vh; */
+
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./img/background_final.png);
+}
+
+/* 부모가 main-container(relative) */
+.top-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+
+  /* background-position-y: -36vh; */
+  background-image: url(./img/background_final.png);
+
+  /* height: 60vh; */
+  /* height: 36em; */
+  height: 500px;
+  top: 100px;
+  /* height: 30vmax; */
+  /* width: 100vw; */
+  /* height: 55vh; */
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+}
+
+.bottom-container {
+  width: 100%;
+  /* height: 100%; */
+  /* height: 400px; */
+  /* height: 40vh; */
+  width: 100vw;
+  /* background-color: yellow; */
+  /* height: 30em; */
+  /* bottom: 0px; */
+
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+}
+
+.footer-container {
+  position: fixed;
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  height: 30px;
+  /* width: 100vw; */
+  /* height: 5vh; */
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  font-family: NanumSquare_L;
+  font-size: 1.5vh;
+  /* background-color: hotpink; */
+}
+
+/* 전체구조 end */
+
+/* nav-bar 관련 start */
+.navbar {
+  padding: 2.5px;
+  background-color: white;
+}
+
+.nav_inner {
+  /* background-color: aqua; */
+  display: flex;
+  /* 내부요소-로고이미지 y축 중앙정렬 */
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.nav_user_box {
+  /* background-color: coral; */
+  /* 내부 아이템 옆으로 늘어트려서 정렬  */
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: flex-end;
+  /* <ul>tag 앞에 동그라미 제거 */
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 30vw;
+}
+
+/* button 디자인 (앞쪽-투명버튼)*/
+/* .nav_user_box .front_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #fa605a;
+} */
+/* button 디자인 (뒷쪽-빨간버튼) */
+/* .nav_user_box .back_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fa605a;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); 
+} */
+
+/* nav-bar 관련 end */
+
+/* top-container 내부 start */
+
+/* template(login, register, register완료(환영창), member only */
+/* 부모가 .top-container(static) */
+.template-container {
+  /* 컨테이너 크기 */
+  width: 50vw;
+  height: 60vh;
+
+  /* 위치설정 -> 부모가 static -> relative*/
+  position: relative;
+  /* top: 00px; 위에서 부터 18vh떨어진 시점 */
+
+  /* 맨뒤로 설정과 유사 */
   z-index: 1;
-  /* 총 100vw이고  */
-  left: 10vw;
-  width: 80vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
 
-  /* 높이 */
-  top: 16vh;
-  height: 32vh;
-  bottom: 16vh;
+  /* padding */
+  padding: 10px;
 
-  background-color: gold;
+  /* background-color: lime; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.landing-info .landing-slide-slogan {
-  margin: 0.5vw;
+/* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */
 
+.top-wrapper {
+  /* 크기 */
+  /* height: 350px; */
+  /* height: 300px; */
+  width: 80vw;
+  height: 18vmax;
+  /* top: px; */
+  /* 위치 설정 */
+  position: relative;
+  /* top: 4vmax; */
+  z-index: 1;
+
+  /* background-color: gold; */
+}
+
+.top-wrapper .landing-slide-slogan {
+  /* margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw; */
+  margin: 5px;
+
+  height: 330px;
+  width: 79vw;
   /* 정렬 */
   text-align: left;
 
@@ -186,58 +305,377 @@
   letter-spacing: 2.5px;
   /* 행간 */
   line-height: 65px;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
 }
 
-.landing-info .landing-slide-button {
-  margin: 0.5vw;
-  height: 6vh;
+/* top-container 내부 end */
+
+/* bottom-container 내부 start */
+
+.bottom-wrapper {
+  /* 크기 */
+  width: 80vw;
+  /* height: 42vmax; */
+  /* height: 22vmax; */
+  height: 320px;
+
+  /* 위치 */
+  position: relative;
+  z-index: 1;
+  top: -70px;
+  /* bottom: 00px; */
+  /* left: 10vw; */
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  /* background-color: lightpink; */
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+}
+
+.bottom-wrapper .button-pos {
+  /* 크기 */
+  width: 80vw;
+  margin-top: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* background-color: blueviolet; */
+}
+
+/* bottom-container 내부 end */
+
+/* result창  */
+.video-container {
+  /* grid-area: video-container; */
+  /* margin: 10px; */
+  /* padding-bottom: 40px; */
+  display: grid;
+  width: 100%;
+  height: 100%;
+  /* background-color: antiquewhite; */
+
+  height: 750px;
+  width: 100vw;
+  grid-template-rows: 8fr 1fr;
+  /* display: absolute; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* align-self: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+
+.video-grid-item {
+  /* margin: 5px; */
+  /* padding: 5px; */
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-container {
+  /* width: 100%; */
+  /* height: 100%; */
+  display: grid;
+  /* margin-bottom: 5px; */
+  /* padding: 5px; */
+  /* display: flex; */
+  /* grid-template-areas:
+    'video-container'
+    'grid-container'
+    'comment-container'; */
+
+  /* height: 500px; */
+  /* background-color: #ccc; */
+  grid-template-rows: 800px 800px 300px;
+  /* grid-template-columns: 1fr, 160px, 1fr; */
+}
+
+.main-grid-container {
+  display: grid;
+
+  grid-template-areas:
+    'top'
+    'mid'
+    'bot';
+
+  grid-template-rows: 280px 50px 340px;
+  grid-template-columns: 85vw;
+}
+
+.main-grid-item {
+  margin: 2px;
+  /* background-color: bisque; */
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+}
+
+.top {
+  grid-area: top;
+  text-align: left;
+}
+
+.bot {
+  grid-area: bot;
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  /* background-color: lightpink; */
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+
+  display: grid;
+  grid-template-rows: 280px 60px;
+  grid-template-columns: 85vw;
+}
+
+.bot-grid-item {
+  margin: 0px;
+  /* background-color: blueviolet; */
+}
+
+/* 라디오버튼  */
+.button-grid {
+  display: grid;
+  /* display: flex; */
+  grid-template-rows: 170px 20px 30px;
+  /* grid-template-columns: 16vw; */
+}
+
+.button-grid-item {
+  margin: 1px;
   display: flex;
   /* y축기준 중앙 */
   align-items: center;
   /* y축 기준 내부에 요소들 끝으로 붙이기 */
-  justify-content: flex-start;
-  background-color: darkslategray;
+
+  justify-content: center;
+  /* text-align: start; */
 }
 
-.bottom-wrapper {
-  position: absolute;
-  z-index: 1;
-  /* 총 100vw이고  */
-  left: 10vw;
-  width: 80vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
+/* 
+.result-grid-item {
+  margin: 10px;
+  padding: 10px;
+  background-color: brown;
+}
 
-  /* 높이 */
-  top: 53vh;
-  height: 32vh;
-  bottom: 16vh;
+.button {
+  grid-area: button;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(39, 0, 146);
+}
 
+.header {
+  grid-area: header;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(39, 199, 146);
+}
+
+.results {
+  grid-area: results;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(212, 0, 255);
+}
+
+.footer {
+  grid-area: footer;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(30, 49, 43);
+} */
+
+.grid-container {
+  /* grid-area: grid-container; */
+  display: grid;
+  grid-template-areas:
+    '. header .'
+    'aside content aside2'
+    'footer footer footer';
+  grid-template-rows: 60px 1fr 50px;
+  grid-template-columns: 1fr 960px 1fr;
+  /* height: 250px; */
+  /* background-color: #ccc; */
+  height: 700px;
+  width: 100vw;
+}
+
+.grid-item {
+  padding: 5px;
+}
+
+.header {
+  grid-area: header;
+  color: black;
+  background-color: #ffe6e6;
+  display: grid;
+  align-items: center;
+  /* justify-content: center; */
+
+  /* grid-template-rows: 2fr 1fr; */
+  grid-template-columns: 2fr 1fr;
+}
+
+.header-item {
+  /* padding: 10px; */
+  color: black;
   display: flex;
-
-  background-color: lightpink;
+  align-items: center;
 }
 
-.landing-slide-img {
+.slider {
+  grid-area: header;
+  color: black;
+  /* background-color: cadetblue; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.aside {
+  grid-area: aside;
+  /* background-color: yellow; */
+}
+
+.aside2 {
+  grid-area: aside2;
+  /* background-color: yellow; */
+}
+
+.content {
+  grid-area: content;
+  /* background-color: pink; */
+
+  display: grid;
+
+  grid-template-rows: repeat(2, 250px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+}
+
+.content-no-result {
+  grid-area: content;
+  /* background-color: pink; */
+
+  display: grid;
+
+  grid-template-rows: 300px 100px;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); */
+}
+
+.content-no-item {
+  margin: 1px;
+  padding: 1px;
+  /* background-color: red; */
+  width: 100%;
   height: 100%;
-  background-color: deeppink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.template-container {
-  position: absolute;
-  z-index: 1;
-  /* 총 100vw이고  */
-  left: 23vw;
-  width: 55vw;
-  /* top: calc(4vw + 30px);
-  top: 4.5vw; */
+.footer {
+  grid-area: footer;
+  color: #404040;
+  /* background-color: #555; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* 높이 */
-  top: 18vh;
-  height: 55vh;
-  bottom: 16vh;
-  background-color: lime;
+.content-item {
+  margin: 1px;
+  padding: 1px;
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  display: gird;
+  grid-template-rows: 2fr 1fr;
+  /* padding: 15px; */
+  /* padding */
+
+  padding-top: 50px;
+  /* padding-bottom: 5px; */
+  padding-left: 15px;
+  padding-right: 15px;
+
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: antiquewhite; */
+
+  /* height: 80vh; */
+  /* width: 100vw; */
+  /* grid-template-rows: 5fr 1fr; */
+}
+
+.content-item-inner {
+  margin: 3px;
+  /* background-color: darkcyan; */
+
+  /* margin: 5px; */
+  /* padding: 5px; */
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.comment-container {
+  /* grid-area: comment-container; */
+  /* margin: 10px; */
+  padding-bottom: 40px;
+
+  width: 100%;
+  height: 100%;
+  /* background-color: antiquewhite; */
+
+  height: 500px;
+  width: 100vw;
+  grid-template-rows: 1fr;
+  /* display: absolute; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* align-self: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+
+.comment-grid-item {
+  margin: 5px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  /* background-color: yellow; */
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  /* grid-template-rows: 100px 200px 50px; */
+  /* grid-auto-columns: 800px; */
 }
 
 .App {

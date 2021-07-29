@@ -1,101 +1,72 @@
 /* eslint-disable no-unused-vars */
 import '../App.css';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Navigationbar from '../components/Navigationbar';
-import LoginBlock from '../components/LoginBlock';
-import Footer from '../components/Footer';
+import Template from '../components/Template';
+import noResult from '../img/not-found.png';
 
 function MemberOnlyPage() {
   return (
     <>
-      <div style={{ height: '89vh' }}>
-        <div
-          className="top-container"
-          style={{ backgroundColor: 'red', height: '51vh' }}
-        >
-          <div className="template-container">
-            <TemplateBlock>
-              <h1> Sorry, Member ONLY </h1>
-              <Button>
-                <Link to="/login" style={{ textDecoration: 'none' }}>
-                  <Stylespan>로그인 페이지로 이동</Stylespan>
-                </Link>
-              </Button>
-            </TemplateBlock>
-            {/* <Button onClick={onTestFunc}> TEST </Button> */}
-          </div>
-        </div>
-        <div style={{ backgroundColor: 'blue', height: '38vh' }}>
-          <span>bottom continer</span>
-        </div>
-      </div>
-      <div style={{ height: '5vh' }}>
-        <Footer />
+      <div className="main-container">
+        <Template>
+          <Styleh1> Sorry, Member ONLY </Styleh1>
+          <img
+            src={noResult}
+            style={{
+              width: '220px',
+              position: 'absolute',
+              left: '32%',
+              top: '30%',
+            }}
+            alt="img"
+          />
+          <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Button>
+              <Stylespan>로그인 페이지로 이동</Stylespan>
+            </Button>
+          </Link>
+        </Template>
       </div>
     </>
   );
 }
 
-const TemplateBlock = styled.div`
-  width: 512px;
-  height: 400px;
-
-  position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-
-  margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
-  display: flex;
-  flex-direction: column;
-
-  opacity: 1;
-
-  h1 {
-    margin: 0;
-    margin-top: 40px;
-    margin-bottom: 35px;
-    font-size: 30px;
-    text-align: center;
-    font-family: 'BwSurco';
-    color: #404040;
-  }
-`;
 const Button = styled.button`
+  /* 디자인 */
   background: #fa605a;
   &:hover {
-    background: #63e6be;
+    background: #b52038;
   }
   &:active {
-    background: #20c997;
+    background: #b52038;
   }
-
-  z-index: 5;
-  cursor: pointer;
-  width: 250px;
-  height: 35px;
-  display: block;
-  font-size: 20px;
-  position: absolute;
-  left: 50%;
-  bottom: 0px;
-  transform: translate(-50%, -80%); /* 버튼위치 */
   color: white;
   border-radius: 5%;
   border: none;
   outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+
+  /* 크기 */
+  width: 300px;
+  height: 40px;
+
+  /* 위치 */
+  position: absolute;
+  left: 25%; // 중앙으로 배치
+  bottom: 10%; // 조금 위쪽으로
+  /* transform: translate(-50%, -80%); */
+
+  /* z-index: 5; */
+  cursor: pointer;
+
+  /* display: inline; */
+
+  /* align-items: center; */
+  /* justify-content: center; */
 
   transition: 0.125s all ease-in;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 `;
 
 const Stylespan = styled.span`
@@ -104,4 +75,15 @@ const Stylespan = styled.span`
   font-family: NanumSquare_R;
   white-space: nowrap;
 `;
+
+const Styleh1 = styled.h1`
+  /* margin: 0; */
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-size: 45px;
+  text-align: center;
+  font-family: 'BwSurco';
+  color: #404040;
+`;
+
 export default MemberOnlyPage;

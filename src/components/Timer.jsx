@@ -14,12 +14,7 @@ import 'react-responsive-modal/styles.css';
 function Timer(props) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const Expire = useSelector((state) => state.access_expire, []);
-  // console.log('뭔데 내 타이머 말좀해봐');
-  // console.log(Expire);
-  // const Expire = useSelector(stae)
-  //   const [hour, setHour] = useState(1);
-  //   const [min, setMin] = useState(0);
+  const Expire = useSelector((state) => state.users.access_expire, []);
   const [sec, setSec] = useState(0);
   const time = useRef(Expire / 1000); // expire time을 초로 주어야함 -> backend expire time이 milli second라서..나눠야함
   const timerId = useRef(null);
@@ -67,23 +62,24 @@ function Timer(props) {
     dispatch(user_refresh())
       .then((res) => {
         if (res.payload.Result === 'success') {
-          console.log('refresh성공');
+          // console.log('refresh성공');
           // accesskey재 등록
-          console.log(res.payload.access_token);
+          // console.log(res.payload.access_token);
           axios.defaults.headers.common.Authorization = `Bearer ${res.payload.access_token}`;
           window.location.reload('/'); // 새로고침
         } else {
-          console.log('refresh에 실패함');
+          alert('refresh에 실패함');
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
+        history.push('/');
       });
   };
 
   useEffect(() => {
     // 만약 타임 아웃이 발생했을 경우
-    if (time.current <= 30) {
+    if (time.current <= 300) {
       // console.log('만료 시간 30초 남음 ');
       setOpen(true);
       // dispatch(user_refresh)
@@ -96,20 +92,19 @@ function Timer(props) {
       // 강제 로그아웃
       dispatch(user_logout())
         .then((res) => {
-          // console.log('logout?된건가?');
           if (res.payload.Result === 'success') {
             // accesskey를 제거해버림
             axios.defaults.headers.common.Authorization = ``;
-            props.history.push('/login');
+            history.push('/login');
           } else {
             alert('로그아웃에 실패하였습니다');
+            history.push('/');
           }
-          props.history.push('/login');
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
+          history.push('/error?errtype=logout');
         });
-      // 자동 로그아웃 해버리는 함수 dispatch(user_logout)
     }
   }, [sec]);
 
@@ -119,8 +114,10 @@ function Timer(props) {
       <Modal open={open} onClose={onCloseModal}>
         <h2>세션 만료 안내 </h2>
         <p>
-          5분 뒤 세션이 자동으로 만료됩니다. 닫기를 누르면 세션이 자동으로
-          재시작됩니다.
+          5분 뒤 세션이 자동으로 만료됩니다. <br />
+          닫기를 누르면 세션이 자동으로 재시작됩니다.
+          <br />
+          그렇지 않으면 자동 로그아웃됩니다.
         </p>
       </Modal>
     </div>
@@ -130,8 +127,8 @@ function Timer(props) {
 const Timerspan = styled.span`
   font-family: NanumSquare_R;
   color: #696969;
-  bottom: 25%;
-  font-size: 13px;
+  /* bottom: 25%; */
+
   opacity: 1;
   white-space: nowrap;
 `;
