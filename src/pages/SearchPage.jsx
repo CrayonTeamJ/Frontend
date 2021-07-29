@@ -28,9 +28,9 @@ function SearchPage({ location }) {
   const yolo_id = useSelector((state) => state.status.yolo_id, []);
   const clova_id = useSelector((state) => state.status.clova_id, []);
 
-  // console.log('정확하게 저장이 되었나?');
-  // console.log(yolo_id);
-  // console.log(clova_id);
+  console.log('정확하게 저장이 되었나?');
+  console.log(yolo_id);
+  console.log(clova_id);
 
   // 기타 변수
   const [isLoading, setIsLoading] = React.useState(false);
@@ -132,8 +132,8 @@ function SearchPage({ location }) {
     ]);
 
     setIsLoading(true);
-    // console.log('url제대로 바뀌는가');
-    // console.log(url);
+    console.log('url제대로 바뀌는가');
+    console.log(url);
 
     // yolo와 clova 상태 물어보기
     if (yolo_id !== 'duplicate') {
@@ -145,8 +145,8 @@ function SearchPage({ location }) {
         })
         .then((res) => {
           // console.log('post status response');
-          // console.log('욜로와 클로바 상태');
-          // console.log(res.data);
+          console.log('욜로와 클로바 상태');
+          console.log(res.data);
 
           if (
             res.data.yolo_res === 'Success' &&

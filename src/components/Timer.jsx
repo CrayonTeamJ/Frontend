@@ -92,18 +92,17 @@ function Timer(props) {
       // 강제 로그아웃
       dispatch(user_logout())
         .then((res) => {
-          // console.log('logout?된건가?');
           if (res.payload.Result === 'success') {
             // accesskey를 제거해버림
             axios.defaults.headers.common.Authorization = ``;
-            props.history.push('/login');
+            history.push('/login');
           } else {
             alert('로그아웃에 실패하였습니다');
+            history.push('/');
           }
-          props.history.push('/login');
         })
         .catch((err) => {
-          // console.error(err);
+          // console.log(err);
           history.push('/error?errtype=logout');
         });
     }

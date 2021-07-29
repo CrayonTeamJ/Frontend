@@ -44,8 +44,8 @@ const status = (state = { initialState }, action) => {
     case STATUS_UNSETID:
       return {
         ...state,
-        yolo_id: '',
-        clova_id: '',
+        yolo_id: 'duplicate',
+        clova_id: 'duplicate',
       };
     default:
       return state;
