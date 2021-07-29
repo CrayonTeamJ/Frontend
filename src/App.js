@@ -2,13 +2,8 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import './App.css';
-import React, { Fragment, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
@@ -22,9 +17,6 @@ import ResultPage from './pages/ResultPage';
 import ErrorPage from './pages/ErrorPage';
 
 function App() {
-  // const isLogin = useSelector((state) => state.isLogin, []);
-  // const dispatch = useDispatch();
-
   return (
     <>
       <div className="new-container">
