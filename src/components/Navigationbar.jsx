@@ -6,7 +6,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../img/seaflag.svg';
-import profile from '../img/profile.png';
 import styled from 'styled-components';
 import Timer from './Timer';
 import { useSelector, useDispatch } from 'react-redux';
