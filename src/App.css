@@ -1,93 +1,531 @@
-.navbar {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.nav_inner {
-  margin-right: 10px;
+.footer {
   display: flex;
-  justify-content:space-between;
-}
-
-.nav_inner .a .img{
+  /* y축기준 중앙 */
   align-items: center;
-  align-self: center;
-  align-content: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  font-family: NanumSquare_L;
+  font-size: 1.5vh;
+  background-color: hotpink;
 }
 
-.nav_user_box {
+.back-wrapper {
+  /* position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   display: flex;
-  align-items:center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-}
-
-.nav_user_box .btn_log{
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
+  transition-property: transform;
+  box-sizing: content-box; */
   text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba( 255, 255, 255, 0.0 );
-  border: 1px solid #85BCBE;
+  width: 100vw;
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  /* height: 809px; */
+  background-color: darkgrey;
 }
 
-
-.nav_user_box .btn_res{
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #85BCBE;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
+.landing-slide-img {
+  height: 100%;
+  background-color: deeppink;
 }
 
+.radio-btn {
+  /* position: relative; */
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+  position: flex;
 
-.btn_log{
-  width: 80px;
-  height: 30px;
-  position: relative;
-  margin-left: 10px;
-  display: block;
-  text-align: center;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: rgba( 255, 255, 255, 0.0 );
-  border: 1px solid #85BCBE;
+  margin-top: 20px;
 }
 
-.logbtn {
-  margin-left: 5px;
-  background-color: #85BCBE;
-  font-family: 'NanumSquare_L';
-  text-decoration: none;
+/* radio button */
+/* input[type='radio'],
+input[type='radio']:checked {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 100%;
+
+  margin-right: 0.5rem;
+}
+
+input[type='radio'] {
+  background-color: white;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid #404040;
+}
+input[type='radio']:checked {
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: no-repeat s#404040;
+} */
+
+/* 전체 구조 (container) start */
+.new-container {
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.nav-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 6vh;
   color: white;
 }
 
+/* 부모가 .new-container (static) */
+.main-container {
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 89vh;
 
+  position: relative;
+  top: 6vh;
+}
 
-.container{
-  position: absolute;
-  top: 0;
-  left: 0;
+/* 부모가 main-container(relative) */
+.top-container {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-color: #282c34;
-  /* background-image: url(./img/background.svg); */
+  background-position-y: -36vh;
+  background-image: url(./img/backimg.png);
+
+  height: 48vh;
+  width: 100vw;
+
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
 }
 
+.bottom-container {
+  width: 100%;
+  height: 100%;
+  height: 41vh;
+  width: 100vw;
+  background-color: yellow;
 
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+}
 
+.footer-container {
+  position: fixed;
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  font-family: NanumSquare_L;
+  font-size: 1.5vh;
+  background-color: hotpink;
+}
+
+/* 전체구조 end */
+
+/* nav-bar 관련 start */
+.navbar {
+  padding: 2.5px;
+  background-color: white;
+}
+
+.nav_inner {
+  background-color: aqua;
+  display: flex;
+  /* 내부요소-로고이미지 y축 중앙정렬 */
+  align-items: center;
+  justify-content: space-between;
+  height: 5vh;
+}
+
+.nav_user_box {
+  background-color: coral;
+  /* 내부 아이템 옆으로 늘어트려서 정렬  */
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: flex-end;
+  /* <ul>tag 앞에 동그라미 제거 */
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 30vw;
+}
+
+/* button 디자인 (앞쪽-투명버튼)*/
+/* .nav_user_box .front_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #fa605a;
+} */
+/* button 디자인 (뒷쪽-빨간버튼) */
+/* .nav_user_box .back_btn {
+  width: 95px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fa605a;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); 
+} */
+
+/* nav-bar 관련 end */
+
+/* top-container 내부 start */
+
+/* template(login, register, register완료(환영창), member only */
+/* 부모가 .top-container(static) */
+.template-container {
+  /* 컨테이너 크기 */
+  width: 50vw;
+  height: 60vh;
+
+  /* 위치설정 -> 부모가 static -> relative*/
+  position: relative;
+  top: 18vh; /* 위에서 부터 18vh떨어진 시점 */
+
+  /* 맨뒤로 설정과 유사 */
+  z-index: 1;
+
+  /* padding */
+  padding: 1vh;
+
+  background-color: lime;
+}
+
+/* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */
+
+.top-wrapper {
+  /* 크기 */
+  height: 32vh;
+  width: 80vw;
+
+  /* 위치 설정 */
+  position: relative;
+  top: 0vh;
+  z-index: 1;
+
+  background-color: gold;
+}
+
+.top-wrapper .landing-slide-slogan {
+  margin-right: 0.5vw;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+
+  height: 31vh;
+  width: 79vw;
+  /* 정렬 */
+  text-align: left;
+
+  font-size: 45px;
+  font-family: NanumSquare_EB;
+  /* 자간 */
+  letter-spacing: 2.5px;
+  /* 행간 */
+  line-height: 65px;
+  background-color: lightgreen;
+}
+
+/* top-container 내부 end */
+
+/* bottom-container 내부 start */
+
+.bottom-wrapper {
+  /* 크기 */
+  width: 80vw;
+  height: 42vh;
+
+  /* 위치 */
+  position: relative;
+  z-index: 1;
+  bottom: 4.5vh;
+  /* left: 10vw; */
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  background-color: lightpink;
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+}
+
+.bottom-wrapper .button-pos {
+  /* 크기 */
+  width: 80vw;
+  margin-top: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: blueviolet;
+}
+
+/* bottom-container 내부 end */
+
+/* result창  */
+.video-container {
+  /* margin: 10px; */
+  padding-bottom: 40px;
+
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+
+  height: 80vh;
+  width: 100vw;
+  grid-template-rows: 5fr 1fr;
+  /* display: absolute; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* align-self: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+
+.video-grid-item {
+  margin: 5px;
+  padding: 5px;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-container {
+  /* width: 100%; */
+  /* height: 100%; */
+  display: grid;
+  /* margin-bottom: 5px; */
+  /* padding: 5px; */
+  grid-template-areas:
+    'header header header'
+    'button results button'
+    'footer footer footer';
+
+  height: 500px;
+  /* background-color: #ccc; */
+  grid-template-rows: 2fr 12fr 1fr;
+  grid-template-columns: 1fr, 160px, 1fr;
+}
+
+/* 
+.result-grid-item {
+  margin: 10px;
+  padding: 10px;
+  background-color: brown;
+}
+
+.button {
+  grid-area: button;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(39, 0, 146);
+}
+
+.header {
+  grid-area: header;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(39, 199, 146);
+}
+
+.results {
+  grid-area: results;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(212, 0, 255);
+}
+
+.footer {
+  grid-area: footer;
+  margin: 3px;
+  padding: 3px;
+  background-color: rgb(30, 49, 43);
+} */
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    '. header .'
+    'aside content aside2'
+    'footer footer footer';
+  grid-template-rows: 60px 1fr 50px;
+  grid-template-columns: 1fr 960px 1fr;
+  /* height: 250px; */
+  background-color: #ccc;
+  height: 70vh;
+  width: 100vw;
+}
+
+.grid-item {
+  padding: 5px;
+}
+
+.header {
+  grid-area: header;
+  color: black;
+  background-color: green;
+  display: grid;
+  align-items: center;
+  /* justify-content: center; */
+
+  /* grid-template-rows: 2fr 1fr; */
+  grid-template-columns: 2fr 1fr;
+}
+
+.header-item {
+  /* padding: 10px; */
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  grid-area: header;
+  color: black;
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.aside {
+  grid-area: aside;
+  background-color: yellow;
+}
+
+.aside2 {
+  grid-area: aside2;
+  background-color: yellow;
+}
+
+.content {
+  grid-area: content;
+  background-color: pink;
+
+  display: grid;
+
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+}
+
+.footer {
+  grid-area: footer;
+  color: white;
+  background-color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-item {
+  margin: 1px;
+  padding: 1px;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  display: gird;
+  grid-template-rows: 5fr 1fr;
+  padding: 15px;
+
+  /* padding-top: 15px; */
+  /* padding-bottom: 15px; */
+
+  /* width: 100%; */
+  /* height: 100%; */
+  /* background-color: antiquewhite; */
+
+  /* height: 80vh; */
+  /* width: 100vw; */
+  /* grid-template-rows: 5fr 1fr; */
+}
+
+.content-item-inner {
+  margin: 3px;
+  background-color: darkcyan;
+
+  /* margin: 5px; */
+  /* padding: 5px; */
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+}
+
+.comment-container {
+  /* margin: 10px; */
+  padding-bottom: 40px;
+
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+
+  height: 80vh;
+  width: 100vw;
+  grid-template-rows: 1fr;
+  /* display: absolute; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* align-self: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  /* text-align: center; */
+}
+
+.comment-grid-item {
+  margin: 5px;
+  padding-top: 60px;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .App {
   text-align: center;
@@ -97,12 +535,6 @@
   height: 40vmin;
   pointer-events: none;
 }
-
-
-
-
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -134,27 +566,25 @@
   }
 }
 
-
 /*FONT*/
 
-
 @font-face {
-  font-family: "BwSurco";         
-  src: url("./font/BwSurco-BlackItalic.otf"); 
+  font-family: 'BwSurco';
+  src: url('./font/BwSurco-BlackItalic.otf');
 }
 @font-face {
-  font-family: "NanumSquare_L";
-  src: url("./font/NanumSquare_acL.ttf"); 
+  font-family: 'NanumSquare_L';
+  src: url('./font/NanumSquare_acL.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_R";
-  src: url("./font/NanumSquare_acR.ttf"); 
+  font-family: 'NanumSquare_R';
+  src: url('./font/NanumSquare_acR.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_B";
-  src: url("./font/NanumSquare_acB.ttf"); 
+  font-family: 'NanumSquare_B';
+  src: url('./font/NanumSquare_acB.ttf');
 }
 @font-face {
-  font-family: "NanumSquare_EB";
-  src: url("./font/NanumSquare_acEB.ttf"); 
+  font-family: 'NanumSquare_EB';
+  src: url('./font/NanumSquare_acEB.ttf');
 }

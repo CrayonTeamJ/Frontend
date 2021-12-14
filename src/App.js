@@ -1,42 +1,56 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
 import './App.css';
-import React,{useEffect} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SigninPage from './pages/SigninPage';
-import SignupPage from './pages/SignupPage';
+import React, { Fragment, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import MainPage from './pages/MainPage';
-import axios from 'axios';
-
+import SignupPage from './pages/SignupPage';
+import SigninPage from './pages/SigninPage';
+import MyPage from './pages/MyPage';
+import PrivateRoute from './components/PrivateRoute';
+import MemberOnlyPage from './pages/MemberOnlyPage';
+import UploadPage from './pages/UploadPage';
+import Navigationbar from './components/Navigationbar';
+import SearchPage from './pages/SearchPage';
+import Footer from './components/Footer';
+import ResultPage from './pages/ResultPage';
 
 function App() {
-
-  // const api = axios.create({
-  //   baseURL: 'http://localhost:5000'
-  // })
-
-  // const api = axios.create({
-  //   httpsAgent: new https.Agent({   //지금 밑에 콘솔창에 뜬 에러는 이거임 https없어서
-  //     rejectUnauthorized: false
-  //   }),
-  //   baseURL: 'https://localhost:5000'
-  // })
-  // api.get('https://localhost:5000/signup');
-
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/signup')      //endpoint. getRequest를 server 즉 index.js로 보내질 것
-  //   .then(response => console.log())   //server 에서 돌아온 response를 콘솔창에 출력해봄
-  // }, [])
-
+  // const isLogin = useSelector((state) => state.isLogin, []);
+  // const dispatch = useDispatch();
 
   return (
     <>
-    <Router>
-      <Switch>
-        <Route path="/login" component={SigninPage}></Route >
-        <Route  path='/signup' component={SignupPage}></Route >
-        <Route  path='/' component={MainPage}></Route >
-      </Switch>
-    </Router>
+      <div className="new-container">
+        <Router>
+          <div className="nav-container">
+            <Navigationbar />
+          </div>
+          <div className="main-container">
+            <Switch>
+              <Route path="/login" component={SigninPage} />
+              <Route path="/signup" component={SignupPage} />
+              <Route path="/memberonly" component={MemberOnlyPage} />
+              <PrivateRoute path="/search" component={MainPage} />
+              <PrivateRoute path="/result" component={ResultPage} />
+              <Route path="/" component={UploadPage} />
+              {/* <Route path="/search" component={SearchPage} />
+              <Route path="/profile" component={MyPage} /> */}
+            </Switch>
+          </div>
+          <div className="footer-container">
+            <Footer />
+          </div>
+          {/** 이거 홈페이지가 위쪽에 있으면 안먹음 ...; */}
+        </Router>
+      </div>
     </>
   );
 }
