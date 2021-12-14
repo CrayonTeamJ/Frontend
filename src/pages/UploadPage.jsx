@@ -25,6 +25,7 @@ function UploadPage() {
   const [link, setLink] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
+  const [id, setID] = React.useState('');
   const history = useHistory();
   // const dispatch = useDispatch();
 
@@ -98,9 +99,27 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
+
+          // console.log(res.data.video_pk);
+
+          const params = new URLSearchParams([
+            ['id', res.data.video_pk],
+            ['language', lang],
+          ]);
+
+          axios
+            .get('http://localhost:5000/api/detect', { params })
+
+            .catch((err) => {
+              console.log(err);
+              // setIsLoading(false);
+              // history.push({ pathname: `/result?${params}`, state: { res } });
+              // history.push('/');
+            });
+
           // dispatch(video_initID(res.data.video_pk));
           setIsLoading(false);
-          location.href = `/search?id=${res.data.video_pk}`;
+          location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
           // history.push('/search');
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
@@ -156,9 +175,25 @@ function UploadPage() {
         // 응답 처리
         if (res.data.Result === 'Success') {
           console.log('s3업로드 완료');
+
+          const params = new URLSearchParams([
+            ['id', res.data.video_pk],
+            ['language', lang],
+          ]);
+
+          axios
+            .get('http://localhost:5000/api/detect', { params })
+
+            .catch((err) => {
+              console.log(err);
+              // setIsLoading(false);
+              // history.push({ pathname: `/result?${params}`, state: { res } });
+              // history.push('/');
+            });
+
           // dispatch(video_initID(res.data.video_pk));
           setIsLoading(false);
-          location.href = `/search?id=${res.data.video_pk}`;
+          location.href = `/search?id=${res.data.video_pk}&language=${lang}`;
           // history.push('/search?id='`{res.data.video_pk}`);
         } else if (res.data.Result === 'false') {
           console.log('s3업로드 에러발생');
