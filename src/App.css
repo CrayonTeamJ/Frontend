@@ -7,7 +7,7 @@
 
   font-family: NanumSquare_L;
   font-size: 1.5vh;
-  background-color: hotpink;
+  /* background-color: hotpink; */
 }
 
 .back-wrapper {
@@ -23,12 +23,12 @@
   background-size: 100vw;
   background-repeat: no-repeat;
   /* height: 809px; */
-  background-color: darkgrey;
+  /* background-color: darkgrey; */
 }
 
 .landing-slide-img {
   height: 100%;
-  background-color: deeppink;
+  /* background-color: deeppink; */
 }
 
 .radio-btn {
@@ -65,21 +65,33 @@ input[type='radio']:checked {
   background-color: no-repeat s#404040;
 } */
 
+.html .body {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 /* 전체 구조 (container) start */
 .new-container {
   width: 100%;
   height: 100%;
-  height: 100vh;
-  width: 100vw;
+  position: static;
+  /* height: 100vh; */
+  /* width: 100vw; */
 }
 
 .nav-container {
   position: fixed;
   width: 100%;
   height: 100%;
-  width: 100vw;
-  height: 6vh;
+  /* height: 100%; */
+  /* height: 60px; */
+  /* width: 100vw; */
+  /* height: 6vh; */
   color: white;
+  height: 60px;
 }
 
 /* 부모가 .new-container (static) */
@@ -87,23 +99,44 @@ input[type='radio']:checked {
   width: 100%;
   height: 100%;
   width: 100vw;
-  height: 89vh;
+  height: 100vh;
+  /* height: px; */
+  /* position: relative; */
+  /* top: 6vh; */
 
-  position: relative;
-  top: 6vh;
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(./img/background_final.png);
 }
 
 /* 부모가 main-container(relative) */
 .top-container {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position-y: -36vh;
-  background-image: url(./img/backimg.png);
-
-  height: 48vh;
   width: 100vw;
 
+  /* background-position-y: -36vh; */
+  background-image: url(./img/background_final.png);
+
+  /* height: 60vh; */
+  /* height: 36em; */
+  height: 500px;
+  top: 100px;
+  /* height: 30vmax; */
+  /* width: 100vw; */
+  /* height: 55vh; */
   display: flex;
   /* y축기준 중앙 */
   align-items: center;
@@ -113,10 +146,13 @@ input[type='radio']:checked {
 
 .bottom-container {
   width: 100%;
-  height: 100%;
-  height: 41vh;
+  /* height: 100%; */
+  /* height: 400px; */
+  /* height: 40vh; */
   width: 100vw;
-  background-color: yellow;
+  /* background-color: yellow; */
+  /* height: 30em; */
+  /* bottom: 0px; */
 
   display: flex;
   /* y축기준 중앙 */
@@ -131,8 +167,9 @@ input[type='radio']:checked {
   bottom: 0;
   width: 100%;
   height: 100%;
-  width: 100vw;
-  height: 5vh;
+  height: 30px;
+  /* width: 100vw; */
+  /* height: 5vh; */
   display: flex;
   /* y축기준 중앙 */
   align-items: center;
@@ -141,7 +178,7 @@ input[type='radio']:checked {
 
   font-family: NanumSquare_L;
   font-size: 1.5vh;
-  background-color: hotpink;
+  /* background-color: hotpink; */
 }
 
 /* 전체구조 end */
@@ -153,16 +190,16 @@ input[type='radio']:checked {
 }
 
 .nav_inner {
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
   /* 내부요소-로고이미지 y축 중앙정렬 */
   align-items: center;
   justify-content: space-between;
-  height: 5vh;
+  height: 50px;
 }
 
 .nav_user_box {
-  background-color: coral;
+  /* background-color: coral; */
   /* 내부 아이템 옆으로 늘어트려서 정렬  */
   display: flex;
   /* y축기준 중앙 */
@@ -218,39 +255,46 @@ input[type='radio']:checked {
 
   /* 위치설정 -> 부모가 static -> relative*/
   position: relative;
-  top: 18vh; /* 위에서 부터 18vh떨어진 시점 */
+  /* top: 00px; 위에서 부터 18vh떨어진 시점 */
 
   /* 맨뒤로 설정과 유사 */
   z-index: 1;
 
   /* padding */
-  padding: 1vh;
+  padding: 10px;
 
-  background-color: lime;
+  /* background-color: lime; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* top-wrapper : 설명창(upload, select type, search(얘만약간다름) */
 
 .top-wrapper {
   /* 크기 */
-  height: 32vh;
+  /* height: 350px; */
+  /* height: 300px; */
   width: 80vw;
-
+  height: 18vmax;
+  /* top: px; */
   /* 위치 설정 */
   position: relative;
-  top: 0vh;
+  /* top: 4vmax; */
   z-index: 1;
 
-  background-color: gold;
+  /* background-color: gold; */
 }
 
 .top-wrapper .landing-slide-slogan {
-  margin-right: 0.5vw;
+  /* margin-right: 0.5vw;
   margin-left: 0.5vw;
   margin-top: 0.5vw;
-  margin-bottom: 0.5vw;
+  margin-bottom: 0.5vw; */
+  margin: 5px;
 
-  height: 31vh;
+  height: 330px;
   width: 79vw;
   /* 정렬 */
   text-align: left;
@@ -261,7 +305,7 @@ input[type='radio']:checked {
   letter-spacing: 2.5px;
   /* 행간 */
   line-height: 65px;
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
 }
 
 /* top-container 내부 end */
@@ -271,17 +315,20 @@ input[type='radio']:checked {
 .bottom-wrapper {
   /* 크기 */
   width: 80vw;
-  height: 42vh;
+  /* height: 42vmax; */
+  /* height: 22vmax; */
+  height: 320px;
 
   /* 위치 */
   position: relative;
   z-index: 1;
-  bottom: 4.5vh;
+  top: -70px;
+  /* bottom: 00px; */
   /* left: 10vw; */
 
   /* bottom wrapper끼리 줄간격(?) */
   line-height: 30px;
-  background-color: lightpink;
+  /* background-color: lightpink; */
 
   /* 라디오 버튼 중앙정렬 */
   text-align: center;
@@ -296,23 +343,24 @@ input[type='radio']:checked {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 /* bottom-container 내부 end */
 
 /* result창  */
 .video-container {
+  /* grid-area: video-container; */
   /* margin: 10px; */
-  padding-bottom: 40px;
-
+  /* padding-bottom: 40px; */
+  display: grid;
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 
-  height: 80vh;
+  height: 750px;
   width: 100vw;
-  grid-template-rows: 5fr 1fr;
+  grid-template-rows: 8fr 1fr;
   /* display: absolute; */
   /* y축기준 중앙 */
   /* align-items: center; */
@@ -324,9 +372,9 @@ input[type='radio']:checked {
 }
 
 .video-grid-item {
-  margin: 5px;
-  padding: 5px;
-  background-color: yellow;
+  /* margin: 5px; */
+  /* padding: 5px; */
+  /* background-color: yellow; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -338,15 +386,89 @@ input[type='radio']:checked {
   display: grid;
   /* margin-bottom: 5px; */
   /* padding: 5px; */
-  grid-template-areas:
-    'header header header'
-    'button results button'
-    'footer footer footer';
+  /* display: flex; */
+  /* grid-template-areas:
+    'video-container'
+    'grid-container'
+    'comment-container'; */
 
-  height: 500px;
+  /* height: 500px; */
   /* background-color: #ccc; */
-  grid-template-rows: 2fr 12fr 1fr;
-  grid-template-columns: 1fr, 160px, 1fr;
+  grid-template-rows: 800px 800px 300px;
+  /* grid-template-columns: 1fr, 160px, 1fr; */
+}
+
+.main-grid-container {
+  display: grid;
+
+  grid-template-areas:
+    'top'
+    'mid'
+    'bot';
+
+  grid-template-rows: 280px 50px 340px;
+  grid-template-columns: 85vw;
+}
+
+.main-grid-item {
+  margin: 2px;
+  /* background-color: bisque; */
+  /* display: flex; */
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  /* align-items: center; */
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  /* justify-content: center; */
+}
+
+.top {
+  grid-area: top;
+  text-align: left;
+}
+
+.bot {
+  grid-area: bot;
+  display: flex;
+  /* y축기준 중앙 */
+  /* align-self: center; */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
+
+  /* bottom wrapper끼리 줄간격(?) */
+  line-height: 30px;
+  /* background-color: lightpink; */
+
+  /* 라디오 버튼 중앙정렬 */
+  text-align: center;
+
+  display: grid;
+  grid-template-rows: 280px 60px;
+  grid-template-columns: 85vw;
+}
+
+.bot-grid-item {
+  margin: 0px;
+  /* background-color: blueviolet; */
+}
+
+/* 라디오버튼  */
+.button-grid {
+  display: grid;
+  /* display: flex; */
+  grid-template-rows: 170px 20px 30px;
+  /* grid-template-columns: 16vw; */
+}
+
+.button-grid-item {
+  margin: 1px;
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+
+  justify-content: center;
+  /* text-align: start; */
 }
 
 /* 
@@ -385,6 +507,7 @@ input[type='radio']:checked {
 } */
 
 .grid-container {
+  /* grid-area: grid-container; */
   display: grid;
   grid-template-areas:
     '. header .'
@@ -393,8 +516,8 @@ input[type='radio']:checked {
   grid-template-rows: 60px 1fr 50px;
   grid-template-columns: 1fr 960px 1fr;
   /* height: 250px; */
-  background-color: #ccc;
-  height: 70vh;
+  /* background-color: #ccc; */
+  height: 700px;
   width: 100vw;
 }
 
@@ -405,7 +528,7 @@ input[type='radio']:checked {
 .header {
   grid-area: header;
   color: black;
-  background-color: green;
+  background-color: #ffe6e6;
   display: grid;
   align-items: center;
   /* justify-content: center; */
@@ -424,7 +547,7 @@ input[type='radio']:checked {
 .slider {
   grid-area: header;
   color: black;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
   display: flex;
   align-items: center;
   /* justify-content: center; */
@@ -432,28 +555,49 @@ input[type='radio']:checked {
 
 .aside {
   grid-area: aside;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .aside2 {
   grid-area: aside2;
-  background-color: yellow;
+  /* background-color: yellow; */
 }
 
 .content {
   grid-area: content;
-  background-color: pink;
+  /* background-color: pink; */
 
   display: grid;
 
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 250px);
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+}
+
+.content-no-result {
+  grid-area: content;
+  /* background-color: pink; */
+
+  display: grid;
+
+  grid-template-rows: 300px 100px;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 300px)); */
+}
+
+.content-no-item {
+  margin: 1px;
+  padding: 1px;
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer {
   grid-area: footer;
-  color: white;
-  background-color: #555;
+  color: #404040;
+  /* background-color: #555; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -462,18 +606,21 @@ input[type='radio']:checked {
 .content-item {
   margin: 1px;
   padding: 1px;
-  background-color: red;
+  /* background-color: red; */
   width: 100%;
   height: 100%;
   /* display: flex; */
   align-items: center;
   justify-content: center;
   display: gird;
-  grid-template-rows: 5fr 1fr;
-  padding: 15px;
+  grid-template-rows: 2fr 1fr;
+  /* padding: 15px; */
+  /* padding */
 
-  /* padding-top: 15px; */
-  /* padding-bottom: 15px; */
+  padding-top: 50px;
+  /* padding-bottom: 5px; */
+  padding-left: 15px;
+  padding-right: 15px;
 
   /* width: 100%; */
   /* height: 100%; */
@@ -486,7 +633,7 @@ input[type='radio']:checked {
 
 .content-item-inner {
   margin: 3px;
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
 
   /* margin: 5px; */
   /* padding: 5px; */
@@ -498,14 +645,15 @@ input[type='radio']:checked {
 }
 
 .comment-container {
+  /* grid-area: comment-container; */
   /* margin: 10px; */
   padding-bottom: 40px;
 
   width: 100%;
   height: 100%;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 
-  height: 80vh;
+  height: 500px;
   width: 100vw;
   grid-template-rows: 1fr;
   /* display: absolute; */
@@ -520,11 +668,14 @@ input[type='radio']:checked {
 
 .comment-grid-item {
   margin: 5px;
-  padding-top: 60px;
-  background-color: yellow;
-  display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  /* background-color: yellow; */
+  display: grid;
   align-items: center;
   justify-content: center;
+  /* grid-template-rows: 100px 200px 50px; */
+  /* grid-auto-columns: 800px; */
 }
 
 .App {

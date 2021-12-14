@@ -42,17 +42,23 @@ function Typebtn(props) {
               checked={props.checked === type.name}
             />
             <Label htmlFor={type.name} img={type.img}>
-              <img
-                src={type.img}
-                style={{
-                  width: '50%',
-                  display: 'flex',
-                  transform: 'translate(50%, 50%)',
-                }}
-              />
-              <StyleSpan>{type.title}</StyleSpan>
-              <br />
-              <StyletextSpan>{type.text}</StyletextSpan>
+              <div className="button-grid">
+                <div className="button-grid-item">
+                  <img
+                    src={type.img}
+                    style={{
+                      width: '50%',
+                      // transform: 'translate(50%, 50%)',
+                    }}
+                  />
+                </div>
+                <div className="button-grid-item">
+                  <StyleSpan>{type.title}</StyleSpan>
+                </div>
+                <div className="button-grid-item">
+                  <StyletextSpan>{type.text}</StyletextSpan>
+                </div>
+              </div>
             </Label>
           </div>
         ))}
@@ -64,21 +70,21 @@ function Typebtn(props) {
 const ColorSelectorContainer = styled.div`
   display: flex; // 내부 애들 옆으로 배치 가능하게하기
   justify-content: space-between; // 내부 애들 간격 일정하게 떨어지게하기
-  width: 80vw;
-  margin-top: 0px;
-  padding: 0px;
+  width: 85vw;
+  /* margin-top: 0px; */
+  /* padding: 0px; */
   /* border: 1px solid black; */
 `;
 
 // 버튼모양
 const Label = styled.label`
-  display: inline-block;
-  padding-top: 3vh;
-  padding-bottom: 3vh;
-  padding-left: 3vh;
-  padding-right: 3vh;
-  width: 15vw;
-  height: 27vh;
+  /* display: inline-block; */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 16vw;
+  height: 250px;
   border-radius: 25px;
   background-color: white;
 
@@ -86,6 +92,12 @@ const Label = styled.label`
 
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
   text-align: start;
+
+  display: flex;
+  /* y축기준 중앙 */
+  align-items: center;
+  /* y축 기준 내부에 요소들 끝으로 붙이기 */
+  justify-content: center;
 `;
 
 // 선택느낌
@@ -99,22 +111,24 @@ const RadioButton = styled.input`
 const StyleSpan = styled.span`
   font-family: NanumSquare_EB;
   position: relative;
-  top: 7vh;
+  /* top: 7vh; */
   font-size: 15px;
   /* display: inline; */
   /* bottom: 14vw; */
   padding-bottom: 5px;
   line-height: 0vh;
+
   /* margin-left: 30px;
   margin-top: 100px; */
 `;
 
 const StyletextSpan = styled.span`
   font-family: NanumSquare_L;
+  text-align: start;
   font-size: 10px;
   color: #5b5b5b;
   position: relative;
-  top: 6vh;
+  /* top: 6vh; */
   /* bottom: 12vh; */
   line-height: 0vh;
   /* padding-left: 30px; */

@@ -9,17 +9,15 @@ import noResult from '../img/not-found.png';
 function MemberOnlyPage() {
   return (
     <>
-      <div className="top-container">
-        {/* <span>main</span> */}
-
+      <div className="main-container">
         <Template>
           <Styleh1> Sorry, Member ONLY </Styleh1>
           <img
             src={noResult}
             style={{
-              width: '15vw',
+              width: '220px',
               position: 'absolute',
-              left: '35%',
+              left: '32%',
               top: '30%',
             }}
             alt="img"
@@ -30,10 +28,6 @@ function MemberOnlyPage() {
             </Button>
           </Link>
         </Template>
-        {/* <Button onClick={onTestFunc}> TEST </Button> */}
-      </div>
-      <div className="bottom-container">
-        <span>bottom continer</span>
       </div>
     </>
   );
@@ -55,13 +49,13 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* 크기 */
-  width: 25vw;
-  height: 5vh;
+  width: 300px;
+  height: 40px;
 
   /* 위치 */
   position: absolute;
-  left: 25%; /* 중앙으로 배치 */
-  bottom: 10%; /* 조금 위쪽으로 */
+  left: 25%; // 중앙으로 배치
+  bottom: 10%; // 조금 위쪽으로
   /* transform: translate(-50%, -80%); */
 
   /* z-index: 5; */
@@ -77,7 +71,7 @@ const Button = styled.button`
 
 const Stylespan = styled.span`
   color: white;
-  font-size: 1.7vw;
+  font-size: 20px;
   font-family: NanumSquare_R;
   white-space: nowrap;
 `;
@@ -86,7 +80,7 @@ const Styleh1 = styled.h1`
   /* margin: 0; */
   margin-top: 40px;
   margin-bottom: 40px;
-  font-size: 4.5vh;
+  font-size: 45px;
   text-align: center;
   font-family: 'BwSurco';
   color: #404040;

@@ -6,8 +6,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import regsuccess from '../img/goal.png';
 import Template from '../components/Template';
+
+// 회원가입 페이지
 
 function SignupPage() {
   // 사용자 입력을 받아올 변수
@@ -16,7 +19,12 @@ function SignupPage() {
   const [Password, setPassword] = React.useState('');
   const [Password_veri, setPassword_veri] = React.useState('');
   const [Errtxt, setErrtxt] = React.useState('');
+
+  //  회원가입 성공여부
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
+
+  // 페이지 이전용도
+  const history = useHistory();
 
   // state변수를 변경시키는 함수들
   const onChangeNick = (e) => {
@@ -40,7 +48,7 @@ function SignupPage() {
     // 입력 안했을 때
     if (!Nickname) {
       setErrtxt('닉네임을 입력해주세요');
-      return; // 오류나면 더 진행하지(서버로안감) 않고 끊어야해서 리턴임
+      return; // 오류나면 더 진행되지 않음
     }
     if (!UserID) {
       setErrtxt('ID를 입력해주세요');
@@ -55,7 +63,7 @@ function SignupPage() {
       return;
     }
 
-    // 비밀번호 제한사항
+    // 비밀번호 제한사항 검사
     if (Password.length < 8 || Password.length > 12) {
       setErrtxt('비밀번호는 8자이상 12자이하여야 합니다');
       return;
@@ -66,6 +74,7 @@ function SignupPage() {
       return;
     }
 
+    // 서버로 전송
     const formbody = {
       nickname: Nickname,
       userID: UserID,
@@ -95,40 +104,41 @@ function SignupPage() {
 
           // 2. 아이디 중복
           if (res.data.Result === 'ID_duplicated') {
-            console.log('아이디 중복');
+            // console.log('아이디 중복');
             setErrtxt('이미 존재하는 아이디입니다');
           }
         }
       })
       .catch((err) => {
-        // Hide Loader
-        console.error(err);
+        // 에러시 에러 페이지로 이동
+        // console.error(err);
+        history.push('/error?errtype=register');
       });
   };
 
   return (
     <>
-      <div className="top-container">
-        {isRegistraionSuccess === true ? (
+      <div className="main-container">
+        {isRegistraionSuccess === true ? ( // 회원가입 성공 후
           <Template>
             <Styleh1> WELCOME TO SEAFLAG </Styleh1>
             <img
               src={regsuccess}
               style={{
-                width: '12vw',
+                width: '200px',
                 position: 'absolute',
-                left: '40%',
-                top: '25%',
+                left: '200px',
+                top: '120px',
               }}
               alt="img"
             />
             <span
               style={{
-                fontSize: '1.0vw',
+                fontSize: '20px',
                 fontFamily: 'NanumSquare_L',
                 position: 'absolute',
-                bottom: '25%',
-                left: '30%',
+                bottom: '120px',
+                left: '100px',
                 textAlign: 'center',
               }}
             >
@@ -143,6 +153,7 @@ function SignupPage() {
             </Link>
           </Template>
         ) : (
+          // 회원 가입 창
           <Template>
             <Styleh1> SIGN UP </Styleh1>
             <InsertForm onSubmit={onSubmitHandler}>
@@ -165,6 +176,7 @@ function SignupPage() {
                 autoFocus
                 onChange={onChangePW_V}
               />
+              <br />
               <Label>{Errtxt}</Label>
               <Button onClick={onSubmitHandler}>
                 <Stylespan>Register</Stylespan>
@@ -172,34 +184,10 @@ function SignupPage() {
             </InsertForm>
           </Template>
         )}
-
-        {/* <RegiBlock /> */}
-      </div>
-      <div className="bottom-container">
-        <span>bottom continer</span>
       </div>
     </>
   );
 }
-
-const TemplateBlock = styled.div`
-  width: 512px;
-  height: 400px;
-
-  position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-
-  margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-  margin-top: 2.5vh;
-  margin-bottom: 2.5vh;
-  display: flex;
-  flex-direction: column;
-
-  opacity: 1;
-`;
 
 const InsertForm = styled.form`
   padding-left: 50px;
@@ -228,7 +216,7 @@ const Input = styled.input`
 
 const Label = styled.label`
   padding: 5px;
-  font-size: 1.2vw;
+  font-size: 15px;
   font-family: 'NanumSquare_R';
   color: #fa605a;
 `;
@@ -249,8 +237,8 @@ const Button = styled.button`
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.4); /* 그림자효과 */
 
   /* 크기 */
-  width: 25vw;
-  height: 5vh;
+  width: 300px;
+  height: 40px;
 
   /* 위치 */
   position: absolute;
@@ -260,41 +248,27 @@ const Button = styled.button`
 
   /* z-index: 5; */
   cursor: pointer;
+  transition: 0.125s all ease-in;
 
   /* display: inline; */
-
   /* align-items: center; */
   /* justify-content: center; */
-
-  transition: 0.125s all ease-in;
 `;
 
 const Stylespan = styled.span`
   color: white;
-  font-size: 1.7vw;
+  font-size: 20px;
   font-family: NanumSquare_R;
   white-space: nowrap;
 `;
 
 const Styleh1 = styled.h1`
-  /* margin: 0; */
   margin-top: 40px;
   margin-bottom: 40px;
-  font-size: 4.5vh;
+  font-size: 45px;
   text-align: center;
   font-family: 'BwSurco';
   color: #404040;
-`;
-
-const StyleLabel = styled.label`
-  position: 'absolute';
-  left: '35%';
-  top: '30%';
-  font-size: 14px;
-  font-family: 'NanumSquare_L';
-
-  display: 'block';
-  /* text-align: center; */
 `;
 
 export default SignupPage;

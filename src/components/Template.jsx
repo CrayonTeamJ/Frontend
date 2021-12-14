@@ -13,8 +13,8 @@ export default Template;
 
 const TemplateBlock = styled.div`
   /* 크기 */
-  width: 50vw;
-  height: 60vh;
+  width: 600px;
+  height: 500px;
 
   /* 위치-> 부모 relative */
   position: absolute; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */

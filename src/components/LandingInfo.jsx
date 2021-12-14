@@ -3,39 +3,36 @@
 /* eslint-disable import/order */
 import React from 'react';
 import '../App.css';
-
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import audio from '../img/conversation.png';
 import image from '../img/speech.png';
 import both from '../img/video-player.png';
 
 // top container내부의 설명파트
-const Types = [
-  {
-    name: 'image',
-    img: image,
-    title: '인물 검색',
-    text: '영상에 등장하는 인물을 검색해 보세요',
-  },
-];
 
 function LandingInfo({ children }) {
   return (
-    <>
-      <div className="top-wrapper">
-        <div className="landing-slide-slogan" style={{ display: 'flex' }}>
-          {children}
-          <div style={{ marginLeft: '15px' }}>
-            <span>원하는 인물을,</span>
-            <br />
-            <span>원하는 대사를,</span>
-            <br />
-            <span style={{ fontSize: '55px' }}>원하는 부분만.</span>
-          </div>
-        </div>
+    <div style={{ display: 'flex' }}>
+      {/* <div className="top-wrapper">
+        <div className="landing-slide-slogan" style={{ display: 'flex' }}> */}
+      {children}
+      <div
+        style={{
+          margin: '15px',
+          fontFamily: 'NanumSquare_EB',
+          lineHeight: '75px',
+          fontSize: '60px',
+        }}
+      >
+        <span>원하는 인물을,</span>
+        <br />
+        <span>원하는 대사를,</span>
+        <br />
+        <span style={{ fontSize: '70px' }}>원하는 부분만.</span>
       </div>
-    </>
+      {/* </div>
+      </div> */}
+    </div>
   );
 }
 
